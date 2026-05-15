@@ -1,0 +1,62 @@
+{
+  "existing": {
+    "authority": {
+      "AUTHORITY00": {
+        "email": "s6e",
+        "establishment_count": "s6f",
+        "file_name": "s70",
+        "file_name_welsh": "s71",
+        "friendly_name": "s72",
+        "local_authority_id": "LOCAL_AUTHORITY01",
+        "local_authority_id_code": "s74",
+        "name": "s75",
+        "region_name": "s76",
+        "scheme_url": "s77",
+        "url": "s78"
+      },
+      "AUTHORITY01": {
+        "email": "sdc",
+        "establishment_count": "sdd",
+        "file_name": "sde",
+        "file_name_welsh": "sdf",
+        "friendly_name": "se0",
+        "local_authority_id": "LOCAL_AUTHORITY01",
+        "local_authority_id_code": "se2",
+        "name": "se3",
+        "region_name": "se4",
+        "scheme_url": "se5",
+        "url": "se6"
+      },
+      "AUTHORITY02": {
+        "email": "s14a",
+        "establishment_count": "s14b",
+        "file_name": "s14c",
+        "file_name_welsh": "s14d",
+        "friendly_name": "s14e",
+        "local_authority_id": "LOCAL_AUTHORITY01",
+        "local_authority_id_code": "s150",
+        "name": "s151",
+        "region_name": "s152",
+        "scheme_url": "s153",
+        "url": "s154"
+      }
+    }
+  },
+  "new": {
+    "authority": {
+      "authority_ref01": {
+        "email": "s1b8",
+        "establishment_count": "s1b9",
+        "file_name": "s1ba",
+        "file_name_welsh": "s1bb",
+        "friendly_name": "s1bc",
+        "local_authority_id": "LOCAL_AUTHORITY01",
+        "local_authority_id_code": "s1be",
+        "name": "s1bf",
+        "region_name": "s1c0",
+        "scheme_url": "s1c1",
+        "url": "s1c2"
+      }
+    }
+  }
+}

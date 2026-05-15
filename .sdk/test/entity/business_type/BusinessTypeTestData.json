@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "business_type": {
+      "BUSINESS_TYPE00": {
+        "business_type_id": "BUSINESS_TYPE01",
+        "business_type_name": "s15"
+      },
+      "BUSINESS_TYPE01": {
+        "business_type_id": "BUSINESS_TYPE01",
+        "business_type_name": "s29"
+      },
+      "BUSINESS_TYPE02": {
+        "business_type_id": "BUSINESS_TYPE01",
+        "business_type_name": "s3d"
+      }
+    }
+  },
+  "new": {
+    "business_type": {
+      "business_type_ref01": {
+        "business_type_id": "BUSINESS_TYPE01",
+        "business_type_name": "s51"
+      }
+    }
+  }
+}

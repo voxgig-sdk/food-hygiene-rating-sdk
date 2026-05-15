@@ -1,0 +1,44 @@
+# BasicEstablishmentFlow
+
+main: kit: flow: BasicEstablishmentFlow:
+{
+  entity: "establishment",
+  kind: "basic",
+  name: "BasicEstablishmentFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "establishment_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "establishment_ref01",
+        srcdatavar: "establishment_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "establishment01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-establishment_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicEstablishmentFlow"
+}

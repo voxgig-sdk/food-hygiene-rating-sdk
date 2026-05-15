@@ -1,0 +1,646 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Food Hygiene Rating API",
+    "description": "The UK Food Hygiene Rating Data API provides access to food hygiene ratings issued to various food establishments across the UK. It allows users to obtain data in XML and JSON formats, featuring geolocation details for businesses inspected by local authorities. The data provides the food hygiene rating or inspection result given to a business and reflects the standards of food hygiene found on the date of inspection or visit by the local authority. Businesses include restaurants, pubs, cafés, takeaways, hotels and other places consumers eat, as well as supermarkets and other food shops.",
+    "version": "2.0.0",
+    "contact": {
+      "name": "Food Standards Agency",
+      "url": "https://www.food.gov.uk"
+    },
+    "termsOfService": "https://www.food.gov.uk/uk-food-hygiene-rating-data-api"
+  },
+  "servers": [
+    {
+      "url": "https://api.ratings.food.gov.uk",
+      "description": "Production API server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Establishments",
+      "description": "Operations related to food establishments and their hygiene ratings"
+    },
+    {
+      "name": "Authorities",
+      "description": "Operations related to local authorities"
+    },
+    {
+      "name": "Ratings",
+      "description": "Operations related to food hygiene ratings"
+    }
+  ],
+  "paths": {
+    "/Establishments": {
+      "get": {
+        "tags": [
+          "Establishments"
+        ],
+        "summary": "Get food hygiene ratings data for establishments",
+        "description": "Returns food hygiene rating data for establishments. Query parameters allow filtering by location, authority, rating, and other criteria. Data includes geocoded information (longitude and latitude) for food businesses.",
+        "operationId": "getEstablishments",
+        "parameters": [
+          {
+            "name": "localAuthorityId",
+            "in": "query",
+            "description": "Filter establishments by local authority ID",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "businessTypeId",
+            "in": "query",
+            "description": "Filter establishments by business type ID",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "ratingKey",
+            "in": "query",
+            "description": "Filter establishments by rating key (e.g., 0-5, Pass/Exempt)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Filter establishments by name (partial match supported)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "description": "Filter establishments by address",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "longitude",
+            "in": "query",
+            "description": "Longitude for geolocation search",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "latitude",
+            "in": "query",
+            "description": "Latitude for geolocation search",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "maxDistanceLimit",
+            "in": "query",
+            "description": "Maximum distance in miles for geolocation search",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "description": "Page number for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of results per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 10,
+              "maximum": 5000
+            }
+          },
+          {
+            "name": "sortOptionKey",
+            "in": "query",
+            "description": "Sort option for results",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "alpha",
+                "rating",
+                "distance"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with establishment data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EstablishmentsResponse"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/EstablishmentsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters"
+          },
+          "404": {
+            "description": "No establishments found matching criteria"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/Establishments/{id}": {
+      "get": {
+        "tags": [
+          "Establishments"
+        ],
+        "summary": "Get a specific establishment by ID",
+        "description": "Returns detailed information about a specific food establishment including its hygiene rating, address, and geocoded location.",
+        "operationId": "getEstablishmentById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Unique identifier for the establishment",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with establishment details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Establishment"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Establishment"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Establishment not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/Authorities": {
+      "get": {
+        "tags": [
+          "Authorities"
+        ],
+        "summary": "Get list of local authorities",
+        "description": "Returns a list of local authorities participating in the Food Hygiene Rating Scheme (FHRS) in England, Northern Ireland, and Wales, or the Food Hygiene Information Scheme (FHIS) in Scotland.",
+        "operationId": "getAuthorities",
+        "responses": {
+          "200": {
+            "description": "Successful response with authorities list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthoritiesResponse"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthoritiesResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/Authorities/{id}": {
+      "get": {
+        "tags": [
+          "Authorities"
+        ],
+        "summary": "Get a specific local authority by ID",
+        "description": "Returns detailed information about a specific local authority.",
+        "operationId": "getAuthorityById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Unique identifier for the local authority",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with authority details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Authority"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Authority"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Authority not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/Ratings": {
+      "get": {
+        "tags": [
+          "Ratings"
+        ],
+        "summary": "Get list of rating values",
+        "description": "Returns a list of possible food hygiene rating values used in the schemes.",
+        "operationId": "getRatings",
+        "responses": {
+          "200": {
+            "description": "Successful response with ratings list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RatingsResponse"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/RatingsResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/BusinessTypes": {
+      "get": {
+        "tags": [
+          "Establishments"
+        ],
+        "summary": "Get list of business types",
+        "description": "Returns a list of business types (e.g., Restaurant, Pub, Café, Takeaway, Hotel, Supermarket) used in the food hygiene rating scheme.",
+        "operationId": "getBusinessTypes",
+        "responses": {
+          "200": {
+            "description": "Successful response with business types list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BusinessTypesResponse"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/BusinessTypesResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "EstablishmentsResponse": {
+        "type": "object",
+        "properties": {
+          "establishments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Establishment"
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/MetaData"
+          }
+        }
+      },
+      "Establishment": {
+        "type": "object",
+        "properties": {
+          "FHRSID": {
+            "type": "integer",
+            "description": "Unique identifier for the establishment in the FHRS system"
+          },
+          "LocalAuthorityBusinessID": {
+            "type": "string",
+            "description": "Business ID assigned by the local authority"
+          },
+          "BusinessName": {
+            "type": "string",
+            "description": "Name of the food establishment"
+          },
+          "BusinessType": {
+            "type": "string",
+            "description": "Type of food business (e.g., Restaurant, Pub, Café, Takeaway)"
+          },
+          "BusinessTypeID": {
+            "type": "integer",
+            "description": "Unique identifier for the business type"
+          },
+          "AddressLine1": {
+            "type": "string",
+            "description": "First line of the address"
+          },
+          "AddressLine2": {
+            "type": "string",
+            "description": "Second line of the address"
+          },
+          "AddressLine3": {
+            "type": "string",
+            "description": "Third line of the address"
+          },
+          "AddressLine4": {
+            "type": "string",
+            "description": "Fourth line of the address"
+          },
+          "PostCode": {
+            "type": "string",
+            "description": "Postcode of the establishment"
+          },
+          "RatingValue": {
+            "type": "string",
+            "description": "The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS)"
+          },
+          "RatingKey": {
+            "type": "string",
+            "description": "Key for the rating value"
+          },
+          "RatingDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Date the rating was issued"
+          },
+          "LocalAuthorityCode": {
+            "type": "string",
+            "description": "Code for the local authority"
+          },
+          "LocalAuthorityName": {
+            "type": "string",
+            "description": "Name of the local authority"
+          },
+          "LocalAuthorityWebSite": {
+            "type": "string",
+            "format": "uri",
+            "description": "Website of the local authority"
+          },
+          "LocalAuthorityEmailAddress": {
+            "type": "string",
+            "format": "email",
+            "description": "Email address of the local authority"
+          },
+          "SchemeType": {
+            "type": "string",
+            "description": "Type of scheme (FHRS or FHIS)",
+            "enum": [
+              "FHRS",
+              "FHIS"
+            ]
+          },
+          "Geocode": {
+            "$ref": "#/components/schemas/Geocode"
+          },
+          "NewRatingPending": {
+            "type": "boolean",
+            "description": "Indicates if a new rating is pending"
+          }
+        }
+      },
+      "Geocode": {
+        "type": "object",
+        "properties": {
+          "longitude": {
+            "type": "number",
+            "format": "double",
+            "description": "Longitude coordinate of the establishment"
+          },
+          "latitude": {
+            "type": "number",
+            "format": "double",
+            "description": "Latitude coordinate of the establishment"
+          }
+        }
+      },
+      "AuthoritiesResponse": {
+        "type": "object",
+        "properties": {
+          "authorities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Authority"
+            }
+          }
+        }
+      },
+      "Authority": {
+        "type": "object",
+        "properties": {
+          "LocalAuthorityId": {
+            "type": "integer",
+            "description": "Unique identifier for the local authority"
+          },
+          "LocalAuthorityIdCode": {
+            "type": "string",
+            "description": "Code for the local authority"
+          },
+          "Name": {
+            "type": "string",
+            "description": "Name of the local authority"
+          },
+          "FriendlyName": {
+            "type": "string",
+            "description": "Friendly display name of the local authority"
+          },
+          "Url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Website URL of the local authority"
+          },
+          "SchemeUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the local authority's food hygiene scheme page"
+          },
+          "Email": {
+            "type": "string",
+            "format": "email",
+            "description": "Email address of the local authority"
+          },
+          "RegionName": {
+            "type": "string",
+            "description": "Region where the authority is located"
+          },
+          "FileName": {
+            "type": "string",
+            "description": "XML filename for the authority's data"
+          },
+          "FileNameWelsh": {
+            "type": "string",
+            "description": "Welsh language XML filename (for Welsh authorities)"
+          },
+          "EstablishmentCount": {
+            "type": "integer",
+            "description": "Number of establishments registered with this authority"
+          }
+        }
+      },
+      "RatingsResponse": {
+        "type": "object",
+        "properties": {
+          "ratings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Rating"
+            }
+          }
+        }
+      },
+      "Rating": {
+        "type": "object",
+        "properties": {
+          "ratingId": {
+            "type": "integer",
+            "description": "Unique identifier for the rating"
+          },
+          "ratingName": {
+            "type": "string",
+            "description": "Name of the rating (e.g., '5', '4', 'Pass', 'Exempt')"
+          },
+          "ratingKey": {
+            "type": "string",
+            "description": "Key for the rating value"
+          },
+          "schemeType": {
+            "type": "string",
+            "description": "Scheme type this rating belongs to",
+            "enum": [
+              "FHRS",
+              "FHIS"
+            ]
+          }
+        }
+      },
+      "BusinessTypesResponse": {
+        "type": "object",
+        "properties": {
+          "businessTypes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BusinessType"
+            }
+          }
+        }
+      },
+      "BusinessType": {
+        "type": "object",
+        "properties": {
+          "BusinessTypeId": {
+            "type": "integer",
+            "description": "Unique identifier for the business type"
+          },
+          "BusinessTypeName": {
+            "type": "string",
+            "description": "Name of the business type (e.g., Restaurant/Cafe/Canteen, Pub/bar/nightclub, Takeaway/sandwich shop)"
+          }
+        }
+      },
+      "MetaData": {
+        "type": "object",
+        "properties": {
+          "dataSource": {
+            "type": "string",
+            "description": "Source of the data"
+          },
+          "extractDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Date and time when the data was extracted"
+          },
+          "itemCount": {
+            "type": "integer",
+            "description": "Number of items in the current response"
+          },
+          "returnCode": {
+            "type": "string",
+            "description": "Return code for the API call"
+          },
+          "totalCount": {
+            "type": "integer",
+            "description": "Total number of items matching the query"
+          },
+          "totalPages": {
+            "type": "integer",
+            "description": "Total number of pages available"
+          },
+          "pageSize": {
+            "type": "integer",
+            "description": "Number of items per page"
+          },
+          "pageNumber": {
+            "type": "integer",
+            "description": "Current page number"
+          }
+        }
+      }
+    }
+  }
+}

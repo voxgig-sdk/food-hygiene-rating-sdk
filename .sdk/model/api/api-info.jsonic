@@ -1,0 +1,25 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "Food Standards Agency"
+        url: "https://www.food.gov.uk"
+      }
+      description: "The UK Food Hygiene Rating Data API provides access to food hygiene ratings issued to various food establishments across the UK. It allows users to obtain data in XML and JSON formats, featuring geolocation details for businesses inspected by local authorities. The data provides the food hygiene rating or inspection result given to a business and reflects the standards of food hygiene found on the date of inspection or visit by the local authority. Businesses include restaurants, pubs, cafés, takeaways, hotels and other places consumers eat, as well as supermarkets and other food shops."
+      servers: [
+        {
+          description: "Production API server"
+          url: "https://api.ratings.food.gov.uk"
+        }
+      ]
+      termsOfService: "https://www.food.gov.uk/uk-food-hygiene-rating-data-api"
+      title: "Food Hygiene Rating API"
+      version: "2.0.0"
+    }
+  }
+}
+
+}

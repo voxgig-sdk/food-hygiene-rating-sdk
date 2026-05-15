@@ -1,0 +1,44 @@
+# BasicAuthorityFlow
+
+main: kit: flow: BasicAuthorityFlow:
+{
+  entity: "authority",
+  kind: "basic",
+  name: "BasicAuthorityFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "authority_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "authority_ref01",
+        srcdatavar: "authority_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "authority01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-authority_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAuthorityFlow"
+}

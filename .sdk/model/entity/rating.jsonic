@@ -1,0 +1,52 @@
+# Entity: rating
+
+main: kit: entity: rating: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "rating_id"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "rating_key"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "rating_name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "scheme_type"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "rating"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/Ratings"
+          parts: [
+            "Ratings"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

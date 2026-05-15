@@ -1,0 +1,22 @@
+# BasicBusinessTypeFlow
+
+main: kit: flow: BasicBusinessTypeFlow:
+{
+  entity: "business_type",
+  kind: "basic",
+  name: "BasicBusinessTypeFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "business_type_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBusinessTypeFlow"
+}

@@ -1,0 +1,38 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 4
+  metrics: count: path: 6
+  metrics: count: method: 6
+
+  entity: authority: {
+    path: "/Authorities": {
+      op: list: method: *GET
+    }
+    path: "/Authorities/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: business_type: {
+    path: "/BusinessTypes": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: establishment: {
+    path: "/Establishments": {
+      op: list: method: *GET
+    }
+    path: "/Establishments/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: rating: {
+    path: "/Ratings": {
+      op: list: method: *GET
+    }
+  }
+
+}

@@ -1,0 +1,42 @@
+# Entity: business_type
+
+main: kit: entity: business_type: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "business_type_id"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "business_type_name"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "business_type"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/BusinessTypes"
+          parts: [
+            "BusinessTypes"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

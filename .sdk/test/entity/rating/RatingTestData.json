@@ -1,0 +1,34 @@
+{
+  "existing": {
+    "rating": {
+      "RATING00": {
+        "rating_id": "RATING01",
+        "rating_key": "s29",
+        "rating_name": "s2a",
+        "scheme_type": "s2b"
+      },
+      "RATING01": {
+        "rating_id": "RATING01",
+        "rating_key": "s51",
+        "rating_name": "s52",
+        "scheme_type": "s53"
+      },
+      "RATING02": {
+        "rating_id": "RATING01",
+        "rating_key": "s79",
+        "rating_name": "s7a",
+        "scheme_type": "s7b"
+      }
+    }
+  },
+  "new": {
+    "rating": {
+      "rating_ref01": {
+        "rating_id": "RATING01",
+        "rating_key": "sa1",
+        "rating_name": "sa2",
+        "scheme_type": "sa3"
+      }
+    }
+  }
+}

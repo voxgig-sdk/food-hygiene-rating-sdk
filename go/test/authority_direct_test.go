@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/food-hygiene-rating-sdk"
-	"github.com/voxgig-sdk/food-hygiene-rating-sdk/core"
+	sdk "github.com/voxgig-sdk/food-hygiene-rating-sdk/go"
+	"github.com/voxgig-sdk/food-hygiene-rating-sdk/go/core"
 )
 
 func TestAuthorityDirect(t *testing.T) {

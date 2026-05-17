@@ -21,7 +21,8 @@
         "rating_date": "sd8",
         "rating_key": "sd9",
         "rating_value": "sda",
-        "scheme_type": "sdb"
+        "scheme_type": "sdb",
+        "id": "ESTABLISHMENT00"
       },
       "ESTABLISHMENT01": {
         "address_line1": "s190",
@@ -43,7 +44,8 @@
         "rating_date": "s1a0",
         "rating_key": "s1a1",
         "rating_value": "s1a2",
-        "scheme_type": "s1a3"
+        "scheme_type": "s1a3",
+        "id": "ESTABLISHMENT01"
       },
       "ESTABLISHMENT02": {
         "address_line1": "s258",
@@ -65,7 +67,8 @@
         "rating_date": "s268",
         "rating_key": "s269",
         "rating_value": "s26a",
-        "scheme_type": "s26b"
+        "scheme_type": "s26b",
+        "id": "ESTABLISHMENT02"
       }
     }
   },

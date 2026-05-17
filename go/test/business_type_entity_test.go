@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/food-hygiene-rating-sdk"
-	"github.com/voxgig-sdk/food-hygiene-rating-sdk/core"
+	sdk "github.com/voxgig-sdk/food-hygiene-rating-sdk/go"
+	"github.com/voxgig-sdk/food-hygiene-rating-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/food-hygiene-rating-sdk/go/utility/struct"
 )
 
 func TestBusinessTypeEntity(t *testing.T) {

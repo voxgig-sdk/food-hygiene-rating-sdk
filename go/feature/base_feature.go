@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/food-hygiene-rating-sdk/core"
+	"github.com/voxgig-sdk/food-hygiene-rating-sdk/go/core"
 )
 
 type BaseFeature struct {

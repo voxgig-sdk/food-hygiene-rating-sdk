@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/food-hygiene-rating-sdk/core"
+	"github.com/voxgig-sdk/food-hygiene-rating-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/food-hygiene-rating-sdk/go/utility/struct"
 )
 
 type RatingEntity struct {

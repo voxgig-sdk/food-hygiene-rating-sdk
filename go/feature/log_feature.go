@@ -4,7 +4,7 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/voxgig-sdk/food-hygiene-rating-sdk/core"
+	"github.com/voxgig-sdk/food-hygiene-rating-sdk/go/core"
 )
 
 type LogFeature struct {

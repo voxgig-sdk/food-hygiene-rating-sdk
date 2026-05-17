@@ -3,7 +3,7 @@ package core
 import (
 	"fmt"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/food-hygiene-rating-sdk/go/utility/struct"
 )
 
 type FoodHygieneRatingSDK struct {

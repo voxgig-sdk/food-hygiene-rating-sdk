@@ -12,7 +12,8 @@
         "name": "s75",
         "region_name": "s76",
         "scheme_url": "s77",
-        "url": "s78"
+        "url": "s78",
+        "id": "AUTHORITY00"
       },
       "AUTHORITY01": {
         "email": "sdc",
@@ -25,7 +26,8 @@
         "name": "se3",
         "region_name": "se4",
         "scheme_url": "se5",
-        "url": "se6"
+        "url": "se6",
+        "id": "AUTHORITY01"
       },
       "AUTHORITY02": {
         "email": "s14a",
@@ -38,7 +40,8 @@
         "name": "s151",
         "region_name": "s152",
         "scheme_url": "s153",
-        "url": "s154"
+        "url": "s154",
+        "id": "AUTHORITY02"
       }
     }
   },

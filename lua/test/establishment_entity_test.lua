@@ -98,7 +98,6 @@ function establishment_basic_setup(extra)
     ["FOODHYGIENERATING_TEST_ESTABLISHMENT_ENTID"] = idmap,
     ["FOODHYGIENERATING_TEST_LIVE"] = "FALSE",
     ["FOODHYGIENERATING_TEST_EXPLAIN"] = "FALSE",
-    ["FOODHYGIENERATING_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -110,7 +109,6 @@ function establishment_basic_setup(extra)
   if env["FOODHYGIENERATING_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["FOODHYGIENERATING_APIKEY"],
       },
       extra or {},
     })

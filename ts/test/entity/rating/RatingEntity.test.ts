@@ -113,7 +113,6 @@ function basicSetup(extra?: any) {
     'FOOD_HYGIENE_RATING_TEST_RATING_ENTID': idmap,
     'FOOD_HYGIENE_RATING_TEST_LIVE': 'FALSE',
     'FOOD_HYGIENE_RATING_TEST_EXPLAIN': 'FALSE',
-    'FOOD_HYGIENE_RATING_APIKEY': 'NONE',
   })
 
   idmap = env['FOOD_HYGIENE_RATING_TEST_RATING_ENTID']
@@ -123,7 +122,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new FoodHygieneRatingSDK(merge([
       {
-        apikey: env.FOOD_HYGIENE_RATING_APIKEY,
       },
       extra
     ]))

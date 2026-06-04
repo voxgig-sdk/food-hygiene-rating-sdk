@@ -123,14 +123,12 @@ function authority_direct_setup($mockres)
     $env = Runner::env_override([
         "FOODHYGIENERATING_TEST_AUTHORITY_ENTID" => [],
         "FOODHYGIENERATING_TEST_LIVE" => "FALSE",
-        "FOODHYGIENERATING_APIKEY" => "NONE",
     ]);
 
     $live = $env["FOODHYGIENERATING_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["FOODHYGIENERATING_APIKEY"],
         ];
         $client = new FoodHygieneRatingSDK($merged_opts);
         return [

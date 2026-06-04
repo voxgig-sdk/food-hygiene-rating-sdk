@@ -62,14 +62,12 @@ def rating_direct_setup(mockres)
   env = Runner.env_override({
     "FOODHYGIENERATING_TEST_RATING_ENTID" => {},
     "FOODHYGIENERATING_TEST_LIVE" => "FALSE",
-    "FOODHYGIENERATING_APIKEY" => "NONE",
   })
 
   live = env["FOODHYGIENERATING_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["FOODHYGIENERATING_APIKEY"],
     }
     client = FoodHygieneRatingSDK.new(merged_opts)
     return {

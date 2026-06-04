@@ -18,7 +18,20 @@
         ],
         "termsOfService": "https://www.food.gov.uk/uk-food-hygiene-rating-data-api",
         "title": "Food Hygiene Rating API",
-        "version": "2.0.0"
+        "version": "2.0.0",
+        "tagline": "Query UK food hygiene ratings issued by local authorities under the Food Standards Agency scheme",
+        "homepage": "https://ratings.food.gov.uk",
+        "docs_url": "https://api.ratings.food.gov.uk/help",
+        "license_short": "Open access; no registration or API key required. Attribute the Food Standards Agency when reusing data.",
+        "license_md": "- Free programmatic access provided by the UK Food Standards Agency (FSA); no sign-up, API keys, or login required.\n- Data is published as open government information; reuse should credit the Food Standards Agency as the source.\n- Ratings reflect the official Food Hygiene Rating Scheme (FHRS) and Food Hygiene Information Scheme (FHIS) at the time of inspection.",
+        "about_md": "This SDK wraps the [Food Hygiene Rating API](https://api.ratings.food.gov.uk/help) operated by the UK [Food Standards Agency](https://www.food.gov.uk). It exposes the same data that powers the public [ratings.food.gov.uk](https://ratings.food.gov.uk) site, covering food businesses inspected by local authorities across England, Wales, Scotland and Northern Ireland.\n\nWhat you get from the API:\n- Establishments — search food businesses by name, address, local authority, business type, rating value, or geographic radius, with paging and sorting.\n- Lookup data — authorities, business types, ratings, schemes and other reference values used to filter and interpret establishment records.\n- Both basic and detailed views of lookup data, returned in JSON or XML.\n\nNo authentication is required, but every request must include the `x-api-version: 2` header — requests without it return no data. Send `Accept-Language: cy-GB` to receive Welsh translations; English is the default. Northern Ireland and Scotland use the Food Hygiene Information Scheme (FHIS) rather than the star-rated FHRS, so rating values differ between schemes.",
+        "entity_desc": {
+          "authority": "A local authority responsible for inspecting and rating food businesses in its area; exposed as lookup data used to filter establishments.",
+          "business_type": "A category of food business (for example restaurant, takeaway, retailer) used to classify and filter establishments.",
+          "establishment": "An individual food business with its address, geolocation, local authority, business type and most recent hygiene rating; queried via the `Establishments` endpoint.",
+          "rating": "A hygiene rating value issued under FHRS (0–5 stars in England, Wales, Northern Ireland) or FHIS (Pass / Improvement Required in Scotland)."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -26,7 +39,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "authority": {

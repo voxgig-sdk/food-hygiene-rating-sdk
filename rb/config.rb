@@ -15,9 +15,6 @@ module FoodHygieneRatingConfig
       },
       "options" => {
         "base" => "https://api.ratings.food.gov.uk",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },

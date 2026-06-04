@@ -93,14 +93,12 @@ func business_typeDirectSetup(mockres any) *business_typeDirectSetupResult {
 	env := envOverride(map[string]any{
 		"FOODHYGIENERATING_TEST_BUSINESS_TYPE_ENTID": map[string]any{},
 		"FOODHYGIENERATING_TEST_LIVE":    "FALSE",
-		"FOODHYGIENERATING_APIKEY":       "NONE",
 	})
 
 	live := env["FOODHYGIENERATING_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["FOODHYGIENERATING_APIKEY"],
 		}
 		client := sdk.NewFoodHygieneRatingSDK(mergedOpts)
 

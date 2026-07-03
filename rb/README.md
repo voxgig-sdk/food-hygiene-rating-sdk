@@ -10,13 +10,13 @@ The Ruby SDK for the FoodHygieneRating API — an entity-oriented client using i
 
 ## Install
 ```bash
-gem install food-hygiene-rating-sdk
+gem install voxgig-sdk-food-hygiene-rating
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "food-hygiene-rating-sdk"
+gem "voxgig-sdk-food-hygiene-rating"
 ```
 
 Then run:

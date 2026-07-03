@@ -10,7 +10,7 @@ The Python SDK for the FoodHygieneRating API — an entity-oriented client follo
 
 ## Install
 ```bash
-pip install food-hygiene-rating-sdk
+pip install voxgig-sdk-food-hygiene-rating
 ```
 
 Or install from source:

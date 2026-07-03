@@ -10,7 +10,7 @@ The TypeScript SDK for the FoodHygieneRating API — a type-safe, entity-oriente
 
 ## Install
 ```bash
-npm install food-hygiene-rating
+npm install @voxgig-sdk/food-hygiene-rating
 ```
 ## Tutorial: your first API call
 

@@ -10,7 +10,7 @@ The PHP SDK for the FoodHygieneRating API — an entity-oriented client using PH
 
 ## Install
 ```bash
-composer require voxgig/food-hygiene-rating-sdk
+composer require voxgig-sdk/food-hygiene-rating
 ```
 
 

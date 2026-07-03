@@ -8,12 +8,14 @@ source = {
   dir = "food-hygiene-rating-sdk/lua"
 }
 description = {
-  summary = "FoodHygieneRating SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the Food Hygiene Rating public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/food-hygiene-rating-sdk",
+  issues_url = "https://github.com/voxgig-sdk/food-hygiene-rating-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "food-hygiene-rating" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

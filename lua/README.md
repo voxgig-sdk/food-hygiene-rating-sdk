@@ -10,7 +10,7 @@ The Lua SDK for the FoodHygieneRating API — an entity-oriented client using Lu
 
 ## Install
 ```bash
-luarocks install food-hygiene-rating-sdk
+luarocks install voxgig-sdk-food-hygiene-rating
 ```
 
 If the module is not yet published, add the source directory to

@@ -89,6 +89,7 @@ def authority_basic_setup(extra)
     "FOODHYGIENERATING_TEST_AUTHORITY_ENTID" => idmap,
     "FOODHYGIENERATING_TEST_LIVE" => "FALSE",
     "FOODHYGIENERATING_TEST_EXPLAIN" => "FALSE",
+    "FOODHYGIENERATING_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -100,6 +101,7 @@ def authority_basic_setup(extra)
   if env["FOODHYGIENERATING_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
+        "apikey" => env["FOODHYGIENERATING_APIKEY"],
       },
       extra || {},
     ])

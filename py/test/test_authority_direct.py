@@ -109,12 +109,14 @@ def _authority_direct_setup(mockres):
     env = runner.env_override({
         "FOODHYGIENERATING_TEST_AUTHORITY_ENTID": {},
         "FOODHYGIENERATING_TEST_LIVE": "FALSE",
+        "FOODHYGIENERATING_APIKEY": "NONE",
     })
 
     live = env.get("FOODHYGIENERATING_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("FOODHYGIENERATING_APIKEY"),
         }
         client = FoodHygieneRatingSDK(merged_opts)
         return {

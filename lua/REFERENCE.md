@@ -30,12 +30,12 @@ Create a new SDK client instance.
 
 ### Static Methods
 
-#### `sdk.test(testopts, sdkopts)`
+#### `sdk.test(testopts?, sdkopts?)`
 
-Create a test client with mock features active. Both arguments may be `nil`.
+Create a test client with mock features active. Both arguments are optional.
 
 ```lua
-local client = sdk.test(nil, nil)
+local client = sdk.test()
 ```
 
 
@@ -122,7 +122,7 @@ local authority = client:Authority(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Authority(nil):list(nil, nil)
+local results, err = client:Authority():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -130,7 +130,7 @@ local results, err = client:Authority(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Authority(nil):load({ id = "authority_id" }, nil)
+local result, err = client:Authority():load({ id = "authority_id" })
 ```
 
 ### Common Methods
@@ -183,7 +183,7 @@ local business_type = client:BusinessType(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:BusinessType(nil):list(nil, nil)
+local results, err = client:BusinessType():list()
 ```
 
 ### Common Methods
@@ -254,7 +254,7 @@ local establishment = client:Establishment(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Establishment(nil):list(nil, nil)
+local results, err = client:Establishment():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -262,7 +262,7 @@ local results, err = client:Establishment(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Establishment(nil):load({ id = "establishment_id" }, nil)
+local result, err = client:Establishment():load({ id = "establishment_id" })
 ```
 
 ### Common Methods
@@ -317,7 +317,7 @@ local rating = client:Rating(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Rating(nil):list(nil, nil)
+local results, err = client:Rating():list()
 ```
 
 ### Common Methods

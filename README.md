@@ -1,19 +1,8 @@
 # FoodHygieneRating SDK
 
-Query UK food hygiene ratings issued by local authorities under the Food Standards Agency scheme
+Food Hygiene Rating API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Food Hygiene Rating API
-
-This SDK wraps the [Food Hygiene Rating API](https://api.ratings.food.gov.uk/help) operated by the UK [Food Standards Agency](https://www.food.gov.uk). It exposes the same data that powers the public [ratings.food.gov.uk](https://ratings.food.gov.uk) site, covering food businesses inspected by local authorities across England, Wales, Scotland and Northern Ireland.
-
-What you get from the API:
-- Establishments — search food businesses by name, address, local authority, business type, rating value, or geographic radius, with paging and sorting.
-- Lookup data — authorities, business types, ratings, schemes and other reference values used to filter and interpret establishment records.
-- Both basic and detailed views of lookup data, returned in JSON or XML.
-
-No authentication is required, but every request must include the `x-api-version: 2` header — requests without it return no data. Send `Accept-Language: cy-GB` to receive Welsh translations; English is the default. Northern Ireland and Scotland use the Food Hygiene Information Scheme (FHIS) rather than the star-rated FHRS, so rating values differ between schemes.
 
 ## Try it
 
@@ -47,29 +36,31 @@ gem install food-hygiene-rating-sdk
 luarocks install food-hygiene-rating-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { FoodHygieneRatingSDK } from 'food-hygiene-rating'
 
-const client = new FoodHygieneRatingSDK({})
+const client = new FoodHygieneRatingSDK({
+  apikey: process.env.FOOD-HYGIENE-RATING_APIKEY,
+})
 
 // List all authoritys
 const authoritys = await client.Authority().list()
+console.log(authoritys.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -99,10 +90,10 @@ The API exposes 4 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Authority** | A local authority responsible for inspecting and rating food businesses in its area; exposed as lookup data used to filter establishments. | `/Authorities` |
-| **BusinessType** | A category of food business (for example restaurant, takeaway, retailer) used to classify and filter establishments. | `/BusinessTypes` |
-| **Establishment** | An individual food business with its address, geolocation, local authority, business type and most recent hygiene rating; queried via the `Establishments` endpoint. | `/Establishments` |
-| **Rating** | A hygiene rating value issued under FHRS (0–5 stars in England, Wales, Northern Ireland) or FHIS (Pass / Improvement Required in Scotland). | `/Ratings` |
+| **Authority** |  | `/Authorities` |
+| **BusinessType** |  | `/BusinessTypes` |
+| **Establishment** |  | `/Establishments` |
+| **Rating** |  | `/Ratings` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -112,17 +103,20 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from foodhygienerating_sdk import FoodHygieneRatingSDK
 
-client = FoodHygieneRatingSDK({})
+client = FoodHygieneRatingSDK({
+    "apikey": os.environ.get("FOOD-HYGIENE-RATING_APIKEY"),
+})
 
 # List all authoritys
-authoritys, err = client.Authority(None).list(None, None)
+authoritys, err = client.Authority().list()
+print(authoritys)
 
 # Load a specific authority
-authority, err = client.Authority(None).load(
-    {"id": "example_id"}, None
-)
+authority, err = client.Authority().load({"id": "example_id"})
+print(authority)
 ```
 
 ### PHP
@@ -131,15 +125,17 @@ authority, err = client.Authority(None).load(
 <?php
 require_once 'foodhygienerating_sdk.php';
 
-$client = new FoodHygieneRatingSDK([]);
+$client = new FoodHygieneRatingSDK([
+    "apikey" => getenv("FOOD-HYGIENE-RATING_APIKEY"),
+]);
 
 // List all authoritys
-[$authoritys, $err] = $client->Authority(null)->list(null, null);
+[$authoritys, $err] = $client->Authority()->list();
+print_r($authoritys);
 
 // Load a specific authority
-[$authority, $err] = $client->Authority(null)->load(
-    ["id" => "example_id"], null
-);
+[$authority, $err] = $client->Authority()->load(["id" => "example_id"]);
+print_r($authority);
 ```
 
 ### Golang
@@ -147,10 +143,13 @@ $client = new FoodHygieneRatingSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/food-hygiene-rating-sdk/go"
 
-client := sdk.NewFoodHygieneRatingSDK(map[string]any{})
+client := sdk.NewFoodHygieneRatingSDK(map[string]any{
+    "apikey": os.Getenv("FOOD-HYGIENE-RATING_APIKEY"),
+})
 
 // List all authoritys
 authoritys, err := client.Authority(nil).List(nil, nil)
+fmt.Println(authoritys)
 ```
 
 ### Ruby
@@ -158,15 +157,17 @@ authoritys, err := client.Authority(nil).List(nil, nil)
 ```ruby
 require_relative "FoodHygieneRating_sdk"
 
-client = FoodHygieneRatingSDK.new({})
+client = FoodHygieneRatingSDK.new({
+  "apikey" => ENV["FOOD-HYGIENE-RATING_APIKEY"],
+})
 
 # List all authoritys
-authoritys, err = client.Authority(nil).list(nil, nil)
+authoritys, err = client.Authority().list
+puts authoritys
 
 # Load a specific authority
-authority, err = client.Authority(nil).load(
-  { "id" => "example_id" }, nil
-)
+authority, err = client.Authority().load({ "id" => "example_id" })
+puts authority
 ```
 
 ### Lua
@@ -174,15 +175,17 @@ authority, err = client.Authority(nil).load(
 ```lua
 local sdk = require("food-hygiene-rating_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("FOOD-HYGIENE-RATING_APIKEY"),
+})
 
 -- List all authoritys
-local authoritys, err = client:Authority(nil):list(nil, nil)
+local authoritys, err = client:Authority():list()
+print(authoritys)
 
 -- Load a specific authority
-local authority, err = client:Authority(nil):load(
-  { id = "example_id" }, nil
-)
+local authority, err = client:Authority():load({ id = "example_id" })
+print(authority)
 ```
 
 ## Unit testing in offline mode
@@ -201,25 +204,21 @@ const result = await client.Authority().load({ id: 'test01' })
 ### Python
 
 ```python
-client = FoodHygieneRatingSDK.test(None, None)
-result, err = client.Authority(None).load(
-    {"id": "test01"}, None
-)
+client = FoodHygieneRatingSDK.test()
+result, err = client.Authority().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = FoodHygieneRatingSDK::test(null, null);
-[$result, $err] = $client->Authority(null)->load(
-    ["id" => "test01"], null
-);
+$client = FoodHygieneRatingSDK::test();
+[$result, $err] = $client->Authority()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Authority(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -228,19 +227,15 @@ result, err := client.Authority(nil).Load(
 ### Ruby
 
 ```ruby
-client = FoodHygieneRatingSDK.test(nil, nil)
-result, err = client.Authority(nil).load(
-  { "id" => "test01" }, nil
-)
+client = FoodHygieneRatingSDK.test
+result, err = client.Authority().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Authority(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Authority():load({ id = "test01" })
 ```
 
 ## How it works
@@ -344,15 +339,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Food Hygiene Rating API
-
-- Upstream: [https://ratings.food.gov.uk](https://ratings.food.gov.uk)
-- API docs: [https://api.ratings.food.gov.uk/help](https://api.ratings.food.gov.uk/help)
-
-- Free programmatic access provided by the UK Food Standards Agency (FSA); no sign-up, API keys, or login required.
-- Data is published as open government information; reuse should credit the Food Standards Agency as the source.
-- Ratings reflect the official Food Hygiene Rating Scheme (FHRS) and Food Hygiene Information Scheme (FHIS) at the time of inspection.
 
 ---
 

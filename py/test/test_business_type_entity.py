@@ -92,6 +92,7 @@ def _business_type_basic_setup(extra):
         "FOODHYGIENERATING_TEST_BUSINESS_TYPE_ENTID": idmap,
         "FOODHYGIENERATING_TEST_LIVE": "FALSE",
         "FOODHYGIENERATING_TEST_EXPLAIN": "FALSE",
+        "FOODHYGIENERATING_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,6 +103,7 @@ def _business_type_basic_setup(extra):
     if env.get("FOODHYGIENERATING_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("FOODHYGIENERATING_APIKEY"),
             },
             extra or {},
         ])

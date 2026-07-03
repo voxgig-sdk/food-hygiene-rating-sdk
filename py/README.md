@@ -1,6 +1,11 @@
 # FoodHygieneRating Python SDK
 
-The Python SDK for the FoodHygieneRating API. Provides an entity-oriented interface following Pythonic conventions.
+
+
+The Python SDK for the FoodHygieneRating API — an entity-oriented client following Pythonic conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -23,15 +28,18 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
+import os
 from foodhygienerating_sdk import FoodHygieneRatingSDK
 
-client = FoodHygieneRatingSDK({})
+client = FoodHygieneRatingSDK({
+    "apikey": os.environ.get("FOOD-HYGIENE-RATING_APIKEY"),
+})
 ```
 
 ### 2. List authoritys
 
 ```python
-result, err = client.Authority(None).list(None, None)
+result, err = client.Authority().list()
 if err:
     raise Exception(err)
 
@@ -44,7 +52,7 @@ if isinstance(result, list):
 ### 3. Load a authority
 
 ```python
-result, err = client.Authority(None).load({"id": "example_id"}, None)
+result, err = client.Authority().load({"id": "example_id"})
 if err:
     raise Exception(err)
 print(result)
@@ -92,11 +100,9 @@ print(fetchdef["headers"])
 Create a mock client for unit testing — no server required:
 
 ```python
-client = FoodHygieneRatingSDK.test(None, None)
+client = FoodHygieneRatingSDK.test()
 
-result, err = client.FoodHygieneRating(None).load(
-    {"id": "test01"}, None
-)
+result, err = client.FoodHygieneRating().load({"id": "test01"})
 # result contains mock response data
 ```
 
@@ -127,6 +133,7 @@ Create a `.env.local` file at the project root:
 
 ```
 FOOD-HYGIENE-RATING_TEST_LIVE=TRUE
+FOOD-HYGIENE-RATING_APIKEY=<your-key>
 ```
 
 Then run:
@@ -150,6 +157,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |

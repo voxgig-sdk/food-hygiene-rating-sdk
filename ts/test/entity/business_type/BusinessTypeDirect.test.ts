@@ -79,12 +79,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'FOODHYGIENERATING_TEST_BUSINESS_TYPE_ENTID': {},
     'FOODHYGIENERATING_TEST_LIVE': 'FALSE',
+    'FOODHYGIENERATING_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.FOODHYGIENERATING_TEST_LIVE
 
   if (live) {
     const client = new FoodHygieneRatingSDK({
+      apikey: env.FOODHYGIENERATING_APIKEY,
     })
 
     let idmap: any = env['FOODHYGIENERATING_TEST_BUSINESS_TYPE_ENTID']

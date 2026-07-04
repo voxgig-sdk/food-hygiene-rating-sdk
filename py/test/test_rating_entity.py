@@ -50,8 +50,7 @@ class TestRatingEntity:
         rating_ref01_ent = client.Rating(None)
         rating_ref01_match = {}
 
-        rating_ref01_list_result, err = rating_ref01_ent.list(rating_ref01_match, None)
-        assert err is None
+        rating_ref01_list_result = rating_ref01_ent.list(rating_ref01_match, None)
         assert isinstance(rating_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _rating_basic_setup(extra):
         "FOODHYGIENERATING_TEST_RATING_ENTID": idmap,
         "FOODHYGIENERATING_TEST_LIVE": "FALSE",
         "FOODHYGIENERATING_TEST_EXPLAIN": "FALSE",
-        "FOODHYGIENERATING_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _rating_basic_setup(extra):
     if env.get("FOODHYGIENERATING_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("FOODHYGIENERATING_APIKEY"),
             },
             extra or {},
         ])

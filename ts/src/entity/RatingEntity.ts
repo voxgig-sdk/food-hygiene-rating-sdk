@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Rating,
+  RatingListMatch,
+} from '../FoodHygieneRatingTypes'
 
 // TODO: needs Entity superclass
-class RatingEntity extends FoodHygieneRatingEntityBase {
+class RatingEntity extends FoodHygieneRatingEntityBase<Rating> {
 
   constructor(client: FoodHygieneRatingSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class RatingEntity extends FoodHygieneRatingEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: RatingListMatch, ctrl?: Control): Promise<Rating[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class RatingEntity extends FoodHygieneRatingEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Rating[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

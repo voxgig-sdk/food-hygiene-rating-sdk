@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch AuthorityLoadMatch
+---@param ctrl? table
+---@return Authority
+---@return string? err
 function AuthorityEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch AuthorityListMatch
+---@param ctrl? table
+---@return Authority[]
+---@return string? err
 function AuthorityEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

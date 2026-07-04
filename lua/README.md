@@ -9,12 +9,9 @@ The Lua SDK for the FoodHygieneRating API — an entity-oriented client using Lu
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-food-hygiene-rating
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/food-hygiene-rating-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -31,15 +28,13 @@ loading a specific record.
 ```lua
 local sdk = require("food-hygiene-rating_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("FOOD-HYGIENE-RATING_APIKEY"),
-})
+local client = sdk.new()
 ```
 
 ### 2. List authoritys
 
 ```lua
-local result, err = client:Authority():list()
+local result, err = client:authority():list()
 if err then error(err) end
 
 if type(result) == "table" then
@@ -50,10 +45,10 @@ if type(result) == "table" then
 end
 ```
 
-### 3. Load a authority
+### 3. Load an authority
 
 ```lua
-local result, err = client:Authority():load({ id = "example_id" })
+local result, err = client:authority():load({ id = "example_id" })
 if err then error(err) end
 print(result)
 ```
@@ -101,7 +96,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:FoodHygieneRating():load({ id = "test01" })
+local result, err = client:authority():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -134,8 +129,7 @@ local client = sdk.new({
 Create a `.env.local` file at the project root:
 
 ```
-FOOD-HYGIENE-RATING_TEST_LIVE=TRUE
-FOOD-HYGIENE-RATING_APIKEY=<your-key>
+FOOD_HYGIENE_RATING_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -158,7 +152,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -301,7 +294,7 @@ API path: `/Ratings`
 
 ### Authority
 
-Create an instance: `const authority = client.Authority()`
+Create an instance: `const authority = client.authority`
 
 #### Operations
 
@@ -329,19 +322,19 @@ Create an instance: `const authority = client.Authority()`
 #### Example: Load
 
 ```ts
-const authority = await client.Authority().load({ id: 'authority_id' })
+const authority = await client.authority.load({ id: 'authority_id' })
 ```
 
 #### Example: List
 
 ```ts
-const authoritys = await client.Authority().list()
+const authoritys = await client.authority.list()
 ```
 
 
 ### BusinessType
 
-Create an instance: `const business_type = client.BusinessType()`
+Create an instance: `const business_type = client.business_type`
 
 #### Operations
 
@@ -359,13 +352,13 @@ Create an instance: `const business_type = client.BusinessType()`
 #### Example: List
 
 ```ts
-const business_types = await client.BusinessType().list()
+const business_types = await client.business_type.list()
 ```
 
 
 ### Establishment
 
-Create an instance: `const establishment = client.Establishment()`
+Create an instance: `const establishment = client.establishment`
 
 #### Operations
 
@@ -402,19 +395,19 @@ Create an instance: `const establishment = client.Establishment()`
 #### Example: Load
 
 ```ts
-const establishment = await client.Establishment().load({ id: 'establishment_id' })
+const establishment = await client.establishment.load({ id: 'establishment_id' })
 ```
 
 #### Example: List
 
 ```ts
-const establishments = await client.Establishment().list()
+const establishments = await client.establishment.list()
 ```
 
 
 ### Rating
 
-Create an instance: `const rating = client.Rating()`
+Create an instance: `const rating = client.rating`
 
 #### Operations
 
@@ -434,7 +427,7 @@ Create an instance: `const rating = client.Rating()`
 #### Example: List
 
 ```ts
-const ratings = await client.Rating().list()
+const ratings = await client.rating.list()
 ```
 
 
@@ -509,11 +502,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local authority = client:authority()
+authority:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- authority:data_get() now returns the loaded authority data
+-- authority:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

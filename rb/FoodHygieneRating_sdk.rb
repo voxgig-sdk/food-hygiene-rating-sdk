@@ -13,6 +13,9 @@ require_relative 'config'
 require_relative 'feature/base_feature'
 require_relative 'features'
 
+# Load typed models (Struct value objects).
+require_relative 'FoodHygieneRating_types'
+
 
 class FoodHygieneRatingSDK
   attr_accessor :mode, :features, :options
@@ -131,7 +134,7 @@ class FoodHygieneRatingSDK
     end
 
     _, err = utility.prepare_auth.call(ctx)
-    return nil, err if err
+    raise err if err
 
     utility.make_fetch_def.call(ctx)
   end
@@ -139,8 +142,14 @@ class FoodHygieneRatingSDK
   def direct(fetchargs = {})
     utility = @_utility
 
-    fetchdef, err = prepare(fetchargs)
-    return { "ok" => false, "err" => err }, nil if err
+    # direct() is the raw-HTTP escape hatch: it always returns a result hash
+    # ({ "ok" => ..., ... }) and never raises. prepare() raises on error, so
+    # trap that and surface it in the hash.
+    begin
+      fetchdef = prepare(fetchargs)
+    rescue FoodHygieneRatingError => err
+      return { "ok" => false, "err" => err }
+    end
 
     fetchargs ||= {}
     ctrl = FoodHygieneRatingHelpers.to_map(VoxgigStruct.getprop(fetchargs, "ctrl")) || {}
@@ -153,13 +162,13 @@ class FoodHygieneRatingSDK
     url = fetchdef["url"] || ""
     fetched, fetch_err = utility.fetcher.call(ctx, url, fetchdef)
 
-    return { "ok" => false, "err" => fetch_err }, nil if fetch_err
+    return { "ok" => false, "err" => fetch_err } if fetch_err
 
     if fetched.nil?
       return {
         "ok" => false,
         "err" => ctx.make_error("direct_no_response", "response: undefined"),
-      }, nil
+      }
     end
 
     if fetched.is_a?(Hash)
@@ -189,34 +198,62 @@ class FoodHygieneRatingSDK
         "status" => status,
         "headers" => headers,
         "data" => json_data,
-      }, nil
+      }
     end
 
     return {
       "ok" => false,
       "err" => ctx.make_error("direct_invalid", "invalid response type"),
-    }, nil
+    }
   end
 
 
+  # Idiomatic facade: client.authority.list / client.authority.load({ "id" => ... })
+  def authority
+    require_relative 'entity/authority_entity'
+    @authority ||= AuthorityEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.authority instead.
   def Authority(data = nil)
     require_relative 'entity/authority_entity'
     AuthorityEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.business_type.list / client.business_type.load({ "id" => ... })
+  def business_type
+    require_relative 'entity/business_type_entity'
+    @business_type ||= BusinessTypeEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.business_type instead.
   def BusinessType(data = nil)
     require_relative 'entity/business_type_entity'
     BusinessTypeEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.establishment.list / client.establishment.load({ "id" => ... })
+  def establishment
+    require_relative 'entity/establishment_entity'
+    @establishment ||= EstablishmentEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.establishment instead.
   def Establishment(data = nil)
     require_relative 'entity/establishment_entity'
     EstablishmentEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.rating.list / client.rating.load({ "id" => ... })
+  def rating
+    require_relative 'entity/rating_entity'
+    @rating ||= RatingEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.rating instead.
   def Rating(data = nil)
     require_relative 'entity/rating_entity'
     RatingEntity.new(self, data)

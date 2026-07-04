@@ -50,8 +50,7 @@ class TestBusinessTypeEntity:
         business_type_ref01_ent = client.BusinessType(None)
         business_type_ref01_match = {}
 
-        business_type_ref01_list_result, err = business_type_ref01_ent.list(business_type_ref01_match, None)
-        assert err is None
+        business_type_ref01_list_result = business_type_ref01_ent.list(business_type_ref01_match, None)
         assert isinstance(business_type_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _business_type_basic_setup(extra):
         "FOODHYGIENERATING_TEST_BUSINESS_TYPE_ENTID": idmap,
         "FOODHYGIENERATING_TEST_LIVE": "FALSE",
         "FOODHYGIENERATING_TEST_EXPLAIN": "FALSE",
-        "FOODHYGIENERATING_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _business_type_basic_setup(extra):
     if env.get("FOODHYGIENERATING_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("FOODHYGIENERATING_APIKEY"),
             },
             extra or {},
         ])

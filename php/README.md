@@ -9,9 +9,10 @@ The PHP SDK for the FoodHygieneRating API — an entity-oriented client using PH
 
 
 ## Install
-```bash
-composer require voxgig-sdk/food-hygiene-rating
-```
+This package is not yet published to Packagist. Install it from the
+GitHub release tag (`php/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/food-hygiene-rating-sdk/releases](https://github.com/voxgig-sdk/food-hygiene-rating-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -25,31 +26,34 @@ loading a specific record.
 <?php
 require_once 'foodhygienerating_sdk.php';
 
-$client = new FoodHygieneRatingSDK([
-    "apikey" => getenv("FOOD-HYGIENE-RATING_APIKEY"),
-]);
+$client = new FoodHygieneRatingSDK();
 ```
 
 ### 2. List authoritys
 
 ```php
-[$result, $err] = $client->Authority()->list();
-if ($err) { throw new \Exception($err); }
-
-if (is_array($result)) {
-    foreach ($result as $item) {
-        $d = $item->data_get();
-        echo $d["id"] . " " . $d["name"] . "\n";
+try {
+    $result = $client->authority()->list();
+    if (is_array($result)) {
+        foreach ($result as $item) {
+            $d = $item->data_get();
+            echo $d["id"] . " " . $d["name"] . "\n";
+        }
     }
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
 }
 ```
 
-### 3. Load a authority
+### 3. Load an authority
 
 ```php
-[$result, $err] = $client->Authority()->load(["id" => "example_id"]);
-if ($err) { throw new \Exception($err); }
-print_r($result);
+try {
+    $result = $client->authority()->load(["id" => "example_id"]);
+    print_r($result);
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
+}
 ```
 
 
@@ -60,28 +64,31 @@ print_r($result);
 For endpoints not covered by entity methods:
 
 ```php
-[$result, $err] = $client->direct([
+// direct() is the raw-HTTP escape hatch: it returns a result array
+// (it does not throw). Branch on $result["ok"].
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
+} else {
+    echo "Error: " . $result["err"]->getMessage();
 }
 ```
 
 ### Prepare a request without sending it
 
 ```php
-[$fetchdef, $err] = $client->prepare([
+// prepare() throws on error and returns the fetch definition.
+$fetchdef = $client->prepare([
     "path" => "/api/resource/{id}",
     "method" => "DELETE",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 echo $fetchdef["url"];
 echo $fetchdef["method"];
@@ -95,7 +102,7 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = FoodHygieneRatingSDK::test();
 
-[$result, $err] = $client->FoodHygieneRating()->load(["id" => "test01"]);
+$result = $client->authority()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -129,8 +136,7 @@ $client = new FoodHygieneRatingSDK([
 Create a `.env.local` file at the project root:
 
 ```
-FOOD-HYGIENE-RATING_TEST_LIVE=TRUE
-FOOD-HYGIENE-RATING_APIKEY=<your-key>
+FOOD_HYGIENE_RATING_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -153,7 +159,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -202,8 +207,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[$result, $err]`. The first value is an
-`array` with these keys:
+Entity operations return the bare result data (an `array` for single-entity
+ops, a `list` for `list`) and throw on error. Wrap calls in
+`try`/`catch` to handle failures.
+
+The `direct()` escape hatch never throws — it returns a result `array`
+you branch on via `$result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -296,7 +305,7 @@ API path: `/Ratings`
 
 ### Authority
 
-Create an instance: `const authority = client.Authority()`
+Create an instance: `const authority = client.authority`
 
 #### Operations
 
@@ -324,19 +333,19 @@ Create an instance: `const authority = client.Authority()`
 #### Example: Load
 
 ```ts
-const authority = await client.Authority().load({ id: 'authority_id' })
+const authority = await client.authority.load({ id: 'authority_id' })
 ```
 
 #### Example: List
 
 ```ts
-const authoritys = await client.Authority().list()
+const authoritys = await client.authority.list()
 ```
 
 
 ### BusinessType
 
-Create an instance: `const business_type = client.BusinessType()`
+Create an instance: `const business_type = client.business_type`
 
 #### Operations
 
@@ -354,13 +363,13 @@ Create an instance: `const business_type = client.BusinessType()`
 #### Example: List
 
 ```ts
-const business_types = await client.BusinessType().list()
+const business_types = await client.business_type.list()
 ```
 
 
 ### Establishment
 
-Create an instance: `const establishment = client.Establishment()`
+Create an instance: `const establishment = client.establishment`
 
 #### Operations
 
@@ -397,19 +406,19 @@ Create an instance: `const establishment = client.Establishment()`
 #### Example: Load
 
 ```ts
-const establishment = await client.Establishment().load({ id: 'establishment_id' })
+const establishment = await client.establishment.load({ id: 'establishment_id' })
 ```
 
 #### Example: List
 
 ```ts
-const establishments = await client.Establishment().list()
+const establishments = await client.establishment.list()
 ```
 
 
 ### Rating
 
-Create an instance: `const rating = client.Rating()`
+Create an instance: `const rating = client.rating`
 
 #### Operations
 
@@ -429,7 +438,7 @@ Create an instance: `const rating = client.Rating()`
 #### Example: List
 
 ```ts
-const ratings = await client.Rating().list()
+const ratings = await client.rating.list()
 ```
 
 
@@ -504,11 +513,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moon = $client->Moon();
-[$result, $err] = $moon->load(["planet_id" => "earth", "id" => "luna"]);
+$authority = $client->authority();
+$authority->load(["id" => "example_id"]);
 
-// $moon->dataGet() now returns the loaded moon data
-// $moon->matchGet() returns the last match criteria
+// $authority->dataGet() now returns the loaded authority data
+// $authority->matchGet() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

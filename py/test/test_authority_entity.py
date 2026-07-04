@@ -50,14 +50,12 @@ class TestAuthorityEntity:
         authority_ref01_ent = client.Authority(None)
         authority_ref01_match = {}
 
-        authority_ref01_list_result, err = authority_ref01_ent.list(authority_ref01_match, None)
-        assert err is None
+        authority_ref01_list_result = authority_ref01_ent.list(authority_ref01_match, None)
         assert isinstance(authority_ref01_list_result, list)
 
         # LOAD
         authority_ref01_match_dt0 = {}
-        authority_ref01_data_dt0_loaded, err = authority_ref01_ent.load(authority_ref01_match_dt0, None)
-        assert err is None
+        authority_ref01_data_dt0_loaded = authority_ref01_ent.load(authority_ref01_match_dt0, None)
         assert authority_ref01_data_dt0_loaded is not None
 
 
@@ -98,7 +96,6 @@ def _authority_basic_setup(extra):
         "FOODHYGIENERATING_TEST_AUTHORITY_ENTID": idmap,
         "FOODHYGIENERATING_TEST_LIVE": "FALSE",
         "FOODHYGIENERATING_TEST_EXPLAIN": "FALSE",
-        "FOODHYGIENERATING_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -109,7 +106,6 @@ def _authority_basic_setup(extra):
     if env.get("FOODHYGIENERATING_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("FOODHYGIENERATING_APIKEY"),
             },
             extra or {},
         ])

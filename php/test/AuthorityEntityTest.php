@@ -50,14 +50,12 @@ class AuthorityEntityTest extends TestCase
         $authority_ref01_ent = $client->Authority(null);
         $authority_ref01_match = [];
 
-        [$authority_ref01_list_result, $err] = $authority_ref01_ent->list($authority_ref01_match, null);
-        $this->assertNull($err);
+        $authority_ref01_list_result = $authority_ref01_ent->list($authority_ref01_match, null);
         $this->assertIsArray($authority_ref01_list_result);
 
         // LOAD
         $authority_ref01_match_dt0 = [];
-        [$authority_ref01_data_dt0_loaded, $err] = $authority_ref01_ent->load($authority_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $authority_ref01_data_dt0_loaded = $authority_ref01_ent->load($authority_ref01_match_dt0, null);
         $this->assertNotNull($authority_ref01_data_dt0_loaded);
 
     }
@@ -92,7 +90,6 @@ function authority_basic_setup($extra)
         "FOODHYGIENERATING_TEST_AUTHORITY_ENTID" => $idmap,
         "FOODHYGIENERATING_TEST_LIVE" => "FALSE",
         "FOODHYGIENERATING_TEST_EXPLAIN" => "FALSE",
-        "FOODHYGIENERATING_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -104,7 +101,6 @@ function authority_basic_setup($extra)
     if ($env["FOODHYGIENERATING_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["FOODHYGIENERATING_APIKEY"],
             ],
             $extra ?? [],
         ]);

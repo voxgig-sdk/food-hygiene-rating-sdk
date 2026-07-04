@@ -244,24 +244,76 @@ end
 
 
 
+-- Idiomatic facade: client:authority():list() / client:authority():load({ id = ... })
+function FoodHygieneRatingSDK:authority(data)
+  local EntityMod = require("entity.authority_entity")
+  if data == nil then
+    if self._authority == nil then
+      self._authority = EntityMod.new(self, nil)
+    end
+    return self._authority
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:authority() instead.
 function FoodHygieneRatingSDK:Authority(data)
   local EntityMod = require("entity.authority_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:business_type():list() / client:business_type():load({ id = ... })
+function FoodHygieneRatingSDK:business_type(data)
+  local EntityMod = require("entity.business_type_entity")
+  if data == nil then
+    if self._business_type == nil then
+      self._business_type = EntityMod.new(self, nil)
+    end
+    return self._business_type
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:business_type() instead.
 function FoodHygieneRatingSDK:BusinessType(data)
   local EntityMod = require("entity.business_type_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:establishment():list() / client:establishment():load({ id = ... })
+function FoodHygieneRatingSDK:establishment(data)
+  local EntityMod = require("entity.establishment_entity")
+  if data == nil then
+    if self._establishment == nil then
+      self._establishment = EntityMod.new(self, nil)
+    end
+    return self._establishment
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:establishment() instead.
 function FoodHygieneRatingSDK:Establishment(data)
   local EntityMod = require("entity.establishment_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:rating():list() / client:rating():load({ id = ... })
+function FoodHygieneRatingSDK:rating(data)
+  local EntityMod = require("entity.rating_entity")
+  if data == nil then
+    if self._rating == nil then
+      self._rating = EntityMod.new(self, nil)
+    end
+    return self._rating
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:rating() instead.
 function FoodHygieneRatingSDK:Rating(data)
   local EntityMod = require("entity.rating_entity")
   return EntityMod.new(self, data)

@@ -20,9 +20,6 @@ class FoodHygieneRatingConfig
             ],
             "options" => [
                 "base" => "https://api.ratings.food.gov.uk",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],
@@ -153,6 +150,7 @@ class FoodHygieneRatingConfig
                         'orig' => 'id',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
+                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -516,6 +514,7 @@ class FoodHygieneRatingConfig
                         'orig' => 'id',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
+                        'index$' => 0,
                       ],
                     ],
                   ],

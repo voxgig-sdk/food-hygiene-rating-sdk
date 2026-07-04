@@ -50,14 +50,12 @@ class TestEstablishmentEntity:
         establishment_ref01_ent = client.Establishment(None)
         establishment_ref01_match = {}
 
-        establishment_ref01_list_result, err = establishment_ref01_ent.list(establishment_ref01_match, None)
-        assert err is None
+        establishment_ref01_list_result = establishment_ref01_ent.list(establishment_ref01_match, None)
         assert isinstance(establishment_ref01_list_result, list)
 
         # LOAD
         establishment_ref01_match_dt0 = {}
-        establishment_ref01_data_dt0_loaded, err = establishment_ref01_ent.load(establishment_ref01_match_dt0, None)
-        assert err is None
+        establishment_ref01_data_dt0_loaded = establishment_ref01_ent.load(establishment_ref01_match_dt0, None)
         assert establishment_ref01_data_dt0_loaded is not None
 
 
@@ -98,7 +96,6 @@ def _establishment_basic_setup(extra):
         "FOODHYGIENERATING_TEST_ESTABLISHMENT_ENTID": idmap,
         "FOODHYGIENERATING_TEST_LIVE": "FALSE",
         "FOODHYGIENERATING_TEST_EXPLAIN": "FALSE",
-        "FOODHYGIENERATING_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -109,7 +106,6 @@ def _establishment_basic_setup(extra):
     if env.get("FOODHYGIENERATING_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("FOODHYGIENERATING_APIKEY"),
             },
             extra or {},
         ])

@@ -4,6 +4,7 @@
 main: {
   kit: {
     info: {
+      auth: false
       contact: {
         name: "Food Standards Agency"
         url: "https://www.food.gov.uk"

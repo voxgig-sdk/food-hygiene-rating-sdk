@@ -144,16 +144,23 @@ class FoodHygieneRatingSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class FoodHygieneRatingSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,30 +212,74 @@ class FoodHygieneRatingSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def authority(self):
+        """Idiomatic facade: client.authority.list() / client.authority.load({"id": ...})."""
+        from entity.authority_entity import AuthorityEntity
+        cached = getattr(self, "_authority", None)
+        if cached is None:
+            cached = AuthorityEntity(self, None)
+            self._authority = cached
+        return cached
 
     def Authority(self, data=None):
+        # Deprecated: use client.authority instead.
         from entity.authority_entity import AuthorityEntity
         return AuthorityEntity(self, data)
 
 
+    @property
+    def business_type(self):
+        """Idiomatic facade: client.business_type.list() / client.business_type.load({"id": ...})."""
+        from entity.business_type_entity import BusinessTypeEntity
+        cached = getattr(self, "_business_type", None)
+        if cached is None:
+            cached = BusinessTypeEntity(self, None)
+            self._business_type = cached
+        return cached
+
     def BusinessType(self, data=None):
+        # Deprecated: use client.business_type instead.
         from entity.business_type_entity import BusinessTypeEntity
         return BusinessTypeEntity(self, data)
 
 
+    @property
+    def establishment(self):
+        """Idiomatic facade: client.establishment.list() / client.establishment.load({"id": ...})."""
+        from entity.establishment_entity import EstablishmentEntity
+        cached = getattr(self, "_establishment", None)
+        if cached is None:
+            cached = EstablishmentEntity(self, None)
+            self._establishment = cached
+        return cached
+
     def Establishment(self, data=None):
+        # Deprecated: use client.establishment instead.
         from entity.establishment_entity import EstablishmentEntity
         return EstablishmentEntity(self, data)
 
 
+    @property
+    def rating(self):
+        """Idiomatic facade: client.rating.list() / client.rating.load({"id": ...})."""
+        from entity.rating_entity import RatingEntity
+        cached = getattr(self, "_rating", None)
+        if cached is None:
+            cached = RatingEntity(self, None)
+            self._rating = cached
+        return cached
+
     def Rating(self, data=None):
+        # Deprecated: use client.rating instead.
         from entity.rating_entity import RatingEntity
         return RatingEntity(self, data)
 

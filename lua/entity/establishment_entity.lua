@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch EstablishmentLoadMatch
+---@param ctrl? table
+---@return Establishment
+---@return string? err
 function EstablishmentEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch EstablishmentListMatch
+---@param ctrl? table
+---@return Establishment[]
+---@return string? err
 function EstablishmentEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -85,6 +85,27 @@ func (e *RatingEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Rating; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *RatingEntity) DataTyped(data ...Rating) Rating {
+	if len(data) > 0 {
+		return typedFrom[Rating](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Rating](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Rating (all fields
+// optional at the wire level).
+func (e *RatingEntity) MatchTyped(match ...Rating) Rating {
+	if len(match) > 0 {
+		return typedFrom[Rating](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Rating](e.Match())
+}
+
 func (e *RatingEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("load", e.name)
 }
@@ -108,6 +129,17 @@ func (e *RatingEntity) List(reqmatch map[string]any, ctrl map[string]any) (any, 
 			}
 		}
 	})
+}
+
+// ListTyped is the statically-typed variant of List: it takes an
+// RatingListMatch and returns []Rating. It delegates to the untyped
+// List (identical runtime) and converts at the typed boundary.
+func (e *RatingEntity) ListTyped(reqmatch RatingListMatch, ctrl map[string]any) ([]Rating, error) {
+	res, err := e.List(asMap(reqmatch), ctrl)
+	if err != nil {
+		return nil, err
+	}
+	return typedSliceFrom[Rating](res), nil
 }
 
 

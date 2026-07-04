@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -96,7 +95,7 @@ same parameters as `direct()`.
 ## AuthorityEntity
 
 ```lua
-local authority = client:Authority(nil)
+local authority = client:authority(nil)
 ```
 
 ### Fields
@@ -122,7 +121,7 @@ local authority = client:Authority(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Authority():list()
+local results, err = client:authority():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -130,7 +129,7 @@ local results, err = client:Authority():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Authority():load({ id = "authority_id" })
+local result, err = client:authority():load({ id = "authority_id" })
 ```
 
 ### Common Methods
@@ -166,7 +165,7 @@ Return the entity name.
 ## BusinessTypeEntity
 
 ```lua
-local business_type = client:BusinessType(nil)
+local business_type = client:business_type(nil)
 ```
 
 ### Fields
@@ -183,7 +182,7 @@ local business_type = client:BusinessType(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:BusinessType():list()
+local results, err = client:business_type():list()
 ```
 
 ### Common Methods
@@ -219,7 +218,7 @@ Return the entity name.
 ## EstablishmentEntity
 
 ```lua
-local establishment = client:Establishment(nil)
+local establishment = client:establishment(nil)
 ```
 
 ### Fields
@@ -254,7 +253,7 @@ local establishment = client:Establishment(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Establishment():list()
+local results, err = client:establishment():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -262,7 +261,7 @@ local results, err = client:Establishment():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Establishment():load({ id = "establishment_id" })
+local result, err = client:establishment():load({ id = "establishment_id" })
 ```
 
 ### Common Methods
@@ -298,7 +297,7 @@ Return the entity name.
 ## RatingEntity
 
 ```lua
-local rating = client:Rating(nil)
+local rating = client:rating(nil)
 ```
 
 ### Fields
@@ -317,7 +316,7 @@ local rating = client:Rating(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Rating():list()
+local results, err = client:rating():list()
 ```
 
 ### Common Methods

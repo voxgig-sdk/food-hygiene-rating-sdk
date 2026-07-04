@@ -129,7 +129,6 @@ func establishmentBasicSetup(extra map[string]any) *entityTestSetup {
 		"FOODHYGIENERATING_TEST_ESTABLISHMENT_ENTID": idmap,
 		"FOODHYGIENERATING_TEST_LIVE":      "FALSE",
 		"FOODHYGIENERATING_TEST_EXPLAIN":   "FALSE",
-		"FOODHYGIENERATING_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["FOODHYGIENERATING_TEST_ESTABLISHMENT_ENTID"])
@@ -140,7 +139,6 @@ func establishmentBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["FOODHYGIENERATING_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["FOODHYGIENERATING_APIKEY"],
 			},
 			extra,
 		})

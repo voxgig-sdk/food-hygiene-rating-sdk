@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  BusinessType,
+  BusinessTypeListMatch,
+} from '../FoodHygieneRatingTypes'
 
 // TODO: needs Entity superclass
-class BusinessTypeEntity extends FoodHygieneRatingEntityBase {
+class BusinessTypeEntity extends FoodHygieneRatingEntityBase<BusinessType> {
 
   constructor(client: FoodHygieneRatingSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class BusinessTypeEntity extends FoodHygieneRatingEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: BusinessTypeListMatch, ctrl?: Control): Promise<BusinessType[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class BusinessTypeEntity extends FoodHygieneRatingEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<BusinessType[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

@@ -43,14 +43,12 @@ class EstablishmentEntityTest < Minitest::Test
     establishment_ref01_ent = client.Establishment(nil)
     establishment_ref01_match = {}
 
-    establishment_ref01_list_result, err = establishment_ref01_ent.list(establishment_ref01_match, nil)
-    assert_nil err
+    establishment_ref01_list_result = establishment_ref01_ent.list(establishment_ref01_match, nil)
     assert establishment_ref01_list_result.is_a?(Array)
 
     # LOAD
     establishment_ref01_match_dt0 = {}
-    establishment_ref01_data_dt0_loaded, err = establishment_ref01_ent.load(establishment_ref01_match_dt0, nil)
-    assert_nil err
+    establishment_ref01_data_dt0_loaded = establishment_ref01_ent.load(establishment_ref01_match_dt0, nil)
     assert !establishment_ref01_data_dt0_loaded.nil?
 
   end
@@ -89,7 +87,6 @@ def establishment_basic_setup(extra)
     "FOODHYGIENERATING_TEST_ESTABLISHMENT_ENTID" => idmap,
     "FOODHYGIENERATING_TEST_LIVE" => "FALSE",
     "FOODHYGIENERATING_TEST_EXPLAIN" => "FALSE",
-    "FOODHYGIENERATING_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -101,7 +98,6 @@ def establishment_basic_setup(extra)
   if env["FOODHYGIENERATING_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["FOODHYGIENERATING_APIKEY"],
       },
       extra || {},
     ])

@@ -55,6 +55,9 @@ class AuthorityEntity
         return new AuthorityEntity($this->_client, $opts);
     }
 
+    /**
+     * @param Authority|array $args Authority data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class AuthorityEntity
         }
     }
 
+    /**
+     * @return Authority|array The current Authority data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of Authority fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class AuthorityEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of Authority fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -84,7 +96,16 @@ class AuthorityEntity
     }
 
     
-    public function load($reqmatch, $ctrl = null): array
+    /**
+     * Load a single Authority.
+     *
+     * @param AuthorityLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed AuthorityLoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Authority|array The loaded Authority as an assoc-array at the
+     *   SDK boundary; throws FoodHygieneRatingError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -110,7 +131,16 @@ class AuthorityEntity
 
 
     
-    public function list($reqmatch, $ctrl = null): array
+    /**
+     * List Authority items matching the given filter.
+     *
+     * @param AuthorityListMatch|array|null $reqmatch Match filter (any subset
+     *   of Authority fields) as an assoc-array; AuthorityListMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Authority[]|array A list of Authority items as assoc-arrays at
+     *   the SDK boundary; throws FoodHygieneRatingError on failure (item-5 convention).
+     */
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -138,7 +168,7 @@ class AuthorityEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

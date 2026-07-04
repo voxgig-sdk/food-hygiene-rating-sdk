@@ -43,14 +43,12 @@ class AuthorityEntityTest < Minitest::Test
     authority_ref01_ent = client.Authority(nil)
     authority_ref01_match = {}
 
-    authority_ref01_list_result, err = authority_ref01_ent.list(authority_ref01_match, nil)
-    assert_nil err
+    authority_ref01_list_result = authority_ref01_ent.list(authority_ref01_match, nil)
     assert authority_ref01_list_result.is_a?(Array)
 
     # LOAD
     authority_ref01_match_dt0 = {}
-    authority_ref01_data_dt0_loaded, err = authority_ref01_ent.load(authority_ref01_match_dt0, nil)
-    assert_nil err
+    authority_ref01_data_dt0_loaded = authority_ref01_ent.load(authority_ref01_match_dt0, nil)
     assert !authority_ref01_data_dt0_loaded.nil?
 
   end
@@ -89,7 +87,6 @@ def authority_basic_setup(extra)
     "FOODHYGIENERATING_TEST_AUTHORITY_ENTID" => idmap,
     "FOODHYGIENERATING_TEST_LIVE" => "FALSE",
     "FOODHYGIENERATING_TEST_EXPLAIN" => "FALSE",
-    "FOODHYGIENERATING_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -101,7 +98,6 @@ def authority_basic_setup(extra)
   if env["FOODHYGIENERATING_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["FOODHYGIENERATING_APIKEY"],
       },
       extra || {},
     ])

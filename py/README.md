@@ -9,11 +9,9 @@ The Python SDK for the FoodHygieneRating API — an entity-oriented client follo
 
 
 ## Install
-```bash
-pip install voxgig-sdk-food-hygiene-rating
-```
-
-Or install from source:
+This package is not yet published to PyPI. Install it from the GitHub
+release tag (`py/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/food-hygiene-rating-sdk/releases)) or
+from a source checkout:
 
 ```bash
 pip install -e .
@@ -28,34 +26,31 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
-import os
 from foodhygienerating_sdk import FoodHygieneRatingSDK
 
-client = FoodHygieneRatingSDK({
-    "apikey": os.environ.get("FOOD-HYGIENE-RATING_APIKEY"),
-})
+client = FoodHygieneRatingSDK()
 ```
 
 ### 2. List authoritys
 
 ```python
-result, err = client.Authority().list()
-if err:
-    raise Exception(err)
-
-if isinstance(result, list):
+try:
+    result = client.authority.list()
     for item in result:
         d = item.data_get()
         print(d["id"], d["name"])
+except Exception as err:
+    print(f"list failed: {err}")
 ```
 
-### 3. Load a authority
+### 3. Load an authority
 
 ```python
-result, err = client.Authority().load({"id": "example_id"})
-if err:
-    raise Exception(err)
-print(result)
+try:
+    result = client.authority.load({"id": "example_id"})
+    print(result)
+except Exception as err:
+    print(f"load failed: {err}")
 ```
 
 
@@ -66,29 +61,28 @@ print(result)
 For endpoints not covered by entity methods:
 
 ```python
-result, err = client.direct({
+result = client.direct({
     "path": "/api/resource/{id}",
     "method": "GET",
     "params": {"id": "example"},
 })
-if err:
-    raise Exception(err)
 
 if result["ok"]:
     print(result["status"])  # 200
     print(result["data"])    # response body
+else:
+    print(result["err"])     # error value
 ```
 
 ### Prepare a request without sending it
 
 ```python
-fetchdef, err = client.prepare({
+# prepare() returns the fetch definition and raises on error.
+fetchdef = client.prepare({
     "path": "/api/resource/{id}",
     "method": "DELETE",
     "params": {"id": "example"},
 })
-if err:
-    raise Exception(err)
 
 print(fetchdef["url"])
 print(fetchdef["method"])
@@ -102,7 +96,7 @@ Create a mock client for unit testing — no server required:
 ```python
 client = FoodHygieneRatingSDK.test()
 
-result, err = client.FoodHygieneRating().load({"id": "test01"})
+result = client.authority.load({"id": "test01"})
 # result contains mock response data
 ```
 
@@ -132,8 +126,7 @@ client = FoodHygieneRatingSDK({
 Create a `.env.local` file at the project root:
 
 ```
-FOOD-HYGIENE-RATING_TEST_LIVE=TRUE
-FOOD-HYGIENE-RATING_APIKEY=<your-key>
+FOOD_HYGIENE_RATING_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -157,7 +150,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |
@@ -179,8 +171,8 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | --- | --- | --- |
 | `options_map` | `() -> dict` | Deep copy of current SDK options. |
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
-| `prepare` | `(fetchargs) -> (dict, err)` | Build an HTTP request definition without sending. |
-| `direct` | `(fetchargs) -> (dict, err)` | Build and send an HTTP request. |
+| `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
+| `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
 | `Authority` | `(data) -> AuthorityEntity` | Create a Authority entity instance. |
 | `BusinessType` | `(data) -> BusinessTypeEntity` | Create a BusinessType entity instance. |
 | `Establishment` | `(data) -> EstablishmentEntity` | Create a Establishment entity instance. |
@@ -192,11 +184,11 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `(reqmatch, ctrl) -> (any, err)` | Load a single entity by match criteria. |
-| `list` | `(reqmatch, ctrl) -> (any, err)` | List entities matching the criteria. |
-| `create` | `(reqdata, ctrl) -> (any, err)` | Create a new entity. |
-| `update` | `(reqdata, ctrl) -> (any, err)` | Update an existing entity. |
-| `remove` | `(reqmatch, ctrl) -> (any, err)` | Remove an entity. |
+| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
+| `list` | `(reqmatch, ctrl) -> list` | List entities matching the criteria. Raises on error. |
+| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
+| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
+| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
 | `data_get` | `() -> dict` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> dict` | Get entity match criteria. |
@@ -206,8 +198,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`dict` with these keys:
+Entity operations return the bare result data (a `dict` for single-entity
+ops, a `list` for `list`) and raise on error. Wrap calls in
+`try`/`except` to handle failures.
+
+The `direct()` escape hatch never raises — it returns a result `dict`
+you branch on via `result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -300,7 +296,7 @@ API path: `/Ratings`
 
 ### Authority
 
-Create an instance: `const authority = client.Authority()`
+Create an instance: `const authority = client.authority`
 
 #### Operations
 
@@ -328,19 +324,19 @@ Create an instance: `const authority = client.Authority()`
 #### Example: Load
 
 ```ts
-const authority = await client.Authority().load({ id: 'authority_id' })
+const authority = await client.authority.load({ id: 'authority_id' })
 ```
 
 #### Example: List
 
 ```ts
-const authoritys = await client.Authority().list()
+const authoritys = await client.authority.list()
 ```
 
 
 ### BusinessType
 
-Create an instance: `const business_type = client.BusinessType()`
+Create an instance: `const business_type = client.business_type`
 
 #### Operations
 
@@ -358,13 +354,13 @@ Create an instance: `const business_type = client.BusinessType()`
 #### Example: List
 
 ```ts
-const business_types = await client.BusinessType().list()
+const business_types = await client.business_type.list()
 ```
 
 
 ### Establishment
 
-Create an instance: `const establishment = client.Establishment()`
+Create an instance: `const establishment = client.establishment`
 
 #### Operations
 
@@ -401,19 +397,19 @@ Create an instance: `const establishment = client.Establishment()`
 #### Example: Load
 
 ```ts
-const establishment = await client.Establishment().load({ id: 'establishment_id' })
+const establishment = await client.establishment.load({ id: 'establishment_id' })
 ```
 
 #### Example: List
 
 ```ts
-const establishments = await client.Establishment().list()
+const establishments = await client.establishment.list()
 ```
 
 
 ### Rating
 
-Create an instance: `const rating = client.Rating()`
+Create an instance: `const rating = client.rating`
 
 #### Operations
 
@@ -433,7 +429,7 @@ Create an instance: `const rating = client.Rating()`
 #### Example: List
 
 ```ts
-const ratings = await client.Rating().list()
+const ratings = await client.rating.list()
 ```
 
 
@@ -507,11 +503,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-moon = client.Moon()
-moon.load({"planet_id": "earth", "id": "luna"})
+authority = client.authority
+authority.load({"id": "example_id"})
 
-# moon.data_get() now returns the loaded moon data
-# moon.match_get() returns the last match criteria
+# authority.data_get() now returns the loaded authority data
+# authority.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

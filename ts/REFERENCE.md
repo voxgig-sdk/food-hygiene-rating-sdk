@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -146,7 +145,7 @@ Alias for `FoodHygieneRatingSDK.test()`.
 ## AuthorityEntity
 
 ```ts
-const authority = client.Authority()
+const authority = client.authority
 ```
 
 ### Fields
@@ -172,7 +171,7 @@ const authority = client.Authority()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Authority().list()
+const results = await client.authority.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -180,7 +179,7 @@ const results = await client.Authority().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Authority().load({ id: 'authority_id' })
+const result = await client.authority.load({ id: 'authority_id' })
 ```
 
 ### Common Methods
@@ -214,7 +213,7 @@ Return a copy of the entity options.
 ## BusinessTypeEntity
 
 ```ts
-const business_type = client.BusinessType()
+const business_type = client.business_type
 ```
 
 ### Fields
@@ -231,7 +230,7 @@ const business_type = client.BusinessType()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.BusinessType().list()
+const results = await client.business_type.list()
 ```
 
 ### Common Methods
@@ -265,7 +264,7 @@ Return a copy of the entity options.
 ## EstablishmentEntity
 
 ```ts
-const establishment = client.Establishment()
+const establishment = client.establishment
 ```
 
 ### Fields
@@ -300,7 +299,7 @@ const establishment = client.Establishment()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Establishment().list()
+const results = await client.establishment.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -308,7 +307,7 @@ const results = await client.Establishment().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Establishment().load({ id: 'establishment_id' })
+const result = await client.establishment.load({ id: 'establishment_id' })
 ```
 
 ### Common Methods
@@ -342,7 +341,7 @@ Return a copy of the entity options.
 ## RatingEntity
 
 ```ts
-const rating = client.Rating()
+const rating = client.rating
 ```
 
 ### Fields
@@ -361,7 +360,7 @@ const rating = client.Rating()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Rating().list()
+const results = await client.rating.list()
 ```
 
 ### Common Methods

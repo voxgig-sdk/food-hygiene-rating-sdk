@@ -103,7 +103,7 @@ class FoodHygieneRatingSDK
         return $this->_rootctx;
     }
 
-    public function prepare(array $fetchargs = []): array
+    public function prepare(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
         $fetchargs = $fetchargs ?? [];
@@ -149,19 +149,27 @@ class FoodHygieneRatingSDK
 
         [$_, $err] = ($utility->prepare_auth)($ctx);
         if ($err) {
-            return [null, $err];
+            return ($utility->make_error)($ctx, $err);
         }
 
-        return ($utility->make_fetch_def)($ctx);
+        [$fetchdef, $fd_err] = ($utility->make_fetch_def)($ctx);
+        if ($fd_err) {
+            return ($utility->make_error)($ctx, $fd_err);
+        }
+        return $fetchdef;
     }
 
-    public function direct(array $fetchargs = []): array
+    public function direct(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
 
-        [$fetchdef, $err] = $this->prepare($fetchargs);
-        if ($err) {
-            return [["ok" => false, "err" => $err], null];
+        // direct() is the raw-HTTP escape hatch: it never throws, it returns
+        // an {ok, err, ...} dict. prepare() now raises on error, so catch it
+        // and surface the failure through the dict instead.
+        try {
+            $fetchdef = $this->prepare($fetchargs);
+        } catch (\Throwable $err) {
+            return ["ok" => false, "err" => $err];
         }
 
         $fetchargs = $fetchargs ?? [];
@@ -176,14 +184,14 @@ class FoodHygieneRatingSDK
         [$fetched, $fetch_err] = ($utility->fetcher)($ctx, $url, $fetchdef);
 
         if ($fetch_err) {
-            return [["ok" => false, "err" => $fetch_err], null];
+            return ["ok" => false, "err" => $fetch_err];
         }
 
         if ($fetched === null) {
-            return [[
+            return [
                 "ok" => false,
                 "err" => $ctx->make_error("direct_no_response", "response: undefined"),
-            ], null];
+            ];
         }
 
         if (is_array($fetched)) {
@@ -208,45 +216,89 @@ class FoodHygieneRatingSDK
                 }
             }
 
-            return [[
+            return [
                 "ok" => $status >= 200 && $status < 300,
                 "status" => $status,
                 "headers" => Struct::getprop($fetched, "headers"),
                 "data" => $json_data,
-            ], null];
+            ];
         }
 
-        return [[
+        return [
             "ok" => false,
             "err" => $ctx->make_error("direct_invalid", "invalid response type"),
-        ], null];
+        ];
     }
 
 
-    public function Authority($data = null)
+    private $_authority = null;
+
+    // Idiomatic facade: $client->authority()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Authority() (PHP method
+    // names are case-insensitive).
+    public function authority($data = null)
     {
         require_once __DIR__ . '/entity/authority_entity.php';
+        if ($data === null) {
+            if ($this->_authority === null) {
+                $this->_authority = new AuthorityEntity($this, null);
+            }
+            return $this->_authority;
+        }
         return new AuthorityEntity($this, $data);
     }
 
 
-    public function BusinessType($data = null)
+    private $_business_type = null;
+
+    // Idiomatic facade: $client->business_type()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias BusinessType() (PHP method
+    // names are case-insensitive).
+    public function business_type($data = null)
     {
         require_once __DIR__ . '/entity/business_type_entity.php';
+        if ($data === null) {
+            if ($this->_business_type === null) {
+                $this->_business_type = new BusinessTypeEntity($this, null);
+            }
+            return $this->_business_type;
+        }
         return new BusinessTypeEntity($this, $data);
     }
 
 
-    public function Establishment($data = null)
+    private $_establishment = null;
+
+    // Idiomatic facade: $client->establishment()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Establishment() (PHP method
+    // names are case-insensitive).
+    public function establishment($data = null)
     {
         require_once __DIR__ . '/entity/establishment_entity.php';
+        if ($data === null) {
+            if ($this->_establishment === null) {
+                $this->_establishment = new EstablishmentEntity($this, null);
+            }
+            return $this->_establishment;
+        }
         return new EstablishmentEntity($this, $data);
     }
 
 
-    public function Rating($data = null)
+    private $_rating = null;
+
+    // Idiomatic facade: $client->rating()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Rating() (PHP method
+    // names are case-insensitive).
+    public function rating($data = null)
     {
         require_once __DIR__ . '/entity/rating_entity.php';
+        if ($data === null) {
+            if ($this->_rating === null) {
+                $this->_rating = new RatingEntity($this, null);
+            }
+            return $this->_rating;
+        }
         return new RatingEntity($this, $data);
     }
 

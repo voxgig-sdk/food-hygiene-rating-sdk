@@ -45,6 +45,7 @@ class BusinessTypeEntity
     end
   end
 
+  # @return [BusinessType, Hash] the current BusinessType data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class BusinessTypeEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of BusinessType fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class BusinessTypeEntity
   
 
   
+  # List BusinessType items matching the given filter.
+  #
+  # @param reqmatch [BusinessTypeListMatch, Hash, nil] match filter (any subset of BusinessType fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<BusinessType>, Array] the matching BusinessType items; raises FoodHygieneRatingError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

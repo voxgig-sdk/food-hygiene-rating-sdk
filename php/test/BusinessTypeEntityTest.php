@@ -50,8 +50,7 @@ class BusinessTypeEntityTest extends TestCase
         $business_type_ref01_ent = $client->BusinessType(null);
         $business_type_ref01_match = [];
 
-        [$business_type_ref01_list_result, $err] = $business_type_ref01_ent->list($business_type_ref01_match, null);
-        $this->assertNull($err);
+        $business_type_ref01_list_result = $business_type_ref01_ent->list($business_type_ref01_match, null);
         $this->assertIsArray($business_type_ref01_list_result);
 
     }
@@ -86,7 +85,6 @@ function business_type_basic_setup($extra)
         "FOODHYGIENERATING_TEST_BUSINESS_TYPE_ENTID" => $idmap,
         "FOODHYGIENERATING_TEST_LIVE" => "FALSE",
         "FOODHYGIENERATING_TEST_EXPLAIN" => "FALSE",
-        "FOODHYGIENERATING_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +96,6 @@ function business_type_basic_setup($extra)
     if ($env["FOODHYGIENERATING_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["FOODHYGIENERATING_APIKEY"],
             ],
             $extra ?? [],
         ]);

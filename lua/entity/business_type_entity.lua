@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch BusinessTypeListMatch
+---@param ctrl? table
+---@return BusinessType[]
+---@return string? err
 function BusinessTypeEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -50,14 +50,12 @@ class EstablishmentEntityTest extends TestCase
         $establishment_ref01_ent = $client->Establishment(null);
         $establishment_ref01_match = [];
 
-        [$establishment_ref01_list_result, $err] = $establishment_ref01_ent->list($establishment_ref01_match, null);
-        $this->assertNull($err);
+        $establishment_ref01_list_result = $establishment_ref01_ent->list($establishment_ref01_match, null);
         $this->assertIsArray($establishment_ref01_list_result);
 
         // LOAD
         $establishment_ref01_match_dt0 = [];
-        [$establishment_ref01_data_dt0_loaded, $err] = $establishment_ref01_ent->load($establishment_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $establishment_ref01_data_dt0_loaded = $establishment_ref01_ent->load($establishment_ref01_match_dt0, null);
         $this->assertNotNull($establishment_ref01_data_dt0_loaded);
 
     }
@@ -92,7 +90,6 @@ function establishment_basic_setup($extra)
         "FOODHYGIENERATING_TEST_ESTABLISHMENT_ENTID" => $idmap,
         "FOODHYGIENERATING_TEST_LIVE" => "FALSE",
         "FOODHYGIENERATING_TEST_EXPLAIN" => "FALSE",
-        "FOODHYGIENERATING_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -104,7 +101,6 @@ function establishment_basic_setup($extra)
     if ($env["FOODHYGIENERATING_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["FOODHYGIENERATING_APIKEY"],
             ],
             $extra ?? [],
         ]);

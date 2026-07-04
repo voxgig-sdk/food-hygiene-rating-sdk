@@ -194,14 +194,12 @@ func establishmentDirectSetup(mockres any) *establishmentDirectSetupResult {
 	env := envOverride(map[string]any{
 		"FOODHYGIENERATING_TEST_ESTABLISHMENT_ENTID": map[string]any{},
 		"FOODHYGIENERATING_TEST_LIVE":    "FALSE",
-		"FOODHYGIENERATING_APIKEY":       "NONE",
 	})
 
 	live := env["FOODHYGIENERATING_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["FOODHYGIENERATING_APIKEY"],
 		}
 		client := sdk.NewFoodHygieneRatingSDK(mergedOpts)
 

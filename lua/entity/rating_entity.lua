@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch RatingListMatch
+---@param ctrl? table
+---@return Rating[]
+---@return string? err
 function RatingEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

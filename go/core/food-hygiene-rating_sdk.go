@@ -245,21 +245,33 @@ func (sdk *FoodHygieneRatingSDK) Direct(fetchargs map[string]any) (map[string]an
 }
 
 
+// Authority returns a Authority entity bound to this client.
+// Idiomatic usage: client.Authority(nil).List(nil, nil) or
+// client.Authority(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FoodHygieneRatingSDK) Authority(data map[string]any) FoodHygieneRatingEntity {
 	return NewAuthorityEntityFunc(sdk, data)
 }
 
 
+// BusinessType returns a BusinessType entity bound to this client.
+// Idiomatic usage: client.BusinessType(nil).List(nil, nil) or
+// client.BusinessType(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FoodHygieneRatingSDK) BusinessType(data map[string]any) FoodHygieneRatingEntity {
 	return NewBusinessTypeEntityFunc(sdk, data)
 }
 
 
+// Establishment returns a Establishment entity bound to this client.
+// Idiomatic usage: client.Establishment(nil).List(nil, nil) or
+// client.Establishment(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FoodHygieneRatingSDK) Establishment(data map[string]any) FoodHygieneRatingEntity {
 	return NewEstablishmentEntityFunc(sdk, data)
 }
 
 
+// Rating returns a Rating entity bound to this client.
+// Idiomatic usage: client.Rating(nil).List(nil, nil) or
+// client.Rating(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FoodHygieneRatingSDK) Rating(data map[string]any) FoodHygieneRatingEntity {
 	return NewRatingEntityFunc(sdk, data)
 }

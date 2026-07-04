@@ -43,8 +43,7 @@ class RatingEntityTest < Minitest::Test
     rating_ref01_ent = client.Rating(nil)
     rating_ref01_match = {}
 
-    rating_ref01_list_result, err = rating_ref01_ent.list(rating_ref01_match, nil)
-    assert_nil err
+    rating_ref01_list_result = rating_ref01_ent.list(rating_ref01_match, nil)
     assert rating_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def rating_basic_setup(extra)
     "FOODHYGIENERATING_TEST_RATING_ENTID" => idmap,
     "FOODHYGIENERATING_TEST_LIVE" => "FALSE",
     "FOODHYGIENERATING_TEST_EXPLAIN" => "FALSE",
-    "FOODHYGIENERATING_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def rating_basic_setup(extra)
   if env["FOODHYGIENERATING_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["FOODHYGIENERATING_APIKEY"],
       },
       extra || {},
     ])

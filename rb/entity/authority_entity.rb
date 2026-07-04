@@ -45,6 +45,7 @@ class AuthorityEntity
     end
   end
 
+  # @return [Authority, Hash] the current Authority data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class AuthorityEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Authority fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Authority.
+  #
+  # @param reqmatch [AuthorityLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Authority, Hash] the loaded Authority; raises FoodHygieneRatingError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class AuthorityEntity
 
 
   
+  # List Authority items matching the given filter.
+  #
+  # @param reqmatch [AuthorityListMatch, Hash, nil] match filter (any subset of Authority fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Authority>, Array] the matching Authority items; raises FoodHygieneRatingError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

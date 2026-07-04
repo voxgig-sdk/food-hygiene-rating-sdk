@@ -95,7 +95,7 @@ same parameters as `direct()`.
 ## AuthorityEntity
 
 ```lua
-local authority = client:authority(nil)
+local authority = client:Authority(nil)
 ```
 
 ### Fields
@@ -121,7 +121,7 @@ local authority = client:authority(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:authority():list()
+local results, err = client:Authority():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -129,7 +129,7 @@ local results, err = client:authority():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:authority():load({ id = "authority_id" })
+local result, err = client:Authority():load({ id = "authority_id" })
 ```
 
 ### Common Methods
@@ -165,7 +165,7 @@ Return the entity name.
 ## BusinessTypeEntity
 
 ```lua
-local business_type = client:business_type(nil)
+local business_type = client:BusinessType(nil)
 ```
 
 ### Fields
@@ -182,7 +182,7 @@ local business_type = client:business_type(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:business_type():list()
+local results, err = client:BusinessType():list()
 ```
 
 ### Common Methods
@@ -218,7 +218,7 @@ Return the entity name.
 ## EstablishmentEntity
 
 ```lua
-local establishment = client:establishment(nil)
+local establishment = client:Establishment(nil)
 ```
 
 ### Fields
@@ -253,7 +253,7 @@ local establishment = client:establishment(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:establishment():list()
+local results, err = client:Establishment():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -261,7 +261,7 @@ local results, err = client:establishment():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:establishment():load({ id = "establishment_id" })
+local result, err = client:Establishment():load({ id = "establishment_id" })
 ```
 
 ### Common Methods
@@ -297,7 +297,7 @@ Return the entity name.
 ## RatingEntity
 
 ```lua
-local rating = client:rating(nil)
+local rating = client:Rating(nil)
 ```
 
 ### Fields
@@ -316,7 +316,7 @@ local rating = client:rating(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:rating():list()
+local results, err = client:Rating():list()
 ```
 
 ### Common Methods

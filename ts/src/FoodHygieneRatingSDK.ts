@@ -207,56 +207,28 @@ class FoodHygieneRatingSDK {
 
 
 
-  _authority?: AuthorityEntity
-
-  // Idiomatic facade: `client.authority.list()` / `client.authority.load({ id })`.
-  get authority(): AuthorityEntity {
-    return (this._authority ??= new AuthorityEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.authority` instead. */
+  // Entity access: `client.Authority().list()` / `client.Authority().load({ id })`.
   Authority(data?: any) {
     const self = this
     return new AuthorityEntity(self,data)
   }
 
 
-  _business_type?: BusinessTypeEntity
-
-  // Idiomatic facade: `client.business_type.list()` / `client.business_type.load({ id })`.
-  get business_type(): BusinessTypeEntity {
-    return (this._business_type ??= new BusinessTypeEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.business_type` instead. */
+  // Entity access: `client.BusinessType().list()` / `client.BusinessType().load({ id })`.
   BusinessType(data?: any) {
     const self = this
     return new BusinessTypeEntity(self,data)
   }
 
 
-  _establishment?: EstablishmentEntity
-
-  // Idiomatic facade: `client.establishment.list()` / `client.establishment.load({ id })`.
-  get establishment(): EstablishmentEntity {
-    return (this._establishment ??= new EstablishmentEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.establishment` instead. */
+  // Entity access: `client.Establishment().list()` / `client.Establishment().load({ id })`.
   Establishment(data?: any) {
     const self = this
     return new EstablishmentEntity(self,data)
   }
 
 
-  _rating?: RatingEntity
-
-  // Idiomatic facade: `client.rating.list()` / `client.rating.load({ id })`.
-  get rating(): RatingEntity {
-    return (this._rating ??= new RatingEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.rating` instead. */
+  // Entity access: `client.Rating().list()` / `client.Rating().load({ id })`.
   Rating(data?: any) {
     const self = this
     return new RatingEntity(self,data)

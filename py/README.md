@@ -31,24 +31,28 @@ from foodhygienerating_sdk import FoodHygieneRatingSDK
 client = FoodHygieneRatingSDK()
 ```
 
-### 2. List authoritys
+### 2. List authority records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.authority.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    authoritys = client.Authority().list({})
+    for authority in authoritys:
+        print(authority)
 except Exception as err:
     print(f"list failed: {err}")
 ```
 
 ### 3. Load an authority
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.authority.load({"id": "example_id"})
-    print(result)
+    authority = client.Authority().load({"id": "example_id"})
+    print(authority)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -96,8 +100,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = FoodHygieneRatingSDK.test()
 
-result = client.authority.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+authority = client.Authority().load({"id": "test01"})
+# authority contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -173,9 +178,9 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
-| `Authority` | `(data) -> AuthorityEntity` | Create a Authority entity instance. |
+| `Authority` | `(data) -> AuthorityEntity` | Create an Authority entity instance. |
 | `BusinessType` | `(data) -> BusinessTypeEntity` | Create a BusinessType entity instance. |
-| `Establishment` | `(data) -> EstablishmentEntity` | Create a Establishment entity instance. |
+| `Establishment` | `(data) -> EstablishmentEntity` | Create an Establishment entity instance. |
 | `Rating` | `(data) -> RatingEntity` | Create a Rating entity instance. |
 
 ### Entity interface
@@ -296,7 +301,7 @@ API path: `/Ratings`
 
 ### Authority
 
-Create an instance: `const authority = client.authority`
+Create an instance: `authority = client.Authority()`
 
 #### Operations
 
@@ -323,20 +328,20 @@ Create an instance: `const authority = client.authority`
 
 #### Example: Load
 
-```ts
-const authority = await client.authority.load({ id: 'authority_id' })
+```python
+authority = client.Authority().load({"id": "authority_id"})
 ```
 
 #### Example: List
 
-```ts
-const authoritys = await client.authority.list()
+```python
+authoritys = client.Authority().list({})
 ```
 
 
 ### BusinessType
 
-Create an instance: `const business_type = client.business_type`
+Create an instance: `business_type = client.BusinessType()`
 
 #### Operations
 
@@ -353,14 +358,14 @@ Create an instance: `const business_type = client.business_type`
 
 #### Example: List
 
-```ts
-const business_types = await client.business_type.list()
+```python
+business_types = client.BusinessType().list({})
 ```
 
 
 ### Establishment
 
-Create an instance: `const establishment = client.establishment`
+Create an instance: `establishment = client.Establishment()`
 
 #### Operations
 
@@ -396,20 +401,20 @@ Create an instance: `const establishment = client.establishment`
 
 #### Example: Load
 
-```ts
-const establishment = await client.establishment.load({ id: 'establishment_id' })
+```python
+establishment = client.Establishment().load({"id": "establishment_id"})
 ```
 
 #### Example: List
 
-```ts
-const establishments = await client.establishment.list()
+```python
+establishments = client.Establishment().list({})
 ```
 
 
 ### Rating
 
-Create an instance: `const rating = client.rating`
+Create an instance: `rating = client.Rating()`
 
 #### Operations
 
@@ -428,8 +433,8 @@ Create an instance: `const rating = client.rating`
 
 #### Example: List
 
-```ts
-const ratings = await client.rating.list()
+```python
+ratings = client.Rating().list({})
 ```
 
 
@@ -503,7 +508,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-authority = client.authority
+authority = client.Authority()
 authority.load({"id": "example_id"})
 
 # authority.data_get() now returns the loaded authority data

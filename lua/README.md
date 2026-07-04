@@ -31,26 +31,26 @@ local sdk = require("food-hygiene-rating_sdk")
 local client = sdk.new()
 ```
 
-### 2. List authoritys
+### 2. List authority records
+
+Entity operations return `(value, err)`. For `list`, `value` is the
+array of records itself — iterate it directly (there is no wrapper).
 
 ```lua
-local result, err = client:authority():list()
+local authoritys, err = client:Authority():list()
 if err then error(err) end
 
-if type(result) == "table" then
-  for _, item in ipairs(result) do
-    local d = item:data_get()
-    print(d["id"], d["name"])
-  end
+for _, item in ipairs(authoritys) do
+  print(item["id"], item["name"])
 end
 ```
 
 ### 3. Load an authority
 
 ```lua
-local result, err = client:authority():load({ id = "example_id" })
+local authority, err = client:Authority():load({ id = "example_id" })
 if err then error(err) end
-print(result)
+print(authority)
 ```
 
 
@@ -96,8 +96,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:authority():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:Authority():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -175,9 +175,9 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> table, err` | Build an HTTP request definition without sending. |
 | `direct` | `(fetchargs) -> table, err` | Build and send an HTTP request. |
-| `Authority` | `(data) -> AuthorityEntity` | Create a Authority entity instance. |
+| `Authority` | `(data) -> AuthorityEntity` | Create an Authority entity instance. |
 | `BusinessType` | `(data) -> BusinessTypeEntity` | Create a BusinessType entity instance. |
-| `Establishment` | `(data) -> EstablishmentEntity` | Create a Establishment entity instance. |
+| `Establishment` | `(data) -> EstablishmentEntity` | Create an Establishment entity instance. |
 | `Rating` | `(data) -> RatingEntity` | Create a Rating entity instance. |
 
 ### Entity interface
@@ -200,17 +200,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local authority, err = client:Authority():load({ id = "example_id" })
+    if err then error(err) end
+    -- authority is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -294,7 +299,7 @@ API path: `/Ratings`
 
 ### Authority
 
-Create an instance: `const authority = client.authority`
+Create an instance: `local authority = client:Authority(nil)`
 
 #### Operations
 
@@ -321,20 +326,20 @@ Create an instance: `const authority = client.authority`
 
 #### Example: Load
 
-```ts
-const authority = await client.authority.load({ id: 'authority_id' })
+```lua
+local authority, err = client:Authority():load({ id = "authority_id" })
 ```
 
 #### Example: List
 
-```ts
-const authoritys = await client.authority.list()
+```lua
+local authoritys, err = client:Authority():list()
 ```
 
 
 ### BusinessType
 
-Create an instance: `const business_type = client.business_type`
+Create an instance: `local business_type = client:BusinessType(nil)`
 
 #### Operations
 
@@ -351,14 +356,14 @@ Create an instance: `const business_type = client.business_type`
 
 #### Example: List
 
-```ts
-const business_types = await client.business_type.list()
+```lua
+local business_types, err = client:BusinessType():list()
 ```
 
 
 ### Establishment
 
-Create an instance: `const establishment = client.establishment`
+Create an instance: `local establishment = client:Establishment(nil)`
 
 #### Operations
 
@@ -394,20 +399,20 @@ Create an instance: `const establishment = client.establishment`
 
 #### Example: Load
 
-```ts
-const establishment = await client.establishment.load({ id: 'establishment_id' })
+```lua
+local establishment, err = client:Establishment():load({ id = "establishment_id" })
 ```
 
 #### Example: List
 
-```ts
-const establishments = await client.establishment.list()
+```lua
+local establishments, err = client:Establishment():list()
 ```
 
 
 ### Rating
 
-Create an instance: `const rating = client.rating`
+Create an instance: `local rating = client:Rating(nil)`
 
 #### Operations
 
@@ -426,8 +431,8 @@ Create an instance: `const rating = client.rating`
 
 #### Example: List
 
-```ts
-const ratings = await client.rating.list()
+```lua
+local ratings, err = client:Rating():list()
 ```
 
 
@@ -502,7 +507,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local authority = client:authority()
+local authority = client:Authority()
 authority:load({ id = "example_id" })
 
 -- authority:data_get() now returns the loaded authority data

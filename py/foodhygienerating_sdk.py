@@ -220,73 +220,33 @@ class FoodHygieneRatingSDK:
         }
 
 
-    @property
-    def authority(self):
-        """Idiomatic facade: client.authority.list() / client.authority.load({"id": ...})."""
-        from entity.authority_entity import AuthorityEntity
-        cached = getattr(self, "_authority", None)
-        if cached is None:
-            cached = AuthorityEntity(self, None)
-            self._authority = cached
-        return cached
-
-    def Authority(self, data=None):
-        # Deprecated: use client.authority instead.
+    def Authority(self, data=None) -> "AuthorityEntity":
+        """Entity factory: client.Authority().list({}) / client.Authority().load({"id": ...})."""
         from entity.authority_entity import AuthorityEntity
         return AuthorityEntity(self, data)
 
 
-    @property
-    def business_type(self):
-        """Idiomatic facade: client.business_type.list() / client.business_type.load({"id": ...})."""
-        from entity.business_type_entity import BusinessTypeEntity
-        cached = getattr(self, "_business_type", None)
-        if cached is None:
-            cached = BusinessTypeEntity(self, None)
-            self._business_type = cached
-        return cached
-
-    def BusinessType(self, data=None):
-        # Deprecated: use client.business_type instead.
+    def BusinessType(self, data=None) -> "BusinessTypeEntity":
+        """Entity factory: client.BusinessType().list({}) / client.BusinessType().load({"id": ...})."""
         from entity.business_type_entity import BusinessTypeEntity
         return BusinessTypeEntity(self, data)
 
 
-    @property
-    def establishment(self):
-        """Idiomatic facade: client.establishment.list() / client.establishment.load({"id": ...})."""
-        from entity.establishment_entity import EstablishmentEntity
-        cached = getattr(self, "_establishment", None)
-        if cached is None:
-            cached = EstablishmentEntity(self, None)
-            self._establishment = cached
-        return cached
-
-    def Establishment(self, data=None):
-        # Deprecated: use client.establishment instead.
+    def Establishment(self, data=None) -> "EstablishmentEntity":
+        """Entity factory: client.Establishment().list({}) / client.Establishment().load({"id": ...})."""
         from entity.establishment_entity import EstablishmentEntity
         return EstablishmentEntity(self, data)
 
 
-    @property
-    def rating(self):
-        """Idiomatic facade: client.rating.list() / client.rating.load({"id": ...})."""
-        from entity.rating_entity import RatingEntity
-        cached = getattr(self, "_rating", None)
-        if cached is None:
-            cached = RatingEntity(self, None)
-            self._rating = cached
-        return cached
-
-    def Rating(self, data=None):
-        # Deprecated: use client.rating instead.
+    def Rating(self, data=None) -> "RatingEntity":
+        """Entity factory: client.Rating().list({}) / client.Rating().load({"id": ...})."""
         from entity.rating_entity import RatingEntity
         return RatingEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "FoodHygieneRatingSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -306,3 +266,12 @@ class FoodHygieneRatingSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.authority_entity import AuthorityEntity
+    from entity.business_type_entity import BusinessTypeEntity
+    from entity.establishment_entity import EstablishmentEntity
+    from entity.rating_entity import RatingEntity

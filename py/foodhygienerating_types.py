@@ -4,125 +4,119 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Authority:
-    email: Optional[str] = None
-    establishment_count: Optional[int] = None
-    file_name: Optional[str] = None
-    file_name_welsh: Optional[str] = None
-    friendly_name: Optional[str] = None
-    local_authority_id: Optional[int] = None
-    local_authority_id_code: Optional[str] = None
-    name: Optional[str] = None
-    region_name: Optional[str] = None
-    scheme_url: Optional[str] = None
-    url: Optional[str] = None
+class Authority(TypedDict, total=False):
+    email: str
+    establishment_count: int
+    file_name: str
+    file_name_welsh: str
+    friendly_name: str
+    local_authority_id: int
+    local_authority_id_code: str
+    name: str
+    region_name: str
+    scheme_url: str
+    url: str
 
 
-@dataclass
-class AuthorityLoadMatch:
+class AuthorityLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class AuthorityListMatch:
-    email: Optional[str] = None
-    establishment_count: Optional[int] = None
-    file_name: Optional[str] = None
-    file_name_welsh: Optional[str] = None
-    friendly_name: Optional[str] = None
-    local_authority_id: Optional[int] = None
-    local_authority_id_code: Optional[str] = None
-    name: Optional[str] = None
-    region_name: Optional[str] = None
-    scheme_url: Optional[str] = None
-    url: Optional[str] = None
+class AuthorityListMatch(TypedDict, total=False):
+    email: str
+    establishment_count: int
+    file_name: str
+    file_name_welsh: str
+    friendly_name: str
+    local_authority_id: int
+    local_authority_id_code: str
+    name: str
+    region_name: str
+    scheme_url: str
+    url: str
 
 
-@dataclass
-class BusinessType:
-    business_type_id: Optional[int] = None
-    business_type_name: Optional[str] = None
+class BusinessType(TypedDict, total=False):
+    business_type_id: int
+    business_type_name: str
 
 
-@dataclass
-class BusinessTypeListMatch:
-    business_type_id: Optional[int] = None
-    business_type_name: Optional[str] = None
+class BusinessTypeListMatch(TypedDict, total=False):
+    business_type_id: int
+    business_type_name: str
 
 
-@dataclass
-class Establishment:
-    address_line1: Optional[str] = None
-    address_line2: Optional[str] = None
-    address_line3: Optional[str] = None
-    address_line4: Optional[str] = None
-    business_name: Optional[str] = None
-    business_type: Optional[str] = None
-    business_type_id: Optional[int] = None
-    fhrsid: Optional[int] = None
-    geocode: Optional[dict] = None
-    local_authority_business_id: Optional[str] = None
-    local_authority_code: Optional[str] = None
-    local_authority_email_address: Optional[str] = None
-    local_authority_name: Optional[str] = None
-    local_authority_web_site: Optional[str] = None
-    new_rating_pending: Optional[bool] = None
-    post_code: Optional[str] = None
-    rating_date: Optional[str] = None
-    rating_key: Optional[str] = None
-    rating_value: Optional[str] = None
-    scheme_type: Optional[str] = None
+class Establishment(TypedDict, total=False):
+    address_line1: str
+    address_line2: str
+    address_line3: str
+    address_line4: str
+    business_name: str
+    business_type: str
+    business_type_id: int
+    fhrsid: int
+    geocode: dict
+    local_authority_business_id: str
+    local_authority_code: str
+    local_authority_email_address: str
+    local_authority_name: str
+    local_authority_web_site: str
+    new_rating_pending: bool
+    post_code: str
+    rating_date: str
+    rating_key: str
+    rating_value: str
+    scheme_type: str
 
 
-@dataclass
-class EstablishmentLoadMatch:
+class EstablishmentLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class EstablishmentListMatch:
-    address_line1: Optional[str] = None
-    address_line2: Optional[str] = None
-    address_line3: Optional[str] = None
-    address_line4: Optional[str] = None
-    business_name: Optional[str] = None
-    business_type: Optional[str] = None
-    business_type_id: Optional[int] = None
-    fhrsid: Optional[int] = None
-    geocode: Optional[dict] = None
-    local_authority_business_id: Optional[str] = None
-    local_authority_code: Optional[str] = None
-    local_authority_email_address: Optional[str] = None
-    local_authority_name: Optional[str] = None
-    local_authority_web_site: Optional[str] = None
-    new_rating_pending: Optional[bool] = None
-    post_code: Optional[str] = None
-    rating_date: Optional[str] = None
-    rating_key: Optional[str] = None
-    rating_value: Optional[str] = None
-    scheme_type: Optional[str] = None
+class EstablishmentListMatch(TypedDict, total=False):
+    address_line1: str
+    address_line2: str
+    address_line3: str
+    address_line4: str
+    business_name: str
+    business_type: str
+    business_type_id: int
+    fhrsid: int
+    geocode: dict
+    local_authority_business_id: str
+    local_authority_code: str
+    local_authority_email_address: str
+    local_authority_name: str
+    local_authority_web_site: str
+    new_rating_pending: bool
+    post_code: str
+    rating_date: str
+    rating_key: str
+    rating_value: str
+    scheme_type: str
 
 
-@dataclass
-class Rating:
-    rating_id: Optional[int] = None
-    rating_key: Optional[str] = None
-    rating_name: Optional[str] = None
-    scheme_type: Optional[str] = None
+class Rating(TypedDict, total=False):
+    rating_id: int
+    rating_key: str
+    rating_name: str
+    scheme_type: str
 
 
-@dataclass
-class RatingListMatch:
-    rating_id: Optional[int] = None
-    rating_key: Optional[str] = None
-    rating_name: Optional[str] = None
-    scheme_type: Optional[str] = None
-
+class RatingListMatch(TypedDict, total=False):
+    rating_id: int
+    rating_key: str
+    rating_name: str
+    scheme_type: str

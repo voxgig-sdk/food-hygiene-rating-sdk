@@ -233,10 +233,10 @@ class FoodHygieneRatingSDK
 
     private $_authority = null;
 
-    // Idiomatic facade: $client->authority()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Authority() (PHP method
-    // names are case-insensitive).
-    public function authority($data = null)
+    // Canonical facade: $client->Authority()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->authority()
+    // resolves here too.
+    public function Authority($data = null)
     {
         require_once __DIR__ . '/entity/authority_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class FoodHygieneRatingSDK
 
     private $_business_type = null;
 
-    // Idiomatic facade: $client->business_type()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias BusinessType() (PHP method
-    // names are case-insensitive).
-    public function business_type($data = null)
+    // Canonical facade: $client->BusinessType()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->business_type()
+    // resolves here too.
+    public function BusinessType($data = null)
     {
         require_once __DIR__ . '/entity/business_type_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class FoodHygieneRatingSDK
 
     private $_establishment = null;
 
-    // Idiomatic facade: $client->establishment()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Establishment() (PHP method
-    // names are case-insensitive).
-    public function establishment($data = null)
+    // Canonical facade: $client->Establishment()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->establishment()
+    // resolves here too.
+    public function Establishment($data = null)
     {
         require_once __DIR__ . '/entity/establishment_entity.php';
         if ($data === null) {
@@ -287,10 +287,10 @@ class FoodHygieneRatingSDK
 
     private $_rating = null;
 
-    // Idiomatic facade: $client->rating()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Rating() (PHP method
-    // names are case-insensitive).
-    public function rating($data = null)
+    // Canonical facade: $client->Rating()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->rating()
+    // resolves here too.
+    public function Rating($data = null)
     {
         require_once __DIR__ . '/entity/rating_entity.php';
         if ($data === null) {

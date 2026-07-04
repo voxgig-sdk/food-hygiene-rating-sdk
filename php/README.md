@@ -29,18 +29,16 @@ require_once 'foodhygienerating_sdk.php';
 $client = new FoodHygieneRatingSDK();
 ```
 
-### 2. List authoritys
+### 2. List authority records
 
 ```php
 try {
-    $result = $client->authority()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Authority records — iterate directly.
+    $authoritys = $client->Authority()->list();
+    foreach ($authoritys as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -49,9 +47,10 @@ try {
 
 ```php
 try {
-    $result = $client->authority()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Authority record (throws on error).
+    $authority = $client->Authority()->load(["id" => "example_id"]);
+    print_r($authority);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -97,13 +96,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = FoodHygieneRatingSDK::test();
+$client = FoodHygieneRatingSDK::test([
+    "entity" => ["authority" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->authority()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$authority = $client->Authority()->load(["id" => "test01"]);
+print_r($authority);
 ```
 
 ### Use a custom fetch function
@@ -182,9 +185,9 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `get_utility` | `(): Utility` | Copy of the SDK utility object. |
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
-| `Authority` | `($data): AuthorityEntity` | Create a Authority entity instance. |
+| `Authority` | `($data): AuthorityEntity` | Create an Authority entity instance. |
 | `BusinessType` | `($data): BusinessTypeEntity` | Create a BusinessType entity instance. |
-| `Establishment` | `($data): EstablishmentEntity` | Create a Establishment entity instance. |
+| `Establishment` | `($data): EstablishmentEntity` | Create an Establishment entity instance. |
 | `Rating` | `($data): RatingEntity` | Create a Rating entity instance. |
 
 ### Entity interface
@@ -305,7 +308,7 @@ API path: `/Ratings`
 
 ### Authority
 
-Create an instance: `const authority = client.authority`
+Create an instance: `$authority = $client->Authority();`
 
 #### Operations
 
@@ -332,20 +335,22 @@ Create an instance: `const authority = client.authority`
 
 #### Example: Load
 
-```ts
-const authority = await client.authority.load({ id: 'authority_id' })
+```php
+// load() returns the bare Authority record (throws on error).
+$authority = $client->Authority()->load(["id" => "authority_id"]);
 ```
 
 #### Example: List
 
-```ts
-const authoritys = await client.authority.list()
+```php
+// list() returns an array of Authority records (throws on error).
+$authoritys = $client->Authority()->list();
 ```
 
 
 ### BusinessType
 
-Create an instance: `const business_type = client.business_type`
+Create an instance: `$business_type = $client->BusinessType();`
 
 #### Operations
 
@@ -362,14 +367,15 @@ Create an instance: `const business_type = client.business_type`
 
 #### Example: List
 
-```ts
-const business_types = await client.business_type.list()
+```php
+// list() returns an array of BusinessType records (throws on error).
+$business_types = $client->BusinessType()->list();
 ```
 
 
 ### Establishment
 
-Create an instance: `const establishment = client.establishment`
+Create an instance: `$establishment = $client->Establishment();`
 
 #### Operations
 
@@ -405,20 +411,22 @@ Create an instance: `const establishment = client.establishment`
 
 #### Example: Load
 
-```ts
-const establishment = await client.establishment.load({ id: 'establishment_id' })
+```php
+// load() returns the bare Establishment record (throws on error).
+$establishment = $client->Establishment()->load(["id" => "establishment_id"]);
 ```
 
 #### Example: List
 
-```ts
-const establishments = await client.establishment.list()
+```php
+// list() returns an array of Establishment records (throws on error).
+$establishments = $client->Establishment()->list();
 ```
 
 
 ### Rating
 
-Create an instance: `const rating = client.rating`
+Create an instance: `$rating = $client->Rating();`
 
 #### Operations
 
@@ -437,8 +445,9 @@ Create an instance: `const rating = client.rating`
 
 #### Example: List
 
-```ts
-const ratings = await client.rating.list()
+```php
+// list() returns an array of Rating records (throws on error).
+$ratings = $client->Rating()->list();
 ```
 
 
@@ -513,7 +522,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$authority = $client->authority();
+$authority = $client->Authority();
 $authority->load(["id" => "example_id"]);
 
 // $authority->dataGet() now returns the loaded authority data

@@ -145,7 +145,7 @@ Alias for `FoodHygieneRatingSDK.test()`.
 ## AuthorityEntity
 
 ```ts
-const authority = client.authority
+const authority = client.Authority()
 ```
 
 ### Fields
@@ -171,7 +171,7 @@ const authority = client.authority
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.authority.list()
+const results = await client.Authority().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -179,7 +179,7 @@ const results = await client.authority.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.authority.load({ id: 'authority_id' })
+const result = await client.Authority().load({ id: 'authority_id' })
 ```
 
 ### Common Methods
@@ -213,7 +213,7 @@ Return a copy of the entity options.
 ## BusinessTypeEntity
 
 ```ts
-const business_type = client.business_type
+const business_type = client.BusinessType()
 ```
 
 ### Fields
@@ -230,7 +230,7 @@ const business_type = client.business_type
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.business_type.list()
+const results = await client.BusinessType().list()
 ```
 
 ### Common Methods
@@ -264,7 +264,7 @@ Return a copy of the entity options.
 ## EstablishmentEntity
 
 ```ts
-const establishment = client.establishment
+const establishment = client.Establishment()
 ```
 
 ### Fields
@@ -299,7 +299,7 @@ const establishment = client.establishment
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.establishment.list()
+const results = await client.Establishment().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -307,7 +307,7 @@ const results = await client.establishment.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.establishment.load({ id: 'establishment_id' })
+const result = await client.Establishment().load({ id: 'establishment_id' })
 ```
 
 ### Common Methods
@@ -341,7 +341,7 @@ Return a copy of the entity options.
 ## RatingEntity
 
 ```ts
-const rating = client.rating
+const rating = client.Rating()
 ```
 
 ### Fields
@@ -360,7 +360,7 @@ const rating = client.rating
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.rating.list()
+const results = await client.Rating().list()
 ```
 
 ### Common Methods

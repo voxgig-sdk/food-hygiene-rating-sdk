@@ -98,7 +98,7 @@ same parameters as `direct()`. Raises on error.
 ## AuthorityEntity
 
 ```ruby
-authority = client.authority
+authority = client.Authority
 ```
 
 ### Fields
@@ -124,7 +124,7 @@ authority = client.authority
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.authority.list(nil)
+results = client.Authority.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -132,7 +132,7 @@ results = client.authority.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.authority.load({ "id" => "authority_id" })
+result = client.Authority.load({ "id" => "authority_id" })
 ```
 
 ### Common Methods
@@ -168,7 +168,7 @@ Return the entity name.
 ## BusinessTypeEntity
 
 ```ruby
-business_type = client.business_type
+business_type = client.BusinessType
 ```
 
 ### Fields
@@ -185,7 +185,7 @@ business_type = client.business_type
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.business_type.list(nil)
+results = client.BusinessType.list(nil)
 ```
 
 ### Common Methods
@@ -221,7 +221,7 @@ Return the entity name.
 ## EstablishmentEntity
 
 ```ruby
-establishment = client.establishment
+establishment = client.Establishment
 ```
 
 ### Fields
@@ -256,7 +256,7 @@ establishment = client.establishment
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.establishment.list(nil)
+results = client.Establishment.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -264,7 +264,7 @@ results = client.establishment.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.establishment.load({ "id" => "establishment_id" })
+result = client.Establishment.load({ "id" => "establishment_id" })
 ```
 
 ### Common Methods
@@ -300,7 +300,7 @@ Return the entity name.
 ## RatingEntity
 
 ```ruby
-rating = client.rating
+rating = client.Rating
 ```
 
 ### Fields
@@ -319,7 +319,7 @@ rating = client.rating
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.rating.list(nil)
+results = client.Rating.list(nil)
 ```
 
 ### Common Methods

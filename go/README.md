@@ -30,53 +30,39 @@ go mod edit -replace github.com/voxgig-sdk/food-hygiene-rating-sdk/go=../food-hy
 This tutorial walks through creating a client, listing entities, and
 loading a specific record.
 
-### 1. Create a client
+### Quickstart
+
+A complete program: create a client, then call the entity operations.
+Each operation returns `(value, error)` — the value is the data itself
+(there is no `{ok, data}` wrapper), so check `err` and use the value
+directly.
 
 ```go
 package main
 
 import (
     "fmt"
-
     sdk "github.com/voxgig-sdk/food-hygiene-rating-sdk/go"
-    "github.com/voxgig-sdk/food-hygiene-rating-sdk/go/core"
 )
 
 func main() {
     client := sdk.New()
-```
 
-### 2. List authoritys
-
-```go
-    result, err := client.Authority(nil).List(nil, nil)
+    // List authority records — the value is the array of records itself.
+    authoritys, err := client.Authority(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
-
-    rm := core.ToMapAny(result)
-    if rm["ok"] == true {
-        for _, item := range rm["data"].([]any) {
-            p := core.ToMapAny(item)
-            fmt.Println(p["id"], p["name"])
-        }
+    for _, item := range authoritys.([]any) {
+        fmt.Println(item)
     }
-```
 
-### 3. Load an authority
-
-```go
-    result, err = client.Authority(nil).Load(
-        map[string]any{"id": "example_id"}, nil,
-    )
+    // Load a single authority — the value is the loaded record.
+    authority, err := client.Authority(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }
-
-    rm = core.ToMapAny(result)
-    if rm["ok"] == true {
-        fmt.Println(rm["data"])
-    }
+    fmt.Println(authority)
 }
 ```
 
@@ -127,10 +113,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-result, err := client.Authority(nil).Load(
+authority, err := client.Authority(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
-// result contains mock response data
+if err != nil {
+    panic(err)
+}
+fmt.Println(authority) // the loaded mock data
 ```
 
 ### Use a custom fetch function
@@ -207,9 +196,9 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `GetUtility` | `() *Utility` | Copy of the SDK utility object. |
 | `Prepare` | `(fetchargs map[string]any) (map[string]any, error)` | Build an HTTP request definition without sending. |
 | `Direct` | `(fetchargs map[string]any) (map[string]any, error)` | Build and send an HTTP request. |
-| `Authority` | `(data map[string]any) FoodHygieneRatingEntity` | Create a Authority entity instance. |
+| `Authority` | `(data map[string]any) FoodHygieneRatingEntity` | Create an Authority entity instance. |
 | `BusinessType` | `(data map[string]any) FoodHygieneRatingEntity` | Create a BusinessType entity instance. |
-| `Establishment` | `(data map[string]any) FoodHygieneRatingEntity` | Create a Establishment entity instance. |
+| `Establishment` | `(data map[string]any) FoodHygieneRatingEntity` | Create an Establishment entity instance. |
 | `Rating` | `(data map[string]any) FoodHygieneRatingEntity` | Create a Rating entity instance. |
 
 ### Entity interface (FoodHygieneRatingEntity)
@@ -230,17 +219,24 @@ All entities implement the `FoodHygieneRatingEntity` interface.
 
 ### Result shape
 
-Entity operations return `(any, error)`. The `any` value is a
-`map[string]any` with these keys:
+Entity operations return `(value, error)`. The `value` is the
+operation's data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `"ok"` | `bool` | `true` if the HTTP status is 2xx. |
-| `"status"` | `int` | HTTP status code. |
-| `"headers"` | `map[string]any` | Response headers. |
-| `"data"` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `List` | a `[]any` of entity records |
 
-On error, `"ok"` is `false` and `"err"` contains the error value.
+Check `err` first, then use the value directly (or the typed
+`...Typed` variants, which return the entity's model struct and a typed
+slice):
+
+    authority, err := client.Authority(nil).Load(map[string]any{"id": "example_id"}, nil)
+    if err != nil { /* handle */ }
+    // authority is the loaded record
+
+Only `Direct()` returns a response envelope — a `map[string]any` with
+`"ok"`, `"status"`, `"headers"`, and `"data"` keys.
 
 ### Entities
 
@@ -352,13 +348,21 @@ Create an instance: `authority := client.Authority(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Authority(nil).Load(map[string]any{"id": "authority_id"}, nil)
+authority, err := client.Authority(nil).Load(map[string]any{"id": "authority_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(authority) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Authority(nil).List(nil, nil)
+authoritys, err := client.Authority(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(authoritys) // the array of records
 ```
 
 
@@ -382,7 +386,11 @@ Create an instance: `business_type := client.BusinessType(nil)`
 #### Example: List
 
 ```go
-results, err := client.BusinessType(nil).List(nil, nil)
+business_types, err := client.BusinessType(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(business_types) // the array of records
 ```
 
 
@@ -425,13 +433,21 @@ Create an instance: `establishment := client.Establishment(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Establishment(nil).Load(map[string]any{"id": "establishment_id"}, nil)
+establishment, err := client.Establishment(nil).Load(map[string]any{"id": "establishment_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(establishment) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Establishment(nil).List(nil, nil)
+establishments, err := client.Establishment(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(establishments) // the array of records
 ```
 
 
@@ -457,7 +473,11 @@ Create an instance: `rating := client.Rating(nil)`
 #### Example: List
 
 ```go
-results, err := client.Rating(nil).List(nil, nil)
+ratings, err := client.Rating(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(ratings) // the array of records
 ```
 
 

@@ -28,16 +28,14 @@ require_relative "FoodHygieneRating_sdk"
 client = FoodHygieneRatingSDK.new
 ```
 
-### 2. List authoritys
+### 2. List authority records
 
 ```ruby
 begin
-  result = client.authority.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Authority records — iterate directly.
+  authoritys = client.Authority.list
+  authoritys.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -48,8 +46,9 @@ end
 
 ```ruby
 begin
-  result = client.authority.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Authority record (raises on error).
+  authority = client.Authority.load({ "id" => "example_id" })
+  puts authority
 rescue => err
   warn "load failed: #{err}"
 end
@@ -96,13 +95,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = FoodHygieneRatingSDK.test
+client = FoodHygieneRatingSDK.test({
+  "entity" => { "authority" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.authority.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+authority = client.Authority.load({ "id" => "test01" })
+puts authority
 ```
 
 ### Use a custom fetch function
@@ -178,9 +181,9 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
-| `Authority` | `(data) -> AuthorityEntity` | Create a Authority entity instance. |
+| `Authority` | `(data) -> AuthorityEntity` | Create an Authority entity instance. |
 | `BusinessType` | `(data) -> BusinessTypeEntity` | Create a BusinessType entity instance. |
-| `Establishment` | `(data) -> EstablishmentEntity` | Create a Establishment entity instance. |
+| `Establishment` | `(data) -> EstablishmentEntity` | Create an Establishment entity instance. |
 | `Rating` | `(data) -> RatingEntity` | Create a Rating entity instance. |
 
 ### Entity interface
@@ -300,7 +303,7 @@ API path: `/Ratings`
 
 ### Authority
 
-Create an instance: `const authority = client.authority`
+Create an instance: `authority = client.Authority`
 
 #### Operations
 
@@ -327,20 +330,22 @@ Create an instance: `const authority = client.authority`
 
 #### Example: Load
 
-```ts
-const authority = await client.authority.load({ id: 'authority_id' })
+```ruby
+# load returns the bare Authority record (raises on error).
+authority = client.Authority.load({ "id" => "authority_id" })
 ```
 
 #### Example: List
 
-```ts
-const authoritys = await client.authority.list()
+```ruby
+# list returns an Array of Authority records (raises on error).
+authoritys = client.Authority.list
 ```
 
 
 ### BusinessType
 
-Create an instance: `const business_type = client.business_type`
+Create an instance: `business_type = client.BusinessType`
 
 #### Operations
 
@@ -357,14 +362,15 @@ Create an instance: `const business_type = client.business_type`
 
 #### Example: List
 
-```ts
-const business_types = await client.business_type.list()
+```ruby
+# list returns an Array of BusinessType records (raises on error).
+business_types = client.BusinessType.list
 ```
 
 
 ### Establishment
 
-Create an instance: `const establishment = client.establishment`
+Create an instance: `establishment = client.Establishment`
 
 #### Operations
 
@@ -400,20 +406,22 @@ Create an instance: `const establishment = client.establishment`
 
 #### Example: Load
 
-```ts
-const establishment = await client.establishment.load({ id: 'establishment_id' })
+```ruby
+# load returns the bare Establishment record (raises on error).
+establishment = client.Establishment.load({ "id" => "establishment_id" })
 ```
 
 #### Example: List
 
-```ts
-const establishments = await client.establishment.list()
+```ruby
+# list returns an Array of Establishment records (raises on error).
+establishments = client.Establishment.list
 ```
 
 
 ### Rating
 
-Create an instance: `const rating = client.rating`
+Create an instance: `rating = client.Rating`
 
 #### Operations
 
@@ -432,8 +440,9 @@ Create an instance: `const rating = client.rating`
 
 #### Example: List
 
-```ts
-const ratings = await client.rating.list()
+```ruby
+# list returns an Array of Rating records (raises on error).
+ratings = client.Rating.list
 ```
 
 
@@ -508,7 +517,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-authority = client.authority
+authority = client.Authority
 authority.load({ "id" => "example_id" })
 
 # authority.data_get now returns the loaded authority data

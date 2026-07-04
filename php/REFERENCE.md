@@ -97,7 +97,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## AuthorityEntity
 
 ```php
-$authority = $client->authority();
+$authority = $client->Authority();
 ```
 
 ### Fields
@@ -123,7 +123,7 @@ $authority = $client->authority();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->authority()->list([]);
+$results = $client->Authority()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -131,7 +131,7 @@ $results = $client->authority()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->authority()->load(["id" => "authority_id"]);
+$result = $client->Authority()->load(["id" => "authority_id"]);
 ```
 
 ### Common Methods
@@ -167,7 +167,7 @@ Return the entity name.
 ## BusinessTypeEntity
 
 ```php
-$business_type = $client->business_type();
+$business_type = $client->BusinessType();
 ```
 
 ### Fields
@@ -184,7 +184,7 @@ $business_type = $client->business_type();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->business_type()->list([]);
+$results = $client->BusinessType()->list([]);
 ```
 
 ### Common Methods
@@ -220,7 +220,7 @@ Return the entity name.
 ## EstablishmentEntity
 
 ```php
-$establishment = $client->establishment();
+$establishment = $client->Establishment();
 ```
 
 ### Fields
@@ -255,7 +255,7 @@ $establishment = $client->establishment();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->establishment()->list([]);
+$results = $client->Establishment()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -263,7 +263,7 @@ $results = $client->establishment()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->establishment()->load(["id" => "establishment_id"]);
+$result = $client->Establishment()->load(["id" => "establishment_id"]);
 ```
 
 ### Common Methods
@@ -299,7 +299,7 @@ Return the entity name.
 ## RatingEntity
 
 ```php
-$rating = $client->rating();
+$rating = $client->Rating();
 ```
 
 ### Fields
@@ -318,7 +318,7 @@ $rating = $client->rating();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->rating()->list([]);
+$results = $client->Rating()->list([]);
 ```
 
 ### Common Methods

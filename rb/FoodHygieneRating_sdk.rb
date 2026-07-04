@@ -208,52 +208,28 @@ class FoodHygieneRatingSDK
   end
 
 
-  # Idiomatic facade: client.authority.list / client.authority.load({ "id" => ... })
-  def authority
-    require_relative 'entity/authority_entity'
-    @authority ||= AuthorityEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.authority instead.
+  # Canonical facade: client.Authority.list / client.Authority.load({ "id" => ... })
   def Authority(data = nil)
     require_relative 'entity/authority_entity'
     AuthorityEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.business_type.list / client.business_type.load({ "id" => ... })
-  def business_type
-    require_relative 'entity/business_type_entity'
-    @business_type ||= BusinessTypeEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.business_type instead.
+  # Canonical facade: client.BusinessType.list / client.BusinessType.load({ "id" => ... })
   def BusinessType(data = nil)
     require_relative 'entity/business_type_entity'
     BusinessTypeEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.establishment.list / client.establishment.load({ "id" => ... })
-  def establishment
-    require_relative 'entity/establishment_entity'
-    @establishment ||= EstablishmentEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.establishment instead.
+  # Canonical facade: client.Establishment.list / client.Establishment.load({ "id" => ... })
   def Establishment(data = nil)
     require_relative 'entity/establishment_entity'
     EstablishmentEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.rating.list / client.rating.load({ "id" => ... })
-  def rating
-    require_relative 'entity/rating_entity'
-    @rating ||= RatingEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.rating instead.
+  # Canonical facade: client.Rating.list / client.Rating.load({ "id" => ... })
   def Rating(data = nil)
     require_relative 'entity/rating_entity'
     RatingEntity.new(self, data)

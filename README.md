@@ -26,9 +26,11 @@ import { FoodHygieneRatingSDK } from '@voxgig-sdk/food-hygiene-rating'
 
 const client = new FoodHygieneRatingSDK()
 
-// List all authoritys
-const authoritys = await client.authority.list()
-console.log(authoritys.data)
+// List all authoritys (returns Authority[])
+const authoritys = await client.Authority().list()
+for (const authority of authoritys) {
+  console.log(authority)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -86,12 +88,13 @@ from foodhygienerating_sdk import FoodHygieneRatingSDK
 
 client = FoodHygieneRatingSDK()
 
-# List all authoritys
-authoritys = client.authority.list()
-print(authoritys)
+# List all authoritys (returns a list, raises on error)
+authoritys = client.Authority().list({})
+for authority in authoritys:
+    print(authority)
 
-# Load a specific authority
-authority = client.authority.load({"id": "example_id"})
+# Load a specific authority (returns the record, raises on error)
+authority = client.Authority().load({"id": "example_id"})
 print(authority)
 ```
 
@@ -103,12 +106,12 @@ require_once 'foodhygienerating_sdk.php';
 
 $client = new FoodHygieneRatingSDK();
 
-// List all authoritys (throws on error)
-$authoritys = $client->authority()->list();
+// List all authoritys (returns an array; throws on error)
+$authoritys = $client->Authority()->list();
 print_r($authoritys);
 
-// Load a specific authority
-$authority = $client->authority()->load(["id" => "example_id"]);
+// Load a specific authority (returns the bare record; throws on error)
+$authority = $client->Authority()->load(["id" => "example_id"]);
 print_r($authority);
 ```
 
@@ -131,12 +134,12 @@ require_relative "FoodHygieneRating_sdk"
 
 client = FoodHygieneRatingSDK.new
 
-# List all authoritys
-authoritys = client.authority.list
+# List all authoritys (returns an Array; raises on error)
+authoritys = client.Authority.list
 puts authoritys
 
-# Load a specific authority
-authority = client.authority.load({ "id" => "example_id" })
+# Load a specific authority (returns the bare record; raises on error)
+authority = client.Authority.load({ "id" => "example_id" })
 puts authority
 ```
 
@@ -148,11 +151,11 @@ local sdk = require("food-hygiene-rating_sdk")
 local client = sdk.new()
 
 -- List all authoritys
-local authoritys, err = client:authority():list()
+local authoritys, err = client:Authority():list()
 print(authoritys)
 
 -- Load a specific authority
-local authority, err = client:authority():load({ id = "example_id" })
+local authority, err = client:Authority():load({ id = "example_id" })
 print(authority)
 ```
 
@@ -165,22 +168,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = FoodHygieneRatingSDK.test()
-const result = await client.authority.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const authority = await client.Authority().load({ id: 'test01' })
+// authority is a bare Authority populated with mock data
+console.log(authority)
 ```
 
 ### Python
 
 ```python
 client = FoodHygieneRatingSDK.test()
-result = client.authority.load({"id": "test01"})
+authority = client.Authority().load({"id": "test01"})
+print(authority)
 ```
 
 ### PHP
 
 ```php
-$client = FoodHygieneRatingSDK::test();
-$result = $client->authority()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = FoodHygieneRatingSDK::test([
+    "entity" => ["authority" => ["test01" => ["id" => "test01"]]],
+]);
+$authority = $client->Authority()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -195,15 +203,18 @@ result, err := client.Authority(nil).Load(
 ### Ruby
 
 ```ruby
-client = FoodHygieneRatingSDK.test
-result = client.authority.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = FoodHygieneRatingSDK.test({
+  "entity" => { "authority" => { "test01" => { "id" => "test01" } } },
+})
+authority = client.Authority.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:authority():load({ id = "test01" })
+local result, err = client:Authority():load({ id = "test01" })
 ```
 
 ## How it works
@@ -251,6 +262,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

@@ -92,7 +92,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## AuthorityEntity
 
 ```python
-authority = client.authority
+authority = client.Authority()
 ```
 
 ### Fields
@@ -118,7 +118,9 @@ authority = client.authority
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.authority.list({})
+results = client.Authority().list({})
+for authority in results:
+    print(authority)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -126,7 +128,7 @@ results = client.authority.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.authority.load({"id": "authority_id"})
+result = client.Authority().load({"id": "authority_id"})
 ```
 
 ### Common Methods
@@ -161,7 +163,7 @@ Return the entity name.
 ## BusinessTypeEntity
 
 ```python
-business_type = client.business_type
+business_type = client.BusinessType()
 ```
 
 ### Fields
@@ -178,7 +180,9 @@ business_type = client.business_type
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.business_type.list({})
+results = client.BusinessType().list({})
+for business_type in results:
+    print(business_type)
 ```
 
 ### Common Methods
@@ -213,7 +217,7 @@ Return the entity name.
 ## EstablishmentEntity
 
 ```python
-establishment = client.establishment
+establishment = client.Establishment()
 ```
 
 ### Fields
@@ -248,7 +252,9 @@ establishment = client.establishment
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.establishment.list({})
+results = client.Establishment().list({})
+for establishment in results:
+    print(establishment)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -256,7 +262,7 @@ results = client.establishment.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.establishment.load({"id": "establishment_id"})
+result = client.Establishment().load({"id": "establishment_id"})
 ```
 
 ### Common Methods
@@ -291,7 +297,7 @@ Return the entity name.
 ## RatingEntity
 
 ```python
-rating = client.rating
+rating = client.Rating()
 ```
 
 ### Fields
@@ -310,7 +316,9 @@ rating = client.rating
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.rating.list({})
+results = client.Rating().list({})
+for rating in results:
+    print(rating)
 ```
 
 ### Common Methods

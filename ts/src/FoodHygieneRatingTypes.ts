@@ -23,14 +23,29 @@ export interface AuthorityLoadMatch {
   id: number
 }
 
-export type AuthorityListMatch = Partial<Authority>
+export interface AuthorityListMatch {
+  email?: string
+  establishment_count?: number
+  file_name?: string
+  file_name_welsh?: string
+  friendly_name?: string
+  local_authority_id?: number
+  local_authority_id_code?: string
+  name?: string
+  region_name?: string
+  scheme_url?: string
+  url?: string
+}
 
 export interface BusinessType {
   business_type_id?: number
   business_type_name?: string
 }
 
-export type BusinessTypeListMatch = Partial<BusinessType>
+export interface BusinessTypeListMatch {
+  business_type_id?: number
+  business_type_name?: string
+}
 
 export interface Establishment {
   address_line1?: string
@@ -59,7 +74,28 @@ export interface EstablishmentLoadMatch {
   id: number
 }
 
-export type EstablishmentListMatch = Partial<Establishment>
+export interface EstablishmentListMatch {
+  address_line1?: string
+  address_line2?: string
+  address_line3?: string
+  address_line4?: string
+  business_name?: string
+  business_type?: string
+  business_type_id?: number
+  fhrsid?: number
+  geocode?: Record<string, any>
+  local_authority_business_id?: string
+  local_authority_code?: string
+  local_authority_email_address?: string
+  local_authority_name?: string
+  local_authority_web_site?: string
+  new_rating_pending?: boolean
+  post_code?: string
+  rating_date?: string
+  rating_key?: string
+  rating_value?: string
+  scheme_type?: string
+}
 
 export interface Rating {
   rating_id?: number
@@ -68,5 +104,10 @@ export interface Rating {
   scheme_type?: string
 }
 
-export type RatingListMatch = Partial<Rating>
+export interface RatingListMatch {
+  rating_id?: number
+  rating_key?: string
+  rating_name?: string
+  scheme_type?: string
+}
 

@@ -4,6 +4,11 @@
 
 The TypeScript SDK for the FoodHygieneRating API — a type-safe, entity-oriented client with full async/await support.
 
+The API is exposed as capitalised, semantic **Entities** — e.g.
+`client.Authority()` — each with a small set of operations (`list`, `load`)
+instead of raw URL paths and query parameters. This keeps the surface
+predictable and low-friction for both humans and AI agents.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -46,10 +51,39 @@ for (const authority of authoritys) {
 
 ```ts
 try {
-  const authority = await client.Authority().load({ id: 'example_id' })
+  const authority = await client.Authority().load({ id: 1 })
   console.log(authority)
 } catch (err) {
   console.error('load failed:', err)
+}
+```
+
+
+## Error handling
+
+Entity operations reject on failure, so wrap them in `try` / `catch`:
+
+```ts
+try {
+  const authoritys = await client.Authority().list()
+  console.log(authoritys)
+} catch (err) {
+  console.error('list failed:', err)
+}
+```
+
+The low-level `direct()` method does **not** throw — it returns the
+value or an `Error`, so check the result before using it:
+
+```ts
+const result = await client.direct({
+  path: '/api/resource/{id}',
+  method: 'GET',
+  params: { id: 'example_id' },
+})
+
+if (result instanceof Error) {
+  throw result
 }
 ```
 
@@ -98,7 +132,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = FoodHygieneRatingSDK.test()
 
-const authority = await client.Authority().load({ id: 'test01' })
+const authority = await client.Authority().list()
 // authority is a bare entity populated with mock response data
 console.log(authority)
 ```
@@ -117,12 +151,12 @@ Entity instances remember their last match and data:
 ```ts
 const entity = client.Authority()
 
-// First call sets internal match
-await entity.load({ id: 'example' })
+// First call runs the operation and stores its result
+await entity.list()
 
-// Subsequent calls reuse the stored match
+// Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data.id) // 'example'
+console.log(data)
 ```
 
 ### Add custom middleware
@@ -215,11 +249,8 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `load(reqmatch?, ctrl?): Promise<Entity>` | Load a single entity by match criteria. |
 | `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
-| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
-| `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity. |
-| `remove` | `remove(reqmatch?, ctrl?): Promise<void>` | Remove an entity. |
-| `data` | `data(data?): any` | Get or set entity data. |
-| `match` | `match(match?): any` | Get or set entity match criteria. |
+| `data` | `data(data?: Partial<Entity>): Entity` | Get or set entity data. |
+| `match` | `match(match?: Partial<Entity>): Partial<Entity>` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
 | `client` | `client(): FoodHygieneRatingSDK` | Return the parent SDK client. |
 | `entopts` | `entopts(): object` | Return a copy of the entity options. |
@@ -229,10 +260,9 @@ All entities share the same interface.
 Entity operations resolve to the entity data directly — there is no
 result envelope:
 
-- `load`, `create` and `update` resolve to a single entity object.
+- `load` resolves to a single entity object.
 - `list` resolves to an **array** of entity objects (iterate it directly;
   there is no `.data` and no `.ok`).
-- `remove` resolves to `void`.
 
 On a failed request these methods **throw**, so wrap calls in
 `try`/`catch` to handle errors. Only `direct()` returns the result
@@ -361,22 +391,22 @@ Create an instance: `const authority = client.Authority()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `email` | ``$STRING`` |  |
-| `establishment_count` | ``$INTEGER`` |  |
-| `file_name` | ``$STRING`` |  |
-| `file_name_welsh` | ``$STRING`` |  |
-| `friendly_name` | ``$STRING`` |  |
-| `local_authority_id` | ``$INTEGER`` |  |
-| `local_authority_id_code` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `region_name` | ``$STRING`` |  |
-| `scheme_url` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `email` | `string` |  |
+| `establishment_count` | `number` |  |
+| `file_name` | `string` |  |
+| `file_name_welsh` | `string` |  |
+| `friendly_name` | `string` |  |
+| `local_authority_id` | `number` |  |
+| `local_authority_id_code` | `string` |  |
+| `name` | `string` |  |
+| `region_name` | `string` |  |
+| `scheme_url` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const authority = await client.Authority().load({ id: 'authority_id' })
+const authority = await client.Authority().load({ id: 1 })
 ```
 
 #### Example: List
@@ -400,8 +430,8 @@ Create an instance: `const business_type = client.BusinessType()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `business_type_id` | ``$INTEGER`` |  |
-| `business_type_name` | ``$STRING`` |  |
+| `business_type_id` | `number` |  |
+| `business_type_name` | `string` |  |
 
 #### Example: List
 
@@ -425,31 +455,31 @@ Create an instance: `const establishment = client.Establishment()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address_line1` | ``$STRING`` |  |
-| `address_line2` | ``$STRING`` |  |
-| `address_line3` | ``$STRING`` |  |
-| `address_line4` | ``$STRING`` |  |
-| `business_name` | ``$STRING`` |  |
-| `business_type` | ``$STRING`` |  |
-| `business_type_id` | ``$INTEGER`` |  |
-| `fhrsid` | ``$INTEGER`` |  |
-| `geocode` | ``$OBJECT`` |  |
-| `local_authority_business_id` | ``$STRING`` |  |
-| `local_authority_code` | ``$STRING`` |  |
-| `local_authority_email_address` | ``$STRING`` |  |
-| `local_authority_name` | ``$STRING`` |  |
-| `local_authority_web_site` | ``$STRING`` |  |
-| `new_rating_pending` | ``$BOOLEAN`` |  |
-| `post_code` | ``$STRING`` |  |
-| `rating_date` | ``$STRING`` |  |
-| `rating_key` | ``$STRING`` |  |
-| `rating_value` | ``$STRING`` |  |
-| `scheme_type` | ``$STRING`` |  |
+| `address_line1` | `string` |  |
+| `address_line2` | `string` |  |
+| `address_line3` | `string` |  |
+| `address_line4` | `string` |  |
+| `business_name` | `string` |  |
+| `business_type` | `string` |  |
+| `business_type_id` | `number` |  |
+| `fhrsid` | `number` |  |
+| `geocode` | `Record<string, any>` |  |
+| `local_authority_business_id` | `string` |  |
+| `local_authority_code` | `string` |  |
+| `local_authority_email_address` | `string` |  |
+| `local_authority_name` | `string` |  |
+| `local_authority_web_site` | `string` |  |
+| `new_rating_pending` | `boolean` |  |
+| `post_code` | `string` |  |
+| `rating_date` | `string` |  |
+| `rating_key` | `string` |  |
+| `rating_value` | `string` |  |
+| `scheme_type` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const establishment = await client.Establishment().load({ id: 'establishment_id' })
+const establishment = await client.Establishment().load({ id: 1 })
 ```
 
 #### Example: List
@@ -473,10 +503,10 @@ Create an instance: `const rating = client.Rating()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `rating_id` | ``$INTEGER`` |  |
-| `rating_key` | ``$STRING`` |  |
-| `rating_name` | ``$STRING`` |  |
-| `scheme_type` | ``$STRING`` |  |
+| `rating_id` | `number` |  |
+| `rating_key` | `string` |  |
+| `rating_name` | `string` |  |
+| `scheme_type` | `string` |  |
 
 #### Example: List
 
@@ -485,12 +515,16 @@ const ratings = await client.Rating().list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -507,11 +541,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller.
-
-An unexpected exception triggers the `PreUnexpected` hook before
-propagating.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -547,16 +579,16 @@ import { FoodHygieneRatingSDK } from '@voxgig-sdk/food-hygiene-rating'
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
 const authority = client.Authority()
-await authority.load({ id: "example_id" })
+await authority.list()
 
-// authority.data() now returns the loaded authority data
-// authority.match() returns { id: "example_id" }
+// authority.data() now returns the authority data from the last `list`
+// authority.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

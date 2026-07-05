@@ -34,7 +34,7 @@ class AuthorityLoadMatch
     public int $id;
 }
 
-/** Match filter for Authority#list (any subset of Authority fields). */
+/** Request payload for Authority#list. */
 class AuthorityListMatch
 {
     public ?string $email = null;
@@ -57,7 +57,7 @@ class BusinessType
     public ?string $business_type_name = null;
 }
 
-/** Match filter for BusinessType#list (any subset of BusinessType fields). */
+/** Request payload for BusinessType#list. */
 class BusinessTypeListMatch
 {
     public ?int $business_type_id = null;
@@ -95,7 +95,7 @@ class EstablishmentLoadMatch
     public int $id;
 }
 
-/** Match filter for Establishment#list (any subset of Establishment fields). */
+/** Request payload for Establishment#list. */
 class EstablishmentListMatch
 {
     public ?string $address_line1 = null;
@@ -129,7 +129,7 @@ class Rating
     public ?string $scheme_type = null;
 }
 
-/** Match filter for Rating#list (any subset of Rating fields). */
+/** Request payload for Rating#list. */
 class RatingListMatch
 {
     public ?int $rating_id = null;

@@ -8,7 +8,7 @@ Complete API reference for the FoodHygieneRating Python SDK.
 ### Constructor
 
 ```python
-from food-hygiene-rating_sdk import FoodHygieneRatingSDK
+from foodhygienerating_sdk import FoodHygieneRatingSDK
 
 client = FoodHygieneRatingSDK(options)
 ```
@@ -99,26 +99,26 @@ authority = client.Authority()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | ``$STRING`` | No |  |
-| `establishment_count` | ``$INTEGER`` | No |  |
-| `file_name` | ``$STRING`` | No |  |
-| `file_name_welsh` | ``$STRING`` | No |  |
-| `friendly_name` | ``$STRING`` | No |  |
-| `local_authority_id` | ``$INTEGER`` | No |  |
-| `local_authority_id_code` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `region_name` | ``$STRING`` | No |  |
-| `scheme_url` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `email` | `str` | No |  |
+| `establishment_count` | `int` | No |  |
+| `file_name` | `str` | No |  |
+| `file_name_welsh` | `str` | No |  |
+| `friendly_name` | `str` | No |  |
+| `local_authority_id` | `int` | No |  |
+| `local_authority_id_code` | `str` | No |  |
+| `name` | `str` | No |  |
+| `region_name` | `str` | No |  |
+| `scheme_url` | `str` | No |  |
+| `url` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Authority().list({})
+results = client.Authority().list()
 for authority in results:
     print(authority)
 ```
@@ -170,17 +170,17 @@ business_type = client.BusinessType()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `business_type_id` | ``$INTEGER`` | No |  |
-| `business_type_name` | ``$STRING`` | No |  |
+| `business_type_id` | `int` | No |  |
+| `business_type_name` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.BusinessType().list({})
+results = client.BusinessType().list()
 for business_type in results:
     print(business_type)
 ```
@@ -224,35 +224,35 @@ establishment = client.Establishment()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address_line1` | ``$STRING`` | No |  |
-| `address_line2` | ``$STRING`` | No |  |
-| `address_line3` | ``$STRING`` | No |  |
-| `address_line4` | ``$STRING`` | No |  |
-| `business_name` | ``$STRING`` | No |  |
-| `business_type` | ``$STRING`` | No |  |
-| `business_type_id` | ``$INTEGER`` | No |  |
-| `fhrsid` | ``$INTEGER`` | No |  |
-| `geocode` | ``$OBJECT`` | No |  |
-| `local_authority_business_id` | ``$STRING`` | No |  |
-| `local_authority_code` | ``$STRING`` | No |  |
-| `local_authority_email_address` | ``$STRING`` | No |  |
-| `local_authority_name` | ``$STRING`` | No |  |
-| `local_authority_web_site` | ``$STRING`` | No |  |
-| `new_rating_pending` | ``$BOOLEAN`` | No |  |
-| `post_code` | ``$STRING`` | No |  |
-| `rating_date` | ``$STRING`` | No |  |
-| `rating_key` | ``$STRING`` | No |  |
-| `rating_value` | ``$STRING`` | No |  |
-| `scheme_type` | ``$STRING`` | No |  |
+| `address_line1` | `str` | No |  |
+| `address_line2` | `str` | No |  |
+| `address_line3` | `str` | No |  |
+| `address_line4` | `str` | No |  |
+| `business_name` | `str` | No |  |
+| `business_type` | `str` | No |  |
+| `business_type_id` | `int` | No |  |
+| `fhrsid` | `int` | No |  |
+| `geocode` | `dict` | No |  |
+| `local_authority_business_id` | `str` | No |  |
+| `local_authority_code` | `str` | No |  |
+| `local_authority_email_address` | `str` | No |  |
+| `local_authority_name` | `str` | No |  |
+| `local_authority_web_site` | `str` | No |  |
+| `new_rating_pending` | `bool` | No |  |
+| `post_code` | `str` | No |  |
+| `rating_date` | `str` | No |  |
+| `rating_key` | `str` | No |  |
+| `rating_value` | `str` | No |  |
+| `scheme_type` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Establishment().list({})
+results = client.Establishment().list()
 for establishment in results:
     print(establishment)
 ```
@@ -304,19 +304,19 @@ rating = client.Rating()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `rating_id` | ``$INTEGER`` | No |  |
-| `rating_key` | ``$STRING`` | No |  |
-| `rating_name` | ``$STRING`` | No |  |
-| `scheme_type` | ``$STRING`` | No |  |
+| `rating_id` | `int` | No |  |
+| `rating_key` | `str` | No |  |
+| `rating_name` | `str` | No |  |
+| `scheme_type` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Rating().list({})
+results = client.Rating().list()
 for rating in results:
     print(rating)
 ```

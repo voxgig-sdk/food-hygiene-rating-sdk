@@ -4,6 +4,8 @@
 
 The PHP SDK for the FoodHygieneRating API — an entity-oriented client using PHP conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `$client->Authority()` — with named operations (`list`/`load`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -36,7 +38,7 @@ try {
     // list() returns an array of Authority records — iterate directly.
     $authoritys = $client->Authority()->list();
     foreach ($authoritys as $item) {
-        echo $item["id"] . " " . $item["name"] . "\n";
+        echo $item["email"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -52,6 +54,37 @@ try {
     print_r($authority);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
+}
+```
+
+
+## Error handling
+
+Entity operations throw a `\Throwable` on failure, so wrap them in
+`try` / `catch`:
+
+```php
+try {
+    $authoritys = $client->Authority()->list();
+} catch (\Throwable $err) {
+    echo "Error: " . $err->getMessage();
+}
+```
+
+`direct()` does **not** throw — it returns the result array. Branch on
+`ok`; on failure `status` holds the HTTP status (for error responses) and
+`err` holds a transport error, so read both defensively:
+
+```php
+$result = $client->direct([
+    "path" => "/api/resource/{id}",
+    "method" => "GET",
+    "params" => ["id" => "example_id"],
+]);
+
+if (! $result["ok"]) {
+    $err = $result["err"] ?? null;
+    echo "request failed: " . ($err ? $err->getMessage() : "HTTP " . $result["status"]);
 }
 ```
 
@@ -75,7 +108,10 @@ if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
 } else {
-    echo "Error: " . $result["err"]->getMessage();
+    // On an HTTP error status there is no err (only a transport failure sets
+    // it), so fall back to the status code.
+    $err = $result["err"] ?? null;
+    echo "Error: " . ($err ? $err->getMessage() : "HTTP " . $result["status"]);
 }
 ```
 
@@ -104,8 +140,8 @@ $client = FoodHygieneRatingSDK::test([
     "entity" => ["authority" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// load() returns the bare mock record (throws on error).
-$authority = $client->Authority()->load(["id" => "test01"]);
+// Entity ops return the bare mock record (throws on error).
+$authority = $client->Authority()->list();
 print_r($authority);
 ```
 
@@ -197,10 +233,7 @@ All entities share the same interface.
 | Method | Signature | Description |
 | --- | --- | --- |
 | `load` | `($reqmatch, $ctrl): array` | Load a single entity by match criteria. |
-| `list` | `($reqmatch, $ctrl): array` | List entities matching the criteria. |
-| `create` | `($reqdata, $ctrl): array` | Create a new entity. |
-| `update` | `($reqdata, $ctrl): array` | Update an existing entity. |
-| `remove` | `($reqmatch, $ctrl): array` | Remove an entity. |
+| `list` | `(?array $reqmatch = null, $ctrl): array` | List entities matching the criteria (call with no argument to list all). |
 | `data_get` | `(): array` | Get entity data. |
 | `data_set` | `($data): void` | Set entity data. |
 | `match_get` | `(): array` | Get entity match criteria. |
@@ -321,17 +354,17 @@ Create an instance: `$authority = $client->Authority();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `email` | ``$STRING`` |  |
-| `establishment_count` | ``$INTEGER`` |  |
-| `file_name` | ``$STRING`` |  |
-| `file_name_welsh` | ``$STRING`` |  |
-| `friendly_name` | ``$STRING`` |  |
-| `local_authority_id` | ``$INTEGER`` |  |
-| `local_authority_id_code` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `region_name` | ``$STRING`` |  |
-| `scheme_url` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `email` | `string` |  |
+| `establishment_count` | `int` |  |
+| `file_name` | `string` |  |
+| `file_name_welsh` | `string` |  |
+| `friendly_name` | `string` |  |
+| `local_authority_id` | `int` |  |
+| `local_authority_id_code` | `string` |  |
+| `name` | `string` |  |
+| `region_name` | `string` |  |
+| `scheme_url` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: Load
 
@@ -362,8 +395,8 @@ Create an instance: `$business_type = $client->BusinessType();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `business_type_id` | ``$INTEGER`` |  |
-| `business_type_name` | ``$STRING`` |  |
+| `business_type_id` | `int` |  |
+| `business_type_name` | `string` |  |
 
 #### Example: List
 
@@ -388,26 +421,26 @@ Create an instance: `$establishment = $client->Establishment();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address_line1` | ``$STRING`` |  |
-| `address_line2` | ``$STRING`` |  |
-| `address_line3` | ``$STRING`` |  |
-| `address_line4` | ``$STRING`` |  |
-| `business_name` | ``$STRING`` |  |
-| `business_type` | ``$STRING`` |  |
-| `business_type_id` | ``$INTEGER`` |  |
-| `fhrsid` | ``$INTEGER`` |  |
-| `geocode` | ``$OBJECT`` |  |
-| `local_authority_business_id` | ``$STRING`` |  |
-| `local_authority_code` | ``$STRING`` |  |
-| `local_authority_email_address` | ``$STRING`` |  |
-| `local_authority_name` | ``$STRING`` |  |
-| `local_authority_web_site` | ``$STRING`` |  |
-| `new_rating_pending` | ``$BOOLEAN`` |  |
-| `post_code` | ``$STRING`` |  |
-| `rating_date` | ``$STRING`` |  |
-| `rating_key` | ``$STRING`` |  |
-| `rating_value` | ``$STRING`` |  |
-| `scheme_type` | ``$STRING`` |  |
+| `address_line1` | `string` |  |
+| `address_line2` | `string` |  |
+| `address_line3` | `string` |  |
+| `address_line4` | `string` |  |
+| `business_name` | `string` |  |
+| `business_type` | `string` |  |
+| `business_type_id` | `int` |  |
+| `fhrsid` | `int` |  |
+| `geocode` | `array` |  |
+| `local_authority_business_id` | `string` |  |
+| `local_authority_code` | `string` |  |
+| `local_authority_email_address` | `string` |  |
+| `local_authority_name` | `string` |  |
+| `local_authority_web_site` | `string` |  |
+| `new_rating_pending` | `bool` |  |
+| `post_code` | `string` |  |
+| `rating_date` | `string` |  |
+| `rating_key` | `string` |  |
+| `rating_value` | `string` |  |
+| `scheme_type` | `string` |  |
 
 #### Example: Load
 
@@ -438,10 +471,10 @@ Create an instance: `$rating = $client->Rating();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `rating_id` | ``$INTEGER`` |  |
-| `rating_key` | ``$STRING`` |  |
-| `rating_name` | ``$STRING`` |  |
-| `scheme_type` | ``$STRING`` |  |
+| `rating_id` | `int` |  |
+| `rating_key` | `string` |  |
+| `rating_name` | `string` |  |
+| `scheme_type` | `string` |  |
 
 #### Example: List
 
@@ -451,12 +484,16 @@ $ratings = $client->Rating()->list();
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -473,8 +510,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as the second element in the return array.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -518,15 +556,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
 $authority = $client->Authority();
-$authority->load(["id" => "example_id"]);
+$authority->list();
 
-// $authority->dataGet() now returns the loaded authority data
-// $authority->matchGet() returns the last match criteria
+// $authority->data_get() now returns the authority data from the last list
+// $authority->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -8,7 +8,7 @@ Complete API reference for the FoodHygieneRating Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'food-hygiene-rating_sdk'
+require_relative 'FoodHygieneRating_sdk'
 
 client = FoodHygieneRatingSDK.new(options)
 ```
@@ -105,26 +105,26 @@ authority = client.Authority
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | ``$STRING`` | No |  |
-| `establishment_count` | ``$INTEGER`` | No |  |
-| `file_name` | ``$STRING`` | No |  |
-| `file_name_welsh` | ``$STRING`` | No |  |
-| `friendly_name` | ``$STRING`` | No |  |
-| `local_authority_id` | ``$INTEGER`` | No |  |
-| `local_authority_id_code` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `region_name` | ``$STRING`` | No |  |
-| `scheme_url` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `email` | `String` | No |  |
+| `establishment_count` | `Integer` | No |  |
+| `file_name` | `String` | No |  |
+| `file_name_welsh` | `String` | No |  |
+| `friendly_name` | `String` | No |  |
+| `local_authority_id` | `Integer` | No |  |
+| `local_authority_id_code` | `String` | No |  |
+| `name` | `String` | No |  |
+| `region_name` | `String` | No |  |
+| `scheme_url` | `String` | No |  |
+| `url` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Authority.list(nil)
+results = client.Authority.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -175,17 +175,17 @@ business_type = client.BusinessType
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `business_type_id` | ``$INTEGER`` | No |  |
-| `business_type_name` | ``$STRING`` | No |  |
+| `business_type_id` | `Integer` | No |  |
+| `business_type_name` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.BusinessType.list(nil)
+results = client.BusinessType.list
 ```
 
 ### Common Methods
@@ -228,35 +228,35 @@ establishment = client.Establishment
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address_line1` | ``$STRING`` | No |  |
-| `address_line2` | ``$STRING`` | No |  |
-| `address_line3` | ``$STRING`` | No |  |
-| `address_line4` | ``$STRING`` | No |  |
-| `business_name` | ``$STRING`` | No |  |
-| `business_type` | ``$STRING`` | No |  |
-| `business_type_id` | ``$INTEGER`` | No |  |
-| `fhrsid` | ``$INTEGER`` | No |  |
-| `geocode` | ``$OBJECT`` | No |  |
-| `local_authority_business_id` | ``$STRING`` | No |  |
-| `local_authority_code` | ``$STRING`` | No |  |
-| `local_authority_email_address` | ``$STRING`` | No |  |
-| `local_authority_name` | ``$STRING`` | No |  |
-| `local_authority_web_site` | ``$STRING`` | No |  |
-| `new_rating_pending` | ``$BOOLEAN`` | No |  |
-| `post_code` | ``$STRING`` | No |  |
-| `rating_date` | ``$STRING`` | No |  |
-| `rating_key` | ``$STRING`` | No |  |
-| `rating_value` | ``$STRING`` | No |  |
-| `scheme_type` | ``$STRING`` | No |  |
+| `address_line1` | `String` | No |  |
+| `address_line2` | `String` | No |  |
+| `address_line3` | `String` | No |  |
+| `address_line4` | `String` | No |  |
+| `business_name` | `String` | No |  |
+| `business_type` | `String` | No |  |
+| `business_type_id` | `Integer` | No |  |
+| `fhrsid` | `Integer` | No |  |
+| `geocode` | `Hash` | No |  |
+| `local_authority_business_id` | `String` | No |  |
+| `local_authority_code` | `String` | No |  |
+| `local_authority_email_address` | `String` | No |  |
+| `local_authority_name` | `String` | No |  |
+| `local_authority_web_site` | `String` | No |  |
+| `new_rating_pending` | `Boolean` | No |  |
+| `post_code` | `String` | No |  |
+| `rating_date` | `String` | No |  |
+| `rating_key` | `String` | No |  |
+| `rating_value` | `String` | No |  |
+| `scheme_type` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Establishment.list(nil)
+results = client.Establishment.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -307,19 +307,19 @@ rating = client.Rating
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `rating_id` | ``$INTEGER`` | No |  |
-| `rating_key` | ``$STRING`` | No |  |
-| `rating_name` | ``$STRING`` | No |  |
-| `scheme_type` | ``$STRING`` | No |  |
+| `rating_id` | `Integer` | No |  |
+| `rating_key` | `String` | No |  |
+| `rating_name` | `String` | No |  |
+| `scheme_type` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Rating.list(nil)
+results = client.Rating.list
 ```
 
 ### Common Methods

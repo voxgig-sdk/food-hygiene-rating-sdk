@@ -4,6 +4,8 @@
 
 The Lua SDK for the FoodHygieneRating API — an entity-oriented client using Lua conventions.
 
+It exposes the API as capitalised, semantic **Entities** — e.g. `client:Authority()` — each with the same small set of operations (`list`, `load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -41,7 +43,7 @@ local authoritys, err = client:Authority():list()
 if err then error(err) end
 
 for _, item in ipairs(authoritys) do
-  print(item["id"], item["name"])
+  print(item["email"])
 end
 ```
 
@@ -51,6 +53,28 @@ end
 local authority, err = client:Authority():load({ id = "example_id" })
 if err then error(err) end
 print(authority)
+```
+
+
+## Error handling
+
+Entity operations return `(value, err)`. Check `err` before using
+the value:
+
+```lua
+local authoritys, err = client:Authority():list()
+if err then error(err) end
+```
+
+`direct` follows the same `(value, err)` convention:
+
+```lua
+local result, err = client:direct({
+  path = "/api/resource/{id}",
+  method = "GET",
+  params = { id = "example_id" },
+})
+if err then error(err) end
 ```
 
 
@@ -96,8 +120,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Authority():load({ id = "test01" })
--- result is the loaded data; err is set on failure
+local result, err = client:Authority():list()
+-- result is the returned data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -188,9 +212,6 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any, err` | Load a single entity by match criteria. |
 | `list` | `(reqmatch, ctrl) -> any, err` | List entities matching the criteria. |
-| `create` | `(reqdata, ctrl) -> any, err` | Create a new entity. |
-| `update` | `(reqdata, ctrl) -> any, err` | Update an existing entity. |
-| `remove` | `(reqmatch, ctrl) -> any, err` | Remove an entity. |
 | `data_get` | `() -> table` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> table` | Get entity match criteria. |
@@ -205,7 +226,7 @@ data **directly** — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `load` | the entity record (a `table`) |
 | `list` | an array (`table`) of entity records |
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
@@ -312,17 +333,17 @@ Create an instance: `local authority = client:Authority(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `email` | ``$STRING`` |  |
-| `establishment_count` | ``$INTEGER`` |  |
-| `file_name` | ``$STRING`` |  |
-| `file_name_welsh` | ``$STRING`` |  |
-| `friendly_name` | ``$STRING`` |  |
-| `local_authority_id` | ``$INTEGER`` |  |
-| `local_authority_id_code` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `region_name` | ``$STRING`` |  |
-| `scheme_url` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `email` | `string` |  |
+| `establishment_count` | `number` |  |
+| `file_name` | `string` |  |
+| `file_name_welsh` | `string` |  |
+| `friendly_name` | `string` |  |
+| `local_authority_id` | `number` |  |
+| `local_authority_id_code` | `string` |  |
+| `name` | `string` |  |
+| `region_name` | `string` |  |
+| `scheme_url` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: Load
 
@@ -351,8 +372,8 @@ Create an instance: `local business_type = client:BusinessType(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `business_type_id` | ``$INTEGER`` |  |
-| `business_type_name` | ``$STRING`` |  |
+| `business_type_id` | `number` |  |
+| `business_type_name` | `string` |  |
 
 #### Example: List
 
@@ -376,26 +397,26 @@ Create an instance: `local establishment = client:Establishment(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address_line1` | ``$STRING`` |  |
-| `address_line2` | ``$STRING`` |  |
-| `address_line3` | ``$STRING`` |  |
-| `address_line4` | ``$STRING`` |  |
-| `business_name` | ``$STRING`` |  |
-| `business_type` | ``$STRING`` |  |
-| `business_type_id` | ``$INTEGER`` |  |
-| `fhrsid` | ``$INTEGER`` |  |
-| `geocode` | ``$OBJECT`` |  |
-| `local_authority_business_id` | ``$STRING`` |  |
-| `local_authority_code` | ``$STRING`` |  |
-| `local_authority_email_address` | ``$STRING`` |  |
-| `local_authority_name` | ``$STRING`` |  |
-| `local_authority_web_site` | ``$STRING`` |  |
-| `new_rating_pending` | ``$BOOLEAN`` |  |
-| `post_code` | ``$STRING`` |  |
-| `rating_date` | ``$STRING`` |  |
-| `rating_key` | ``$STRING`` |  |
-| `rating_value` | ``$STRING`` |  |
-| `scheme_type` | ``$STRING`` |  |
+| `address_line1` | `string` |  |
+| `address_line2` | `string` |  |
+| `address_line3` | `string` |  |
+| `address_line4` | `string` |  |
+| `business_name` | `string` |  |
+| `business_type` | `string` |  |
+| `business_type_id` | `number` |  |
+| `fhrsid` | `number` |  |
+| `geocode` | `table` |  |
+| `local_authority_business_id` | `string` |  |
+| `local_authority_code` | `string` |  |
+| `local_authority_email_address` | `string` |  |
+| `local_authority_name` | `string` |  |
+| `local_authority_web_site` | `string` |  |
+| `new_rating_pending` | `boolean` |  |
+| `post_code` | `string` |  |
+| `rating_date` | `string` |  |
+| `rating_key` | `string` |  |
+| `rating_value` | `string` |  |
+| `scheme_type` | `string` |  |
 
 #### Example: Load
 
@@ -424,10 +445,10 @@ Create an instance: `local rating = client:Rating(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `rating_id` | ``$INTEGER`` |  |
-| `rating_key` | ``$STRING`` |  |
-| `rating_name` | ``$STRING`` |  |
-| `scheme_type` | ``$STRING`` |  |
+| `rating_id` | `number` |  |
+| `rating_key` | `string` |  |
+| `rating_name` | `string` |  |
+| `scheme_type` | `string` |  |
 
 #### Example: List
 
@@ -436,12 +457,16 @@ local ratings, err = client:Rating():list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -458,8 +483,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as a second return value.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -503,14 +529,14 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
 local authority = client:Authority()
-authority:load({ id = "example_id" })
+authority:list()
 
--- authority:data_get() now returns the loaded authority data
+-- authority:data_get() now returns the authority data from the last list
 -- authority:match_get() returns the last match criteria
 ```
 

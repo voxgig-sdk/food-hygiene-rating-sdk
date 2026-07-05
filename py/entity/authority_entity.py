@@ -65,8 +65,13 @@ class AuthorityEntity:
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch: AuthorityLoadMatch, ctrl=None) -> Authority:
+    def load(self, reqmatch=None, ctrl=None) -> Authority:
         utility = self._utility
+        # reqmatch is optional: an entity with no id-like key loads with no
+        # match. Treat None as an empty match so client.Authority().load()
+        # works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "load",
             "ctrl": ctrl,
@@ -87,8 +92,12 @@ class AuthorityEntity:
 
 
     
-    def list(self, reqmatch: AuthorityListMatch, ctrl=None) -> list[Authority]:
+    def list(self, reqmatch=None, ctrl=None) -> list[Authority]:
         utility = self._utility
+        # reqmatch is optional: an omitted match lists all records. Treat None
+        # as an empty match so client.Authority().list() works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "list",
             "ctrl": ctrl,

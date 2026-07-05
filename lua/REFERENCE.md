@@ -102,17 +102,17 @@ local authority = client:Authority(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | ``$STRING`` | No |  |
-| `establishment_count` | ``$INTEGER`` | No |  |
-| `file_name` | ``$STRING`` | No |  |
-| `file_name_welsh` | ``$STRING`` | No |  |
-| `friendly_name` | ``$STRING`` | No |  |
-| `local_authority_id` | ``$INTEGER`` | No |  |
-| `local_authority_id_code` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `region_name` | ``$STRING`` | No |  |
-| `scheme_url` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `email` | `string` | No |  |
+| `establishment_count` | `number` | No |  |
+| `file_name` | `string` | No |  |
+| `file_name_welsh` | `string` | No |  |
+| `friendly_name` | `string` | No |  |
+| `local_authority_id` | `number` | No |  |
+| `local_authority_id_code` | `string` | No |  |
+| `name` | `string` | No |  |
+| `region_name` | `string` | No |  |
+| `scheme_url` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -172,8 +172,8 @@ local business_type = client:BusinessType(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `business_type_id` | ``$INTEGER`` | No |  |
-| `business_type_name` | ``$STRING`` | No |  |
+| `business_type_id` | `number` | No |  |
+| `business_type_name` | `string` | No |  |
 
 ### Operations
 
@@ -225,26 +225,26 @@ local establishment = client:Establishment(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address_line1` | ``$STRING`` | No |  |
-| `address_line2` | ``$STRING`` | No |  |
-| `address_line3` | ``$STRING`` | No |  |
-| `address_line4` | ``$STRING`` | No |  |
-| `business_name` | ``$STRING`` | No |  |
-| `business_type` | ``$STRING`` | No |  |
-| `business_type_id` | ``$INTEGER`` | No |  |
-| `fhrsid` | ``$INTEGER`` | No |  |
-| `geocode` | ``$OBJECT`` | No |  |
-| `local_authority_business_id` | ``$STRING`` | No |  |
-| `local_authority_code` | ``$STRING`` | No |  |
-| `local_authority_email_address` | ``$STRING`` | No |  |
-| `local_authority_name` | ``$STRING`` | No |  |
-| `local_authority_web_site` | ``$STRING`` | No |  |
-| `new_rating_pending` | ``$BOOLEAN`` | No |  |
-| `post_code` | ``$STRING`` | No |  |
-| `rating_date` | ``$STRING`` | No |  |
-| `rating_key` | ``$STRING`` | No |  |
-| `rating_value` | ``$STRING`` | No |  |
-| `scheme_type` | ``$STRING`` | No |  |
+| `address_line1` | `string` | No |  |
+| `address_line2` | `string` | No |  |
+| `address_line3` | `string` | No |  |
+| `address_line4` | `string` | No |  |
+| `business_name` | `string` | No |  |
+| `business_type` | `string` | No |  |
+| `business_type_id` | `number` | No |  |
+| `fhrsid` | `number` | No |  |
+| `geocode` | `table` | No |  |
+| `local_authority_business_id` | `string` | No |  |
+| `local_authority_code` | `string` | No |  |
+| `local_authority_email_address` | `string` | No |  |
+| `local_authority_name` | `string` | No |  |
+| `local_authority_web_site` | `string` | No |  |
+| `new_rating_pending` | `boolean` | No |  |
+| `post_code` | `string` | No |  |
+| `rating_date` | `string` | No |  |
+| `rating_key` | `string` | No |  |
+| `rating_value` | `string` | No |  |
+| `scheme_type` | `string` | No |  |
 
 ### Operations
 
@@ -304,10 +304,10 @@ local rating = client:Rating(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `rating_id` | ``$INTEGER`` | No |  |
-| `rating_key` | ``$STRING`` | No |  |
-| `rating_name` | ``$STRING`` | No |  |
-| `scheme_type` | ``$STRING`` | No |  |
+| `rating_id` | `number` | No |  |
+| `rating_key` | `string` | No |  |
+| `rating_name` | `string` | No |  |
+| `scheme_type` | `string` | No |  |
 
 ### Operations
 

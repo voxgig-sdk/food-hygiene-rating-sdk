@@ -23,12 +23,25 @@
 ---@field id number
 
 ---@class AuthorityListMatch
+---@field email? string
+---@field establishment_count? number
+---@field file_name? string
+---@field file_name_welsh? string
+---@field friendly_name? string
+---@field local_authority_id? number
+---@field local_authority_id_code? string
+---@field name? string
+---@field region_name? string
+---@field scheme_url? string
+---@field url? string
 
 ---@class BusinessType
 ---@field business_type_id? number
 ---@field business_type_name? string
 
 ---@class BusinessTypeListMatch
+---@field business_type_id? number
+---@field business_type_name? string
 
 ---@class Establishment
 ---@field address_line1? string
@@ -56,6 +69,26 @@
 ---@field id number
 
 ---@class EstablishmentListMatch
+---@field address_line1? string
+---@field address_line2? string
+---@field address_line3? string
+---@field address_line4? string
+---@field business_name? string
+---@field business_type? string
+---@field business_type_id? number
+---@field fhrsid? number
+---@field geocode? table
+---@field local_authority_business_id? string
+---@field local_authority_code? string
+---@field local_authority_email_address? string
+---@field local_authority_name? string
+---@field local_authority_web_site? string
+---@field new_rating_pending? boolean
+---@field post_code? string
+---@field rating_date? string
+---@field rating_key? string
+---@field rating_value? string
+---@field scheme_type? string
 
 ---@class Rating
 ---@field rating_id? number
@@ -64,6 +97,10 @@
 ---@field scheme_type? string
 
 ---@class RatingListMatch
+---@field rating_id? number
+---@field rating_key? string
+---@field rating_name? string
+---@field scheme_type? string
 
 local M = {}
 

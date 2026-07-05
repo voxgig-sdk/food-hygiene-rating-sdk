@@ -66,7 +66,7 @@ AuthorityLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Authority#list (any subset of Authority fields).
+# Request payload for Authority#list.
 #
 # @!attribute [rw] email
 #   @return [String, nil]
@@ -128,7 +128,7 @@ BusinessType = Struct.new(
   keyword_init: true
 )
 
-# Match filter for BusinessType#list (any subset of BusinessType fields).
+# Request payload for BusinessType#list.
 #
 # @!attribute [rw] business_type_id
 #   @return [Integer, nil]
@@ -235,7 +235,7 @@ EstablishmentLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Establishment#list (any subset of Establishment fields).
+# Request payload for Establishment#list.
 #
 # @!attribute [rw] address_line1
 #   @return [String, nil]
@@ -341,7 +341,7 @@ Rating = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Rating#list (any subset of Rating fields).
+# Request payload for Rating#list.
 #
 # @!attribute [rw] rating_id
 #   @return [Integer, nil]

@@ -221,25 +221,25 @@ class FoodHygieneRatingSDK:
 
 
     def Authority(self, data=None) -> "AuthorityEntity":
-        """Entity factory: client.Authority().list({}) / client.Authority().load({"id": ...})."""
+        """Entity factory: client.Authority().list() / client.Authority().load({"id": ...})."""
         from entity.authority_entity import AuthorityEntity
         return AuthorityEntity(self, data)
 
 
     def BusinessType(self, data=None) -> "BusinessTypeEntity":
-        """Entity factory: client.BusinessType().list({}) / client.BusinessType().load({"id": ...})."""
+        """Entity factory: client.BusinessType().list() / client.BusinessType().load({"id": ...})."""
         from entity.business_type_entity import BusinessTypeEntity
         return BusinessTypeEntity(self, data)
 
 
     def Establishment(self, data=None) -> "EstablishmentEntity":
-        """Entity factory: client.Establishment().list({}) / client.Establishment().load({"id": ...})."""
+        """Entity factory: client.Establishment().list() / client.Establishment().load({"id": ...})."""
         from entity.establishment_entity import EstablishmentEntity
         return EstablishmentEntity(self, data)
 
 
     def Rating(self, data=None) -> "RatingEntity":
-        """Entity factory: client.Rating().list({}) / client.Rating().load({"id": ...})."""
+        """Entity factory: client.Rating().list() / client.Rating().load({"id": ...})."""
         from entity.rating_entity import RatingEntity
         return RatingEntity(self, data)
 

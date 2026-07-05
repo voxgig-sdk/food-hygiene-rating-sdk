@@ -28,8 +28,7 @@ type AuthorityLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// AuthorityListMatch mirrors the authority fields as an all-optional match
-// filter (Go analog of Partial<Authority>).
+// AuthorityListMatch is the typed request payload for Authority.ListTyped.
 type AuthorityListMatch struct {
 	Email *string `json:"email,omitempty"`
 	EstablishmentCount *int `json:"establishment_count,omitempty"`
@@ -50,8 +49,7 @@ type BusinessType struct {
 	BusinessTypeName *string `json:"business_type_name,omitempty"`
 }
 
-// BusinessTypeListMatch mirrors the business_type fields as an all-optional match
-// filter (Go analog of Partial<BusinessType>).
+// BusinessTypeListMatch is the typed request payload for BusinessType.ListTyped.
 type BusinessTypeListMatch struct {
 	BusinessTypeId *int `json:"business_type_id,omitempty"`
 	BusinessTypeName *string `json:"business_type_name,omitempty"`
@@ -86,8 +84,7 @@ type EstablishmentLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// EstablishmentListMatch mirrors the establishment fields as an all-optional match
-// filter (Go analog of Partial<Establishment>).
+// EstablishmentListMatch is the typed request payload for Establishment.ListTyped.
 type EstablishmentListMatch struct {
 	AddressLine1 *string `json:"address_line1,omitempty"`
 	AddressLine2 *string `json:"address_line2,omitempty"`
@@ -119,8 +116,7 @@ type Rating struct {
 	SchemeType *string `json:"scheme_type,omitempty"`
 }
 
-// RatingListMatch mirrors the rating fields as an all-optional match
-// filter (Go analog of Partial<Rating>).
+// RatingListMatch is the typed request payload for Rating.ListTyped.
 type RatingListMatch struct {
 	RatingId *int `json:"rating_id,omitempty"`
 	RatingKey *string `json:"rating_key,omitempty"`

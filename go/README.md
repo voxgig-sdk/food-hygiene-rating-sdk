@@ -376,7 +376,7 @@ Create an instance: `authority := client.Authority(nil)`
 #### Example: Load
 
 ```go
-authority, err := client.Authority(nil).Load(map[string]any{"id": "authority_id"}, nil)
+authority, err := client.Authority(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -396,7 +396,7 @@ fmt.Println(authoritys) // the array of records
 
 ### BusinessType
 
-Create an instance: `business_type := client.BusinessType(nil)`
+Create an instance: `businessType := client.BusinessType(nil)`
 
 #### Operations
 
@@ -414,11 +414,11 @@ Create an instance: `business_type := client.BusinessType(nil)`
 #### Example: List
 
 ```go
-business_types, err := client.BusinessType(nil).List(nil, nil)
+businessTypes, err := client.BusinessType(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(business_types) // the array of records
+fmt.Println(businessTypes) // the array of records
 ```
 
 
@@ -461,7 +461,7 @@ Create an instance: `establishment := client.Establishment(nil)`
 #### Example: Load
 
 ```go
-establishment, err := client.Establishment(nil).Load(map[string]any{"id": "establishment_id"}, nil)
+establishment, err := client.Establishment(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }

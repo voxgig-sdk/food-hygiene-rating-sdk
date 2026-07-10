@@ -128,7 +128,7 @@ for authority in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Authority().load({"id": "authority_id"})
+result = client.Authority().load({"id": 1})
 ```
 
 ### Common Methods
@@ -262,7 +262,7 @@ for establishment in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Establishment().load({"id": "establishment_id"})
+result = client.Establishment().load({"id": 1})
 ```
 
 ### Common Methods

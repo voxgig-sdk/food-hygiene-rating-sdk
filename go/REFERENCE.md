@@ -103,6 +103,7 @@ same parameters as `Direct()`.
 
 ```go
 authority := client.Authority(nil)
+fmt.Println(authority.GetName()) // "authority"
 ```
 
 ### Fields
@@ -129,6 +130,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Authority(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -136,7 +141,11 @@ results, err := client.Authority(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Authority(nil).Load(map[string]any{"id": "authority_id"}, nil)
+result, err := client.Authority(nil).Load(map[string]any{"id": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -166,7 +175,8 @@ Return the entity name.
 ## BusinessTypeEntity
 
 ```go
-business_type := client.BusinessType(nil)
+businessType := client.BusinessType(nil)
+fmt.Println(businessType.GetName()) // "business_type"
 ```
 
 ### Fields
@@ -184,6 +194,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.BusinessType(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -214,6 +228,7 @@ Return the entity name.
 
 ```go
 establishment := client.Establishment(nil)
+fmt.Println(establishment.GetName()) // "establishment"
 ```
 
 ### Fields
@@ -249,6 +264,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Establishment(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -256,7 +275,11 @@ results, err := client.Establishment(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Establishment(nil).Load(map[string]any{"id": "establishment_id"}, nil)
+result, err := client.Establishment(nil).Load(map[string]any{"id": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -287,6 +310,7 @@ Return the entity name.
 
 ```go
 rating := client.Rating(nil)
+fmt.Println(rating.GetName()) // "rating"
 ```
 
 ### Fields
@@ -306,6 +330,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Rating(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods

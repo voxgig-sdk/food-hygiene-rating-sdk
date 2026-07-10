@@ -56,7 +56,7 @@ except Exception as err:
 
 ```python
 try:
-    authority = client.Authority().load({"id": "example_id"})
+    authority = client.Authority().load({"id": 1})
     print(authority)
 except Exception as err:
     print(f"load failed: {err}")
@@ -362,7 +362,7 @@ Create an instance: `authority = client.Authority()`
 #### Example: Load
 
 ```python
-authority = client.Authority().load({"id": "authority_id"})
+authority = client.Authority().load({"id": 1})
 ```
 
 #### Example: List
@@ -435,7 +435,7 @@ Create an instance: `establishment = client.Establishment()`
 #### Example: Load
 
 ```python
-establishment = client.Establishment().load({"id": "establishment_id"})
+establishment = client.Establishment().load({"id": 1})
 ```
 
 #### Example: List

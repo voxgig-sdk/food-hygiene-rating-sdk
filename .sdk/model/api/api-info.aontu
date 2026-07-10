@@ -16,10 +16,10 @@ main: {
           url: "https://api.ratings.food.gov.uk"
         }
       ]
+      summary: "The UK Food Hygiene Rating Data API provides access to food hygiene ratings issued to various food establishments across the UK."
       termsOfService: "https://www.food.gov.uk/uk-food-hygiene-rating-data-api"
       title: "Food Hygiene Rating API"
       version: "2.0.0"
+      website: "https://ratings.food.gov.uk"
     }
   }
-}
-

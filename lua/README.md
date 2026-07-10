@@ -50,7 +50,7 @@ end
 ### 3. Load an authority
 
 ```lua
-local authority, err = client:Authority():load({ id = "example_id" })
+local authority, err = client:Authority():load({ id = 1 })
 if err then error(err) end
 print(authority)
 ```
@@ -348,7 +348,7 @@ Create an instance: `local authority = client:Authority(nil)`
 #### Example: Load
 
 ```lua
-local authority, err = client:Authority():load({ id = "authority_id" })
+local authority, err = client:Authority():load({ id = 1 })
 ```
 
 #### Example: List
@@ -421,7 +421,7 @@ Create an instance: `local establishment = client:Establishment(nil)`
 #### Example: Load
 
 ```lua
-local establishment, err = client:Establishment():load({ id = "establishment_id" })
+local establishment, err = client:Establishment():load({ id = 1 })
 ```
 
 #### Example: List

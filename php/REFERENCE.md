@@ -131,7 +131,7 @@ $results = $client->Authority()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Authority()->load(["id" => "authority_id"]);
+$result = $client->Authority()->load(["id" => 1]);
 ```
 
 ### Common Methods
@@ -263,7 +263,7 @@ $results = $client->Establishment()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Establishment()->load(["id" => "establishment_id"]);
+$result = $client->Establishment()->load(["id" => 1]);
 ```
 
 ### Common Methods

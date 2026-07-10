@@ -129,7 +129,7 @@ local results, err = client:Authority():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Authority():load({ id = "authority_id" })
+local result, err = client:Authority():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -261,7 +261,7 @@ local results, err = client:Establishment():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Establishment():load({ id = "establishment_id" })
+local result, err = client:Establishment():load({ id = 1 })
 ```
 
 ### Common Methods

@@ -50,7 +50,7 @@ try {
 ```php
 try {
     // load() returns the bare Authority record (throws on error).
-    $authority = $client->Authority()->load(["id" => "example_id"]);
+    $authority = $client->Authority()->load(["id" => 1]);
     print_r($authority);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -370,7 +370,7 @@ Create an instance: `$authority = $client->Authority();`
 
 ```php
 // load() returns the bare Authority record (throws on error).
-$authority = $client->Authority()->load(["id" => "authority_id"]);
+$authority = $client->Authority()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -446,7 +446,7 @@ Create an instance: `$establishment = $client->Establishment();`
 
 ```php
 // load() returns the bare Establishment record (throws on error).
-$establishment = $client->Establishment()->load(["id" => "establishment_id"]);
+$establishment = $client->Establishment()->load(["id" => 1]);
 ```
 
 #### Example: List

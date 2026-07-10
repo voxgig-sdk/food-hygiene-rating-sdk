@@ -49,7 +49,7 @@ end
 ```ruby
 begin
   # load returns the bare Authority record (raises on error).
-  authority = client.Authority.load({ "id" => "example_id" })
+  authority = client.Authority.load({ "id" => 1 })
   puts authority
 rescue => err
   warn "load failed: #{err}"
@@ -360,7 +360,7 @@ Create an instance: `authority = client.Authority`
 
 ```ruby
 # load returns the bare Authority record (raises on error).
-authority = client.Authority.load({ "id" => "authority_id" })
+authority = client.Authority.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -436,7 +436,7 @@ Create an instance: `establishment = client.Establishment`
 
 ```ruby
 # load returns the bare Establishment record (raises on error).
-establishment = client.Establishment.load({ "id" => "establishment_id" })
+establishment = client.Establishment.load({ "id" => 1 })
 ```
 
 #### Example: List

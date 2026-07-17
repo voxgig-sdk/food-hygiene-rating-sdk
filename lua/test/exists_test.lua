@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- FoodHygieneRating SDK exists test
 
 local sdk = require("food-hygiene-rating_sdk")
 

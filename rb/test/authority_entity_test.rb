@@ -62,7 +62,7 @@ class AuthorityEntityTest < Minitest::Test
     # The basic flow consumes synthetic IDs from the fixture. In live mode
     # without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set FOODHYGIENERATING_TEST_AUTHORITY_ENTID JSON to run live"
+      skip "live entity test uses synthetic IDs from fixture — set FOOD_HYGIENE_RATING_TEST_AUTHORITY_ENTID JSON to run live"
       return
     end
     client = setup[:client]
@@ -116,22 +116,22 @@ def authority_basic_setup(extra)
   # Detect ENTID env override before envOverride consumes it. When live
   # mode is on without a real override, the basic test runs against synthetic
   # IDs from the fixture and 4xx's. Surface this so the test can skip.
-  entid_env_raw = ENV["FOODHYGIENERATING_TEST_AUTHORITY_ENTID"]
+  entid_env_raw = ENV["FOOD_HYGIENE_RATING_TEST_AUTHORITY_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 
   env = Runner.env_override({
-    "FOODHYGIENERATING_TEST_AUTHORITY_ENTID" => idmap,
-    "FOODHYGIENERATING_TEST_LIVE" => "FALSE",
-    "FOODHYGIENERATING_TEST_EXPLAIN" => "FALSE",
+    "FOOD_HYGIENE_RATING_TEST_AUTHORITY_ENTID" => idmap,
+    "FOOD_HYGIENE_RATING_TEST_LIVE" => "FALSE",
+    "FOOD_HYGIENE_RATING_TEST_EXPLAIN" => "FALSE",
   })
 
   idmap_resolved = Helpers.to_map(
-    env["FOODHYGIENERATING_TEST_AUTHORITY_ENTID"])
+    env["FOOD_HYGIENE_RATING_TEST_AUTHORITY_ENTID"])
   if idmap_resolved.nil?
     idmap_resolved = Helpers.to_map(idmap)
   end
 
-  if env["FOODHYGIENERATING_TEST_LIVE"] == "TRUE"
+  if env["FOOD_HYGIENE_RATING_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
       },
@@ -140,13 +140,13 @@ def authority_basic_setup(extra)
     client = FoodHygieneRatingSDK.new(Helpers.to_map(merged_opts))
   end
 
-  live = env["FOODHYGIENERATING_TEST_LIVE"] == "TRUE"
+  live = env["FOOD_HYGIENE_RATING_TEST_LIVE"] == "TRUE"
   {
     client: client,
     data: entity_data,
     idmap: idmap_resolved,
     env: env,
-    explain: env["FOODHYGIENERATING_TEST_EXPLAIN"] == "TRUE",
+    explain: env["FOOD_HYGIENE_RATING_TEST_EXPLAIN"] == "TRUE",
     live: live,
     synthetic_only: live && !idmap_overridden,
     now: (Time.now.to_f * 1000).to_i,

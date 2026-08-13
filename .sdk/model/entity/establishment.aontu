@@ -6,104 +6,114 @@ main: kit: entity: establishment: {
 
   fields: [
     {
-      name: "address_line1"
+      name: "AddressLine1"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "address_line2"
+      name: "AddressLine2"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "address_line3"
+      name: "AddressLine3"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "address_line4"
+      name: "AddressLine4"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "business_name"
+      name: "BusinessName"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "business_type"
+      name: "BusinessType"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "business_type_id"
+      name: "BusinessTypeID"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "fhrsid"
+      name: "FHRSID"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "geocode"
+      name: "Geocode"
       req: false
       type: "`$OBJECT`"
     }
     {
-      name: "local_authority_business_id"
+      name: "LocalAuthorityBusinessID"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "local_authority_code"
+      name: "LocalAuthorityCode"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "local_authority_email_address"
+      name: "LocalAuthorityEmailAddress"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "local_authority_name"
+      name: "LocalAuthorityName"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "local_authority_web_site"
+      name: "LocalAuthorityWebSite"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "new_rating_pending"
+      name: "NewRatingPending"
       req: false
       type: "`$BOOLEAN`"
     }
     {
-      name: "post_code"
+      name: "PostCode"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "rating_date"
+      name: "RatingDate"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "rating_key"
+      name: "RatingKey"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "rating_value"
+      name: "RatingValue"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "scheme_type"
+      name: "SchemeType"
       req: false
       type: "`$STRING`"
+    }
+    {
+      name: "latitude"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "longitude"
+      req: false
+      type: "`$NUMBER`"
     }
   ]
 
@@ -251,7 +261,7 @@ main: kit: entity: establishment: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.Geocode`"
           }
         }
       ]

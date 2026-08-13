@@ -7,100 +7,104 @@
 -- edit by hand.
 
 ---@class Authority
----@field email? string
----@field establishment_count? number
----@field file_name? string
----@field file_name_welsh? string
----@field friendly_name? string
----@field local_authority_id? number
----@field local_authority_id_code? string
----@field name? string
----@field region_name? string
----@field scheme_url? string
----@field url? string
+---@field Email? string
+---@field EstablishmentCount? number
+---@field FileName? string
+---@field FileNameWelsh? string
+---@field FriendlyName? string
+---@field LocalAuthorityId? number
+---@field LocalAuthorityIdCode? string
+---@field Name? string
+---@field RegionName? string
+---@field SchemeUrl? string
+---@field Url? string
 
 ---@class AuthorityLoadMatch
 ---@field id number
 
 ---@class AuthorityListMatch
----@field email? string
----@field establishment_count? number
----@field file_name? string
----@field file_name_welsh? string
----@field friendly_name? string
----@field local_authority_id? number
----@field local_authority_id_code? string
----@field name? string
----@field region_name? string
----@field scheme_url? string
----@field url? string
+---@field Email? string
+---@field EstablishmentCount? number
+---@field FileName? string
+---@field FileNameWelsh? string
+---@field FriendlyName? string
+---@field LocalAuthorityId? number
+---@field LocalAuthorityIdCode? string
+---@field Name? string
+---@field RegionName? string
+---@field SchemeUrl? string
+---@field Url? string
 
 ---@class BusinessType
----@field business_type_id? number
----@field business_type_name? string
+---@field BusinessTypeId? number
+---@field BusinessTypeName? string
 
 ---@class BusinessTypeListMatch
----@field business_type_id? number
----@field business_type_name? string
+---@field BusinessTypeId? number
+---@field BusinessTypeName? string
 
 ---@class Establishment
----@field address_line1? string
----@field address_line2? string
----@field address_line3? string
----@field address_line4? string
----@field business_name? string
----@field business_type? string
----@field business_type_id? number
----@field fhrsid? number
----@field geocode? table
----@field local_authority_business_id? string
----@field local_authority_code? string
----@field local_authority_email_address? string
----@field local_authority_name? string
----@field local_authority_web_site? string
----@field new_rating_pending? boolean
----@field post_code? string
----@field rating_date? string
----@field rating_key? string
----@field rating_value? string
----@field scheme_type? string
+---@field AddressLine1? string
+---@field AddressLine2? string
+---@field AddressLine3? string
+---@field AddressLine4? string
+---@field BusinessName? string
+---@field BusinessType? string
+---@field BusinessTypeID? number
+---@field FHRSID? number
+---@field Geocode? table
+---@field LocalAuthorityBusinessID? string
+---@field LocalAuthorityCode? string
+---@field LocalAuthorityEmailAddress? string
+---@field LocalAuthorityName? string
+---@field LocalAuthorityWebSite? string
+---@field NewRatingPending? boolean
+---@field PostCode? string
+---@field RatingDate? string
+---@field RatingKey? string
+---@field RatingValue? string
+---@field SchemeType? string
+---@field latitude? number
+---@field longitude? number
 
 ---@class EstablishmentLoadMatch
 ---@field id number
 
 ---@class EstablishmentListMatch
----@field address_line1? string
----@field address_line2? string
----@field address_line3? string
----@field address_line4? string
----@field business_name? string
----@field business_type? string
----@field business_type_id? number
----@field fhrsid? number
----@field geocode? table
----@field local_authority_business_id? string
----@field local_authority_code? string
----@field local_authority_email_address? string
----@field local_authority_name? string
----@field local_authority_web_site? string
----@field new_rating_pending? boolean
----@field post_code? string
----@field rating_date? string
----@field rating_key? string
----@field rating_value? string
----@field scheme_type? string
+---@field AddressLine1? string
+---@field AddressLine2? string
+---@field AddressLine3? string
+---@field AddressLine4? string
+---@field BusinessName? string
+---@field BusinessType? string
+---@field BusinessTypeID? number
+---@field FHRSID? number
+---@field Geocode? table
+---@field LocalAuthorityBusinessID? string
+---@field LocalAuthorityCode? string
+---@field LocalAuthorityEmailAddress? string
+---@field LocalAuthorityName? string
+---@field LocalAuthorityWebSite? string
+---@field NewRatingPending? boolean
+---@field PostCode? string
+---@field RatingDate? string
+---@field RatingKey? string
+---@field RatingValue? string
+---@field SchemeType? string
+---@field latitude? number
+---@field longitude? number
 
 ---@class Rating
----@field rating_id? number
----@field rating_key? string
----@field rating_name? string
----@field scheme_type? string
+---@field ratingId? number
+---@field ratingKey? string
+---@field ratingName? string
+---@field schemeType? string
 
 ---@class RatingListMatch
----@field rating_id? number
----@field rating_key? string
----@field rating_name? string
----@field scheme_type? string
+---@field ratingId? number
+---@field ratingKey? string
+---@field ratingName? string
+---@field schemeType? string
 
 local M = {}
 

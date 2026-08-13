@@ -61,11 +61,11 @@ function rating_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["FOODHYGIENERATING_TEST_RATING_ENTID"] = {},
-    ["FOODHYGIENERATING_TEST_LIVE"] = "FALSE",
+    ["FOOD_HYGIENE_RATING_TEST_RATING_ENTID"] = {},
+    ["FOOD_HYGIENE_RATING_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["FOODHYGIENERATING_TEST_LIVE"] == "TRUE"
+  local live = env["FOOD_HYGIENE_RATING_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

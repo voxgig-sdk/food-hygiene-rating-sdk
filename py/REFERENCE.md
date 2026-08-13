@@ -99,17 +99,17 @@ authority = client.Authority()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | `str` | No |  |
-| `establishment_count` | `int` | No |  |
-| `file_name` | `str` | No |  |
-| `file_name_welsh` | `str` | No |  |
-| `friendly_name` | `str` | No |  |
-| `local_authority_id` | `int` | No |  |
-| `local_authority_id_code` | `str` | No |  |
-| `name` | `str` | No |  |
-| `region_name` | `str` | No |  |
-| `scheme_url` | `str` | No |  |
-| `url` | `str` | No |  |
+| `Email` | `str` | No |  |
+| `EstablishmentCount` | `int` | No |  |
+| `FileName` | `str` | No |  |
+| `FileNameWelsh` | `str` | No |  |
+| `FriendlyName` | `str` | No |  |
+| `LocalAuthorityId` | `int` | No |  |
+| `LocalAuthorityIdCode` | `str` | No |  |
+| `Name` | `str` | No |  |
+| `RegionName` | `str` | No |  |
+| `SchemeUrl` | `str` | No |  |
+| `Url` | `str` | No |  |
 
 ### Operations
 
@@ -170,8 +170,8 @@ business_type = client.BusinessType()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `business_type_id` | `int` | No |  |
-| `business_type_name` | `str` | No |  |
+| `BusinessTypeId` | `int` | No |  |
+| `BusinessTypeName` | `str` | No |  |
 
 ### Operations
 
@@ -224,26 +224,28 @@ establishment = client.Establishment()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address_line1` | `str` | No |  |
-| `address_line2` | `str` | No |  |
-| `address_line3` | `str` | No |  |
-| `address_line4` | `str` | No |  |
-| `business_name` | `str` | No |  |
-| `business_type` | `str` | No |  |
-| `business_type_id` | `int` | No |  |
-| `fhrsid` | `int` | No |  |
-| `geocode` | `dict` | No |  |
-| `local_authority_business_id` | `str` | No |  |
-| `local_authority_code` | `str` | No |  |
-| `local_authority_email_address` | `str` | No |  |
-| `local_authority_name` | `str` | No |  |
-| `local_authority_web_site` | `str` | No |  |
-| `new_rating_pending` | `bool` | No |  |
-| `post_code` | `str` | No |  |
-| `rating_date` | `str` | No |  |
-| `rating_key` | `str` | No |  |
-| `rating_value` | `str` | No |  |
-| `scheme_type` | `str` | No |  |
+| `AddressLine1` | `str` | No |  |
+| `AddressLine2` | `str` | No |  |
+| `AddressLine3` | `str` | No |  |
+| `AddressLine4` | `str` | No |  |
+| `BusinessName` | `str` | No |  |
+| `BusinessType` | `str` | No |  |
+| `BusinessTypeID` | `int` | No |  |
+| `FHRSID` | `int` | No |  |
+| `Geocode` | `dict` | No |  |
+| `LocalAuthorityBusinessID` | `str` | No |  |
+| `LocalAuthorityCode` | `str` | No |  |
+| `LocalAuthorityEmailAddress` | `str` | No |  |
+| `LocalAuthorityName` | `str` | No |  |
+| `LocalAuthorityWebSite` | `str` | No |  |
+| `NewRatingPending` | `bool` | No |  |
+| `PostCode` | `str` | No |  |
+| `RatingDate` | `str` | No |  |
+| `RatingKey` | `str` | No |  |
+| `RatingValue` | `str` | No |  |
+| `SchemeType` | `str` | No |  |
+| `latitude` | `float` | No |  |
+| `longitude` | `float` | No |  |
 
 ### Operations
 
@@ -304,10 +306,10 @@ rating = client.Rating()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `rating_id` | `int` | No |  |
-| `rating_key` | `str` | No |  |
-| `rating_name` | `str` | No |  |
-| `scheme_type` | `str` | No |  |
+| `ratingId` | `int` | No |  |
+| `ratingKey` | `str` | No |  |
+| `ratingName` | `str` | No |  |
+| `schemeType` | `str` | No |  |
 
 ### Operations
 

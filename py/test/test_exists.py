@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# FoodHygieneRating SDK exists test
 
 import pytest
 from foodhygienerating_sdk import FoodHygieneRatingSDK

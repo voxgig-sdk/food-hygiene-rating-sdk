@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ FoodHygieneRatingUtility.registrar = ->(u) {
   u.prepare_params = FoodHygieneRatingUtilities::PrepareParams
   u.prepare_path = FoodHygieneRatingUtilities::PreparePath
   u.prepare_query = FoodHygieneRatingUtilities::PrepareQuery
+  u.graphql_body = FoodHygieneRatingUtilities::GraphqlBody
+  u.graphql_errors = FoodHygieneRatingUtilities::GraphqlErrors
   u.result_basic = FoodHygieneRatingUtilities::ResultBasic
   u.result_body = FoodHygieneRatingUtilities::ResultBody
   u.result_headers = FoodHygieneRatingUtilities::ResultHeaders

@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import FoodHygieneRatingSDK
-from core.error import FoodHygieneRatingError
-from core.result import FoodHygieneRatingResult
-from core.response import FoodHygieneRatingResponse
-from core.spec import FoodHygieneRatingSpec
-from feature.base_feature import FoodHygieneRatingBaseFeature
+from projectname_sdk.core.error import FoodHygieneRatingError
+from projectname_sdk.core.result import FoodHygieneRatingResult
+from projectname_sdk.core.response import FoodHygieneRatingResponse
+from projectname_sdk.core.spec import FoodHygieneRatingSpec
+from projectname_sdk.feature.base_feature import FoodHygieneRatingBaseFeature
 
 
 def _client():

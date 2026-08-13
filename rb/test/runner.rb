@@ -23,8 +23,8 @@ module FoodHygieneRatingTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("FOODHYGIENERATING_TEST_LIVE")
-    override = getenv("FOODHYGIENERATING_TEST_OVERRIDE")
+    live = getenv("FOOD_HYGIENE_RATING_TEST_LIVE")
+    override = getenv("FOOD_HYGIENE_RATING_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module FoodHygieneRatingTestRunner
       end
     end
 
-    explain = getenv("FOODHYGIENERATING_TEST_EXPLAIN")
-    m["FOODHYGIENERATING_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("FOOD_HYGIENE_RATING_TEST_EXPLAIN")
+    m["FOOD_HYGIENE_RATING_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

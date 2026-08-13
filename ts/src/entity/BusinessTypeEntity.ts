@@ -37,7 +37,7 @@ class BusinessTypeEntity extends FoodHygieneRatingEntityBase<BusinessType> {
 
 
 
-  async list(this: any, reqmatch?: BusinessTypeListMatch, ctrl?: Control): Promise<BusinessType[]> {
+  async list(this: any, reqmatch?: BusinessTypeListMatch, ctrl?: Control): Promise<BusinessTypeEntity[]> {
 
     const utility = this._utility
 

@@ -52,7 +52,7 @@ except Exception as err:
 
 ### 3. Load an authority
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -136,7 +136,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = FoodHygieneRatingSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 authority = client.Authority().list()
 # authority contains the mock response record
 ```
@@ -236,7 +237,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -258,17 +259,17 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `email` |  |
-| `establishment_count` |  |
-| `file_name` |  |
-| `file_name_welsh` |  |
-| `friendly_name` |  |
-| `local_authority_id` |  |
-| `local_authority_id_code` |  |
-| `name` |  |
-| `region_name` |  |
-| `scheme_url` |  |
-| `url` |  |
+| `Email` |  |
+| `EstablishmentCount` |  |
+| `FileName` |  |
+| `FileNameWelsh` |  |
+| `FriendlyName` |  |
+| `LocalAuthorityId` |  |
+| `LocalAuthorityIdCode` |  |
+| `Name` |  |
+| `RegionName` |  |
+| `SchemeUrl` |  |
+| `Url` |  |
 
 Operations: List, Load.
 
@@ -278,8 +279,8 @@ API path: `/Authorities`
 
 | Field | Description |
 | --- | --- |
-| `business_type_id` |  |
-| `business_type_name` |  |
+| `BusinessTypeId` |  |
+| `BusinessTypeName` |  |
 
 Operations: List.
 
@@ -289,26 +290,28 @@ API path: `/BusinessTypes`
 
 | Field | Description |
 | --- | --- |
-| `address_line1` |  |
-| `address_line2` |  |
-| `address_line3` |  |
-| `address_line4` |  |
-| `business_name` |  |
-| `business_type` |  |
-| `business_type_id` |  |
-| `fhrsid` |  |
-| `geocode` |  |
-| `local_authority_business_id` |  |
-| `local_authority_code` |  |
-| `local_authority_email_address` |  |
-| `local_authority_name` |  |
-| `local_authority_web_site` |  |
-| `new_rating_pending` |  |
-| `post_code` |  |
-| `rating_date` |  |
-| `rating_key` |  |
-| `rating_value` |  |
-| `scheme_type` |  |
+| `AddressLine1` |  |
+| `AddressLine2` |  |
+| `AddressLine3` |  |
+| `AddressLine4` |  |
+| `BusinessName` |  |
+| `BusinessType` |  |
+| `BusinessTypeID` |  |
+| `FHRSID` |  |
+| `Geocode` |  |
+| `LocalAuthorityBusinessID` |  |
+| `LocalAuthorityCode` |  |
+| `LocalAuthorityEmailAddress` |  |
+| `LocalAuthorityName` |  |
+| `LocalAuthorityWebSite` |  |
+| `NewRatingPending` |  |
+| `PostCode` |  |
+| `RatingDate` |  |
+| `RatingKey` |  |
+| `RatingValue` |  |
+| `SchemeType` |  |
+| `latitude` |  |
+| `longitude` |  |
 
 Operations: List, Load.
 
@@ -318,10 +321,10 @@ API path: `/Establishments`
 
 | Field | Description |
 | --- | --- |
-| `rating_id` |  |
-| `rating_key` |  |
-| `rating_name` |  |
-| `scheme_type` |  |
+| `ratingId` |  |
+| `ratingKey` |  |
+| `ratingName` |  |
+| `schemeType` |  |
 
 Operations: List.
 
@@ -347,17 +350,17 @@ Create an instance: `authority = client.Authority()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `email` | `str` |  |
-| `establishment_count` | `int` |  |
-| `file_name` | `str` |  |
-| `file_name_welsh` | `str` |  |
-| `friendly_name` | `str` |  |
-| `local_authority_id` | `int` |  |
-| `local_authority_id_code` | `str` |  |
-| `name` | `str` |  |
-| `region_name` | `str` |  |
-| `scheme_url` | `str` |  |
-| `url` | `str` |  |
+| `Email` | `str` |  |
+| `EstablishmentCount` | `int` |  |
+| `FileName` | `str` |  |
+| `FileNameWelsh` | `str` |  |
+| `FriendlyName` | `str` |  |
+| `LocalAuthorityId` | `int` |  |
+| `LocalAuthorityIdCode` | `str` |  |
+| `Name` | `str` |  |
+| `RegionName` | `str` |  |
+| `SchemeUrl` | `str` |  |
+| `Url` | `str` |  |
 
 #### Example: Load
 
@@ -386,8 +389,8 @@ Create an instance: `business_type = client.BusinessType()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `business_type_id` | `int` |  |
-| `business_type_name` | `str` |  |
+| `BusinessTypeId` | `int` |  |
+| `BusinessTypeName` | `str` |  |
 
 #### Example: List
 
@@ -411,26 +414,28 @@ Create an instance: `establishment = client.Establishment()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address_line1` | `str` |  |
-| `address_line2` | `str` |  |
-| `address_line3` | `str` |  |
-| `address_line4` | `str` |  |
-| `business_name` | `str` |  |
-| `business_type` | `str` |  |
-| `business_type_id` | `int` |  |
-| `fhrsid` | `int` |  |
-| `geocode` | `dict` |  |
-| `local_authority_business_id` | `str` |  |
-| `local_authority_code` | `str` |  |
-| `local_authority_email_address` | `str` |  |
-| `local_authority_name` | `str` |  |
-| `local_authority_web_site` | `str` |  |
-| `new_rating_pending` | `bool` |  |
-| `post_code` | `str` |  |
-| `rating_date` | `str` |  |
-| `rating_key` | `str` |  |
-| `rating_value` | `str` |  |
-| `scheme_type` | `str` |  |
+| `AddressLine1` | `str` |  |
+| `AddressLine2` | `str` |  |
+| `AddressLine3` | `str` |  |
+| `AddressLine4` | `str` |  |
+| `BusinessName` | `str` |  |
+| `BusinessType` | `str` |  |
+| `BusinessTypeID` | `int` |  |
+| `FHRSID` | `int` |  |
+| `Geocode` | `dict` |  |
+| `LocalAuthorityBusinessID` | `str` |  |
+| `LocalAuthorityCode` | `str` |  |
+| `LocalAuthorityEmailAddress` | `str` |  |
+| `LocalAuthorityName` | `str` |  |
+| `LocalAuthorityWebSite` | `str` |  |
+| `NewRatingPending` | `bool` |  |
+| `PostCode` | `str` |  |
+| `RatingDate` | `str` |  |
+| `RatingKey` | `str` |  |
+| `RatingValue` | `str` |  |
+| `SchemeType` | `str` |  |
+| `latitude` | `float` |  |
+| `longitude` | `float` |  |
 
 #### Example: Load
 
@@ -459,10 +464,10 @@ Create an instance: `rating = client.Rating()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `rating_id` | `int` |  |
-| `rating_key` | `str` |  |
-| `rating_name` | `str` |  |
-| `scheme_type` | `str` |  |
+| `ratingId` | `int` |  |
+| `ratingKey` | `str` |  |
+| `ratingName` | `str` |  |
+| `schemeType` | `str` |  |
 
 #### Example: List
 

@@ -2,32 +2,32 @@
   "existing": {
     "rating": {
       "RATING00": {
-        "rating_id": "RATING01",
-        "rating_key": "s29",
-        "rating_name": "s2a",
-        "scheme_type": "s2b"
+        "ratingId": "s28",
+        "ratingKey": "s29",
+        "ratingName": "s2a",
+        "schemeType": "s2b"
       },
       "RATING01": {
-        "rating_id": "RATING01",
-        "rating_key": "s51",
-        "rating_name": "s52",
-        "scheme_type": "s53"
+        "ratingId": "s50",
+        "ratingKey": "s51",
+        "ratingName": "s52",
+        "schemeType": "s53"
       },
       "RATING02": {
-        "rating_id": "RATING01",
-        "rating_key": "s79",
-        "rating_name": "s7a",
-        "scheme_type": "s7b"
+        "ratingId": "s78",
+        "ratingKey": "s79",
+        "ratingName": "s7a",
+        "schemeType": "s7b"
       }
     }
   },
   "new": {
     "rating": {
       "rating_ref01": {
-        "rating_id": "RATING01",
-        "rating_key": "sa1",
-        "rating_name": "sa2",
-        "scheme_type": "sa3"
+        "ratingId": "sa0",
+        "ratingKey": "sa1",
+        "ratingName": "sa2",
+        "schemeType": "sa3"
       }
     }
   }

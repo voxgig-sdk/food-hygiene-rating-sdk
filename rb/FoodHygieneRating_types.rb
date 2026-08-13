@@ -10,50 +10,50 @@
 
 # Authority entity data model.
 #
-# @!attribute [rw] email
+# @!attribute [rw] Email
 #   @return [String, nil]
 #
-# @!attribute [rw] establishment_count
+# @!attribute [rw] EstablishmentCount
 #   @return [Integer, nil]
 #
-# @!attribute [rw] file_name
+# @!attribute [rw] FileName
 #   @return [String, nil]
 #
-# @!attribute [rw] file_name_welsh
+# @!attribute [rw] FileNameWelsh
 #   @return [String, nil]
 #
-# @!attribute [rw] friendly_name
+# @!attribute [rw] FriendlyName
 #   @return [String, nil]
 #
-# @!attribute [rw] local_authority_id
+# @!attribute [rw] LocalAuthorityId
 #   @return [Integer, nil]
 #
-# @!attribute [rw] local_authority_id_code
+# @!attribute [rw] LocalAuthorityIdCode
 #   @return [String, nil]
 #
-# @!attribute [rw] name
+# @!attribute [rw] Name
 #   @return [String, nil]
 #
-# @!attribute [rw] region_name
+# @!attribute [rw] RegionName
 #   @return [String, nil]
 #
-# @!attribute [rw] scheme_url
+# @!attribute [rw] SchemeUrl
 #   @return [String, nil]
 #
-# @!attribute [rw] url
+# @!attribute [rw] Url
 #   @return [String, nil]
 Authority = Struct.new(
-  :email,
-  :establishment_count,
-  :file_name,
-  :file_name_welsh,
-  :friendly_name,
-  :local_authority_id,
-  :local_authority_id_code,
-  :name,
-  :region_name,
-  :scheme_url,
-  :url,
+  :Email,
+  :EstablishmentCount,
+  :FileName,
+  :FileNameWelsh,
+  :FriendlyName,
+  :LocalAuthorityId,
+  :LocalAuthorityIdCode,
+  :Name,
+  :RegionName,
+  :SchemeUrl,
+  :Url,
   keyword_init: true
 )
 
@@ -68,161 +68,169 @@ AuthorityLoadMatch = Struct.new(
 
 # Request payload for Authority#list.
 #
-# @!attribute [rw] email
+# @!attribute [rw] Email
 #   @return [String, nil]
 #
-# @!attribute [rw] establishment_count
+# @!attribute [rw] EstablishmentCount
 #   @return [Integer, nil]
 #
-# @!attribute [rw] file_name
+# @!attribute [rw] FileName
 #   @return [String, nil]
 #
-# @!attribute [rw] file_name_welsh
+# @!attribute [rw] FileNameWelsh
 #   @return [String, nil]
 #
-# @!attribute [rw] friendly_name
+# @!attribute [rw] FriendlyName
 #   @return [String, nil]
 #
-# @!attribute [rw] local_authority_id
+# @!attribute [rw] LocalAuthorityId
 #   @return [Integer, nil]
 #
-# @!attribute [rw] local_authority_id_code
+# @!attribute [rw] LocalAuthorityIdCode
 #   @return [String, nil]
 #
-# @!attribute [rw] name
+# @!attribute [rw] Name
 #   @return [String, nil]
 #
-# @!attribute [rw] region_name
+# @!attribute [rw] RegionName
 #   @return [String, nil]
 #
-# @!attribute [rw] scheme_url
+# @!attribute [rw] SchemeUrl
 #   @return [String, nil]
 #
-# @!attribute [rw] url
+# @!attribute [rw] Url
 #   @return [String, nil]
 AuthorityListMatch = Struct.new(
-  :email,
-  :establishment_count,
-  :file_name,
-  :file_name_welsh,
-  :friendly_name,
-  :local_authority_id,
-  :local_authority_id_code,
-  :name,
-  :region_name,
-  :scheme_url,
-  :url,
+  :Email,
+  :EstablishmentCount,
+  :FileName,
+  :FileNameWelsh,
+  :FriendlyName,
+  :LocalAuthorityId,
+  :LocalAuthorityIdCode,
+  :Name,
+  :RegionName,
+  :SchemeUrl,
+  :Url,
   keyword_init: true
 )
 
 # BusinessType entity data model.
 #
-# @!attribute [rw] business_type_id
+# @!attribute [rw] BusinessTypeId
 #   @return [Integer, nil]
 #
-# @!attribute [rw] business_type_name
+# @!attribute [rw] BusinessTypeName
 #   @return [String, nil]
 BusinessType = Struct.new(
-  :business_type_id,
-  :business_type_name,
+  :BusinessTypeId,
+  :BusinessTypeName,
   keyword_init: true
 )
 
 # Request payload for BusinessType#list.
 #
-# @!attribute [rw] business_type_id
+# @!attribute [rw] BusinessTypeId
 #   @return [Integer, nil]
 #
-# @!attribute [rw] business_type_name
+# @!attribute [rw] BusinessTypeName
 #   @return [String, nil]
 BusinessTypeListMatch = Struct.new(
-  :business_type_id,
-  :business_type_name,
+  :BusinessTypeId,
+  :BusinessTypeName,
   keyword_init: true
 )
 
 # Establishment entity data model.
 #
-# @!attribute [rw] address_line1
+# @!attribute [rw] AddressLine1
 #   @return [String, nil]
 #
-# @!attribute [rw] address_line2
+# @!attribute [rw] AddressLine2
 #   @return [String, nil]
 #
-# @!attribute [rw] address_line3
+# @!attribute [rw] AddressLine3
 #   @return [String, nil]
 #
-# @!attribute [rw] address_line4
+# @!attribute [rw] AddressLine4
 #   @return [String, nil]
 #
-# @!attribute [rw] business_name
+# @!attribute [rw] BusinessName
 #   @return [String, nil]
 #
-# @!attribute [rw] business_type
+# @!attribute [rw] BusinessType
 #   @return [String, nil]
 #
-# @!attribute [rw] business_type_id
+# @!attribute [rw] BusinessTypeID
 #   @return [Integer, nil]
 #
-# @!attribute [rw] fhrsid
+# @!attribute [rw] FHRSID
 #   @return [Integer, nil]
 #
-# @!attribute [rw] geocode
+# @!attribute [rw] Geocode
 #   @return [Hash, nil]
 #
-# @!attribute [rw] local_authority_business_id
+# @!attribute [rw] LocalAuthorityBusinessID
 #   @return [String, nil]
 #
-# @!attribute [rw] local_authority_code
+# @!attribute [rw] LocalAuthorityCode
 #   @return [String, nil]
 #
-# @!attribute [rw] local_authority_email_address
+# @!attribute [rw] LocalAuthorityEmailAddress
 #   @return [String, nil]
 #
-# @!attribute [rw] local_authority_name
+# @!attribute [rw] LocalAuthorityName
 #   @return [String, nil]
 #
-# @!attribute [rw] local_authority_web_site
+# @!attribute [rw] LocalAuthorityWebSite
 #   @return [String, nil]
 #
-# @!attribute [rw] new_rating_pending
+# @!attribute [rw] NewRatingPending
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] post_code
+# @!attribute [rw] PostCode
 #   @return [String, nil]
 #
-# @!attribute [rw] rating_date
+# @!attribute [rw] RatingDate
 #   @return [String, nil]
 #
-# @!attribute [rw] rating_key
+# @!attribute [rw] RatingKey
 #   @return [String, nil]
 #
-# @!attribute [rw] rating_value
+# @!attribute [rw] RatingValue
 #   @return [String, nil]
 #
-# @!attribute [rw] scheme_type
+# @!attribute [rw] SchemeType
 #   @return [String, nil]
+#
+# @!attribute [rw] latitude
+#   @return [Float, nil]
+#
+# @!attribute [rw] longitude
+#   @return [Float, nil]
 Establishment = Struct.new(
-  :address_line1,
-  :address_line2,
-  :address_line3,
-  :address_line4,
-  :business_name,
-  :business_type,
-  :business_type_id,
-  :fhrsid,
-  :geocode,
-  :local_authority_business_id,
-  :local_authority_code,
-  :local_authority_email_address,
-  :local_authority_name,
-  :local_authority_web_site,
-  :new_rating_pending,
-  :post_code,
-  :rating_date,
-  :rating_key,
-  :rating_value,
-  :scheme_type,
+  :AddressLine1,
+  :AddressLine2,
+  :AddressLine3,
+  :AddressLine4,
+  :BusinessName,
+  :BusinessType,
+  :BusinessTypeID,
+  :FHRSID,
+  :Geocode,
+  :LocalAuthorityBusinessID,
+  :LocalAuthorityCode,
+  :LocalAuthorityEmailAddress,
+  :LocalAuthorityName,
+  :LocalAuthorityWebSite,
+  :NewRatingPending,
+  :PostCode,
+  :RatingDate,
+  :RatingKey,
+  :RatingValue,
+  :SchemeType,
+  :latitude,
+  :longitude,
   keyword_init: true
 )
 
@@ -237,128 +245,136 @@ EstablishmentLoadMatch = Struct.new(
 
 # Request payload for Establishment#list.
 #
-# @!attribute [rw] address_line1
+# @!attribute [rw] AddressLine1
 #   @return [String, nil]
 #
-# @!attribute [rw] address_line2
+# @!attribute [rw] AddressLine2
 #   @return [String, nil]
 #
-# @!attribute [rw] address_line3
+# @!attribute [rw] AddressLine3
 #   @return [String, nil]
 #
-# @!attribute [rw] address_line4
+# @!attribute [rw] AddressLine4
 #   @return [String, nil]
 #
-# @!attribute [rw] business_name
+# @!attribute [rw] BusinessName
 #   @return [String, nil]
 #
-# @!attribute [rw] business_type
+# @!attribute [rw] BusinessType
 #   @return [String, nil]
 #
-# @!attribute [rw] business_type_id
+# @!attribute [rw] BusinessTypeID
 #   @return [Integer, nil]
 #
-# @!attribute [rw] fhrsid
+# @!attribute [rw] FHRSID
 #   @return [Integer, nil]
 #
-# @!attribute [rw] geocode
+# @!attribute [rw] Geocode
 #   @return [Hash, nil]
 #
-# @!attribute [rw] local_authority_business_id
+# @!attribute [rw] LocalAuthorityBusinessID
 #   @return [String, nil]
 #
-# @!attribute [rw] local_authority_code
+# @!attribute [rw] LocalAuthorityCode
 #   @return [String, nil]
 #
-# @!attribute [rw] local_authority_email_address
+# @!attribute [rw] LocalAuthorityEmailAddress
 #   @return [String, nil]
 #
-# @!attribute [rw] local_authority_name
+# @!attribute [rw] LocalAuthorityName
 #   @return [String, nil]
 #
-# @!attribute [rw] local_authority_web_site
+# @!attribute [rw] LocalAuthorityWebSite
 #   @return [String, nil]
 #
-# @!attribute [rw] new_rating_pending
+# @!attribute [rw] NewRatingPending
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] post_code
+# @!attribute [rw] PostCode
 #   @return [String, nil]
 #
-# @!attribute [rw] rating_date
+# @!attribute [rw] RatingDate
 #   @return [String, nil]
 #
-# @!attribute [rw] rating_key
+# @!attribute [rw] RatingKey
 #   @return [String, nil]
 #
-# @!attribute [rw] rating_value
+# @!attribute [rw] RatingValue
 #   @return [String, nil]
 #
-# @!attribute [rw] scheme_type
+# @!attribute [rw] SchemeType
 #   @return [String, nil]
+#
+# @!attribute [rw] latitude
+#   @return [Float, nil]
+#
+# @!attribute [rw] longitude
+#   @return [Float, nil]
 EstablishmentListMatch = Struct.new(
-  :address_line1,
-  :address_line2,
-  :address_line3,
-  :address_line4,
-  :business_name,
-  :business_type,
-  :business_type_id,
-  :fhrsid,
-  :geocode,
-  :local_authority_business_id,
-  :local_authority_code,
-  :local_authority_email_address,
-  :local_authority_name,
-  :local_authority_web_site,
-  :new_rating_pending,
-  :post_code,
-  :rating_date,
-  :rating_key,
-  :rating_value,
-  :scheme_type,
+  :AddressLine1,
+  :AddressLine2,
+  :AddressLine3,
+  :AddressLine4,
+  :BusinessName,
+  :BusinessType,
+  :BusinessTypeID,
+  :FHRSID,
+  :Geocode,
+  :LocalAuthorityBusinessID,
+  :LocalAuthorityCode,
+  :LocalAuthorityEmailAddress,
+  :LocalAuthorityName,
+  :LocalAuthorityWebSite,
+  :NewRatingPending,
+  :PostCode,
+  :RatingDate,
+  :RatingKey,
+  :RatingValue,
+  :SchemeType,
+  :latitude,
+  :longitude,
   keyword_init: true
 )
 
 # Rating entity data model.
 #
-# @!attribute [rw] rating_id
+# @!attribute [rw] ratingId
 #   @return [Integer, nil]
 #
-# @!attribute [rw] rating_key
+# @!attribute [rw] ratingKey
 #   @return [String, nil]
 #
-# @!attribute [rw] rating_name
+# @!attribute [rw] ratingName
 #   @return [String, nil]
 #
-# @!attribute [rw] scheme_type
+# @!attribute [rw] schemeType
 #   @return [String, nil]
 Rating = Struct.new(
-  :rating_id,
-  :rating_key,
-  :rating_name,
-  :scheme_type,
+  :ratingId,
+  :ratingKey,
+  :ratingName,
+  :schemeType,
   keyword_init: true
 )
 
 # Request payload for Rating#list.
 #
-# @!attribute [rw] rating_id
+# @!attribute [rw] ratingId
 #   @return [Integer, nil]
 #
-# @!attribute [rw] rating_key
+# @!attribute [rw] ratingKey
 #   @return [String, nil]
 #
-# @!attribute [rw] rating_name
+# @!attribute [rw] ratingName
 #   @return [String, nil]
 #
-# @!attribute [rw] scheme_type
+# @!attribute [rw] schemeType
 #   @return [String, nil]
 RatingListMatch = Struct.new(
-  :rating_id,
-  :rating_key,
-  :rating_name,
-  :scheme_type,
+  :ratingId,
+  :ratingKey,
+  :ratingName,
+  :schemeType,
   keyword_init: true
 )
 

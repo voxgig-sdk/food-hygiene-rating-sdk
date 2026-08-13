@@ -38,7 +38,7 @@ try {
     // list() returns an array of Authority records — iterate directly.
     $authoritys = $client->Authority()->list();
     foreach ($authoritys as $item) {
-        echo $item["email"] . "\n";
+        echo $item["Email"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -49,7 +49,7 @@ try {
 
 ```php
 try {
-    // load() returns the bare Authority record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Authority record (throws on error).
     $authority = $client->Authority()->load(["id" => 1]);
     print_r($authority);
 } catch (\Throwable $err) {
@@ -140,7 +140,8 @@ $client = FoodHygieneRatingSDK::test([
     "entity" => ["authority" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $authority = $client->Authority()->list();
 print_r($authority);
 ```
@@ -243,7 +244,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -265,17 +266,17 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `email` |  |
-| `establishment_count` |  |
-| `file_name` |  |
-| `file_name_welsh` |  |
-| `friendly_name` |  |
-| `local_authority_id` |  |
-| `local_authority_id_code` |  |
-| `name` |  |
-| `region_name` |  |
-| `scheme_url` |  |
-| `url` |  |
+| `Email` |  |
+| `EstablishmentCount` |  |
+| `FileName` |  |
+| `FileNameWelsh` |  |
+| `FriendlyName` |  |
+| `LocalAuthorityId` |  |
+| `LocalAuthorityIdCode` |  |
+| `Name` |  |
+| `RegionName` |  |
+| `SchemeUrl` |  |
+| `Url` |  |
 
 Operations: List, Load.
 
@@ -285,8 +286,8 @@ API path: `/Authorities`
 
 | Field | Description |
 | --- | --- |
-| `business_type_id` |  |
-| `business_type_name` |  |
+| `BusinessTypeId` |  |
+| `BusinessTypeName` |  |
 
 Operations: List.
 
@@ -296,26 +297,28 @@ API path: `/BusinessTypes`
 
 | Field | Description |
 | --- | --- |
-| `address_line1` |  |
-| `address_line2` |  |
-| `address_line3` |  |
-| `address_line4` |  |
-| `business_name` |  |
-| `business_type` |  |
-| `business_type_id` |  |
-| `fhrsid` |  |
-| `geocode` |  |
-| `local_authority_business_id` |  |
-| `local_authority_code` |  |
-| `local_authority_email_address` |  |
-| `local_authority_name` |  |
-| `local_authority_web_site` |  |
-| `new_rating_pending` |  |
-| `post_code` |  |
-| `rating_date` |  |
-| `rating_key` |  |
-| `rating_value` |  |
-| `scheme_type` |  |
+| `AddressLine1` |  |
+| `AddressLine2` |  |
+| `AddressLine3` |  |
+| `AddressLine4` |  |
+| `BusinessName` |  |
+| `BusinessType` |  |
+| `BusinessTypeID` |  |
+| `FHRSID` |  |
+| `Geocode` |  |
+| `LocalAuthorityBusinessID` |  |
+| `LocalAuthorityCode` |  |
+| `LocalAuthorityEmailAddress` |  |
+| `LocalAuthorityName` |  |
+| `LocalAuthorityWebSite` |  |
+| `NewRatingPending` |  |
+| `PostCode` |  |
+| `RatingDate` |  |
+| `RatingKey` |  |
+| `RatingValue` |  |
+| `SchemeType` |  |
+| `latitude` |  |
+| `longitude` |  |
 
 Operations: List, Load.
 
@@ -325,10 +328,10 @@ API path: `/Establishments`
 
 | Field | Description |
 | --- | --- |
-| `rating_id` |  |
-| `rating_key` |  |
-| `rating_name` |  |
-| `scheme_type` |  |
+| `ratingId` |  |
+| `ratingKey` |  |
+| `ratingName` |  |
+| `schemeType` |  |
 
 Operations: List.
 
@@ -354,22 +357,22 @@ Create an instance: `$authority = $client->Authority();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `email` | `string` |  |
-| `establishment_count` | `int` |  |
-| `file_name` | `string` |  |
-| `file_name_welsh` | `string` |  |
-| `friendly_name` | `string` |  |
-| `local_authority_id` | `int` |  |
-| `local_authority_id_code` | `string` |  |
-| `name` | `string` |  |
-| `region_name` | `string` |  |
-| `scheme_url` | `string` |  |
-| `url` | `string` |  |
+| `Email` | `string` |  |
+| `EstablishmentCount` | `int` |  |
+| `FileName` | `string` |  |
+| `FileNameWelsh` | `string` |  |
+| `FriendlyName` | `string` |  |
+| `LocalAuthorityId` | `int` |  |
+| `LocalAuthorityIdCode` | `string` |  |
+| `Name` | `string` |  |
+| `RegionName` | `string` |  |
+| `SchemeUrl` | `string` |  |
+| `Url` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Authority record (throws on error).
+// load() returns the ENTITY — call data_get() for the Authority record (throws on error).
 $authority = $client->Authority()->load(["id" => 1]);
 ```
 
@@ -395,8 +398,8 @@ Create an instance: `$business_type = $client->BusinessType();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `business_type_id` | `int` |  |
-| `business_type_name` | `string` |  |
+| `BusinessTypeId` | `int` |  |
+| `BusinessTypeName` | `string` |  |
 
 #### Example: List
 
@@ -421,31 +424,33 @@ Create an instance: `$establishment = $client->Establishment();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address_line1` | `string` |  |
-| `address_line2` | `string` |  |
-| `address_line3` | `string` |  |
-| `address_line4` | `string` |  |
-| `business_name` | `string` |  |
-| `business_type` | `string` |  |
-| `business_type_id` | `int` |  |
-| `fhrsid` | `int` |  |
-| `geocode` | `array` |  |
-| `local_authority_business_id` | `string` |  |
-| `local_authority_code` | `string` |  |
-| `local_authority_email_address` | `string` |  |
-| `local_authority_name` | `string` |  |
-| `local_authority_web_site` | `string` |  |
-| `new_rating_pending` | `bool` |  |
-| `post_code` | `string` |  |
-| `rating_date` | `string` |  |
-| `rating_key` | `string` |  |
-| `rating_value` | `string` |  |
-| `scheme_type` | `string` |  |
+| `AddressLine1` | `string` |  |
+| `AddressLine2` | `string` |  |
+| `AddressLine3` | `string` |  |
+| `AddressLine4` | `string` |  |
+| `BusinessName` | `string` |  |
+| `BusinessType` | `string` |  |
+| `BusinessTypeID` | `int` |  |
+| `FHRSID` | `int` |  |
+| `Geocode` | `array` |  |
+| `LocalAuthorityBusinessID` | `string` |  |
+| `LocalAuthorityCode` | `string` |  |
+| `LocalAuthorityEmailAddress` | `string` |  |
+| `LocalAuthorityName` | `string` |  |
+| `LocalAuthorityWebSite` | `string` |  |
+| `NewRatingPending` | `bool` |  |
+| `PostCode` | `string` |  |
+| `RatingDate` | `string` |  |
+| `RatingKey` | `string` |  |
+| `RatingValue` | `string` |  |
+| `SchemeType` | `string` |  |
+| `latitude` | `float` |  |
+| `longitude` | `float` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Establishment record (throws on error).
+// load() returns the ENTITY — call data_get() for the Establishment record (throws on error).
 $establishment = $client->Establishment()->load(["id" => 1]);
 ```
 
@@ -471,10 +476,10 @@ Create an instance: `$rating = $client->Rating();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `rating_id` | `int` |  |
-| `rating_key` | `string` |  |
-| `rating_name` | `string` |  |
-| `scheme_type` | `string` |  |
+| `ratingId` | `int` |  |
+| `ratingKey` | `string` |  |
+| `ratingName` | `string` |  |
+| `schemeType` | `string` |  |
 
 #### Example: List
 

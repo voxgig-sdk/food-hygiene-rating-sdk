@@ -43,8 +43,8 @@ class FoodHygieneRatingTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('FOODHYGIENERATING_TEST_LIVE');
-        $override = self::getenv('FOODHYGIENERATING_TEST_OVERRIDE');
+        $live = self::getenv('FOOD_HYGIENE_RATING_TEST_LIVE');
+        $override = self::getenv('FOOD_HYGIENE_RATING_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class FoodHygieneRatingTestRunner
             }
         }
 
-        $explain = self::getenv('FOODHYGIENERATING_TEST_EXPLAIN');
+        $explain = self::getenv('FOOD_HYGIENE_RATING_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['FOODHYGIENERATING_TEST_EXPLAIN'] = $explain;
+            $m['FOOD_HYGIENE_RATING_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

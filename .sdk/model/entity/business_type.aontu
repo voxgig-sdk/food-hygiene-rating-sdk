@@ -6,12 +6,12 @@ main: kit: entity: business_type: {
 
   fields: [
     {
-      name: "business_type_id"
+      name: "BusinessTypeId"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "business_type_name"
+      name: "BusinessTypeName"
       req: false
       type: "`$STRING`"
     }
@@ -30,7 +30,7 @@ main: kit: entity: business_type: {
           ]
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.businessTypes`"
           }
         }
       ]

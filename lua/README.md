@@ -43,7 +43,7 @@ local authoritys, err = client:Authority():list()
 if err then error(err) end
 
 for _, item in ipairs(authoritys) do
-  print(item["email"])
+  print(item["Email"])
 end
 ```
 
@@ -244,17 +244,17 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `email` |  |
-| `establishment_count` |  |
-| `file_name` |  |
-| `file_name_welsh` |  |
-| `friendly_name` |  |
-| `local_authority_id` |  |
-| `local_authority_id_code` |  |
-| `name` |  |
-| `region_name` |  |
-| `scheme_url` |  |
-| `url` |  |
+| `Email` |  |
+| `EstablishmentCount` |  |
+| `FileName` |  |
+| `FileNameWelsh` |  |
+| `FriendlyName` |  |
+| `LocalAuthorityId` |  |
+| `LocalAuthorityIdCode` |  |
+| `Name` |  |
+| `RegionName` |  |
+| `SchemeUrl` |  |
+| `Url` |  |
 
 Operations: List, Load.
 
@@ -264,8 +264,8 @@ API path: `/Authorities`
 
 | Field | Description |
 | --- | --- |
-| `business_type_id` |  |
-| `business_type_name` |  |
+| `BusinessTypeId` |  |
+| `BusinessTypeName` |  |
 
 Operations: List.
 
@@ -275,26 +275,28 @@ API path: `/BusinessTypes`
 
 | Field | Description |
 | --- | --- |
-| `address_line1` |  |
-| `address_line2` |  |
-| `address_line3` |  |
-| `address_line4` |  |
-| `business_name` |  |
-| `business_type` |  |
-| `business_type_id` |  |
-| `fhrsid` |  |
-| `geocode` |  |
-| `local_authority_business_id` |  |
-| `local_authority_code` |  |
-| `local_authority_email_address` |  |
-| `local_authority_name` |  |
-| `local_authority_web_site` |  |
-| `new_rating_pending` |  |
-| `post_code` |  |
-| `rating_date` |  |
-| `rating_key` |  |
-| `rating_value` |  |
-| `scheme_type` |  |
+| `AddressLine1` |  |
+| `AddressLine2` |  |
+| `AddressLine3` |  |
+| `AddressLine4` |  |
+| `BusinessName` |  |
+| `BusinessType` |  |
+| `BusinessTypeID` |  |
+| `FHRSID` |  |
+| `Geocode` |  |
+| `LocalAuthorityBusinessID` |  |
+| `LocalAuthorityCode` |  |
+| `LocalAuthorityEmailAddress` |  |
+| `LocalAuthorityName` |  |
+| `LocalAuthorityWebSite` |  |
+| `NewRatingPending` |  |
+| `PostCode` |  |
+| `RatingDate` |  |
+| `RatingKey` |  |
+| `RatingValue` |  |
+| `SchemeType` |  |
+| `latitude` |  |
+| `longitude` |  |
 
 Operations: List, Load.
 
@@ -304,10 +306,10 @@ API path: `/Establishments`
 
 | Field | Description |
 | --- | --- |
-| `rating_id` |  |
-| `rating_key` |  |
-| `rating_name` |  |
-| `scheme_type` |  |
+| `ratingId` |  |
+| `ratingKey` |  |
+| `ratingName` |  |
+| `schemeType` |  |
 
 Operations: List.
 
@@ -333,17 +335,17 @@ Create an instance: `local authority = client:Authority(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `email` | `string` |  |
-| `establishment_count` | `number` |  |
-| `file_name` | `string` |  |
-| `file_name_welsh` | `string` |  |
-| `friendly_name` | `string` |  |
-| `local_authority_id` | `number` |  |
-| `local_authority_id_code` | `string` |  |
-| `name` | `string` |  |
-| `region_name` | `string` |  |
-| `scheme_url` | `string` |  |
-| `url` | `string` |  |
+| `Email` | `string` |  |
+| `EstablishmentCount` | `number` |  |
+| `FileName` | `string` |  |
+| `FileNameWelsh` | `string` |  |
+| `FriendlyName` | `string` |  |
+| `LocalAuthorityId` | `number` |  |
+| `LocalAuthorityIdCode` | `string` |  |
+| `Name` | `string` |  |
+| `RegionName` | `string` |  |
+| `SchemeUrl` | `string` |  |
+| `Url` | `string` |  |
 
 #### Example: Load
 
@@ -372,8 +374,8 @@ Create an instance: `local business_type = client:BusinessType(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `business_type_id` | `number` |  |
-| `business_type_name` | `string` |  |
+| `BusinessTypeId` | `number` |  |
+| `BusinessTypeName` | `string` |  |
 
 #### Example: List
 
@@ -397,26 +399,28 @@ Create an instance: `local establishment = client:Establishment(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address_line1` | `string` |  |
-| `address_line2` | `string` |  |
-| `address_line3` | `string` |  |
-| `address_line4` | `string` |  |
-| `business_name` | `string` |  |
-| `business_type` | `string` |  |
-| `business_type_id` | `number` |  |
-| `fhrsid` | `number` |  |
-| `geocode` | `table` |  |
-| `local_authority_business_id` | `string` |  |
-| `local_authority_code` | `string` |  |
-| `local_authority_email_address` | `string` |  |
-| `local_authority_name` | `string` |  |
-| `local_authority_web_site` | `string` |  |
-| `new_rating_pending` | `boolean` |  |
-| `post_code` | `string` |  |
-| `rating_date` | `string` |  |
-| `rating_key` | `string` |  |
-| `rating_value` | `string` |  |
-| `scheme_type` | `string` |  |
+| `AddressLine1` | `string` |  |
+| `AddressLine2` | `string` |  |
+| `AddressLine3` | `string` |  |
+| `AddressLine4` | `string` |  |
+| `BusinessName` | `string` |  |
+| `BusinessType` | `string` |  |
+| `BusinessTypeID` | `number` |  |
+| `FHRSID` | `number` |  |
+| `Geocode` | `table` |  |
+| `LocalAuthorityBusinessID` | `string` |  |
+| `LocalAuthorityCode` | `string` |  |
+| `LocalAuthorityEmailAddress` | `string` |  |
+| `LocalAuthorityName` | `string` |  |
+| `LocalAuthorityWebSite` | `string` |  |
+| `NewRatingPending` | `boolean` |  |
+| `PostCode` | `string` |  |
+| `RatingDate` | `string` |  |
+| `RatingKey` | `string` |  |
+| `RatingValue` | `string` |  |
+| `SchemeType` | `string` |  |
+| `latitude` | `number` |  |
+| `longitude` | `number` |  |
 
 #### Example: Load
 
@@ -445,10 +449,10 @@ Create an instance: `local rating = client:Rating(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `rating_id` | `number` |  |
-| `rating_key` | `string` |  |
-| `rating_name` | `string` |  |
-| `scheme_type` | `string` |  |
+| `ratingId` | `number` |  |
+| `ratingKey` | `string` |  |
+| `ratingName` | `string` |  |
+| `schemeType` | `string` |  |
 
 #### Example: List
 

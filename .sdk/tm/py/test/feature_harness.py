@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import FoodHygieneRatingControl
-from core.error import FoodHygieneRatingError
-from core.result import FoodHygieneRatingResult
-from core.spec import FoodHygieneRatingSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import FoodHygieneRatingControl
+from projectname_sdk.core.error import FoodHygieneRatingError
+from projectname_sdk.core.result import FoodHygieneRatingResult
+from projectname_sdk.core.spec import FoodHygieneRatingSpec
 
 
 # True when this SDK was generated with the named feature.

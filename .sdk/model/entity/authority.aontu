@@ -6,57 +6,57 @@ main: kit: entity: authority: {
 
   fields: [
     {
-      name: "email"
+      name: "Email"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "establishment_count"
+      name: "EstablishmentCount"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "file_name"
+      name: "FileName"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "file_name_welsh"
+      name: "FileNameWelsh"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "friendly_name"
+      name: "FriendlyName"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "local_authority_id"
+      name: "LocalAuthorityId"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "local_authority_id_code"
+      name: "LocalAuthorityIdCode"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "name"
+      name: "Name"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "region_name"
+      name: "RegionName"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "scheme_url"
+      name: "SchemeUrl"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "url"
+      name: "Url"
       req: false
       type: "`$STRING`"
     }
@@ -75,7 +75,7 @@ main: kit: entity: authority: {
           ]
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.authorities`"
           }
         }
       ]

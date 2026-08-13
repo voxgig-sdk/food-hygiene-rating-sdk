@@ -5,6 +5,10 @@
       "desc": ""
     },
     "kit": {
+      "author": {
+        "name": "",
+        "url": ""
+      },
       "config": {
         "docs_order": [
           "ts",
@@ -18,6 +22,7 @@
           "content-type": "application/json"
         }
       },
+      "contributor": {},
       "entity": {
         "authority": {
           "active": true,
@@ -27,67 +32,67 @@
           "fields": [
             {
               "active": true,
-              "name": "email",
+              "name": "Email",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "establishment_count",
+              "name": "EstablishmentCount",
               "req": false,
               "type": "`$INTEGER`"
             },
             {
               "active": true,
-              "name": "file_name",
+              "name": "FileName",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "file_name_welsh",
+              "name": "FileNameWelsh",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "friendly_name",
+              "name": "FriendlyName",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "local_authority_id",
+              "name": "LocalAuthorityId",
               "req": false,
               "type": "`$INTEGER`"
             },
             {
               "active": true,
-              "name": "local_authority_id_code",
+              "name": "LocalAuthorityIdCode",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "name",
+              "name": "Name",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "region_name",
+              "name": "RegionName",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "scheme_url",
+              "name": "SchemeUrl",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "url",
+              "name": "Url",
               "req": false,
               "type": "`$STRING`"
             }
@@ -101,6 +106,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/Authorities",
                   "parts": [
@@ -109,7 +115,7 @@
                   "select": {},
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.authorities`"
                   }
                 }
               ]
@@ -132,6 +138,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/Authorities/{id}",
                   "parts": [
@@ -163,13 +170,13 @@
           "fields": [
             {
               "active": true,
-              "name": "business_type_id",
+              "name": "BusinessTypeId",
               "req": false,
               "type": "`$INTEGER`"
             },
             {
               "active": true,
-              "name": "business_type_name",
+              "name": "BusinessTypeName",
               "req": false,
               "type": "`$STRING`"
             }
@@ -183,6 +190,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/BusinessTypes",
                   "parts": [
@@ -191,7 +199,7 @@
                   "select": {},
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.businessTypes`"
                   }
                 }
               ]
@@ -209,123 +217,135 @@
           "fields": [
             {
               "active": true,
-              "name": "address_line1",
+              "name": "AddressLine1",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "address_line2",
+              "name": "AddressLine2",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "address_line3",
+              "name": "AddressLine3",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "address_line4",
+              "name": "AddressLine4",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "business_name",
+              "name": "BusinessName",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "business_type",
+              "name": "BusinessType",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "business_type_id",
+              "name": "BusinessTypeID",
               "req": false,
               "type": "`$INTEGER`"
             },
             {
               "active": true,
-              "name": "fhrsid",
+              "name": "FHRSID",
               "req": false,
               "type": "`$INTEGER`"
             },
             {
               "active": true,
-              "name": "geocode",
+              "name": "Geocode",
               "req": false,
               "type": "`$OBJECT`"
             },
             {
               "active": true,
-              "name": "local_authority_business_id",
+              "name": "LocalAuthorityBusinessID",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "local_authority_code",
+              "name": "LocalAuthorityCode",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "local_authority_email_address",
+              "name": "LocalAuthorityEmailAddress",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "local_authority_name",
+              "name": "LocalAuthorityName",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "local_authority_web_site",
+              "name": "LocalAuthorityWebSite",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "new_rating_pending",
+              "name": "NewRatingPending",
               "req": false,
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
-              "name": "post_code",
+              "name": "PostCode",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "rating_date",
+              "name": "RatingDate",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "rating_key",
+              "name": "RatingKey",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "rating_value",
+              "name": "RatingValue",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "scheme_type",
+              "name": "SchemeType",
               "req": false,
               "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "latitude",
+              "req": false,
+              "type": "`$NUMBER`"
+            },
+            {
+              "active": true,
+              "name": "longitude",
+              "req": false,
+              "type": "`$NUMBER`"
             }
           ],
           "name": "establishment",
@@ -430,6 +450,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/Establishments",
                   "parts": [
@@ -475,6 +496,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/Establishments/{id}",
                   "parts": [
@@ -488,7 +510,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.Geocode`"
                   }
                 }
               ]
@@ -506,25 +528,25 @@
           "fields": [
             {
               "active": true,
-              "name": "rating_id",
+              "name": "ratingId",
               "req": false,
               "type": "`$INTEGER`"
             },
             {
               "active": true,
-              "name": "rating_key",
+              "name": "ratingKey",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "rating_name",
+              "name": "ratingName",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "scheme_type",
+              "name": "schemeType",
               "req": false,
               "type": "`$STRING`"
             }
@@ -538,6 +560,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/Ratings",
                   "parts": [
@@ -546,7 +569,7 @@
                   "select": {},
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.ratings`"
                   }
                 }
               ]
@@ -821,18 +844,41 @@
         "website": "https://ratings.food.gov.uk"
       },
       "option": {},
+      "repo": {
+        "host": "github.com",
+        "path": ""
+      },
       "target": {
         "go": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [
+              "test/feature_test.go"
+            ],
+            "trim": true
+          },
           "module": {
-            "name": "food-hygiene-rating"
+            "goversion": "",
+            "name": "food-hygiene-rating",
+            "package": "",
+            "path": ""
           },
           "name": "go",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -854,22 +900,40 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Golang"
         },
         "go-cli": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "food-hygiene-rating"
+            "goversion": "",
+            "name": "food-hygiene-rating",
+            "package": "",
+            "path": ""
           },
           "name": "go-cli",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "phase": {
             "agentguide": {
               "active": false
@@ -908,21 +972,39 @@
                 "recipe": "github"
               },
               "via": "root"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "Go CLI"
         },
         "go-mcp": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "food-hygiene-rating"
+            "goversion": "",
+            "name": "food-hygiene-rating",
+            "package": "",
+            "path": ""
           },
           "name": "go-mcp",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "phase": {
             "agentguide": {
               "active": false
@@ -961,12 +1043,17 @@
                 "recipe": "github"
               },
               "via": "root"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "Go MCP server"
         },
         "lua": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "--"
           },
@@ -978,10 +1065,23 @@
             }
           },
           "ext": "lua",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "food-hygiene-rating"
+            "goversion": "",
+            "name": "food-hygiene-rating",
+            "package": "",
+            "path": ""
           },
           "name": "lua",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1003,22 +1103,40 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Lua"
         },
         "php": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "php",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "food-hygiene-rating"
+            "goversion": "",
+            "name": "food-hygiene-rating",
+            "package": "",
+            "path": ""
           },
           "name": "php",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1040,13 +1158,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "PHP"
         },
         "py": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "#"
           },
@@ -1058,10 +1181,23 @@
             }
           },
           "ext": "py",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "food-hygiene-rating"
+            "goversion": "",
+            "name": "food-hygiene-rating",
+            "package": "",
+            "path": ""
           },
           "name": "py",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1083,13 +1219,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Python"
         },
         "rb": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "#"
           },
@@ -1106,10 +1247,23 @@
             }
           },
           "ext": "rb",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "food-hygiene-rating"
+            "goversion": "",
+            "name": "food-hygiene-rating",
+            "package": "",
+            "path": ""
           },
           "name": "rb",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1131,13 +1285,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Ruby"
         },
         "ts": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
@@ -1160,10 +1319,23 @@
             }
           },
           "ext": "ts",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "food-hygiene-rating"
+            "goversion": "",
+            "name": "food-hygiene-rating",
+            "package": "",
+            "path": ""
           },
           "name": "ts",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1185,9 +1357,17 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "TypeScript"
+        }
+      },
+      "test": {
+        "live": {
+          "app": false,
+          "base": "",
+          "strict": false
         }
       }
     }

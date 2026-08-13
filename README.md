@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = FoodHygieneRatingSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = FoodHygieneRatingSDK.test({
+  entity: {
+    authority: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const authoritys = await client.Authority().list()
-// authoritys is an array of bare Authority records populated with mock data
+// authoritys is an array of Authority entities, populated with mock data
+// — call authoritys[0].data() for the record itself
 console.log(authoritys)
 ```
 
@@ -110,7 +119,7 @@ import { FoodHygieneRatingSDK } from '@voxgig-sdk/food-hygiene-rating'
 
 const client = new FoodHygieneRatingSDK()
 
-// List all authoritys (returns Authority[])
+// List all authoritys (returns AuthorityEntity[] — .data() for the record)
 const authoritys = await client.Authority().list()
 for (const authority of authoritys) {
   console.log(authority)
@@ -194,7 +203,7 @@ $client = new FoodHygieneRatingSDK();
 $authoritys = $client->Authority()->list();
 print_r($authoritys);
 
-// Load a specific authority (returns the bare record; throws on error)
+// Load a specific authority (returns the ENTITY; call data_get() for the record; throws on error)
 $authority = $client->Authority()->load(["id" => 1]);
 print_r($authority);
 ```
@@ -225,7 +234,7 @@ client = FoodHygieneRatingSDK.new
 authoritys = client.Authority.list
 puts authoritys
 
-# Load a specific authority (returns the bare record; raises on error)
+# Load a specific authority (returns the ENTITY; call data_get for the record)
 authority = client.Authority.load({ "id" => 1 })
 puts authority
 ```
@@ -362,6 +371,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://www.food.gov.uk](https://www.food.gov.uk)
 

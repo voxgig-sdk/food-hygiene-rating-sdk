@@ -60,11 +60,11 @@ def business_type_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "FOODHYGIENERATING_TEST_BUSINESS_TYPE_ENTID" => {},
-    "FOODHYGIENERATING_TEST_LIVE" => "FALSE",
+    "FOOD_HYGIENE_RATING_TEST_BUSINESS_TYPE_ENTID" => {},
+    "FOOD_HYGIENE_RATING_TEST_LIVE" => "FALSE",
   })
 
-  live = env["FOODHYGIENERATING_TEST_LIVE"] == "TRUE"
+  live = env["FOOD_HYGIENE_RATING_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

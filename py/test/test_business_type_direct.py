@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from foodhygienerating_sdk.utility.voxgig_struct import voxgig_struct as vs
 from foodhygienerating_sdk import FoodHygieneRatingSDK
-from core import helpers
+from foodhygienerating_sdk.core import helpers
 from test import runner
 
 
@@ -58,11 +58,11 @@ def _business_type_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "FOODHYGIENERATING_TEST_BUSINESS_TYPE_ENTID": {},
-        "FOODHYGIENERATING_TEST_LIVE": "FALSE",
+        "FOOD_HYGIENE_RATING_TEST_BUSINESS_TYPE_ENTID": {},
+        "FOOD_HYGIENE_RATING_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("FOODHYGIENERATING_TEST_LIVE") == "TRUE"
+    live = env.get("FOOD_HYGIENE_RATING_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

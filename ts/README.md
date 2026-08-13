@@ -35,7 +35,9 @@ const client = new FoodHygieneRatingSDK()
 
 ### 2. List authority records
 
-`list()` resolves to an array of Authority objects — iterate it directly:
+`list()` resolves to an array of Authority ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const authoritys = await client.Authority().list()
@@ -133,7 +135,8 @@ Create a mock client for unit testing — no server required:
 const client = FoodHygieneRatingSDK.test()
 
 const authority = await client.Authority().list()
-// authority is a bare entity populated with mock response data
+// authority is the entity, populated with mock response data
+// — call authority.data() for the record itself
 console.log(authority)
 ```
 
@@ -302,17 +305,17 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `email` |  |
-| `establishment_count` |  |
-| `file_name` |  |
-| `file_name_welsh` |  |
-| `friendly_name` |  |
-| `local_authority_id` |  |
-| `local_authority_id_code` |  |
-| `name` |  |
-| `region_name` |  |
-| `scheme_url` |  |
-| `url` |  |
+| `Email` |  |
+| `EstablishmentCount` |  |
+| `FileName` |  |
+| `FileNameWelsh` |  |
+| `FriendlyName` |  |
+| `LocalAuthorityId` |  |
+| `LocalAuthorityIdCode` |  |
+| `Name` |  |
+| `RegionName` |  |
+| `SchemeUrl` |  |
+| `Url` |  |
 
 Operations: list, load.
 
@@ -322,8 +325,8 @@ API path: `/Authorities`
 
 | Field | Description |
 | --- | --- |
-| `business_type_id` |  |
-| `business_type_name` |  |
+| `BusinessTypeId` |  |
+| `BusinessTypeName` |  |
 
 Operations: list.
 
@@ -333,26 +336,28 @@ API path: `/BusinessTypes`
 
 | Field | Description |
 | --- | --- |
-| `address_line1` |  |
-| `address_line2` |  |
-| `address_line3` |  |
-| `address_line4` |  |
-| `business_name` |  |
-| `business_type` |  |
-| `business_type_id` |  |
-| `fhrsid` |  |
-| `geocode` |  |
-| `local_authority_business_id` |  |
-| `local_authority_code` |  |
-| `local_authority_email_address` |  |
-| `local_authority_name` |  |
-| `local_authority_web_site` |  |
-| `new_rating_pending` |  |
-| `post_code` |  |
-| `rating_date` |  |
-| `rating_key` |  |
-| `rating_value` |  |
-| `scheme_type` |  |
+| `AddressLine1` |  |
+| `AddressLine2` |  |
+| `AddressLine3` |  |
+| `AddressLine4` |  |
+| `BusinessName` |  |
+| `BusinessType` |  |
+| `BusinessTypeID` |  |
+| `FHRSID` |  |
+| `Geocode` |  |
+| `LocalAuthorityBusinessID` |  |
+| `LocalAuthorityCode` |  |
+| `LocalAuthorityEmailAddress` |  |
+| `LocalAuthorityName` |  |
+| `LocalAuthorityWebSite` |  |
+| `NewRatingPending` |  |
+| `PostCode` |  |
+| `RatingDate` |  |
+| `RatingKey` |  |
+| `RatingValue` |  |
+| `SchemeType` |  |
+| `latitude` |  |
+| `longitude` |  |
 
 Operations: list, load.
 
@@ -362,10 +367,10 @@ API path: `/Establishments`
 
 | Field | Description |
 | --- | --- |
-| `rating_id` |  |
-| `rating_key` |  |
-| `rating_name` |  |
-| `scheme_type` |  |
+| `ratingId` |  |
+| `ratingKey` |  |
+| `ratingName` |  |
+| `schemeType` |  |
 
 Operations: list.
 
@@ -391,17 +396,17 @@ Create an instance: `const authority = client.Authority()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `email` | `string` |  |
-| `establishment_count` | `number` |  |
-| `file_name` | `string` |  |
-| `file_name_welsh` | `string` |  |
-| `friendly_name` | `string` |  |
-| `local_authority_id` | `number` |  |
-| `local_authority_id_code` | `string` |  |
-| `name` | `string` |  |
-| `region_name` | `string` |  |
-| `scheme_url` | `string` |  |
-| `url` | `string` |  |
+| `Email` | `string` |  |
+| `EstablishmentCount` | `number` |  |
+| `FileName` | `string` |  |
+| `FileNameWelsh` | `string` |  |
+| `FriendlyName` | `string` |  |
+| `LocalAuthorityId` | `number` |  |
+| `LocalAuthorityIdCode` | `string` |  |
+| `Name` | `string` |  |
+| `RegionName` | `string` |  |
+| `SchemeUrl` | `string` |  |
+| `Url` | `string` |  |
 
 #### Example: Load
 
@@ -430,8 +435,8 @@ Create an instance: `const business_type = client.BusinessType()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `business_type_id` | `number` |  |
-| `business_type_name` | `string` |  |
+| `BusinessTypeId` | `number` |  |
+| `BusinessTypeName` | `string` |  |
 
 #### Example: List
 
@@ -455,26 +460,28 @@ Create an instance: `const establishment = client.Establishment()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address_line1` | `string` |  |
-| `address_line2` | `string` |  |
-| `address_line3` | `string` |  |
-| `address_line4` | `string` |  |
-| `business_name` | `string` |  |
-| `business_type` | `string` |  |
-| `business_type_id` | `number` |  |
-| `fhrsid` | `number` |  |
-| `geocode` | `Record<string, any>` |  |
-| `local_authority_business_id` | `string` |  |
-| `local_authority_code` | `string` |  |
-| `local_authority_email_address` | `string` |  |
-| `local_authority_name` | `string` |  |
-| `local_authority_web_site` | `string` |  |
-| `new_rating_pending` | `boolean` |  |
-| `post_code` | `string` |  |
-| `rating_date` | `string` |  |
-| `rating_key` | `string` |  |
-| `rating_value` | `string` |  |
-| `scheme_type` | `string` |  |
+| `AddressLine1` | `string` |  |
+| `AddressLine2` | `string` |  |
+| `AddressLine3` | `string` |  |
+| `AddressLine4` | `string` |  |
+| `BusinessName` | `string` |  |
+| `BusinessType` | `string` |  |
+| `BusinessTypeID` | `number` |  |
+| `FHRSID` | `number` |  |
+| `Geocode` | `Record<string, any>` |  |
+| `LocalAuthorityBusinessID` | `string` |  |
+| `LocalAuthorityCode` | `string` |  |
+| `LocalAuthorityEmailAddress` | `string` |  |
+| `LocalAuthorityName` | `string` |  |
+| `LocalAuthorityWebSite` | `string` |  |
+| `NewRatingPending` | `boolean` |  |
+| `PostCode` | `string` |  |
+| `RatingDate` | `string` |  |
+| `RatingKey` | `string` |  |
+| `RatingValue` | `string` |  |
+| `SchemeType` | `string` |  |
+| `latitude` | `number` |  |
+| `longitude` | `number` |  |
 
 #### Example: Load
 
@@ -503,10 +510,10 @@ Create an instance: `const rating = client.Rating()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `rating_id` | `number` |  |
-| `rating_key` | `string` |  |
-| `rating_name` | `string` |  |
-| `scheme_type` | `string` |  |
+| `ratingId` | `number` |  |
+| `ratingKey` | `string` |  |
+| `ratingName` | `string` |  |
+| `schemeType` | `string` |  |
 
 #### Example: List
 

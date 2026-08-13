@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ FoodHygieneRatingUtility::setRegistrar(function (FoodHygieneRatingUtility $u): v
     $u->prepare_params = [FoodHygieneRatingPrepareParams::class, 'call'];
     $u->prepare_path = [FoodHygieneRatingPreparePath::class, 'call'];
     $u->prepare_query = [FoodHygieneRatingPrepareQuery::class, 'call'];
+    $u->graphql_body = [FoodHygieneRatingGraphql::class, 'body'];
+    $u->graphql_errors = [FoodHygieneRatingGraphql::class, 'errors'];
     $u->result_basic = [FoodHygieneRatingResultBasic::class, 'call'];
     $u->result_body = [FoodHygieneRatingResultBody::class, 'call'];
     $u->result_headers = [FoodHygieneRatingResultHeaders::class, 'call'];

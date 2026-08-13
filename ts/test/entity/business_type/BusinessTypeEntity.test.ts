@@ -26,8 +26,8 @@ import {
 describe('BusinessTypeEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when FOODHYGIENERATING_TEST_LIVE=TRUE.
-  afterEach(liveDelay('FOODHYGIENERATING_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when FOOD_HYGIENE_RATING_TEST_LIVE=TRUE.
+  afterEach(liveDelay('FOOD_HYGIENE_RATING_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = FoodHygieneRatingSDK.test()
@@ -63,7 +63,7 @@ describe('BusinessTypeEntity', async () => {
     const business_type_ref01_ent = client.BusinessType()
     const business_type_ref01_match: any = {}
 
-    const business_type_ref01_list = await business_type_ref01_ent.list(business_type_ref01_match)
+    const business_type_ref01_list = (await business_type_ref01_ent.list(business_type_ref01_match)).map((e: any) => e.data())
 
 
   })

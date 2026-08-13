@@ -6,22 +6,22 @@ main: kit: entity: rating: {
 
   fields: [
     {
-      name: "rating_id"
+      name: "ratingId"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "rating_key"
+      name: "ratingKey"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "rating_name"
+      name: "ratingName"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "scheme_type"
+      name: "schemeType"
       req: false
       type: "`$STRING`"
     }
@@ -40,7 +40,7 @@ main: kit: entity: rating: {
           ]
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.ratings`"
           }
         }
       ]

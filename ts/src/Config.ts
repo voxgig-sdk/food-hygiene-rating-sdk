@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'FoodHygieneRating',
   }
 
 
@@ -65,77 +65,77 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "email",
+          "name": "Email",
           "req": false,
           "type": "`$STRING`",
           "index$": 0
         },
         {
           "active": true,
-          "name": "establishment_count",
+          "name": "EstablishmentCount",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 1
         },
         {
           "active": true,
-          "name": "file_name",
+          "name": "FileName",
           "req": false,
           "type": "`$STRING`",
           "index$": 2
         },
         {
           "active": true,
-          "name": "file_name_welsh",
+          "name": "FileNameWelsh",
           "req": false,
           "type": "`$STRING`",
           "index$": 3
         },
         {
           "active": true,
-          "name": "friendly_name",
+          "name": "FriendlyName",
           "req": false,
           "type": "`$STRING`",
           "index$": 4
         },
         {
           "active": true,
-          "name": "local_authority_id",
+          "name": "LocalAuthorityId",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 5
         },
         {
           "active": true,
-          "name": "local_authority_id_code",
+          "name": "LocalAuthorityIdCode",
           "req": false,
           "type": "`$STRING`",
           "index$": 6
         },
         {
           "active": true,
-          "name": "name",
+          "name": "Name",
           "req": false,
           "type": "`$STRING`",
           "index$": 7
         },
         {
           "active": true,
-          "name": "region_name",
+          "name": "RegionName",
           "req": false,
           "type": "`$STRING`",
           "index$": 8
         },
         {
           "active": true,
-          "name": "scheme_url",
+          "name": "SchemeUrl",
           "req": false,
           "type": "`$STRING`",
           "index$": 9
         },
         {
           "active": true,
-          "name": "url",
+          "name": "Url",
           "req": false,
           "type": "`$STRING`",
           "index$": 10
@@ -150,6 +150,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/Authorities",
               "parts": [
@@ -158,7 +159,7 @@ class Config {
               "select": {},
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.authorities`"
               },
               "index$": 0
             }
@@ -184,6 +185,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/Authorities/{id}",
               "parts": [
@@ -213,14 +215,14 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "business_type_id",
+          "name": "BusinessTypeId",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 0
         },
         {
           "active": true,
-          "name": "business_type_name",
+          "name": "BusinessTypeName",
           "req": false,
           "type": "`$STRING`",
           "index$": 1
@@ -235,6 +237,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/BusinessTypes",
               "parts": [
@@ -243,7 +246,7 @@ class Config {
               "select": {},
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.businessTypes`"
               },
               "index$": 0
             }
@@ -259,143 +262,157 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "address_line1",
+          "name": "AddressLine1",
           "req": false,
           "type": "`$STRING`",
           "index$": 0
         },
         {
           "active": true,
-          "name": "address_line2",
+          "name": "AddressLine2",
           "req": false,
           "type": "`$STRING`",
           "index$": 1
         },
         {
           "active": true,
-          "name": "address_line3",
+          "name": "AddressLine3",
           "req": false,
           "type": "`$STRING`",
           "index$": 2
         },
         {
           "active": true,
-          "name": "address_line4",
+          "name": "AddressLine4",
           "req": false,
           "type": "`$STRING`",
           "index$": 3
         },
         {
           "active": true,
-          "name": "business_name",
+          "name": "BusinessName",
           "req": false,
           "type": "`$STRING`",
           "index$": 4
         },
         {
           "active": true,
-          "name": "business_type",
+          "name": "BusinessType",
           "req": false,
           "type": "`$STRING`",
           "index$": 5
         },
         {
           "active": true,
-          "name": "business_type_id",
+          "name": "BusinessTypeID",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 6
         },
         {
           "active": true,
-          "name": "fhrsid",
+          "name": "FHRSID",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 7
         },
         {
           "active": true,
-          "name": "geocode",
+          "name": "Geocode",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 8
         },
         {
           "active": true,
-          "name": "local_authority_business_id",
+          "name": "LocalAuthorityBusinessID",
           "req": false,
           "type": "`$STRING`",
           "index$": 9
         },
         {
           "active": true,
-          "name": "local_authority_code",
+          "name": "LocalAuthorityCode",
           "req": false,
           "type": "`$STRING`",
           "index$": 10
         },
         {
           "active": true,
-          "name": "local_authority_email_address",
+          "name": "LocalAuthorityEmailAddress",
           "req": false,
           "type": "`$STRING`",
           "index$": 11
         },
         {
           "active": true,
-          "name": "local_authority_name",
+          "name": "LocalAuthorityName",
           "req": false,
           "type": "`$STRING`",
           "index$": 12
         },
         {
           "active": true,
-          "name": "local_authority_web_site",
+          "name": "LocalAuthorityWebSite",
           "req": false,
           "type": "`$STRING`",
           "index$": 13
         },
         {
           "active": true,
-          "name": "new_rating_pending",
+          "name": "NewRatingPending",
           "req": false,
           "type": "`$BOOLEAN`",
           "index$": 14
         },
         {
           "active": true,
-          "name": "post_code",
+          "name": "PostCode",
           "req": false,
           "type": "`$STRING`",
           "index$": 15
         },
         {
           "active": true,
-          "name": "rating_date",
+          "name": "RatingDate",
           "req": false,
           "type": "`$STRING`",
           "index$": 16
         },
         {
           "active": true,
-          "name": "rating_key",
+          "name": "RatingKey",
           "req": false,
           "type": "`$STRING`",
           "index$": 17
         },
         {
           "active": true,
-          "name": "rating_value",
+          "name": "RatingValue",
           "req": false,
           "type": "`$STRING`",
           "index$": 18
         },
         {
           "active": true,
-          "name": "scheme_type",
+          "name": "SchemeType",
           "req": false,
           "type": "`$STRING`",
           "index$": 19
+        },
+        {
+          "active": true,
+          "name": "latitude",
+          "req": false,
+          "type": "`$NUMBER`",
+          "index$": 20
+        },
+        {
+          "active": true,
+          "name": "longitude",
+          "req": false,
+          "type": "`$NUMBER`",
+          "index$": 21
         }
       ],
       "name": "establishment",
@@ -500,6 +517,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/Establishments",
               "parts": [
@@ -548,6 +566,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/Establishments/{id}",
               "parts": [
@@ -561,7 +580,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.Geocode`"
               },
               "index$": 0
             }
@@ -577,28 +596,28 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "rating_id",
+          "name": "ratingId",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 0
         },
         {
           "active": true,
-          "name": "rating_key",
+          "name": "ratingKey",
           "req": false,
           "type": "`$STRING`",
           "index$": 1
         },
         {
           "active": true,
-          "name": "rating_name",
+          "name": "ratingName",
           "req": false,
           "type": "`$STRING`",
           "index$": 2
         },
         {
           "active": true,
-          "name": "scheme_type",
+          "name": "schemeType",
           "req": false,
           "type": "`$STRING`",
           "index$": 3
@@ -613,6 +632,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/Ratings",
               "parts": [
@@ -621,7 +641,7 @@ class Config {
               "select": {},
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.ratings`"
               },
               "index$": 0
             }

@@ -121,11 +121,11 @@ function establishment_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "FOODHYGIENERATING_TEST_ESTABLISHMENT_ENTID" => [],
-        "FOODHYGIENERATING_TEST_LIVE" => "FALSE",
+        "FOOD_HYGIENE_RATING_TEST_ESTABLISHMENT_ENTID" => [],
+        "FOOD_HYGIENE_RATING_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["FOODHYGIENERATING_TEST_LIVE"] === "TRUE";
+    $live = $env["FOOD_HYGIENE_RATING_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

@@ -104,17 +104,17 @@ $authority = $client->Authority();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | `string` | No |  |
-| `establishment_count` | `int` | No |  |
-| `file_name` | `string` | No |  |
-| `file_name_welsh` | `string` | No |  |
-| `friendly_name` | `string` | No |  |
-| `local_authority_id` | `int` | No |  |
-| `local_authority_id_code` | `string` | No |  |
-| `name` | `string` | No |  |
-| `region_name` | `string` | No |  |
-| `scheme_url` | `string` | No |  |
-| `url` | `string` | No |  |
+| `Email` | `string` | No |  |
+| `EstablishmentCount` | `int` | No |  |
+| `FileName` | `string` | No |  |
+| `FileNameWelsh` | `string` | No |  |
+| `FriendlyName` | `string` | No |  |
+| `LocalAuthorityId` | `int` | No |  |
+| `LocalAuthorityIdCode` | `string` | No |  |
+| `Name` | `string` | No |  |
+| `RegionName` | `string` | No |  |
+| `SchemeUrl` | `string` | No |  |
+| `Url` | `string` | No |  |
 
 ### Operations
 
@@ -174,8 +174,8 @@ $business_type = $client->BusinessType();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `business_type_id` | `int` | No |  |
-| `business_type_name` | `string` | No |  |
+| `BusinessTypeId` | `int` | No |  |
+| `BusinessTypeName` | `string` | No |  |
 
 ### Operations
 
@@ -227,26 +227,28 @@ $establishment = $client->Establishment();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address_line1` | `string` | No |  |
-| `address_line2` | `string` | No |  |
-| `address_line3` | `string` | No |  |
-| `address_line4` | `string` | No |  |
-| `business_name` | `string` | No |  |
-| `business_type` | `string` | No |  |
-| `business_type_id` | `int` | No |  |
-| `fhrsid` | `int` | No |  |
-| `geocode` | `array` | No |  |
-| `local_authority_business_id` | `string` | No |  |
-| `local_authority_code` | `string` | No |  |
-| `local_authority_email_address` | `string` | No |  |
-| `local_authority_name` | `string` | No |  |
-| `local_authority_web_site` | `string` | No |  |
-| `new_rating_pending` | `bool` | No |  |
-| `post_code` | `string` | No |  |
-| `rating_date` | `string` | No |  |
-| `rating_key` | `string` | No |  |
-| `rating_value` | `string` | No |  |
-| `scheme_type` | `string` | No |  |
+| `AddressLine1` | `string` | No |  |
+| `AddressLine2` | `string` | No |  |
+| `AddressLine3` | `string` | No |  |
+| `AddressLine4` | `string` | No |  |
+| `BusinessName` | `string` | No |  |
+| `BusinessType` | `string` | No |  |
+| `BusinessTypeID` | `int` | No |  |
+| `FHRSID` | `int` | No |  |
+| `Geocode` | `array` | No |  |
+| `LocalAuthorityBusinessID` | `string` | No |  |
+| `LocalAuthorityCode` | `string` | No |  |
+| `LocalAuthorityEmailAddress` | `string` | No |  |
+| `LocalAuthorityName` | `string` | No |  |
+| `LocalAuthorityWebSite` | `string` | No |  |
+| `NewRatingPending` | `bool` | No |  |
+| `PostCode` | `string` | No |  |
+| `RatingDate` | `string` | No |  |
+| `RatingKey` | `string` | No |  |
+| `RatingValue` | `string` | No |  |
+| `SchemeType` | `string` | No |  |
+| `latitude` | `float` | No |  |
+| `longitude` | `float` | No |  |
 
 ### Operations
 
@@ -306,10 +308,10 @@ $rating = $client->Rating();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `rating_id` | `int` | No |  |
-| `rating_key` | `string` | No |  |
-| `rating_name` | `string` | No |  |
-| `scheme_type` | `string` | No |  |
+| `ratingId` | `int` | No |  |
+| `ratingKey` | `string` | No |  |
+| `ratingName` | `string` | No |  |
+| `schemeType` | `string` | No |  |
 
 ### Operations
 

@@ -105,17 +105,17 @@ authority = client.Authority
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | `String` | No |  |
-| `establishment_count` | `Integer` | No |  |
-| `file_name` | `String` | No |  |
-| `file_name_welsh` | `String` | No |  |
-| `friendly_name` | `String` | No |  |
-| `local_authority_id` | `Integer` | No |  |
-| `local_authority_id_code` | `String` | No |  |
-| `name` | `String` | No |  |
-| `region_name` | `String` | No |  |
-| `scheme_url` | `String` | No |  |
-| `url` | `String` | No |  |
+| `Email` | `String` | No |  |
+| `EstablishmentCount` | `Integer` | No |  |
+| `FileName` | `String` | No |  |
+| `FileNameWelsh` | `String` | No |  |
+| `FriendlyName` | `String` | No |  |
+| `LocalAuthorityId` | `Integer` | No |  |
+| `LocalAuthorityIdCode` | `String` | No |  |
+| `Name` | `String` | No |  |
+| `RegionName` | `String` | No |  |
+| `SchemeUrl` | `String` | No |  |
+| `Url` | `String` | No |  |
 
 ### Operations
 
@@ -175,8 +175,8 @@ business_type = client.BusinessType
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `business_type_id` | `Integer` | No |  |
-| `business_type_name` | `String` | No |  |
+| `BusinessTypeId` | `Integer` | No |  |
+| `BusinessTypeName` | `String` | No |  |
 
 ### Operations
 
@@ -228,26 +228,28 @@ establishment = client.Establishment
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address_line1` | `String` | No |  |
-| `address_line2` | `String` | No |  |
-| `address_line3` | `String` | No |  |
-| `address_line4` | `String` | No |  |
-| `business_name` | `String` | No |  |
-| `business_type` | `String` | No |  |
-| `business_type_id` | `Integer` | No |  |
-| `fhrsid` | `Integer` | No |  |
-| `geocode` | `Hash` | No |  |
-| `local_authority_business_id` | `String` | No |  |
-| `local_authority_code` | `String` | No |  |
-| `local_authority_email_address` | `String` | No |  |
-| `local_authority_name` | `String` | No |  |
-| `local_authority_web_site` | `String` | No |  |
-| `new_rating_pending` | `Boolean` | No |  |
-| `post_code` | `String` | No |  |
-| `rating_date` | `String` | No |  |
-| `rating_key` | `String` | No |  |
-| `rating_value` | `String` | No |  |
-| `scheme_type` | `String` | No |  |
+| `AddressLine1` | `String` | No |  |
+| `AddressLine2` | `String` | No |  |
+| `AddressLine3` | `String` | No |  |
+| `AddressLine4` | `String` | No |  |
+| `BusinessName` | `String` | No |  |
+| `BusinessType` | `String` | No |  |
+| `BusinessTypeID` | `Integer` | No |  |
+| `FHRSID` | `Integer` | No |  |
+| `Geocode` | `Hash` | No |  |
+| `LocalAuthorityBusinessID` | `String` | No |  |
+| `LocalAuthorityCode` | `String` | No |  |
+| `LocalAuthorityEmailAddress` | `String` | No |  |
+| `LocalAuthorityName` | `String` | No |  |
+| `LocalAuthorityWebSite` | `String` | No |  |
+| `NewRatingPending` | `Boolean` | No |  |
+| `PostCode` | `String` | No |  |
+| `RatingDate` | `String` | No |  |
+| `RatingKey` | `String` | No |  |
+| `RatingValue` | `String` | No |  |
+| `SchemeType` | `String` | No |  |
+| `latitude` | `Float` | No |  |
+| `longitude` | `Float` | No |  |
 
 ### Operations
 
@@ -307,10 +309,10 @@ rating = client.Rating
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `rating_id` | `Integer` | No |  |
-| `rating_key` | `String` | No |  |
-| `rating_name` | `String` | No |  |
-| `scheme_type` | `String` | No |  |
+| `ratingId` | `Integer` | No |  |
+| `ratingKey` | `String` | No |  |
+| `ratingName` | `String` | No |  |
+| `schemeType` | `String` | No |  |
 
 ### Operations
 

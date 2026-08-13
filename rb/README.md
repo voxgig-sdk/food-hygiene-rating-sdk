@@ -37,7 +37,7 @@ begin
   # list returns an Array of Authority records — iterate directly.
   authoritys = client.Authority.list
   authoritys.each do |item|
-    puts "#{item["email"]}"
+    puts "#{item["Email"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -48,7 +48,7 @@ end
 
 ```ruby
 begin
-  # load returns the bare Authority record (raises on error).
+  # load returns the ENTITY — call data_get for the Authority record (raises on error).
   authority = client.Authority.load({ "id" => 1 })
   puts authority
 rescue => err
@@ -134,7 +134,8 @@ client = FoodHygieneRatingSDK.test({
   "entity" => { "authority" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 authority = client.Authority.list()
 puts authority
 ```
@@ -255,17 +256,17 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `email` |  |
-| `establishment_count` |  |
-| `file_name` |  |
-| `file_name_welsh` |  |
-| `friendly_name` |  |
-| `local_authority_id` |  |
-| `local_authority_id_code` |  |
-| `name` |  |
-| `region_name` |  |
-| `scheme_url` |  |
-| `url` |  |
+| `Email` |  |
+| `EstablishmentCount` |  |
+| `FileName` |  |
+| `FileNameWelsh` |  |
+| `FriendlyName` |  |
+| `LocalAuthorityId` |  |
+| `LocalAuthorityIdCode` |  |
+| `Name` |  |
+| `RegionName` |  |
+| `SchemeUrl` |  |
+| `Url` |  |
 
 Operations: List, Load.
 
@@ -275,8 +276,8 @@ API path: `/Authorities`
 
 | Field | Description |
 | --- | --- |
-| `business_type_id` |  |
-| `business_type_name` |  |
+| `BusinessTypeId` |  |
+| `BusinessTypeName` |  |
 
 Operations: List.
 
@@ -286,26 +287,28 @@ API path: `/BusinessTypes`
 
 | Field | Description |
 | --- | --- |
-| `address_line1` |  |
-| `address_line2` |  |
-| `address_line3` |  |
-| `address_line4` |  |
-| `business_name` |  |
-| `business_type` |  |
-| `business_type_id` |  |
-| `fhrsid` |  |
-| `geocode` |  |
-| `local_authority_business_id` |  |
-| `local_authority_code` |  |
-| `local_authority_email_address` |  |
-| `local_authority_name` |  |
-| `local_authority_web_site` |  |
-| `new_rating_pending` |  |
-| `post_code` |  |
-| `rating_date` |  |
-| `rating_key` |  |
-| `rating_value` |  |
-| `scheme_type` |  |
+| `AddressLine1` |  |
+| `AddressLine2` |  |
+| `AddressLine3` |  |
+| `AddressLine4` |  |
+| `BusinessName` |  |
+| `BusinessType` |  |
+| `BusinessTypeID` |  |
+| `FHRSID` |  |
+| `Geocode` |  |
+| `LocalAuthorityBusinessID` |  |
+| `LocalAuthorityCode` |  |
+| `LocalAuthorityEmailAddress` |  |
+| `LocalAuthorityName` |  |
+| `LocalAuthorityWebSite` |  |
+| `NewRatingPending` |  |
+| `PostCode` |  |
+| `RatingDate` |  |
+| `RatingKey` |  |
+| `RatingValue` |  |
+| `SchemeType` |  |
+| `latitude` |  |
+| `longitude` |  |
 
 Operations: List, Load.
 
@@ -315,10 +318,10 @@ API path: `/Establishments`
 
 | Field | Description |
 | --- | --- |
-| `rating_id` |  |
-| `rating_key` |  |
-| `rating_name` |  |
-| `scheme_type` |  |
+| `ratingId` |  |
+| `ratingKey` |  |
+| `ratingName` |  |
+| `schemeType` |  |
 
 Operations: List.
 
@@ -344,22 +347,22 @@ Create an instance: `authority = client.Authority`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `email` | `String` |  |
-| `establishment_count` | `Integer` |  |
-| `file_name` | `String` |  |
-| `file_name_welsh` | `String` |  |
-| `friendly_name` | `String` |  |
-| `local_authority_id` | `Integer` |  |
-| `local_authority_id_code` | `String` |  |
-| `name` | `String` |  |
-| `region_name` | `String` |  |
-| `scheme_url` | `String` |  |
-| `url` | `String` |  |
+| `Email` | `String` |  |
+| `EstablishmentCount` | `Integer` |  |
+| `FileName` | `String` |  |
+| `FileNameWelsh` | `String` |  |
+| `FriendlyName` | `String` |  |
+| `LocalAuthorityId` | `Integer` |  |
+| `LocalAuthorityIdCode` | `String` |  |
+| `Name` | `String` |  |
+| `RegionName` | `String` |  |
+| `SchemeUrl` | `String` |  |
+| `Url` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Authority record (raises on error).
+# load returns the ENTITY — call data_get for the Authority record (raises on error).
 authority = client.Authority.load({ "id" => 1 })
 ```
 
@@ -385,8 +388,8 @@ Create an instance: `business_type = client.BusinessType`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `business_type_id` | `Integer` |  |
-| `business_type_name` | `String` |  |
+| `BusinessTypeId` | `Integer` |  |
+| `BusinessTypeName` | `String` |  |
 
 #### Example: List
 
@@ -411,31 +414,33 @@ Create an instance: `establishment = client.Establishment`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address_line1` | `String` |  |
-| `address_line2` | `String` |  |
-| `address_line3` | `String` |  |
-| `address_line4` | `String` |  |
-| `business_name` | `String` |  |
-| `business_type` | `String` |  |
-| `business_type_id` | `Integer` |  |
-| `fhrsid` | `Integer` |  |
-| `geocode` | `Hash` |  |
-| `local_authority_business_id` | `String` |  |
-| `local_authority_code` | `String` |  |
-| `local_authority_email_address` | `String` |  |
-| `local_authority_name` | `String` |  |
-| `local_authority_web_site` | `String` |  |
-| `new_rating_pending` | `Boolean` |  |
-| `post_code` | `String` |  |
-| `rating_date` | `String` |  |
-| `rating_key` | `String` |  |
-| `rating_value` | `String` |  |
-| `scheme_type` | `String` |  |
+| `AddressLine1` | `String` |  |
+| `AddressLine2` | `String` |  |
+| `AddressLine3` | `String` |  |
+| `AddressLine4` | `String` |  |
+| `BusinessName` | `String` |  |
+| `BusinessType` | `String` |  |
+| `BusinessTypeID` | `Integer` |  |
+| `FHRSID` | `Integer` |  |
+| `Geocode` | `Hash` |  |
+| `LocalAuthorityBusinessID` | `String` |  |
+| `LocalAuthorityCode` | `String` |  |
+| `LocalAuthorityEmailAddress` | `String` |  |
+| `LocalAuthorityName` | `String` |  |
+| `LocalAuthorityWebSite` | `String` |  |
+| `NewRatingPending` | `Boolean` |  |
+| `PostCode` | `String` |  |
+| `RatingDate` | `String` |  |
+| `RatingKey` | `String` |  |
+| `RatingValue` | `String` |  |
+| `SchemeType` | `String` |  |
+| `latitude` | `Float` |  |
+| `longitude` | `Float` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Establishment record (raises on error).
+# load returns the ENTITY — call data_get for the Establishment record (raises on error).
 establishment = client.Establishment.load({ "id" => 1 })
 ```
 
@@ -461,10 +466,10 @@ Create an instance: `rating = client.Rating`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `rating_id` | `Integer` |  |
-| `rating_key` | `String` |  |
-| `rating_name` | `String` |  |
-| `scheme_type` | `String` |  |
+| `ratingId` | `Integer` |  |
+| `ratingKey` | `String` |  |
+| `ratingName` | `String` |  |
+| `schemeType` | `String` |  |
 
 #### Example: List
 

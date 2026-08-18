@@ -28,7 +28,7 @@ class FoodHygieneRatingSDK
     utility = FoodHygieneRatingUtility.new
     @_utility = utility
 
-    config = FoodHygieneRatingConfig.make_config
+    config = FoodHygieneRatingConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

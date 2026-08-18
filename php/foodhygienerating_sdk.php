@@ -40,7 +40,7 @@ class FoodHygieneRatingSDK
         $utility = new FoodHygieneRatingUtility();
         $this->_utility = $utility;
 
-        $config = FoodHygieneRatingConfig::make_config();
+        $config = FoodHygieneRatingConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

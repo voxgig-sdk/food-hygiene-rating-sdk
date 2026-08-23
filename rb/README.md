@@ -256,17 +256,17 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `Email` |  |
-| `EstablishmentCount` |  |
-| `FileName` |  |
-| `FileNameWelsh` |  |
-| `FriendlyName` |  |
-| `LocalAuthorityId` |  |
-| `LocalAuthorityIdCode` |  |
-| `Name` |  |
-| `RegionName` |  |
-| `SchemeUrl` |  |
-| `Url` |  |
+| `Email` | Email address of the local authority |
+| `EstablishmentCount` | Number of establishments registered with this authority |
+| `FileName` | XML filename for the authority's data |
+| `FileNameWelsh` | Welsh language XML filename (for Welsh authorities) |
+| `FriendlyName` | Friendly display name of the local authority |
+| `LocalAuthorityId` | Unique identifier for the local authority |
+| `LocalAuthorityIdCode` | Code for the local authority |
+| `Name` | Name of the local authority |
+| `RegionName` | Region where the authority is located |
+| `SchemeUrl` | URL to the local authority's food hygiene scheme page |
+| `Url` | Website URL of the local authority |
 
 Operations: List, Load.
 
@@ -276,8 +276,8 @@ API path: `/Authorities`
 
 | Field | Description |
 | --- | --- |
-| `BusinessTypeId` |  |
-| `BusinessTypeName` |  |
+| `BusinessTypeId` | Unique identifier for the business type |
+| `BusinessTypeName` | Name of the business type (e.g., Restaurant/Cafe/Canteen, Pub/bar/nightclub, Takeaway/sandwich shop) |
 
 Operations: List.
 
@@ -287,28 +287,28 @@ API path: `/BusinessTypes`
 
 | Field | Description |
 | --- | --- |
-| `AddressLine1` |  |
-| `AddressLine2` |  |
-| `AddressLine3` |  |
-| `AddressLine4` |  |
-| `BusinessName` |  |
-| `BusinessType` |  |
-| `BusinessTypeID` |  |
-| `FHRSID` |  |
+| `AddressLine1` | First line of the address |
+| `AddressLine2` | Second line of the address |
+| `AddressLine3` | Third line of the address |
+| `AddressLine4` | Fourth line of the address |
+| `BusinessName` | Name of the food establishment |
+| `BusinessType` | Type of food business (e.g., Restaurant, Pub, Café, Takeaway) |
+| `BusinessTypeID` | Unique identifier for the business type |
+| `FHRSID` | Unique identifier for the establishment in the FHRS system |
 | `Geocode` |  |
-| `LocalAuthorityBusinessID` |  |
-| `LocalAuthorityCode` |  |
-| `LocalAuthorityEmailAddress` |  |
-| `LocalAuthorityName` |  |
-| `LocalAuthorityWebSite` |  |
-| `NewRatingPending` |  |
-| `PostCode` |  |
-| `RatingDate` |  |
-| `RatingKey` |  |
-| `RatingValue` |  |
-| `SchemeType` |  |
-| `latitude` |  |
-| `longitude` |  |
+| `LocalAuthorityBusinessID` | Business ID assigned by the local authority |
+| `LocalAuthorityCode` | Code for the local authority |
+| `LocalAuthorityEmailAddress` | Email address of the local authority |
+| `LocalAuthorityName` | Name of the local authority |
+| `LocalAuthorityWebSite` | Website of the local authority |
+| `NewRatingPending` | Indicates if a new rating is pending |
+| `PostCode` | Postcode of the establishment |
+| `RatingDate` | Date the rating was issued |
+| `RatingKey` | Key for the rating value |
+| `RatingValue` | The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS) |
+| `SchemeType` | Type of scheme (FHRS or FHIS) |
+| `latitude` | Latitude coordinate of the establishment |
+| `longitude` | Longitude coordinate of the establishment |
 
 Operations: List, Load.
 
@@ -318,10 +318,10 @@ API path: `/Establishments`
 
 | Field | Description |
 | --- | --- |
-| `ratingId` |  |
-| `ratingKey` |  |
-| `ratingName` |  |
-| `schemeType` |  |
+| `ratingId` | Unique identifier for the rating |
+| `ratingKey` | Key for the rating value |
+| `ratingName` | Name of the rating (e.g., '5', '4', 'Pass', 'Exempt') |
+| `schemeType` | Scheme type this rating belongs to |
 
 Operations: List.
 
@@ -347,17 +347,17 @@ Create an instance: `authority = client.Authority`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `Email` | `String` |  |
-| `EstablishmentCount` | `Integer` |  |
-| `FileName` | `String` |  |
-| `FileNameWelsh` | `String` |  |
-| `FriendlyName` | `String` |  |
-| `LocalAuthorityId` | `Integer` |  |
-| `LocalAuthorityIdCode` | `String` |  |
-| `Name` | `String` |  |
-| `RegionName` | `String` |  |
-| `SchemeUrl` | `String` |  |
-| `Url` | `String` |  |
+| `Email` | `String` | Email address of the local authority |
+| `EstablishmentCount` | `Integer` | Number of establishments registered with this authority |
+| `FileName` | `String` | XML filename for the authority's data |
+| `FileNameWelsh` | `String` | Welsh language XML filename (for Welsh authorities) |
+| `FriendlyName` | `String` | Friendly display name of the local authority |
+| `LocalAuthorityId` | `Integer` | Unique identifier for the local authority |
+| `LocalAuthorityIdCode` | `String` | Code for the local authority |
+| `Name` | `String` | Name of the local authority |
+| `RegionName` | `String` | Region where the authority is located |
+| `SchemeUrl` | `String` | URL to the local authority's food hygiene scheme page |
+| `Url` | `String` | Website URL of the local authority |
 
 #### Example: Load
 
@@ -388,8 +388,8 @@ Create an instance: `business_type = client.BusinessType`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `BusinessTypeId` | `Integer` |  |
-| `BusinessTypeName` | `String` |  |
+| `BusinessTypeId` | `Integer` | Unique identifier for the business type |
+| `BusinessTypeName` | `String` | Name of the business type (e.g., Restaurant/Cafe/Canteen, Pub/bar/nightclub, Takeaway/sandwich shop) |
 
 #### Example: List
 
@@ -414,28 +414,28 @@ Create an instance: `establishment = client.Establishment`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `AddressLine1` | `String` |  |
-| `AddressLine2` | `String` |  |
-| `AddressLine3` | `String` |  |
-| `AddressLine4` | `String` |  |
-| `BusinessName` | `String` |  |
-| `BusinessType` | `String` |  |
-| `BusinessTypeID` | `Integer` |  |
-| `FHRSID` | `Integer` |  |
+| `AddressLine1` | `String` | First line of the address |
+| `AddressLine2` | `String` | Second line of the address |
+| `AddressLine3` | `String` | Third line of the address |
+| `AddressLine4` | `String` | Fourth line of the address |
+| `BusinessName` | `String` | Name of the food establishment |
+| `BusinessType` | `String` | Type of food business (e.g., Restaurant, Pub, Café, Takeaway) |
+| `BusinessTypeID` | `Integer` | Unique identifier for the business type |
+| `FHRSID` | `Integer` | Unique identifier for the establishment in the FHRS system |
 | `Geocode` | `Hash` |  |
-| `LocalAuthorityBusinessID` | `String` |  |
-| `LocalAuthorityCode` | `String` |  |
-| `LocalAuthorityEmailAddress` | `String` |  |
-| `LocalAuthorityName` | `String` |  |
-| `LocalAuthorityWebSite` | `String` |  |
-| `NewRatingPending` | `Boolean` |  |
-| `PostCode` | `String` |  |
-| `RatingDate` | `String` |  |
-| `RatingKey` | `String` |  |
-| `RatingValue` | `String` |  |
-| `SchemeType` | `String` |  |
-| `latitude` | `Float` |  |
-| `longitude` | `Float` |  |
+| `LocalAuthorityBusinessID` | `String` | Business ID assigned by the local authority |
+| `LocalAuthorityCode` | `String` | Code for the local authority |
+| `LocalAuthorityEmailAddress` | `String` | Email address of the local authority |
+| `LocalAuthorityName` | `String` | Name of the local authority |
+| `LocalAuthorityWebSite` | `String` | Website of the local authority |
+| `NewRatingPending` | `Boolean` | Indicates if a new rating is pending |
+| `PostCode` | `String` | Postcode of the establishment |
+| `RatingDate` | `String` | Date the rating was issued |
+| `RatingKey` | `String` | Key for the rating value |
+| `RatingValue` | `String` | The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS) |
+| `SchemeType` | `String` | Type of scheme (FHRS or FHIS) |
+| `latitude` | `Float` | Latitude coordinate of the establishment |
+| `longitude` | `Float` | Longitude coordinate of the establishment |
 
 #### Example: Load
 
@@ -466,10 +466,10 @@ Create an instance: `rating = client.Rating`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ratingId` | `Integer` |  |
-| `ratingKey` | `String` |  |
-| `ratingName` | `String` |  |
-| `schemeType` | `String` |  |
+| `ratingId` | `Integer` | Unique identifier for the rating |
+| `ratingKey` | `String` | Key for the rating value |
+| `ratingName` | `String` | Name of the rating (e.g., '5', '4', 'Pass', 'Exempt') |
+| `schemeType` | `String` | Scheme type this rating belongs to |
 
 #### Example: List
 

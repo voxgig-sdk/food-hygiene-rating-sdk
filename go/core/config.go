@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "FoodHygieneRating",
+			"slug": "food-hygiene-rating",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -36,46 +39,57 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "Email",
+						"short": "Email address of the local authority",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "EstablishmentCount",
+						"short": "Number of establishments registered with this authority",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "FileName",
+						"short": "XML filename for the authority's data",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "FileNameWelsh",
+						"short": "Welsh language XML filename (for Welsh authorities)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "FriendlyName",
+						"short": "Friendly display name of the local authority",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "LocalAuthorityId",
+						"short": "Unique identifier for the local authority",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "LocalAuthorityIdCode",
+						"short": "Code for the local authority",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Name",
+						"short": "Name of the local authority",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "RegionName",
+						"short": "Region where the authority is located",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "SchemeUrl",
+						"short": "URL to the local authority's food hygiene scheme page",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Url",
+						"short": "Website URL of the local authority",
 						"type": "`$STRING`",
 					},
 				},
@@ -145,10 +159,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "BusinessTypeId",
+						"short": "Unique identifier for the business type",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "BusinessTypeName",
+						"short": "Name of the business type (e.g., Restaurant/Cafe/Canteen, Pub/bar/nightclub, Takeaway/sandwich shop)",
 						"type": "`$STRING`",
 					},
 				},
@@ -183,34 +199,42 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "AddressLine1",
+						"short": "First line of the address",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "AddressLine2",
+						"short": "Second line of the address",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "AddressLine3",
+						"short": "Third line of the address",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "AddressLine4",
+						"short": "Fourth line of the address",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "BusinessName",
+						"short": "Name of the food establishment",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "BusinessType",
+						"short": "Type of food business (e.g., Restaurant, Pub, Café, Takeaway)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "BusinessTypeID",
+						"short": "Unique identifier for the business type",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "FHRSID",
+						"short": "Unique identifier for the establishment in the FHRS system",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -219,54 +243,67 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "LocalAuthorityBusinessID",
+						"short": "Business ID assigned by the local authority",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "LocalAuthorityCode",
+						"short": "Code for the local authority",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "LocalAuthorityEmailAddress",
+						"short": "Email address of the local authority",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "LocalAuthorityName",
+						"short": "Name of the local authority",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "LocalAuthorityWebSite",
+						"short": "Website of the local authority",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "NewRatingPending",
+						"short": "Indicates if a new rating is pending",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "PostCode",
+						"short": "Postcode of the establishment",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "RatingDate",
+						"short": "Date the rating was issued",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "RatingKey",
+						"short": "Key for the rating value",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "RatingValue",
+						"short": "The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "SchemeType",
+						"short": "Type of scheme (FHRS or FHIS)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "latitude",
+						"short": "Latitude coordinate of the establishment",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "longitude",
+						"short": "Longitude coordinate of the establishment",
 						"type": "`$NUMBER`",
 					},
 				},
@@ -421,18 +458,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "ratingId",
+						"short": "Unique identifier for the rating",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "ratingKey",
+						"short": "Key for the rating value",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "ratingName",
+						"short": "Name of the rating (e.g., '5', '4', 'Pass', 'Exempt')",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "schemeType",
+						"short": "Scheme type this rating belongs to",
 						"type": "`$STRING`",
 					},
 				},

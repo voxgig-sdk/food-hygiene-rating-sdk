@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "FoodHygieneRating",
+      slug = "food-hygiene-rating",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -32,46 +35,57 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "Email",
+            ["short"] = "Email address of the local authority",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "EstablishmentCount",
+            ["short"] = "Number of establishments registered with this authority",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "FileName",
+            ["short"] = "XML filename for the authority's data",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "FileNameWelsh",
+            ["short"] = "Welsh language XML filename (for Welsh authorities)",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "FriendlyName",
+            ["short"] = "Friendly display name of the local authority",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "LocalAuthorityId",
+            ["short"] = "Unique identifier for the local authority",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "LocalAuthorityIdCode",
+            ["short"] = "Code for the local authority",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "Name",
+            ["short"] = "Name of the local authority",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "RegionName",
+            ["short"] = "Region where the authority is located",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "SchemeUrl",
+            ["short"] = "URL to the local authority's food hygiene scheme page",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "Url",
+            ["short"] = "Website URL of the local authority",
             ["type"] = "`$STRING`",
           },
         },
@@ -141,10 +155,12 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "BusinessTypeId",
+            ["short"] = "Unique identifier for the business type",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "BusinessTypeName",
+            ["short"] = "Name of the business type (e.g., Restaurant/Cafe/Canteen, Pub/bar/nightclub, Takeaway/sandwich shop)",
             ["type"] = "`$STRING`",
           },
         },
@@ -179,34 +195,42 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "AddressLine1",
+            ["short"] = "First line of the address",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "AddressLine2",
+            ["short"] = "Second line of the address",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "AddressLine3",
+            ["short"] = "Third line of the address",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "AddressLine4",
+            ["short"] = "Fourth line of the address",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "BusinessName",
+            ["short"] = "Name of the food establishment",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "BusinessType",
+            ["short"] = "Type of food business (e.g., Restaurant, Pub, Café, Takeaway)",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "BusinessTypeID",
+            ["short"] = "Unique identifier for the business type",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "FHRSID",
+            ["short"] = "Unique identifier for the establishment in the FHRS system",
             ["type"] = "`$INTEGER`",
           },
           {
@@ -215,54 +239,67 @@ local function make_config()
           },
           {
             ["name"] = "LocalAuthorityBusinessID",
+            ["short"] = "Business ID assigned by the local authority",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "LocalAuthorityCode",
+            ["short"] = "Code for the local authority",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "LocalAuthorityEmailAddress",
+            ["short"] = "Email address of the local authority",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "LocalAuthorityName",
+            ["short"] = "Name of the local authority",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "LocalAuthorityWebSite",
+            ["short"] = "Website of the local authority",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "NewRatingPending",
+            ["short"] = "Indicates if a new rating is pending",
             ["type"] = "`$BOOLEAN`",
           },
           {
             ["name"] = "PostCode",
+            ["short"] = "Postcode of the establishment",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "RatingDate",
+            ["short"] = "Date the rating was issued",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "RatingKey",
+            ["short"] = "Key for the rating value",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "RatingValue",
+            ["short"] = "The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS)",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "SchemeType",
+            ["short"] = "Type of scheme (FHRS or FHIS)",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "latitude",
+            ["short"] = "Latitude coordinate of the establishment",
             ["type"] = "`$NUMBER`",
           },
           {
             ["name"] = "longitude",
+            ["short"] = "Longitude coordinate of the establishment",
             ["type"] = "`$NUMBER`",
           },
         },
@@ -417,18 +454,22 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "ratingId",
+            ["short"] = "Unique identifier for the rating",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "ratingKey",
+            ["short"] = "Key for the rating value",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "ratingName",
+            ["short"] = "Name of the rating (e.g., '5', '4', 'Pass', 'Exempt')",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "schemeType",
+            ["short"] = "Scheme type this rating belongs to",
             ["type"] = "`$STRING`",
           },
         },

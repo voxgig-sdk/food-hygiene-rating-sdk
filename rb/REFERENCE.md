@@ -105,17 +105,17 @@ authority = client.Authority
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `Email` | `String` | No |  |
-| `EstablishmentCount` | `Integer` | No |  |
-| `FileName` | `String` | No |  |
-| `FileNameWelsh` | `String` | No |  |
-| `FriendlyName` | `String` | No |  |
-| `LocalAuthorityId` | `Integer` | No |  |
-| `LocalAuthorityIdCode` | `String` | No |  |
-| `Name` | `String` | No |  |
-| `RegionName` | `String` | No |  |
-| `SchemeUrl` | `String` | No |  |
-| `Url` | `String` | No |  |
+| `Email` | `String` | No | Email address of the local authority |
+| `EstablishmentCount` | `Integer` | No | Number of establishments registered with this authority |
+| `FileName` | `String` | No | XML filename for the authority's data |
+| `FileNameWelsh` | `String` | No | Welsh language XML filename (for Welsh authorities) |
+| `FriendlyName` | `String` | No | Friendly display name of the local authority |
+| `LocalAuthorityId` | `Integer` | No | Unique identifier for the local authority |
+| `LocalAuthorityIdCode` | `String` | No | Code for the local authority |
+| `Name` | `String` | No | Name of the local authority |
+| `RegionName` | `String` | No | Region where the authority is located |
+| `SchemeUrl` | `String` | No | URL to the local authority's food hygiene scheme page |
+| `Url` | `String` | No | Website URL of the local authority |
 
 ### Operations
 
@@ -175,8 +175,8 @@ business_type = client.BusinessType
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `BusinessTypeId` | `Integer` | No |  |
-| `BusinessTypeName` | `String` | No |  |
+| `BusinessTypeId` | `Integer` | No | Unique identifier for the business type |
+| `BusinessTypeName` | `String` | No | Name of the business type (e.g., Restaurant/Cafe/Canteen, Pub/bar/nightclub, Takeaway/sandwich shop) |
 
 ### Operations
 
@@ -228,28 +228,28 @@ establishment = client.Establishment
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `AddressLine1` | `String` | No |  |
-| `AddressLine2` | `String` | No |  |
-| `AddressLine3` | `String` | No |  |
-| `AddressLine4` | `String` | No |  |
-| `BusinessName` | `String` | No |  |
-| `BusinessType` | `String` | No |  |
-| `BusinessTypeID` | `Integer` | No |  |
-| `FHRSID` | `Integer` | No |  |
+| `AddressLine1` | `String` | No | First line of the address |
+| `AddressLine2` | `String` | No | Second line of the address |
+| `AddressLine3` | `String` | No | Third line of the address |
+| `AddressLine4` | `String` | No | Fourth line of the address |
+| `BusinessName` | `String` | No | Name of the food establishment |
+| `BusinessType` | `String` | No | Type of food business (e.g., Restaurant, Pub, Café, Takeaway) |
+| `BusinessTypeID` | `Integer` | No | Unique identifier for the business type |
+| `FHRSID` | `Integer` | No | Unique identifier for the establishment in the FHRS system |
 | `Geocode` | `Hash` | No |  |
-| `LocalAuthorityBusinessID` | `String` | No |  |
-| `LocalAuthorityCode` | `String` | No |  |
-| `LocalAuthorityEmailAddress` | `String` | No |  |
-| `LocalAuthorityName` | `String` | No |  |
-| `LocalAuthorityWebSite` | `String` | No |  |
-| `NewRatingPending` | `Boolean` | No |  |
-| `PostCode` | `String` | No |  |
-| `RatingDate` | `String` | No |  |
-| `RatingKey` | `String` | No |  |
-| `RatingValue` | `String` | No |  |
-| `SchemeType` | `String` | No |  |
-| `latitude` | `Float` | No |  |
-| `longitude` | `Float` | No |  |
+| `LocalAuthorityBusinessID` | `String` | No | Business ID assigned by the local authority |
+| `LocalAuthorityCode` | `String` | No | Code for the local authority |
+| `LocalAuthorityEmailAddress` | `String` | No | Email address of the local authority |
+| `LocalAuthorityName` | `String` | No | Name of the local authority |
+| `LocalAuthorityWebSite` | `String` | No | Website of the local authority |
+| `NewRatingPending` | `Boolean` | No | Indicates if a new rating is pending |
+| `PostCode` | `String` | No | Postcode of the establishment |
+| `RatingDate` | `String` | No | Date the rating was issued |
+| `RatingKey` | `String` | No | Key for the rating value |
+| `RatingValue` | `String` | No | The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS) |
+| `SchemeType` | `String` | No | Type of scheme (FHRS or FHIS) |
+| `latitude` | `Float` | No | Latitude coordinate of the establishment |
+| `longitude` | `Float` | No | Longitude coordinate of the establishment |
 
 ### Operations
 
@@ -309,10 +309,10 @@ rating = client.Rating
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ratingId` | `Integer` | No |  |
-| `ratingKey` | `String` | No |  |
-| `ratingName` | `String` | No |  |
-| `schemeType` | `String` | No |  |
+| `ratingId` | `Integer` | No | Unique identifier for the rating |
+| `ratingKey` | `String` | No | Key for the rating value |
+| `ratingName` | `String` | No | Name of the rating (e.g., '5', '4', 'Pass', 'Exempt') |
+| `schemeType` | `String` | No | Scheme type this rating belongs to |
 
 ### Operations
 

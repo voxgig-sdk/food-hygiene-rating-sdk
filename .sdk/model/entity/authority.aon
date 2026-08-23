@@ -1,0 +1,131 @@
+# Entity: authority
+
+main: kit: entity: authority: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "Email"
+      req: false
+      short: "Email address of the local authority"
+      type: "`$STRING`"
+    }
+    {
+      name: "EstablishmentCount"
+      req: false
+      short: "Number of establishments registered with this authority"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "FileName"
+      req: false
+      short: "XML filename for the authority's data"
+      type: "`$STRING`"
+    }
+    {
+      name: "FileNameWelsh"
+      req: false
+      short: "Welsh language XML filename (for Welsh authorities)"
+      type: "`$STRING`"
+    }
+    {
+      name: "FriendlyName"
+      req: false
+      short: "Friendly display name of the local authority"
+      type: "`$STRING`"
+    }
+    {
+      name: "LocalAuthorityId"
+      req: false
+      short: "Unique identifier for the local authority"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "LocalAuthorityIdCode"
+      req: false
+      short: "Code for the local authority"
+      type: "`$STRING`"
+    }
+    {
+      name: "Name"
+      req: false
+      short: "Name of the local authority"
+      type: "`$STRING`"
+    }
+    {
+      name: "RegionName"
+      req: false
+      short: "Region where the authority is located"
+      type: "`$STRING`"
+    }
+    {
+      name: "SchemeUrl"
+      req: false
+      short: "URL to the local authority's food hygiene scheme page"
+      type: "`$STRING`"
+    }
+    {
+      name: "Url"
+      req: false
+      short: "Website URL of the local authority"
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "authority"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/Authorities"
+          parts: [
+            "Authorities"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body.authorities`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/Authorities/{id}"
+          parts: [
+            "Authorities"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

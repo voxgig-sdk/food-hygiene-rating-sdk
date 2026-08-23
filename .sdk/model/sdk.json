@@ -36,66 +36,77 @@
               "active": true,
               "name": "Email",
               "req": false,
+              "short": "Email address of the local authority",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "EstablishmentCount",
               "req": false,
+              "short": "Number of establishments registered with this authority",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "FileName",
               "req": false,
+              "short": "XML filename for the authority's data",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "FileNameWelsh",
               "req": false,
+              "short": "Welsh language XML filename (for Welsh authorities)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "FriendlyName",
               "req": false,
+              "short": "Friendly display name of the local authority",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "LocalAuthorityId",
               "req": false,
+              "short": "Unique identifier for the local authority",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "LocalAuthorityIdCode",
               "req": false,
+              "short": "Code for the local authority",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Name",
               "req": false,
+              "short": "Name of the local authority",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "RegionName",
               "req": false,
+              "short": "Region where the authority is located",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "SchemeUrl",
               "req": false,
+              "short": "URL to the local authority's food hygiene scheme page",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Url",
               "req": false,
+              "short": "Website URL of the local authority",
               "type": "`$STRING`"
             }
           ],
@@ -174,12 +185,14 @@
               "active": true,
               "name": "BusinessTypeId",
               "req": false,
+              "short": "Unique identifier for the business type",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "BusinessTypeName",
               "req": false,
+              "short": "Name of the business type (e.g., Restaurant/Cafe/Canteen, Pub/bar/nightclub, Takeaway/sandwich shop)",
               "type": "`$STRING`"
             }
           ],
@@ -221,48 +234,56 @@
               "active": true,
               "name": "AddressLine1",
               "req": false,
+              "short": "First line of the address",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "AddressLine2",
               "req": false,
+              "short": "Second line of the address",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "AddressLine3",
               "req": false,
+              "short": "Third line of the address",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "AddressLine4",
               "req": false,
+              "short": "Fourth line of the address",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "BusinessName",
               "req": false,
+              "short": "Name of the food establishment",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "BusinessType",
               "req": false,
+              "short": "Type of food business (e.g., Restaurant, Pub, Café, Takeaway)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "BusinessTypeID",
               "req": false,
+              "short": "Unique identifier for the business type",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "FHRSID",
               "req": false,
+              "short": "Unique identifier for the establishment in the FHRS system",
               "type": "`$INTEGER`"
             },
             {
@@ -275,78 +296,91 @@
               "active": true,
               "name": "LocalAuthorityBusinessID",
               "req": false,
+              "short": "Business ID assigned by the local authority",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "LocalAuthorityCode",
               "req": false,
+              "short": "Code for the local authority",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "LocalAuthorityEmailAddress",
               "req": false,
+              "short": "Email address of the local authority",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "LocalAuthorityName",
               "req": false,
+              "short": "Name of the local authority",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "LocalAuthorityWebSite",
               "req": false,
+              "short": "Website of the local authority",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "NewRatingPending",
               "req": false,
+              "short": "Indicates if a new rating is pending",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "PostCode",
               "req": false,
+              "short": "Postcode of the establishment",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "RatingDate",
               "req": false,
+              "short": "Date the rating was issued",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "RatingKey",
               "req": false,
+              "short": "Key for the rating value",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "RatingValue",
               "req": false,
+              "short": "The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "SchemeType",
               "req": false,
+              "short": "Type of scheme (FHRS or FHIS)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "latitude",
               "req": false,
+              "short": "Latitude coordinate of the establishment",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "longitude",
               "req": false,
+              "short": "Longitude coordinate of the establishment",
               "type": "`$NUMBER`"
             }
           ],
@@ -532,24 +566,28 @@
               "active": true,
               "name": "ratingId",
               "req": false,
+              "short": "Unique identifier for the rating",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "ratingKey",
               "req": false,
+              "short": "Key for the rating value",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "ratingName",
               "req": false,
+              "short": "Name of the rating (e.g., '5', '4', 'Pass', 'Exempt')",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "schemeType",
               "req": false,
+              "short": "Scheme type this rating belongs to",
               "type": "`$STRING`"
             }
           ],

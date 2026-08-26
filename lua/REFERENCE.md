@@ -113,6 +113,7 @@ local authority = client:Authority(nil)
 | `RegionName` | `string` | No | Region where the authority is located |
 | `SchemeUrl` | `string` | No | URL to the local authority's food hygiene scheme page |
 | `Url` | `string` | No | Website URL of the local authority |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -245,6 +246,7 @@ local establishment = client:Establishment(nil)
 | `RatingKey` | `string` | No | Key for the rating value |
 | `RatingValue` | `string` | No | The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS) |
 | `SchemeType` | `string` | No | Type of scheme (FHRS or FHIS) |
+| `id` | `string` | No |  |
 | `latitude` | `number` | No | Latitude coordinate of the establishment |
 | `longitude` | `number` | No | Longitude coordinate of the establishment |
 

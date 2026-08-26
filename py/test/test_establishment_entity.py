@@ -88,9 +88,13 @@ class TestEstablishmentEntity:
         assert isinstance(establishment_ref01_list_result, list)
 
         # LOAD
-        establishment_ref01_match_dt0 = {}
+        establishment_ref01_match_dt0 = {
+            "id": establishment_ref01_data["id"],
+        }
         establishment_ref01_data_dt0_loaded = establishment_ref01_ent.load(establishment_ref01_match_dt0, None)
-        assert establishment_ref01_data_dt0_loaded is not None
+        establishment_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(establishment_ref01_data_dt0_loaded))
+        assert establishment_ref01_data_dt0_load_result is not None
+        assert establishment_ref01_data_dt0_load_result["id"] == establishment_ref01_data["id"]
 
 
 

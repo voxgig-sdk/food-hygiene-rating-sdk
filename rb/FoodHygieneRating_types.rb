@@ -42,6 +42,9 @@
 #
 # @!attribute [rw] Url
 #   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
 Authority = Struct.new(
   :Email,
   :EstablishmentCount,
@@ -54,6 +57,7 @@ Authority = Struct.new(
   :RegionName,
   :SchemeUrl,
   :Url,
+  :id,
   keyword_init: true
 )
 
@@ -100,6 +104,9 @@ AuthorityLoadMatch = Struct.new(
 #
 # @!attribute [rw] Url
 #   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
 AuthorityListMatch = Struct.new(
   :Email,
   :EstablishmentCount,
@@ -112,6 +119,7 @@ AuthorityListMatch = Struct.new(
   :RegionName,
   :SchemeUrl,
   :Url,
+  :id,
   keyword_init: true
 )
 
@@ -203,6 +211,9 @@ BusinessTypeListMatch = Struct.new(
 # @!attribute [rw] SchemeType
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] latitude
 #   @return [Float, nil]
 #
@@ -229,6 +240,7 @@ Establishment = Struct.new(
   :RatingKey,
   :RatingValue,
   :SchemeType,
+  :id,
   :latitude,
   :longitude,
   keyword_init: true
@@ -305,6 +317,9 @@ EstablishmentLoadMatch = Struct.new(
 # @!attribute [rw] SchemeType
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] latitude
 #   @return [Float, nil]
 #
@@ -331,6 +346,7 @@ EstablishmentListMatch = Struct.new(
   :RatingKey,
   :RatingValue,
   :SchemeType,
+  :id,
   :latitude,
   :longitude,
   keyword_init: true

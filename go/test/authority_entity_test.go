@@ -121,13 +121,19 @@ func TestAuthorityEntity(t *testing.T) {
 		}
 
 		// LOAD
-		authorityRef01MatchDt0 := map[string]any{}
+		authorityRef01MatchDt0 := map[string]any{
+			"id": authorityRef01Data["id"],
+		}
 		authorityRef01DataDt0Loaded, err := authorityRef01Ent.Load(authorityRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if authorityRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		authorityRef01DataDt0LoadResult := core.ToMapAny(entityData(authorityRef01DataDt0Loaded))
+		if authorityRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if authorityRef01DataDt0LoadResult["id"] != authorityRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

@@ -66,6 +66,12 @@ describe('AuthorityEntity', async () => {
     const authority_ref01_list = (await authority_ref01_ent.list(authority_ref01_match)).map((e: any) => e.data())
 
 
+    // LOAD
+    const authority_ref01_match_dt0: any = {}
+    authority_ref01_match_dt0.id = authority_ref01_data.id
+    const authority_ref01_data_dt0 = (await authority_ref01_ent.load(authority_ref01_match_dt0)).data()
+    assert(authority_ref01_data_dt0.id === authority_ref01_data.id)
+
 
   })
 })

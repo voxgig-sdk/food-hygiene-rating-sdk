@@ -121,6 +121,7 @@ fmt.Println(authority.GetName()) // "authority"
 | `RegionName` | `string` | No | Region where the authority is located |
 | `SchemeUrl` | `string` | No | URL to the local authority's food hygiene scheme page |
 | `Url` | `string` | No | Website URL of the local authority |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -255,6 +256,7 @@ fmt.Println(establishment.GetName()) // "establishment"
 | `RatingKey` | `string` | No | Key for the rating value |
 | `RatingValue` | `string` | No | The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS) |
 | `SchemeType` | `string` | No | Type of scheme (FHRS or FHIS) |
+| `id` | `string` | No |  |
 | `latitude` | `float64` | No | Latitude coordinate of the establishment |
 | `longitude` | `float64` | No | Longitude coordinate of the establishment |
 

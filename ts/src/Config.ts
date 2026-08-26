@@ -40,7 +40,8 @@ class Config {
      test:     {
       "options": {
         "active": false
-      }
+      },
+      "transport": "base"
     },
 
   }
@@ -127,6 +128,10 @@ class Config {
         {
           "name": "Url",
           "short": "Website URL of the local authority",
+          "type": "`$STRING`"
+        },
+        {
+          "name": "id",
           "type": "`$STRING`"
         }
       ],
@@ -331,6 +336,10 @@ class Config {
         {
           "name": "SchemeType",
           "short": "Type of scheme (FHRS or FHIS)",
+          "type": "`$STRING`"
+        },
+        {
+          "name": "id",
           "type": "`$STRING`"
         },
         {

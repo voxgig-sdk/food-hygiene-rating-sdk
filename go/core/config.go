@@ -20,6 +20,7 @@ func MakeConfig() map[string]any {
 				"options": map[string]any{
 					"active": false,
 				},
+				"transport": "base",
 			},
 		},
 		"options": map[string]any{
@@ -90,6 +91,10 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "Url",
 						"short": "Website URL of the local authority",
+						"type": "`$STRING`",
+					},
+					map[string]any{
+						"name": "id",
 						"type": "`$STRING`",
 					},
 				},
@@ -294,6 +299,10 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "SchemeType",
 						"short": "Type of scheme (FHRS or FHIS)",
+						"type": "`$STRING`",
+					},
+					map[string]any{
+						"name": "id",
 						"type": "`$STRING`",
 					},
 					map[string]any{

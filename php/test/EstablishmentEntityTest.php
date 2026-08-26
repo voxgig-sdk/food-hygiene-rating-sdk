@@ -93,9 +93,13 @@ class EstablishmentEntityTest extends TestCase
         $this->assertIsArray($establishment_ref01_list_result);
 
         // LOAD
-        $establishment_ref01_match_dt0 = [];
+        $establishment_ref01_match_dt0 = [
+            "id" => $establishment_ref01_data["id"],
+        ];
         $establishment_ref01_data_dt0_loaded = $establishment_ref01_ent->load($establishment_ref01_match_dt0, null);
-        $this->assertNotNull($establishment_ref01_data_dt0_loaded);
+        $establishment_ref01_data_dt0_load_result = Helpers::to_map(is_object($establishment_ref01_data_dt0_loaded) && method_exists($establishment_ref01_data_dt0_loaded, 'data_get') ? $establishment_ref01_data_dt0_loaded->data_get() : $establishment_ref01_data_dt0_loaded);
+        $this->assertNotNull($establishment_ref01_data_dt0_load_result);
+        $this->assertEquals($establishment_ref01_data_dt0_load_result["id"], $establishment_ref01_data["id"]);
 
     }
 }

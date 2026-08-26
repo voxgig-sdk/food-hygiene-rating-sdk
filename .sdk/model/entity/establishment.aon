@@ -125,6 +125,11 @@ main: kit: entity: establishment: {
       type: "`$STRING`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "latitude"
       req: false
       short: "Latitude coordinate of the establishment"
@@ -137,6 +142,11 @@ main: kit: entity: establishment: {
       type: "`$NUMBER`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "establishment"
   op: {

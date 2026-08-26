@@ -88,9 +88,13 @@ class TestAuthorityEntity:
         assert isinstance(authority_ref01_list_result, list)
 
         # LOAD
-        authority_ref01_match_dt0 = {}
+        authority_ref01_match_dt0 = {
+            "id": authority_ref01_data["id"],
+        }
         authority_ref01_data_dt0_loaded = authority_ref01_ent.load(authority_ref01_match_dt0, None)
-        assert authority_ref01_data_dt0_loaded is not None
+        authority_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(authority_ref01_data_dt0_loaded))
+        assert authority_ref01_data_dt0_load_result is not None
+        assert authority_ref01_data_dt0_load_result["id"] == authority_ref01_data["id"]
 
 
 

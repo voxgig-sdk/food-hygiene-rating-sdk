@@ -159,7 +159,7 @@ await entity.list()
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data)
+console.log(data.id)
 ```
 
 ### Add custom middleware
@@ -316,6 +316,7 @@ The `prepare()` method returns:
 | `RegionName` | Region where the authority is located |
 | `SchemeUrl` | URL to the local authority's food hygiene scheme page |
 | `Url` | Website URL of the local authority |
+| `id` |  |
 
 Operations: list, load.
 
@@ -356,6 +357,7 @@ API path: `/BusinessTypes`
 | `RatingKey` | Key for the rating value |
 | `RatingValue` | The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS) |
 | `SchemeType` | Type of scheme (FHRS or FHIS) |
+| `id` |  |
 | `latitude` | Latitude coordinate of the establishment |
 | `longitude` | Longitude coordinate of the establishment |
 
@@ -407,6 +409,7 @@ Create an instance: `const authority = client.Authority()`
 | `RegionName` | `string` | Region where the authority is located |
 | `SchemeUrl` | `string` | URL to the local authority's food hygiene scheme page |
 | `Url` | `string` | Website URL of the local authority |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -480,6 +483,7 @@ Create an instance: `const establishment = client.Establishment()`
 | `RatingKey` | `string` | Key for the rating value |
 | `RatingValue` | `string` | The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS) |
 | `SchemeType` | `string` | Type of scheme (FHRS or FHIS) |
+| `id` | `string` |  |
 | `latitude` | `number` | Latitude coordinate of the establishment |
 | `longitude` | `number` | Longitude coordinate of the establishment |
 

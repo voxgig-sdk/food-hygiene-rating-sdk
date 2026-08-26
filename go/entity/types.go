@@ -25,6 +25,7 @@ type Authority struct {
 	RegionName *string `json:"RegionName,omitempty"`
 	SchemeUrl *string `json:"SchemeUrl,omitempty"`
 	Url *string `json:"Url,omitempty"`
+	Id *string `json:"id,omitempty"`
 }
 
 // AuthorityLoadMatch is the typed request payload for Authority.LoadTyped.
@@ -45,6 +46,7 @@ type AuthorityListMatch struct {
 	RegionName *string `json:"RegionName,omitempty"`
 	SchemeUrl *string `json:"SchemeUrl,omitempty"`
 	Url *string `json:"Url,omitempty"`
+	Id *string `json:"id,omitempty"`
 }
 
 // BusinessType is the typed data model for the business_type entity.
@@ -81,6 +83,7 @@ type Establishment struct {
 	RatingKey *string `json:"RatingKey,omitempty"`
 	RatingValue *string `json:"RatingValue,omitempty"`
 	SchemeType *string `json:"SchemeType,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Latitude *float64 `json:"latitude,omitempty"`
 	Longitude *float64 `json:"longitude,omitempty"`
 }
@@ -112,6 +115,7 @@ type EstablishmentListMatch struct {
 	RatingKey *string `json:"RatingKey,omitempty"`
 	RatingValue *string `json:"RatingValue,omitempty"`
 	SchemeType *string `json:"SchemeType,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Latitude *float64 `json:"latitude,omitempty"`
 	Longitude *float64 `json:"longitude,omitempty"`
 }

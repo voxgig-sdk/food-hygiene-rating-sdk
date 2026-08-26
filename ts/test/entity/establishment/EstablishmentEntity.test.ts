@@ -66,6 +66,12 @@ describe('EstablishmentEntity', async () => {
     const establishment_ref01_list = (await establishment_ref01_ent.list(establishment_ref01_match)).map((e: any) => e.data())
 
 
+    // LOAD
+    const establishment_ref01_match_dt0: any = {}
+    establishment_ref01_match_dt0.id = establishment_ref01_data.id
+    const establishment_ref01_data_dt0 = (await establishment_ref01_ent.load(establishment_ref01_match_dt0)).data()
+    assert(establishment_ref01_data_dt0.id === establishment_ref01_data.id)
+
 
   })
 })

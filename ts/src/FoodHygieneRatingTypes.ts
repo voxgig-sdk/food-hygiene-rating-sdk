@@ -17,6 +17,7 @@ export interface Authority {
   RegionName?: string
   SchemeUrl?: string
   Url?: string
+  id?: string
 }
 
 export interface AuthorityLoadMatch {
@@ -35,6 +36,7 @@ export interface AuthorityListMatch {
   RegionName?: string
   SchemeUrl?: string
   Url?: string
+  id?: string
 }
 
 export interface BusinessType {
@@ -68,6 +70,7 @@ export interface Establishment {
   RatingKey?: string
   RatingValue?: string
   SchemeType?: string
+  id?: string
   latitude?: number
   longitude?: number
 }
@@ -97,6 +100,7 @@ export interface EstablishmentListMatch {
   RatingKey?: string
   RatingValue?: string
   SchemeType?: string
+  id?: string
   latitude?: number
   longitude?: number
 }

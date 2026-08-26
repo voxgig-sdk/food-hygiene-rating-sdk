@@ -71,7 +71,17 @@ main: kit: entity: authority: {
       short: "Website URL of the local authority"
       type: "`$STRING`"
     }
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "authority"
   op: {

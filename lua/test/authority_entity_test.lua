@@ -92,10 +92,14 @@ describe("AuthorityEntity", function()
     assert.is_table(authority_ref01_list_result)
 
     -- LOAD
-    local authority_ref01_match_dt0 = {}
+    local authority_ref01_match_dt0 = {
+      id = authority_ref01_data["id"],
+    }
     local authority_ref01_data_dt0_loaded, err = authority_ref01_ent:load(authority_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(authority_ref01_data_dt0_loaded)
+    local authority_ref01_data_dt0_load_result = helpers.to_map(type(authority_ref01_data_dt0_loaded) == 'table' and authority_ref01_data_dt0_loaded.data_get and authority_ref01_data_dt0_loaded:data_get() or authority_ref01_data_dt0_loaded)
+    assert.is_not_nil(authority_ref01_data_dt0_load_result)
+    assert.are.equal(authority_ref01_data_dt0_load_result["id"], authority_ref01_data["id"])
 
   end)
 end)

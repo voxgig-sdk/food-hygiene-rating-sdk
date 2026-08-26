@@ -28,6 +28,7 @@ class Authority(TypedDict, total=False):
     RegionName: str
     SchemeUrl: str
     Url: str
+    id: str
 
 
 class AuthorityLoadMatch(TypedDict):
@@ -46,6 +47,7 @@ class AuthorityListMatch(TypedDict, total=False):
     RegionName: str
     SchemeUrl: str
     Url: str
+    id: str
 
 
 class BusinessType(TypedDict, total=False):
@@ -79,6 +81,7 @@ class Establishment(TypedDict, total=False):
     RatingKey: str
     RatingValue: str
     SchemeType: str
+    id: str
     latitude: float
     longitude: float
 
@@ -108,6 +111,7 @@ class EstablishmentListMatch(TypedDict, total=False):
     RatingKey: str
     RatingValue: str
     SchemeType: str
+    id: str
     latitude: float
     longitude: float
 

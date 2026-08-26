@@ -42,6 +42,7 @@ class FoodHygieneRatingConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
@@ -112,6 +113,10 @@ class FoodHygieneRatingConfig
             [
               'name' => 'Url',
               'short' => 'Website URL of the local authority',
+              'type' => '`$STRING`',
+            ],
+            [
+              'name' => 'id',
               'type' => '`$STRING`',
             ],
           ],
@@ -316,6 +321,10 @@ class FoodHygieneRatingConfig
             [
               'name' => 'SchemeType',
               'short' => 'Type of scheme (FHRS or FHIS)',
+              'type' => '`$STRING`',
+            ],
+            [
+              'name' => 'id',
               'type' => '`$STRING`',
             ],
             [

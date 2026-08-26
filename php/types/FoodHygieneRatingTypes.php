@@ -26,6 +26,7 @@ class Authority
     public ?string $RegionName = null;
     public ?string $SchemeUrl = null;
     public ?string $Url = null;
+    public ?string $id = null;
 }
 
 /** Request payload for Authority#load. */
@@ -48,6 +49,7 @@ class AuthorityListMatch
     public ?string $RegionName = null;
     public ?string $SchemeUrl = null;
     public ?string $Url = null;
+    public ?string $id = null;
 }
 
 /** BusinessType entity data model. */
@@ -87,6 +89,7 @@ class Establishment
     public ?string $RatingKey = null;
     public ?string $RatingValue = null;
     public ?string $SchemeType = null;
+    public ?string $id = null;
     public ?float $latitude = null;
     public ?float $longitude = null;
 }
@@ -120,6 +123,7 @@ class EstablishmentListMatch
     public ?string $RatingKey = null;
     public ?string $RatingValue = null;
     public ?string $SchemeType = null;
+    public ?string $id = null;
     public ?float $latitude = null;
     public ?float $longitude = null;
 }

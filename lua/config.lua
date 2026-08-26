@@ -16,6 +16,7 @@ local function make_config()
         ["options"] = {
           ["active"] = false,
         },
+        ["transport"] = "base",
       },
     },
     options = {
@@ -86,6 +87,10 @@ local function make_config()
           {
             ["name"] = "Url",
             ["short"] = "Website URL of the local authority",
+            ["type"] = "`$STRING`",
+          },
+          {
+            ["name"] = "id",
             ["type"] = "`$STRING`",
           },
         },
@@ -290,6 +295,10 @@ local function make_config()
           {
             ["name"] = "SchemeType",
             ["short"] = "Type of scheme (FHRS or FHIS)",
+            ["type"] = "`$STRING`",
+          },
+          {
+            ["name"] = "id",
             ["type"] = "`$STRING`",
           },
           {

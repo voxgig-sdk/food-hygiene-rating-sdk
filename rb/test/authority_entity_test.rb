@@ -83,9 +83,13 @@ class AuthorityEntityTest < Minitest::Test
     assert authority_ref01_list_result.is_a?(Array)
 
     # LOAD
-    authority_ref01_match_dt0 = {}
+    authority_ref01_match_dt0 = {
+      "id" => authority_ref01_data["id"],
+    }
     authority_ref01_data_dt0_loaded = authority_ref01_ent.load(authority_ref01_match_dt0, nil)
-    assert !authority_ref01_data_dt0_loaded.nil?
+    authority_ref01_data_dt0_load_result = Helpers.to_map(authority_ref01_data_dt0_loaded.respond_to?(:data_get) ? authority_ref01_data_dt0_loaded.data_get : authority_ref01_data_dt0_loaded)
+    assert !authority_ref01_data_dt0_load_result.nil?
+    assert_equal authority_ref01_data_dt0_load_result["id"], authority_ref01_data["id"]
 
   end
 end

@@ -283,6 +283,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | `"RegionName"` | Region where the authority is located |
 | `"SchemeUrl"` | URL to the local authority's food hygiene scheme page |
 | `"Url"` | Website URL of the local authority |
+| `"id"` |  |
 
 Operations: List, Load.
 
@@ -323,6 +324,7 @@ API path: `/BusinessTypes`
 | `"RatingKey"` | Key for the rating value |
 | `"RatingValue"` | The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS) |
 | `"SchemeType"` | Type of scheme (FHRS or FHIS) |
+| `"id"` |  |
 | `"latitude"` | Latitude coordinate of the establishment |
 | `"longitude"` | Longitude coordinate of the establishment |
 
@@ -374,6 +376,7 @@ Create an instance: `authority := client.Authority(nil)`
 | `RegionName` | `string` | Region where the authority is located |
 | `SchemeUrl` | `string` | URL to the local authority's food hygiene scheme page |
 | `Url` | `string` | Website URL of the local authority |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -459,6 +462,7 @@ Create an instance: `establishment := client.Establishment(nil)`
 | `RatingKey` | `string` | Key for the rating value |
 | `RatingValue` | `string` | The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS) |
 | `SchemeType` | `string` | Type of scheme (FHRS or FHIS) |
+| `id` | `string` |  |
 | `latitude` | `float64` | Latitude coordinate of the establishment |
 | `longitude` | `float64` | Longitude coordinate of the establishment |
 

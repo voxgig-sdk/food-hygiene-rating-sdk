@@ -18,6 +18,7 @@
 ---@field RegionName? string
 ---@field SchemeUrl? string
 ---@field Url? string
+---@field id? string
 
 ---@class AuthorityLoadMatch
 ---@field id number
@@ -34,6 +35,7 @@
 ---@field RegionName? string
 ---@field SchemeUrl? string
 ---@field Url? string
+---@field id? string
 
 ---@class BusinessType
 ---@field BusinessTypeId? number
@@ -64,6 +66,7 @@
 ---@field RatingKey? string
 ---@field RatingValue? string
 ---@field SchemeType? string
+---@field id? string
 ---@field latitude? number
 ---@field longitude? number
 
@@ -91,6 +94,7 @@
 ---@field RatingKey? string
 ---@field RatingValue? string
 ---@field SchemeType? string
+---@field id? string
 ---@field latitude? number
 ---@field longitude? number
 

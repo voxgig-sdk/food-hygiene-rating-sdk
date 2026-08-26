@@ -116,6 +116,7 @@ authority = client.Authority
 | `RegionName` | `String` | No | Region where the authority is located |
 | `SchemeUrl` | `String` | No | URL to the local authority's food hygiene scheme page |
 | `Url` | `String` | No | Website URL of the local authority |
+| `id` | `String` | No |  |
 
 ### Operations
 
@@ -248,6 +249,7 @@ establishment = client.Establishment
 | `RatingKey` | `String` | No | Key for the rating value |
 | `RatingValue` | `String` | No | The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS) |
 | `SchemeType` | `String` | No | Type of scheme (FHRS or FHIS) |
+| `id` | `String` | No |  |
 | `latitude` | `Float` | No | Latitude coordinate of the establishment |
 | `longitude` | `Float` | No | Longitude coordinate of the establishment |
 

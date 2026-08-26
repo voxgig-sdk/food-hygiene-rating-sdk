@@ -37,7 +37,7 @@ begin
   # list returns an Array of Authority records — iterate directly.
   authoritys = client.Authority.list
   authoritys.each do |item|
-    puts "#{item["Email"]}"
+    puts "#{item["id"]} #{item["Email"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -267,6 +267,7 @@ returns a result `Hash` with these keys:
 | `RegionName` | Region where the authority is located |
 | `SchemeUrl` | URL to the local authority's food hygiene scheme page |
 | `Url` | Website URL of the local authority |
+| `id` |  |
 
 Operations: List, Load.
 
@@ -307,6 +308,7 @@ API path: `/BusinessTypes`
 | `RatingKey` | Key for the rating value |
 | `RatingValue` | The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS) |
 | `SchemeType` | Type of scheme (FHRS or FHIS) |
+| `id` |  |
 | `latitude` | Latitude coordinate of the establishment |
 | `longitude` | Longitude coordinate of the establishment |
 
@@ -358,6 +360,7 @@ Create an instance: `authority = client.Authority`
 | `RegionName` | `String` | Region where the authority is located |
 | `SchemeUrl` | `String` | URL to the local authority's food hygiene scheme page |
 | `Url` | `String` | Website URL of the local authority |
+| `id` | `String` |  |
 
 #### Example: Load
 
@@ -434,6 +437,7 @@ Create an instance: `establishment = client.Establishment`
 | `RatingKey` | `String` | Key for the rating value |
 | `RatingValue` | `String` | The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS) |
 | `SchemeType` | `String` | Type of scheme (FHRS or FHIS) |
+| `id` | `String` |  |
 | `latitude` | `Float` | Latitude coordinate of the establishment |
 | `longitude` | `Float` | Longitude coordinate of the establishment |
 

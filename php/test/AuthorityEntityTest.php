@@ -93,9 +93,13 @@ class AuthorityEntityTest extends TestCase
         $this->assertIsArray($authority_ref01_list_result);
 
         // LOAD
-        $authority_ref01_match_dt0 = [];
+        $authority_ref01_match_dt0 = [
+            "id" => $authority_ref01_data["id"],
+        ];
         $authority_ref01_data_dt0_loaded = $authority_ref01_ent->load($authority_ref01_match_dt0, null);
-        $this->assertNotNull($authority_ref01_data_dt0_loaded);
+        $authority_ref01_data_dt0_load_result = Helpers::to_map(is_object($authority_ref01_data_dt0_loaded) && method_exists($authority_ref01_data_dt0_loaded, 'data_get') ? $authority_ref01_data_dt0_loaded->data_get() : $authority_ref01_data_dt0_loaded);
+        $this->assertNotNull($authority_ref01_data_dt0_load_result);
+        $this->assertEquals($authority_ref01_data_dt0_load_result["id"], $authority_ref01_data["id"]);
 
     }
 }

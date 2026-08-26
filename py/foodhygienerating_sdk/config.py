@@ -37,6 +37,7 @@ def make_config():
         "options": {
           "active": False,
         },
+        "transport": "base",
       },
         },
         "options": {
@@ -107,6 +108,10 @@ def make_config():
           {
             "name": "Url",
             "short": "Website URL of the local authority",
+            "type": "`$STRING`",
+          },
+          {
+            "name": "id",
             "type": "`$STRING`",
           },
         ],
@@ -311,6 +316,10 @@ def make_config():
           {
             "name": "SchemeType",
             "short": "Type of scheme (FHRS or FHIS)",
+            "type": "`$STRING`",
+          },
+          {
+            "name": "id",
             "type": "`$STRING`",
           },
           {

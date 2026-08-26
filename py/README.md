@@ -270,6 +270,7 @@ On error, `ok` is `False` and `err` contains the error value.
 | `RegionName` | Region where the authority is located |
 | `SchemeUrl` | URL to the local authority's food hygiene scheme page |
 | `Url` | Website URL of the local authority |
+| `id` |  |
 
 Operations: List, Load.
 
@@ -310,6 +311,7 @@ API path: `/BusinessTypes`
 | `RatingKey` | Key for the rating value |
 | `RatingValue` | The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS) |
 | `SchemeType` | Type of scheme (FHRS or FHIS) |
+| `id` |  |
 | `latitude` | Latitude coordinate of the establishment |
 | `longitude` | Longitude coordinate of the establishment |
 
@@ -361,6 +363,7 @@ Create an instance: `authority = client.Authority()`
 | `RegionName` | `str` | Region where the authority is located |
 | `SchemeUrl` | `str` | URL to the local authority's food hygiene scheme page |
 | `Url` | `str` | Website URL of the local authority |
+| `id` | `str` |  |
 
 #### Example: Load
 
@@ -434,6 +437,7 @@ Create an instance: `establishment = client.Establishment()`
 | `RatingKey` | `str` | Key for the rating value |
 | `RatingValue` | `str` | The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS) |
 | `SchemeType` | `str` | Type of scheme (FHRS or FHIS) |
+| `id` | `str` |  |
 | `latitude` | `float` | Latitude coordinate of the establishment |
 | `longitude` | `float` | Longitude coordinate of the establishment |
 

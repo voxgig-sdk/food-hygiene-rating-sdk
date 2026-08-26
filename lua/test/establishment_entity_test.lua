@@ -92,10 +92,14 @@ describe("EstablishmentEntity", function()
     assert.is_table(establishment_ref01_list_result)
 
     -- LOAD
-    local establishment_ref01_match_dt0 = {}
+    local establishment_ref01_match_dt0 = {
+      id = establishment_ref01_data["id"],
+    }
     local establishment_ref01_data_dt0_loaded, err = establishment_ref01_ent:load(establishment_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(establishment_ref01_data_dt0_loaded)
+    local establishment_ref01_data_dt0_load_result = helpers.to_map(type(establishment_ref01_data_dt0_loaded) == 'table' and establishment_ref01_data_dt0_loaded.data_get and establishment_ref01_data_dt0_loaded:data_get() or establishment_ref01_data_dt0_loaded)
+    assert.is_not_nil(establishment_ref01_data_dt0_load_result)
+    assert.are.equal(establishment_ref01_data_dt0_load_result["id"], establishment_ref01_data["id"])
 
   end)
 end)

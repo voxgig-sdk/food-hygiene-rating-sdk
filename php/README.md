@@ -38,7 +38,7 @@ try {
     // list() returns an array of Authority records — iterate directly.
     $authoritys = $client->Authority()->list();
     foreach ($authoritys as $item) {
-        echo $item["Email"] . "\n";
+        echo $item["id"] . " " . $item["Email"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -277,6 +277,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 | `RegionName` | Region where the authority is located |
 | `SchemeUrl` | URL to the local authority's food hygiene scheme page |
 | `Url` | Website URL of the local authority |
+| `id` |  |
 
 Operations: List, Load.
 
@@ -317,6 +318,7 @@ API path: `/BusinessTypes`
 | `RatingKey` | Key for the rating value |
 | `RatingValue` | The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS) |
 | `SchemeType` | Type of scheme (FHRS or FHIS) |
+| `id` |  |
 | `latitude` | Latitude coordinate of the establishment |
 | `longitude` | Longitude coordinate of the establishment |
 
@@ -368,6 +370,7 @@ Create an instance: `$authority = $client->Authority();`
 | `RegionName` | `string` | Region where the authority is located |
 | `SchemeUrl` | `string` | URL to the local authority's food hygiene scheme page |
 | `Url` | `string` | Website URL of the local authority |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -444,6 +447,7 @@ Create an instance: `$establishment = $client->Establishment();`
 | `RatingKey` | `string` | Key for the rating value |
 | `RatingValue` | `string` | The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS) |
 | `SchemeType` | `string` | Type of scheme (FHRS or FHIS) |
+| `id` | `string` |  |
 | `latitude` | `float` | Latitude coordinate of the establishment |
 | `longitude` | `float` | Longitude coordinate of the establishment |
 

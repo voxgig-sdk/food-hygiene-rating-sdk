@@ -80,29 +80,17 @@ export interface EstablishmentLoadMatch {
 }
 
 export interface EstablishmentListMatch {
-  AddressLine1?: string
-  AddressLine2?: string
-  AddressLine3?: string
-  AddressLine4?: string
-  BusinessName?: string
-  BusinessType?: string
-  BusinessTypeID?: number
-  FHRSID?: number
-  Geocode?: Record<string, any>
-  LocalAuthorityBusinessID?: string
-  LocalAuthorityCode?: string
-  LocalAuthorityEmailAddress?: string
-  LocalAuthorityName?: string
-  LocalAuthorityWebSite?: string
-  NewRatingPending?: boolean
-  PostCode?: string
-  RatingDate?: string
-  RatingKey?: string
-  RatingValue?: string
-  SchemeType?: string
-  id?: string
+  address?: string
+  business_type_id?: number
   latitude?: number
+  local_authority_id?: number
   longitude?: number
+  max_distance_limit?: number
+  name?: string
+  page_number?: number
+  page_size?: number
+  rating_key?: string
+  sort_option_key?: string
 }
 
 export interface Rating {

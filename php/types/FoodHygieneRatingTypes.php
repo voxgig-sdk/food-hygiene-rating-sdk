@@ -103,29 +103,17 @@ class EstablishmentLoadMatch
 /** Request payload for Establishment#list. */
 class EstablishmentListMatch
 {
-    public ?string $AddressLine1 = null;
-    public ?string $AddressLine2 = null;
-    public ?string $AddressLine3 = null;
-    public ?string $AddressLine4 = null;
-    public ?string $BusinessName = null;
-    public ?string $BusinessType = null;
-    public ?int $BusinessTypeID = null;
-    public ?int $FHRSID = null;
-    public ?array $Geocode = null;
-    public ?string $LocalAuthorityBusinessID = null;
-    public ?string $LocalAuthorityCode = null;
-    public ?string $LocalAuthorityEmailAddress = null;
-    public ?string $LocalAuthorityName = null;
-    public ?string $LocalAuthorityWebSite = null;
-    public ?bool $NewRatingPending = null;
-    public ?string $PostCode = null;
-    public ?string $RatingDate = null;
-    public ?string $RatingKey = null;
-    public ?string $RatingValue = null;
-    public ?string $SchemeType = null;
-    public ?string $id = null;
+    public ?string $address = null;
+    public ?int $business_type_id = null;
     public ?float $latitude = null;
+    public ?int $local_authority_id = null;
     public ?float $longitude = null;
+    public ?float $max_distance_limit = null;
+    public ?string $name = null;
+    public ?int $page_number = null;
+    public ?int $page_size = null;
+    public ?string $rating_key = null;
+    public ?string $sort_option_key = null;
 }
 
 /** Rating entity data model. */

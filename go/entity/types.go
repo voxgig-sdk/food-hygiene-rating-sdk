@@ -95,29 +95,17 @@ type EstablishmentLoadMatch struct {
 
 // EstablishmentListMatch is the typed request payload for Establishment.ListTyped.
 type EstablishmentListMatch struct {
-	AddressLine1 *string `json:"AddressLine1,omitempty"`
-	AddressLine2 *string `json:"AddressLine2,omitempty"`
-	AddressLine3 *string `json:"AddressLine3,omitempty"`
-	AddressLine4 *string `json:"AddressLine4,omitempty"`
-	BusinessName *string `json:"BusinessName,omitempty"`
-	BusinessType *string `json:"BusinessType,omitempty"`
-	BusinessTypeID *int `json:"BusinessTypeID,omitempty"`
-	FHRSID *int `json:"FHRSID,omitempty"`
-	Geocode *map[string]any `json:"Geocode,omitempty"`
-	LocalAuthorityBusinessID *string `json:"LocalAuthorityBusinessID,omitempty"`
-	LocalAuthorityCode *string `json:"LocalAuthorityCode,omitempty"`
-	LocalAuthorityEmailAddress *string `json:"LocalAuthorityEmailAddress,omitempty"`
-	LocalAuthorityName *string `json:"LocalAuthorityName,omitempty"`
-	LocalAuthorityWebSite *string `json:"LocalAuthorityWebSite,omitempty"`
-	NewRatingPending *bool `json:"NewRatingPending,omitempty"`
-	PostCode *string `json:"PostCode,omitempty"`
-	RatingDate *string `json:"RatingDate,omitempty"`
-	RatingKey *string `json:"RatingKey,omitempty"`
-	RatingValue *string `json:"RatingValue,omitempty"`
-	SchemeType *string `json:"SchemeType,omitempty"`
-	Id *string `json:"id,omitempty"`
+	Address *string `json:"address,omitempty"`
+	BusinessTypeId *int `json:"business_type_id,omitempty"`
 	Latitude *float64 `json:"latitude,omitempty"`
+	LocalAuthorityId *int `json:"local_authority_id,omitempty"`
 	Longitude *float64 `json:"longitude,omitempty"`
+	MaxDistanceLimit *float64 `json:"max_distance_limit,omitempty"`
+	Name *string `json:"name,omitempty"`
+	PageNumber *int `json:"page_number,omitempty"`
+	PageSize *int `json:"page_size,omitempty"`
+	RatingKey *string `json:"rating_key,omitempty"`
+	SortOptionKey *string `json:"sort_option_key,omitempty"`
 }
 
 // Rating is the typed data model for the rating entity.

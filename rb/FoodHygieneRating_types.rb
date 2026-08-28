@@ -257,98 +257,50 @@ EstablishmentLoadMatch = Struct.new(
 
 # Request payload for Establishment#list.
 #
-# @!attribute [rw] AddressLine1
+# @!attribute [rw] address
 #   @return [String, nil]
 #
-# @!attribute [rw] AddressLine2
-#   @return [String, nil]
-#
-# @!attribute [rw] AddressLine3
-#   @return [String, nil]
-#
-# @!attribute [rw] AddressLine4
-#   @return [String, nil]
-#
-# @!attribute [rw] BusinessName
-#   @return [String, nil]
-#
-# @!attribute [rw] BusinessType
-#   @return [String, nil]
-#
-# @!attribute [rw] BusinessTypeID
+# @!attribute [rw] business_type_id
 #   @return [Integer, nil]
-#
-# @!attribute [rw] FHRSID
-#   @return [Integer, nil]
-#
-# @!attribute [rw] Geocode
-#   @return [Hash, nil]
-#
-# @!attribute [rw] LocalAuthorityBusinessID
-#   @return [String, nil]
-#
-# @!attribute [rw] LocalAuthorityCode
-#   @return [String, nil]
-#
-# @!attribute [rw] LocalAuthorityEmailAddress
-#   @return [String, nil]
-#
-# @!attribute [rw] LocalAuthorityName
-#   @return [String, nil]
-#
-# @!attribute [rw] LocalAuthorityWebSite
-#   @return [String, nil]
-#
-# @!attribute [rw] NewRatingPending
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] PostCode
-#   @return [String, nil]
-#
-# @!attribute [rw] RatingDate
-#   @return [String, nil]
-#
-# @!attribute [rw] RatingKey
-#   @return [String, nil]
-#
-# @!attribute [rw] RatingValue
-#   @return [String, nil]
-#
-# @!attribute [rw] SchemeType
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
 #
 # @!attribute [rw] latitude
 #   @return [Float, nil]
 #
+# @!attribute [rw] local_authority_id
+#   @return [Integer, nil]
+#
 # @!attribute [rw] longitude
 #   @return [Float, nil]
+#
+# @!attribute [rw] max_distance_limit
+#   @return [Float, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] page_number
+#   @return [Integer, nil]
+#
+# @!attribute [rw] page_size
+#   @return [Integer, nil]
+#
+# @!attribute [rw] rating_key
+#   @return [String, nil]
+#
+# @!attribute [rw] sort_option_key
+#   @return [String, nil]
 EstablishmentListMatch = Struct.new(
-  :AddressLine1,
-  :AddressLine2,
-  :AddressLine3,
-  :AddressLine4,
-  :BusinessName,
-  :BusinessType,
-  :BusinessTypeID,
-  :FHRSID,
-  :Geocode,
-  :LocalAuthorityBusinessID,
-  :LocalAuthorityCode,
-  :LocalAuthorityEmailAddress,
-  :LocalAuthorityName,
-  :LocalAuthorityWebSite,
-  :NewRatingPending,
-  :PostCode,
-  :RatingDate,
-  :RatingKey,
-  :RatingValue,
-  :SchemeType,
-  :id,
+  :address,
+  :business_type_id,
   :latitude,
+  :local_authority_id,
   :longitude,
+  :max_distance_limit,
+  :name,
+  :page_number,
+  :page_size,
+  :rating_key,
+  :sort_option_key,
   keyword_init: true
 )
 

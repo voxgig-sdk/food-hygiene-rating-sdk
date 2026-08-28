@@ -91,29 +91,17 @@ class EstablishmentLoadMatch(TypedDict):
 
 
 class EstablishmentListMatch(TypedDict, total=False):
-    AddressLine1: str
-    AddressLine2: str
-    AddressLine3: str
-    AddressLine4: str
-    BusinessName: str
-    BusinessType: str
-    BusinessTypeID: int
-    FHRSID: int
-    Geocode: dict
-    LocalAuthorityBusinessID: str
-    LocalAuthorityCode: str
-    LocalAuthorityEmailAddress: str
-    LocalAuthorityName: str
-    LocalAuthorityWebSite: str
-    NewRatingPending: bool
-    PostCode: str
-    RatingDate: str
-    RatingKey: str
-    RatingValue: str
-    SchemeType: str
-    id: str
+    address: str
+    business_type_id: int
     latitude: float
+    local_authority_id: int
     longitude: float
+    max_distance_limit: float
+    name: str
+    page_number: int
+    page_size: int
+    rating_key: str
+    sort_option_key: str
 
 
 class Rating(TypedDict, total=False):

@@ -74,29 +74,17 @@
 ---@field id number
 
 ---@class EstablishmentListMatch
----@field AddressLine1? string
----@field AddressLine2? string
----@field AddressLine3? string
----@field AddressLine4? string
----@field BusinessName? string
----@field BusinessType? string
----@field BusinessTypeID? number
----@field FHRSID? number
----@field Geocode? table
----@field LocalAuthorityBusinessID? string
----@field LocalAuthorityCode? string
----@field LocalAuthorityEmailAddress? string
----@field LocalAuthorityName? string
----@field LocalAuthorityWebSite? string
----@field NewRatingPending? boolean
----@field PostCode? string
----@field RatingDate? string
----@field RatingKey? string
----@field RatingValue? string
----@field SchemeType? string
----@field id? string
+---@field address? string
+---@field business_type_id? number
 ---@field latitude? number
+---@field local_authority_id? number
 ---@field longitude? number
+---@field max_distance_limit? number
+---@field name? string
+---@field page_number? number
+---@field page_size? number
+---@field rating_key? string
+---@field sort_option_key? string
 
 ---@class Rating
 ---@field ratingId? number

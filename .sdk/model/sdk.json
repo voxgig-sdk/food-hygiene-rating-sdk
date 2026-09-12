@@ -34,6 +34,7 @@
           "fields": [
             {
               "active": true,
+              "format": "email",
               "name": "Email",
               "req": false,
               "short": "Email address of the local authority",
@@ -97,6 +98,7 @@
             },
             {
               "active": true,
+              "format": "uri",
               "name": "SchemeUrl",
               "req": false,
               "short": "URL to the local authority's food hygiene scheme page",
@@ -104,6 +106,7 @@
             },
             {
               "active": true,
+              "format": "uri",
               "name": "Url",
               "req": false,
               "short": "Website URL of the local authority",
@@ -132,8 +135,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/Authorities",
-                  "parts": [
-                    "Authorities"
+                  "segments": [
+                    {
+                      "lit": "Authorities"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -164,9 +169,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/Authorities/{id}",
-                  "parts": [
-                    "Authorities",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "Authorities"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -218,8 +227,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/BusinessTypes",
-                  "parts": [
-                    "BusinessTypes"
+                  "segments": [
+                    {
+                      "lit": "BusinessTypes"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -318,6 +329,7 @@
             },
             {
               "active": true,
+              "format": "email",
               "name": "LocalAuthorityEmailAddress",
               "req": false,
               "short": "Email address of the local authority",
@@ -332,6 +344,7 @@
             },
             {
               "active": true,
+              "format": "uri",
               "name": "LocalAuthorityWebSite",
               "req": false,
               "short": "Website of the local authority",
@@ -353,6 +366,7 @@
             },
             {
               "active": true,
+              "format": "date",
               "name": "RatingDate",
               "req": false,
               "short": "Date the rating was issued",
@@ -387,6 +401,7 @@
             },
             {
               "active": true,
+              "format": "double",
               "name": "latitude",
               "req": false,
               "short": "Latitude coordinate of the establishment",
@@ -394,6 +409,7 @@
             },
             {
               "active": true,
+              "format": "double",
               "name": "longitude",
               "req": false,
               "short": "Longitude coordinate of the establishment",
@@ -509,8 +525,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/Establishments",
-                  "parts": [
-                    "Establishments"
+                  "segments": [
+                    {
+                      "lit": "Establishments"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -555,9 +573,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/Establishments/{id}",
-                  "parts": [
-                    "Establishments",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "Establishments"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -623,8 +645,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/Ratings",
-                  "parts": [
-                    "Ratings"
+                  "segments": [
+                    {
+                      "lit": "Ratings"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -704,8 +728,11 @@
             }
           },
           "name": "test",
+          "needs": {},
           "origname": "",
           "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
           "target": {
             "go": {
               "deps": {}
@@ -947,6 +974,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -972,6 +1002,10 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/runner_test.go",
+            "test/struct_runner_test.go"
+          ],
           "title": "Golang"
         },
         "go-cli": {
@@ -1023,6 +1057,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -1047,6 +1082,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go CLI"
         },
         "go-mcp": {
@@ -1098,6 +1134,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -1122,6 +1159,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go MCP server"
         },
         "lua": {
@@ -1162,6 +1200,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1187,6 +1228,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.lua"
+          ],
           "title": "Lua"
         },
         "php": {
@@ -1221,6 +1265,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1246,6 +1293,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/StructRunner.php"
+          ],
           "title": "PHP"
         },
         "py": {
@@ -1286,6 +1336,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1311,6 +1364,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.py"
+          ],
           "title": "Python"
         },
         "rb": {
@@ -1356,6 +1412,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1381,6 +1440,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.rb"
+          ],
           "title": "Ruby"
         },
         "ts": {
@@ -1398,11 +1460,6 @@
               "active": true,
               "kind": "dev",
               "version": "^25.6.0"
-            },
-            "dotenv": {
-              "active": true,
-              "kind": "dev",
-              "version": "^17.4.2"
             },
             "typescript": {
               "active": true,
@@ -1431,6 +1488,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1455,6 +1515,14 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [
+            "test/runner.ts",
+            "test/vendor/omni/compat.ts",
+            "src/feature/secrets/sekreto/Providers.ts",
+            "src/feature/secrets/sekreto/Sigv4.ts",
+            "src/feature/secrets/sekreto/provider/Registry.ts",
+            "src/feature/secrets/sekreto/provider/http.ts"
+          ],
           "title": "TypeScript"
         }
       },

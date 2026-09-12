@@ -6,6 +6,7 @@ main: kit: entity: authority: {
 
   fields: [
     {
+      format: "email"
       name: "Email"
       req: false
       short: "Email address of the local authority"
@@ -60,12 +61,14 @@ main: kit: entity: authority: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "SchemeUrl"
       req: false
       short: "URL to the local authority's food hygiene scheme page"
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "Url"
       req: false
       short: "Website URL of the local authority"
@@ -91,8 +94,10 @@ main: kit: entity: authority: {
         {
           method: "GET"
           orig: "/Authorities"
-          parts: [
-            "Authorities"
+          segments: [
+            {
+              lit: "Authorities"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -118,9 +123,13 @@ main: kit: entity: authority: {
           }
           method: "GET"
           orig: "/Authorities/{id}"
-          parts: [
-            "Authorities"
-            "{id}"
+          segments: [
+            {
+              lit: "Authorities"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

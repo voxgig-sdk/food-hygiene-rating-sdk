@@ -1,6 +1,14 @@
 # FoodHygieneRating SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -56,6 +64,7 @@ def make_config():
       "authority": {
         "fields": [
           {
+            "format": "email",
             "name": "Email",
             "short": "Email address of the local authority",
             "type": "`$STRING`",
@@ -101,11 +110,13 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "SchemeUrl",
             "short": "URL to the local authority's food hygiene scheme page",
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "Url",
             "short": "Website URL of the local authority",
             "type": "`$STRING`",
@@ -115,6 +126,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "authority",
         "op": {
           "list": {
@@ -126,14 +141,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/Authorities",
-                "parts": [
-                  "Authorities",
+                "segments": [
+                  {
+                    "lit": "Authorities",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.authorities`",
                 },
+                "parts": [
+                  "Authorities",
+                ],
               },
             ],
           },
@@ -156,9 +176,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/Authorities/{id}",
-                "parts": [
-                  "Authorities",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "Authorities",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -169,6 +193,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "Authorities",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -201,14 +229,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/BusinessTypes",
-                "parts": [
-                  "BusinessTypes",
+                "segments": [
+                  {
+                    "lit": "BusinessTypes",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.businessTypes`",
                 },
+                "parts": [
+                  "BusinessTypes",
+                ],
               },
             ],
           },
@@ -274,6 +307,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "email",
             "name": "LocalAuthorityEmailAddress",
             "short": "Email address of the local authority",
             "type": "`$STRING`",
@@ -284,6 +318,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "LocalAuthorityWebSite",
             "short": "Website of the local authority",
             "type": "`$STRING`",
@@ -299,6 +334,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date",
             "name": "RatingDate",
             "short": "Date the rating was issued",
             "type": "`$STRING`",
@@ -323,16 +359,22 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "double",
             "name": "latitude",
             "short": "Latitude coordinate of the establishment",
             "type": "`$NUMBER`",
           },
           {
+            "format": "double",
             "name": "longitude",
             "short": "Longitude coordinate of the establishment",
             "type": "`$NUMBER`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "establishment",
         "op": {
           "list": {
@@ -415,8 +457,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/Establishments",
-                "parts": [
-                  "Establishments",
+                "segments": [
+                  {
+                    "lit": "Establishments",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -437,6 +481,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "Establishments",
+                ],
               },
             ],
           },
@@ -459,9 +506,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/Establishments/{id}",
-                "parts": [
-                  "Establishments",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "Establishments",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -472,6 +523,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.Geocode`",
                 },
+                "parts": [
+                  "Establishments",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -514,14 +569,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/Ratings",
-                "parts": [
-                  "Ratings",
+                "segments": [
+                  {
+                    "lit": "Ratings",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.ratings`",
                 },
+                "parts": [
+                  "Ratings",
+                ],
               },
             ],
           },

@@ -39,8 +39,10 @@ main: kit: entity: rating: {
         {
           method: "GET"
           orig: "/Ratings"
-          parts: [
-            "Ratings"
+          segments: [
+            {
+              lit: "Ratings"
+            }
           ]
           transform: {
             req: "`reqdata`"

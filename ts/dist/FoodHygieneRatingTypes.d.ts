@@ -1,0 +1,92 @@
+export interface Authority {
+    Email?: string;
+    EstablishmentCount?: number;
+    FileName?: string;
+    FileNameWelsh?: string;
+    FriendlyName?: string;
+    LocalAuthorityId?: number;
+    LocalAuthorityIdCode?: string;
+    Name?: string;
+    RegionName?: string;
+    SchemeUrl?: string;
+    Url?: string;
+    id?: string;
+}
+export interface AuthorityLoadMatch {
+    id: number;
+}
+export interface AuthorityListMatch {
+    Email?: string;
+    EstablishmentCount?: number;
+    FileName?: string;
+    FileNameWelsh?: string;
+    FriendlyName?: string;
+    LocalAuthorityId?: number;
+    LocalAuthorityIdCode?: string;
+    Name?: string;
+    RegionName?: string;
+    SchemeUrl?: string;
+    Url?: string;
+    id?: string;
+}
+export interface BusinessType {
+    BusinessTypeId?: number;
+    BusinessTypeName?: string;
+}
+export interface BusinessTypeListMatch {
+    BusinessTypeId?: number;
+    BusinessTypeName?: string;
+}
+export interface Establishment {
+    AddressLine1?: string;
+    AddressLine2?: string;
+    AddressLine3?: string;
+    AddressLine4?: string;
+    BusinessName?: string;
+    BusinessType?: string;
+    BusinessTypeID?: number;
+    FHRSID?: number;
+    Geocode?: Record<string, any>;
+    LocalAuthorityBusinessID?: string;
+    LocalAuthorityCode?: string;
+    LocalAuthorityEmailAddress?: string;
+    LocalAuthorityName?: string;
+    LocalAuthorityWebSite?: string;
+    NewRatingPending?: boolean;
+    PostCode?: string;
+    RatingDate?: string;
+    RatingKey?: string;
+    RatingValue?: string;
+    SchemeType?: string;
+    id?: string;
+    latitude?: number;
+    longitude?: number;
+}
+export interface EstablishmentLoadMatch {
+    id: number;
+}
+export interface EstablishmentListMatch {
+    address?: string;
+    business_type_id?: number;
+    latitude?: number;
+    local_authority_id?: number;
+    longitude?: number;
+    max_distance_limit?: number;
+    name?: string;
+    page_number?: number;
+    page_size?: number;
+    rating_key?: string;
+    sort_option_key?: string;
+}
+export interface Rating {
+    ratingId?: number;
+    ratingKey?: string;
+    ratingName?: string;
+    schemeType?: string;
+}
+export interface RatingListMatch {
+    ratingId?: number;
+    ratingKey?: string;
+    ratingName?: string;
+    schemeType?: string;
+}

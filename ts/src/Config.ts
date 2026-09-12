@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -76,6 +87,7 @@ class Config {
     "authority": {
       "fields": [
         {
+          "format": "email",
           "name": "Email",
           "short": "Email address of the local authority",
           "type": "`$STRING`"
@@ -121,11 +133,13 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "uri",
           "name": "SchemeUrl",
           "short": "URL to the local authority's food hygiene scheme page",
           "type": "`$STRING`"
         },
         {
+          "format": "uri",
           "name": "Url",
           "short": "Website URL of the local authority",
           "type": "`$STRING`"
@@ -135,6 +149,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "authority",
       "op": {
         "list": {
@@ -146,14 +164,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/Authorities",
-              "parts": [
-                "Authorities"
+              "segments": [
+                {
+                  "lit": "Authorities"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.authorities`"
-              }
+              },
+              "parts": [
+                "Authorities"
+              ]
             }
           ]
         },
@@ -176,9 +199,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/Authorities/{id}",
-              "parts": [
-                "Authorities",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "Authorities"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -188,7 +215,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "Authorities",
+                "{id}"
+              ]
             }
           ]
         }
@@ -221,14 +252,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/BusinessTypes",
-              "parts": [
-                "BusinessTypes"
+              "segments": [
+                {
+                  "lit": "BusinessTypes"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.businessTypes`"
-              }
+              },
+              "parts": [
+                "BusinessTypes"
+              ]
             }
           ]
         }
@@ -294,6 +330,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "email",
           "name": "LocalAuthorityEmailAddress",
           "short": "Email address of the local authority",
           "type": "`$STRING`"
@@ -304,6 +341,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "uri",
           "name": "LocalAuthorityWebSite",
           "short": "Website of the local authority",
           "type": "`$STRING`"
@@ -319,6 +357,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date",
           "name": "RatingDate",
           "short": "Date the rating was issued",
           "type": "`$STRING`"
@@ -343,16 +382,22 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "double",
           "name": "latitude",
           "short": "Latitude coordinate of the establishment",
           "type": "`$NUMBER`"
         },
         {
+          "format": "double",
           "name": "longitude",
           "short": "Longitude coordinate of the establishment",
           "type": "`$NUMBER`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "establishment",
       "op": {
         "list": {
@@ -435,8 +480,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/Establishments",
-              "parts": [
-                "Establishments"
+              "segments": [
+                {
+                  "lit": "Establishments"
+                }
               ],
               "select": {
                 "exist": [
@@ -456,7 +503,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "Establishments"
+              ]
             }
           ]
         },
@@ -479,9 +529,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/Establishments/{id}",
-              "parts": [
-                "Establishments",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "Establishments"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -491,7 +545,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.Geocode`"
-              }
+              },
+              "parts": [
+                "Establishments",
+                "{id}"
+              ]
             }
           ]
         }
@@ -534,14 +592,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/Ratings",
-              "parts": [
-                "Ratings"
+              "segments": [
+                {
+                  "lit": "Ratings"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.ratings`"
-              }
+              },
+              "parts": [
+                "Ratings"
+              ]
             }
           ]
         }
@@ -557,6 +620,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

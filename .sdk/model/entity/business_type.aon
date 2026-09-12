@@ -27,8 +27,10 @@ main: kit: entity: business_type: {
         {
           method: "GET"
           orig: "/BusinessTypes"
-          parts: [
-            "BusinessTypes"
+          segments: [
+            {
+              lit: "BusinessTypes"
+            }
           ]
           transform: {
             req: "`reqdata`"

@@ -61,6 +61,7 @@ class FoodHygieneRatingConfig
         'authority' => [
           'fields' => [
             [
+              'format' => 'email',
               'name' => 'Email',
               'short' => 'Email address of the local authority',
               'type' => '`$STRING`',
@@ -106,11 +107,13 @@ class FoodHygieneRatingConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'uri',
               'name' => 'SchemeUrl',
               'short' => 'URL to the local authority\'s food hygiene scheme page',
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'uri',
               'name' => 'Url',
               'short' => 'Website URL of the local authority',
               'type' => '`$STRING`',
@@ -119,6 +122,10 @@ class FoodHygieneRatingConfig
               'name' => 'id',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'authority',
           'op' => [
@@ -131,13 +138,18 @@ class FoodHygieneRatingConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/Authorities',
-                  'parts' => [
-                    'Authorities',
+                  'segments' => [
+                    [
+                      'lit' => 'Authorities',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.authorities`',
+                  ],
+                  'parts' => [
+                    'Authorities',
                   ],
                 ],
               ],
@@ -161,9 +173,13 @@ class FoodHygieneRatingConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/Authorities/{id}',
-                  'parts' => [
-                    'Authorities',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'Authorities',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -173,6 +189,10 @@ class FoodHygieneRatingConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'Authorities',
+                    '{id}',
                   ],
                 ],
               ],
@@ -206,13 +226,18 @@ class FoodHygieneRatingConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/BusinessTypes',
-                  'parts' => [
-                    'BusinessTypes',
+                  'segments' => [
+                    [
+                      'lit' => 'BusinessTypes',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.businessTypes`',
+                  ],
+                  'parts' => [
+                    'BusinessTypes',
                   ],
                 ],
               ],
@@ -279,6 +304,7 @@ class FoodHygieneRatingConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'email',
               'name' => 'LocalAuthorityEmailAddress',
               'short' => 'Email address of the local authority',
               'type' => '`$STRING`',
@@ -289,6 +315,7 @@ class FoodHygieneRatingConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'uri',
               'name' => 'LocalAuthorityWebSite',
               'short' => 'Website of the local authority',
               'type' => '`$STRING`',
@@ -304,6 +331,7 @@ class FoodHygieneRatingConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date',
               'name' => 'RatingDate',
               'short' => 'Date the rating was issued',
               'type' => '`$STRING`',
@@ -328,15 +356,21 @@ class FoodHygieneRatingConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'double',
               'name' => 'latitude',
               'short' => 'Latitude coordinate of the establishment',
               'type' => '`$NUMBER`',
             ],
             [
+              'format' => 'double',
               'name' => 'longitude',
               'short' => 'Longitude coordinate of the establishment',
               'type' => '`$NUMBER`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'establishment',
           'op' => [
@@ -420,8 +454,10 @@ class FoodHygieneRatingConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/Establishments',
-                  'parts' => [
-                    'Establishments',
+                  'segments' => [
+                    [
+                      'lit' => 'Establishments',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -441,6 +477,9 @@ class FoodHygieneRatingConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'Establishments',
                   ],
                 ],
               ],
@@ -464,9 +503,13 @@ class FoodHygieneRatingConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/Establishments/{id}',
-                  'parts' => [
-                    'Establishments',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'Establishments',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -476,6 +519,10 @@ class FoodHygieneRatingConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.Geocode`',
+                  ],
+                  'parts' => [
+                    'Establishments',
+                    '{id}',
                   ],
                 ],
               ],
@@ -519,13 +566,18 @@ class FoodHygieneRatingConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/Ratings',
-                  'parts' => [
-                    'Ratings',
+                  'segments' => [
+                    [
+                      'lit' => 'Ratings',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.ratings`',
+                  ],
+                  'parts' => [
+                    'Ratings',
                   ],
                 ],
               ],

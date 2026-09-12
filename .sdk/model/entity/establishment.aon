@@ -71,6 +71,7 @@ main: kit: entity: establishment: {
       type: "`$STRING`"
     }
     {
+      format: "email"
       name: "LocalAuthorityEmailAddress"
       req: false
       short: "Email address of the local authority"
@@ -83,6 +84,7 @@ main: kit: entity: establishment: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "LocalAuthorityWebSite"
       req: false
       short: "Website of the local authority"
@@ -101,6 +103,7 @@ main: kit: entity: establishment: {
       type: "`$STRING`"
     }
     {
+      format: "date"
       name: "RatingDate"
       req: false
       short: "Date the rating was issued"
@@ -130,12 +133,14 @@ main: kit: entity: establishment: {
       type: "`$STRING`"
     }
     {
+      format: "double"
       name: "latitude"
       req: false
       short: "Latitude coordinate of the establishment"
       type: "`$NUMBER`"
     }
     {
+      format: "double"
       name: "longitude"
       req: false
       short: "Longitude coordinate of the establishment"
@@ -239,8 +244,10 @@ main: kit: entity: establishment: {
           }
           method: "GET"
           orig: "/Establishments"
-          parts: [
-            "Establishments"
+          segments: [
+            {
+              lit: "Establishments"
+            }
           ]
           select: {
             exist: [
@@ -281,9 +288,13 @@ main: kit: entity: establishment: {
           }
           method: "GET"
           orig: "/Establishments/{id}"
-          parts: [
-            "Establishments"
-            "{id}"
+          segments: [
+            {
+              lit: "Establishments"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

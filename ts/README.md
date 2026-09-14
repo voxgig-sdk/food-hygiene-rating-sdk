@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { FoodHygieneRatingSDK } from '@voxgig-sdk/food-hygiene-rating'
+import { FoodHygieneRatingSDK } from '@voxgig-sdk/food-hygiene-rating-sdk'
 
 const client = new FoodHygieneRatingSDK()
 ```
@@ -608,7 +608,7 @@ food-hygiene-rating/
 Import the SDK from the package root:
 
 ```ts
-import { FoodHygieneRatingSDK } from '@voxgig-sdk/food-hygiene-rating'
+import { FoodHygieneRatingSDK } from '@voxgig-sdk/food-hygiene-rating-sdk'
 ```
 
 ### Entity state

@@ -105,7 +105,7 @@ local results, err = client:Authority():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/food-hygiene-rating` | publish pending — [install from git tag](https://github.com/voxgig-sdk/food-hygiene-rating-sdk/releases) |
+| TypeScript | `@voxgig-sdk/food-hygiene-rating-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/food-hygiene-rating-sdk/releases) |
 | Python | `voxgig-sdk-food-hygiene-rating` | publish pending — [install from git tag](https://github.com/voxgig-sdk/food-hygiene-rating-sdk/releases) |
 | PHP | `voxgig-sdk/food-hygiene-rating` | publish pending — [install from git tag](https://github.com/voxgig-sdk/food-hygiene-rating-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/food-hygiene-rating-sdk/go` | `go get github.com/voxgig-sdk/food-hygiene-rating-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Authority():list()
 ### TypeScript
 
 ```ts
-import { FoodHygieneRatingSDK } from '@voxgig-sdk/food-hygiene-rating'
+import { FoodHygieneRatingSDK } from '@voxgig-sdk/food-hygiene-rating-sdk'
 
 const client = new FoodHygieneRatingSDK()
 

@@ -1,5 +1,5 @@
 {
-  "name": "@voxgig-sdk/food-hygiene-rating",
+  "name": "@voxgig-sdk/food-hygiene-rating-sdk",
   "version": "0.0.1",
   "description": "Unofficial generated TypeScript SDK for the Food Hygiene Rating public API. Not affiliated with or endorsed by the upstream API provider.",
   "keywords": [

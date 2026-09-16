@@ -1,12 +1,18 @@
 # FoodHygieneRating SDK feature factory
 
 from foodhygienerating_sdk.feature.base_feature import FoodHygieneRatingBaseFeature
+from foodhygienerating_sdk.feature.ratelimit_feature import FoodHygieneRatingRatelimitFeature
+from foodhygienerating_sdk.feature.retry_feature import FoodHygieneRatingRetryFeature
 from foodhygienerating_sdk.feature.test_feature import FoodHygieneRatingTestFeature
+from foodhygienerating_sdk.feature.timeout_feature import FoodHygieneRatingTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: FoodHygieneRatingBaseFeature(),
+    "ratelimit": lambda: FoodHygieneRatingRatelimitFeature(),
+    "retry": lambda: FoodHygieneRatingRetryFeature(),
     "test": lambda: FoodHygieneRatingTestFeature(),
+    "timeout": lambda: FoodHygieneRatingTimeoutFeature(),
 }
 
 

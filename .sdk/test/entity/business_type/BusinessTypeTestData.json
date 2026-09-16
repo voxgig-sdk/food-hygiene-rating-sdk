@@ -2,15 +2,15 @@
   "existing": {
     "business_type": {
       "BUSINESS_TYPE00": {
-        "BusinessTypeId": "s14",
+        "BusinessTypeId": 20,
         "BusinessTypeName": "s15"
       },
       "BUSINESS_TYPE01": {
-        "BusinessTypeId": "s28",
+        "BusinessTypeId": 40,
         "BusinessTypeName": "s29"
       },
       "BUSINESS_TYPE02": {
-        "BusinessTypeId": "s3c",
+        "BusinessTypeId": 60,
         "BusinessTypeName": "s3d"
       }
     }
@@ -18,8 +18,75 @@
   "new": {
     "business_type": {
       "business_type_ref01": {
-        "BusinessTypeId": "s50",
+        "BusinessTypeId": 80,
         "BusinessTypeName": "s51"
+      }
+    }
+  },
+  "requests": {
+    "GET /BusinessTypes": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getBusinessTypes",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "businessTypes": {
+                      "items": {
+                        "properties": {
+                          "BusinessTypeId": {
+                            "description": "Unique identifier for the business type",
+                            "type": "integer"
+                          },
+                          "BusinessTypeName": {
+                            "description": "Name of the business type (e.g., Restaurant/Cafe/Canteen, Pub/bar/nightclub, Takeaway/sandwich shop)",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "properties": {
+                    "businessTypes": {
+                      "items": {
+                        "properties": {
+                          "BusinessTypeId": {
+                            "description": "Unique identifier for the business type",
+                            "type": "integer"
+                          },
+                          "BusinessTypeName": {
+                            "description": "Name of the business type (e.g., Restaurant/Cafe/Canteen, Pub/bar/nightclub, Takeaway/sandwich shop)",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with business types list"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

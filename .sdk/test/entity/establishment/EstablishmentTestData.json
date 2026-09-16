@@ -8,8 +8,8 @@
         "AddressLine4": "se9",
         "BusinessName": "sea",
         "BusinessType": "seb",
-        "BusinessTypeID": "sec",
-        "FHRSID": "sed",
+        "BusinessTypeID": 236,
+        "FHRSID": 237,
         "Geocode": {},
         "LocalAuthorityBusinessID": "sef",
         "LocalAuthorityCode": "sf0",
@@ -33,8 +33,8 @@
         "AddressLine4": "s1cf",
         "BusinessName": "s1d0",
         "BusinessType": "s1d1",
-        "BusinessTypeID": "s1d2",
-        "FHRSID": "s1d3",
+        "BusinessTypeID": 466,
+        "FHRSID": 467,
         "Geocode": {},
         "LocalAuthorityBusinessID": "s1d5",
         "LocalAuthorityCode": "s1d6",
@@ -58,8 +58,8 @@
         "AddressLine4": "s2b5",
         "BusinessName": "s2b6",
         "BusinessType": "s2b7",
-        "BusinessTypeID": "s2b8",
-        "FHRSID": "s2b9",
+        "BusinessTypeID": 696,
+        "FHRSID": 697,
         "Geocode": {},
         "LocalAuthorityBusinessID": "s2bb",
         "LocalAuthorityCode": "s2bc",
@@ -87,8 +87,8 @@
         "AddressLine4": "s39b",
         "BusinessName": "s39c",
         "BusinessType": "s39d",
-        "BusinessTypeID": "s39e",
-        "FHRSID": "s39f",
+        "BusinessTypeID": 926,
+        "FHRSID": 927,
         "Geocode": {},
         "LocalAuthorityBusinessID": "s3a1",
         "LocalAuthorityCode": "s3a2",
@@ -103,6 +103,688 @@
         "SchemeType": "s3ab",
         "latitude": 941,
         "longitude": 942
+      }
+    }
+  },
+  "requests": {
+    "GET /Establishments": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getEstablishments",
+        "parameters": [
+          {
+            "description": "Filter establishments by local authority ID",
+            "in": "query",
+            "name": "localAuthorityId",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Filter establishments by business type ID",
+            "in": "query",
+            "name": "businessTypeId",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Filter establishments by rating key (e.g., 0-5, Pass/Exempt)",
+            "in": "query",
+            "name": "ratingKey",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter establishments by name (partial match supported)",
+            "in": "query",
+            "name": "name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter establishments by address",
+            "in": "query",
+            "name": "address",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Longitude for geolocation search",
+            "in": "query",
+            "name": "longitude",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "description": "Latitude for geolocation search",
+            "in": "query",
+            "name": "latitude",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "description": "Maximum distance in miles for geolocation search",
+            "in": "query",
+            "name": "maxDistanceLimit",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "description": "Page number for pagination",
+            "in": "query",
+            "name": "pageNumber",
+            "required": false,
+            "schema": {
+              "default": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Number of results per page",
+            "in": "query",
+            "name": "pageSize",
+            "required": false,
+            "schema": {
+              "default": 10,
+              "maximum": 5000,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort option for results",
+            "in": "query",
+            "name": "sortOptionKey",
+            "required": false,
+            "schema": {
+              "enum": [
+                "alpha",
+                "rating",
+                "distance"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "establishments": {
+                      "items": {
+                        "properties": {
+                          "AddressLine1": {
+                            "description": "First line of the address",
+                            "type": "string"
+                          },
+                          "AddressLine2": {
+                            "description": "Second line of the address",
+                            "type": "string"
+                          },
+                          "AddressLine3": {
+                            "description": "Third line of the address",
+                            "type": "string"
+                          },
+                          "AddressLine4": {
+                            "description": "Fourth line of the address",
+                            "type": "string"
+                          },
+                          "BusinessName": {
+                            "description": "Name of the food establishment",
+                            "type": "string"
+                          },
+                          "BusinessType": {
+                            "description": "Type of food business (e.g., Restaurant, Pub, Café, Takeaway)",
+                            "type": "string"
+                          },
+                          "BusinessTypeID": {
+                            "description": "Unique identifier for the business type",
+                            "type": "integer"
+                          },
+                          "FHRSID": {
+                            "description": "Unique identifier for the establishment in the FHRS system",
+                            "type": "integer"
+                          },
+                          "Geocode": {
+                            "properties": {
+                              "latitude": {
+                                "description": "Latitude coordinate of the establishment",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "longitude": {
+                                "description": "Longitude coordinate of the establishment",
+                                "format": "double",
+                                "type": "number"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "LocalAuthorityBusinessID": {
+                            "description": "Business ID assigned by the local authority",
+                            "type": "string"
+                          },
+                          "LocalAuthorityCode": {
+                            "description": "Code for the local authority",
+                            "type": "string"
+                          },
+                          "LocalAuthorityEmailAddress": {
+                            "description": "Email address of the local authority",
+                            "format": "email",
+                            "type": "string"
+                          },
+                          "LocalAuthorityName": {
+                            "description": "Name of the local authority",
+                            "type": "string"
+                          },
+                          "LocalAuthorityWebSite": {
+                            "description": "Website of the local authority",
+                            "format": "uri",
+                            "type": "string"
+                          },
+                          "NewRatingPending": {
+                            "description": "Indicates if a new rating is pending",
+                            "type": "boolean"
+                          },
+                          "PostCode": {
+                            "description": "Postcode of the establishment",
+                            "type": "string"
+                          },
+                          "RatingDate": {
+                            "description": "Date the rating was issued",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "RatingKey": {
+                            "description": "Key for the rating value",
+                            "type": "string"
+                          },
+                          "RatingValue": {
+                            "description": "The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS)",
+                            "type": "string"
+                          },
+                          "SchemeType": {
+                            "description": "Type of scheme (FHRS or FHIS)",
+                            "enum": [
+                              "FHRS",
+                              "FHIS"
+                            ],
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "meta": {
+                      "properties": {
+                        "dataSource": {
+                          "description": "Source of the data",
+                          "type": "string"
+                        },
+                        "extractDate": {
+                          "description": "Date and time when the data was extracted",
+                          "format": "date-time",
+                          "type": "string"
+                        },
+                        "itemCount": {
+                          "description": "Number of items in the current response",
+                          "type": "integer"
+                        },
+                        "pageNumber": {
+                          "description": "Current page number",
+                          "type": "integer"
+                        },
+                        "pageSize": {
+                          "description": "Number of items per page",
+                          "type": "integer"
+                        },
+                        "returnCode": {
+                          "description": "Return code for the API call",
+                          "type": "string"
+                        },
+                        "totalCount": {
+                          "description": "Total number of items matching the query",
+                          "type": "integer"
+                        },
+                        "totalPages": {
+                          "description": "Total number of pages available",
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "properties": {
+                    "establishments": {
+                      "items": {
+                        "properties": {
+                          "AddressLine1": {
+                            "description": "First line of the address",
+                            "type": "string"
+                          },
+                          "AddressLine2": {
+                            "description": "Second line of the address",
+                            "type": "string"
+                          },
+                          "AddressLine3": {
+                            "description": "Third line of the address",
+                            "type": "string"
+                          },
+                          "AddressLine4": {
+                            "description": "Fourth line of the address",
+                            "type": "string"
+                          },
+                          "BusinessName": {
+                            "description": "Name of the food establishment",
+                            "type": "string"
+                          },
+                          "BusinessType": {
+                            "description": "Type of food business (e.g., Restaurant, Pub, Café, Takeaway)",
+                            "type": "string"
+                          },
+                          "BusinessTypeID": {
+                            "description": "Unique identifier for the business type",
+                            "type": "integer"
+                          },
+                          "FHRSID": {
+                            "description": "Unique identifier for the establishment in the FHRS system",
+                            "type": "integer"
+                          },
+                          "Geocode": {
+                            "properties": {
+                              "latitude": {
+                                "description": "Latitude coordinate of the establishment",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "longitude": {
+                                "description": "Longitude coordinate of the establishment",
+                                "format": "double",
+                                "type": "number"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "LocalAuthorityBusinessID": {
+                            "description": "Business ID assigned by the local authority",
+                            "type": "string"
+                          },
+                          "LocalAuthorityCode": {
+                            "description": "Code for the local authority",
+                            "type": "string"
+                          },
+                          "LocalAuthorityEmailAddress": {
+                            "description": "Email address of the local authority",
+                            "format": "email",
+                            "type": "string"
+                          },
+                          "LocalAuthorityName": {
+                            "description": "Name of the local authority",
+                            "type": "string"
+                          },
+                          "LocalAuthorityWebSite": {
+                            "description": "Website of the local authority",
+                            "format": "uri",
+                            "type": "string"
+                          },
+                          "NewRatingPending": {
+                            "description": "Indicates if a new rating is pending",
+                            "type": "boolean"
+                          },
+                          "PostCode": {
+                            "description": "Postcode of the establishment",
+                            "type": "string"
+                          },
+                          "RatingDate": {
+                            "description": "Date the rating was issued",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "RatingKey": {
+                            "description": "Key for the rating value",
+                            "type": "string"
+                          },
+                          "RatingValue": {
+                            "description": "The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS)",
+                            "type": "string"
+                          },
+                          "SchemeType": {
+                            "description": "Type of scheme (FHRS or FHIS)",
+                            "enum": [
+                              "FHRS",
+                              "FHIS"
+                            ],
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "meta": {
+                      "properties": {
+                        "dataSource": {
+                          "description": "Source of the data",
+                          "type": "string"
+                        },
+                        "extractDate": {
+                          "description": "Date and time when the data was extracted",
+                          "format": "date-time",
+                          "type": "string"
+                        },
+                        "itemCount": {
+                          "description": "Number of items in the current response",
+                          "type": "integer"
+                        },
+                        "pageNumber": {
+                          "description": "Current page number",
+                          "type": "integer"
+                        },
+                        "pageSize": {
+                          "description": "Number of items per page",
+                          "type": "integer"
+                        },
+                        "returnCode": {
+                          "description": "Return code for the API call",
+                          "type": "string"
+                        },
+                        "totalCount": {
+                          "description": "Total number of items matching the query",
+                          "type": "integer"
+                        },
+                        "totalPages": {
+                          "description": "Total number of pages available",
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with establishment data"
+          },
+          "400": {
+            "description": "Bad request - invalid parameters"
+          },
+          "404": {
+            "description": "No establishments found matching criteria"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /Establishments/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getEstablishmentById",
+        "parameters": [
+          {
+            "description": "Unique identifier for the establishment",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "AddressLine1": {
+                      "description": "First line of the address",
+                      "type": "string"
+                    },
+                    "AddressLine2": {
+                      "description": "Second line of the address",
+                      "type": "string"
+                    },
+                    "AddressLine3": {
+                      "description": "Third line of the address",
+                      "type": "string"
+                    },
+                    "AddressLine4": {
+                      "description": "Fourth line of the address",
+                      "type": "string"
+                    },
+                    "BusinessName": {
+                      "description": "Name of the food establishment",
+                      "type": "string"
+                    },
+                    "BusinessType": {
+                      "description": "Type of food business (e.g., Restaurant, Pub, Café, Takeaway)",
+                      "type": "string"
+                    },
+                    "BusinessTypeID": {
+                      "description": "Unique identifier for the business type",
+                      "type": "integer"
+                    },
+                    "FHRSID": {
+                      "description": "Unique identifier for the establishment in the FHRS system",
+                      "type": "integer"
+                    },
+                    "Geocode": {
+                      "properties": {
+                        "latitude": {
+                          "description": "Latitude coordinate of the establishment",
+                          "format": "double",
+                          "type": "number"
+                        },
+                        "longitude": {
+                          "description": "Longitude coordinate of the establishment",
+                          "format": "double",
+                          "type": "number"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "LocalAuthorityBusinessID": {
+                      "description": "Business ID assigned by the local authority",
+                      "type": "string"
+                    },
+                    "LocalAuthorityCode": {
+                      "description": "Code for the local authority",
+                      "type": "string"
+                    },
+                    "LocalAuthorityEmailAddress": {
+                      "description": "Email address of the local authority",
+                      "format": "email",
+                      "type": "string"
+                    },
+                    "LocalAuthorityName": {
+                      "description": "Name of the local authority",
+                      "type": "string"
+                    },
+                    "LocalAuthorityWebSite": {
+                      "description": "Website of the local authority",
+                      "format": "uri",
+                      "type": "string"
+                    },
+                    "NewRatingPending": {
+                      "description": "Indicates if a new rating is pending",
+                      "type": "boolean"
+                    },
+                    "PostCode": {
+                      "description": "Postcode of the establishment",
+                      "type": "string"
+                    },
+                    "RatingDate": {
+                      "description": "Date the rating was issued",
+                      "format": "date",
+                      "type": "string"
+                    },
+                    "RatingKey": {
+                      "description": "Key for the rating value",
+                      "type": "string"
+                    },
+                    "RatingValue": {
+                      "description": "The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS)",
+                      "type": "string"
+                    },
+                    "SchemeType": {
+                      "description": "Type of scheme (FHRS or FHIS)",
+                      "enum": [
+                        "FHRS",
+                        "FHIS"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "properties": {
+                    "AddressLine1": {
+                      "description": "First line of the address",
+                      "type": "string"
+                    },
+                    "AddressLine2": {
+                      "description": "Second line of the address",
+                      "type": "string"
+                    },
+                    "AddressLine3": {
+                      "description": "Third line of the address",
+                      "type": "string"
+                    },
+                    "AddressLine4": {
+                      "description": "Fourth line of the address",
+                      "type": "string"
+                    },
+                    "BusinessName": {
+                      "description": "Name of the food establishment",
+                      "type": "string"
+                    },
+                    "BusinessType": {
+                      "description": "Type of food business (e.g., Restaurant, Pub, Café, Takeaway)",
+                      "type": "string"
+                    },
+                    "BusinessTypeID": {
+                      "description": "Unique identifier for the business type",
+                      "type": "integer"
+                    },
+                    "FHRSID": {
+                      "description": "Unique identifier for the establishment in the FHRS system",
+                      "type": "integer"
+                    },
+                    "Geocode": {
+                      "properties": {
+                        "latitude": {
+                          "description": "Latitude coordinate of the establishment",
+                          "format": "double",
+                          "type": "number"
+                        },
+                        "longitude": {
+                          "description": "Longitude coordinate of the establishment",
+                          "format": "double",
+                          "type": "number"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "LocalAuthorityBusinessID": {
+                      "description": "Business ID assigned by the local authority",
+                      "type": "string"
+                    },
+                    "LocalAuthorityCode": {
+                      "description": "Code for the local authority",
+                      "type": "string"
+                    },
+                    "LocalAuthorityEmailAddress": {
+                      "description": "Email address of the local authority",
+                      "format": "email",
+                      "type": "string"
+                    },
+                    "LocalAuthorityName": {
+                      "description": "Name of the local authority",
+                      "type": "string"
+                    },
+                    "LocalAuthorityWebSite": {
+                      "description": "Website of the local authority",
+                      "format": "uri",
+                      "type": "string"
+                    },
+                    "NewRatingPending": {
+                      "description": "Indicates if a new rating is pending",
+                      "type": "boolean"
+                    },
+                    "PostCode": {
+                      "description": "Postcode of the establishment",
+                      "type": "string"
+                    },
+                    "RatingDate": {
+                      "description": "Date the rating was issued",
+                      "format": "date",
+                      "type": "string"
+                    },
+                    "RatingKey": {
+                      "description": "Key for the rating value",
+                      "type": "string"
+                    },
+                    "RatingValue": {
+                      "description": "The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS)",
+                      "type": "string"
+                    },
+                    "SchemeType": {
+                      "description": "Type of scheme (FHRS or FHIS)",
+                      "enum": [
+                        "FHRS",
+                        "FHIS"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with establishment details"
+          },
+          "404": {
+            "description": "Establishment not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

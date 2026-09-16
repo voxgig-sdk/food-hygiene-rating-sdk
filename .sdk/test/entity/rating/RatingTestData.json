@@ -2,19 +2,19 @@
   "existing": {
     "rating": {
       "RATING00": {
-        "ratingId": "s28",
+        "ratingId": 40,
         "ratingKey": "s29",
         "ratingName": "s2a",
         "schemeType": "s2b"
       },
       "RATING01": {
-        "ratingId": "s50",
+        "ratingId": 80,
         "ratingKey": "s51",
         "ratingName": "s52",
         "schemeType": "s53"
       },
       "RATING02": {
-        "ratingId": "s78",
+        "ratingId": 120,
         "ratingKey": "s79",
         "ratingName": "s7a",
         "schemeType": "s7b"
@@ -24,10 +24,101 @@
   "new": {
     "rating": {
       "rating_ref01": {
-        "ratingId": "sa0",
+        "ratingId": 160,
         "ratingKey": "sa1",
         "ratingName": "sa2",
         "schemeType": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /Ratings": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getRatings",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "ratings": {
+                      "items": {
+                        "properties": {
+                          "ratingId": {
+                            "description": "Unique identifier for the rating",
+                            "type": "integer"
+                          },
+                          "ratingKey": {
+                            "description": "Key for the rating value",
+                            "type": "string"
+                          },
+                          "ratingName": {
+                            "description": "Name of the rating (e.g., '5', '4', 'Pass', 'Exempt')",
+                            "type": "string"
+                          },
+                          "schemeType": {
+                            "description": "Scheme type this rating belongs to",
+                            "enum": [
+                              "FHRS",
+                              "FHIS"
+                            ],
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "properties": {
+                    "ratings": {
+                      "items": {
+                        "properties": {
+                          "ratingId": {
+                            "description": "Unique identifier for the rating",
+                            "type": "integer"
+                          },
+                          "ratingKey": {
+                            "description": "Key for the rating value",
+                            "type": "string"
+                          },
+                          "ratingName": {
+                            "description": "Name of the rating (e.g., '5', '4', 'Pass', 'Exempt')",
+                            "type": "string"
+                          },
+                          "schemeType": {
+                            "description": "Scheme type this rating belongs to",
+                            "enum": [
+                              "FHRS",
+                              "FHIS"
+                            ],
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with ratings list"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

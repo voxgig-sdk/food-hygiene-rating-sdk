@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { FoodHygieneRatingSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('BusinessTypeEntity', async () => {
 
     const live = 'TRUE' === process.env.FOOD_HYGIENE_RATING_TEST_LIVE
     for (const op of ['list']) {
-      if (maybeSkipControl(t, 'entityOp', 'business_type.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'business_type.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set FOOD_HYGIENE_RATING_TEST_BUSINESS_TYPE_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"BusinessTypeId","req":false,"short":"Unique identifier for the business type","type":"`$INTEGER`","index$":0},{"active":true,"name":"BusinessTypeName","req":false,"short":"Name of the business type (e.g., Restaurant/Cafe/Canteen, Pub/bar/nightclub, Takeaway/sandwich shop)","type":"`$STRING`","index$":1}],"name":"business_type","op":{"list":{"input":"data","name":"list","points":[{"active":true,"args":{},"contract":{"id":"GET /BusinessTypes","json":"{\"operationId\":\"getBusinessTypes\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"businessTypes\":{\"items\":{\"properties\":{\"BusinessTypeId\":{\"description\":\"Unique identifier for the business type\",\"type\":\"integer\"},\"BusinessTypeName\":{\"description\":\"Name of the business type (e.g., Restaurant/Cafe/Canteen, Pub/bar/nightclub, Takeaway/sandwich shop)\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}},\"application/xml\":{\"schema\":{\"properties\":{\"businessTypes\":{\"items\":{\"properties\":{\"BusinessTypeId\":{\"description\":\"Unique identifier for the business type\",\"type\":\"integer\"},\"BusinessTypeName\":{\"description\":\"Name of the business type (e.g., Restaurant/Cafe/Canteen, Pub/bar/nightclub, Takeaway/sandwich shop)\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with business types list\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/BusinessTypes","segments":[{"lit":"BusinessTypes"}],"select":{},"transform":{"req":"`reqdata`","res":"`body.businessTypes`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"business_type","name__orig":"business_type","Name":"BusinessType","name_":"business_type","name-":"business-type","NAME":"BUSINESS_TYPE","index$":1}, {"active":true,"entity":"business_type","key$":"BasicBusinessTypeFlow","kind":"basic","name":"BasicBusinessTypeFlow","param":{},"step":[{"active":true,"data":{},"input":{},"match":{},"op":"list","spec":[],"valid":[{"apply":"ItemExists","def":{"ref":"business_type_ref01"}}],"index$":0}]}, 'BusinessType')
     }
     const client = setup.client
     const struct = setup.struct
@@ -109,13 +108,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['FOOD_HYGIENE_RATING_TEST_BUSINESS_TYPE_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'FOOD_HYGIENE_RATING_TEST_BUSINESS_TYPE_ENTID': idmap,
     'FOOD_HYGIENE_RATING_TEST_LIVE': 'FALSE',
@@ -126,7 +118,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.FOOD_HYGIENE_RATING_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['FOOD_HYGIENE_RATING_TEST_BUSINESS_TYPE_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new FoodHygieneRatingSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -138,7 +136,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -151,7 +150,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.FOOD_HYGIENE_RATING_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

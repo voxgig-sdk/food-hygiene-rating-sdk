@@ -37,6 +37,12 @@ main: kit: entity: rating: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /Ratings"
+            json: "{\"operationId\":\"getRatings\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"ratings\":{\"items\":{\"properties\":{\"ratingId\":{\"description\":\"Unique identifier for the rating\",\"type\":\"integer\"},\"ratingKey\":{\"description\":\"Key for the rating value\",\"type\":\"string\"},\"ratingName\":{\"description\":\"Name of the rating (e.g., '5', '4', 'Pass', 'Exempt')\",\"type\":\"string\"},\"schemeType\":{\"description\":\"Scheme type this rating belongs to\",\"enum\":[\"FHRS\",\"FHIS\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}},\"application/xml\":{\"schema\":{\"properties\":{\"ratings\":{\"items\":{\"properties\":{\"ratingId\":{\"description\":\"Unique identifier for the rating\",\"type\":\"integer\"},\"ratingKey\":{\"description\":\"Key for the rating value\",\"type\":\"string\"},\"ratingName\":{\"description\":\"Name of the rating (e.g., '5', '4', 'Pass', 'Exempt')\",\"type\":\"string\"},\"schemeType\":{\"description\":\"Scheme type this rating belongs to\",\"enum\":[\"FHRS\",\"FHIS\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with ratings list\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/Ratings"
           segments: [

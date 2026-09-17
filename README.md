@@ -105,12 +105,12 @@ local results, err = client:Authority():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/food-hygiene-rating-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/food-hygiene-rating-sdk/releases) |
-| Python | `voxgig-sdk-food-hygiene-rating` | publish pending — [install from git tag](https://github.com/voxgig-sdk/food-hygiene-rating-sdk/releases) |
-| PHP | `voxgig-sdk/food-hygiene-rating` | publish pending — [install from git tag](https://github.com/voxgig-sdk/food-hygiene-rating-sdk/releases) |
+| TypeScript | `@voxgig-sdk/food-hygiene-rating-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/food-hygiene-rating-sdk/tags) |
+| Python | `voxgig-sdk-food-hygiene-rating` | publish pending — [install from git tag](https://github.com/voxgig-sdk/food-hygiene-rating-sdk/tags) |
+| PHP | `voxgig-sdk/food-hygiene-rating` | publish pending — [install from git tag](https://github.com/voxgig-sdk/food-hygiene-rating-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/food-hygiene-rating-sdk/go` | `go get github.com/voxgig-sdk/food-hygiene-rating-sdk/go@latest` |
-| Ruby | `voxgig-sdk-food-hygiene-rating` | publish pending — [install from git tag](https://github.com/voxgig-sdk/food-hygiene-rating-sdk/releases) |
-| Lua | `voxgig-sdk-food-hygiene-rating` | publish pending — [install from git tag](https://github.com/voxgig-sdk/food-hygiene-rating-sdk/releases) |
+| Ruby | `voxgig-sdk-food-hygiene-rating` | publish pending — [install from git tag](https://github.com/voxgig-sdk/food-hygiene-rating-sdk/tags) |
+| Lua | `voxgig-sdk-food-hygiene-rating` | publish pending — [install from git tag](https://github.com/voxgig-sdk/food-hygiene-rating-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/food-hygiene-rating-sdk/go-cli` | `go install github.com/voxgig-sdk/food-hygiene-rating-sdk/go-cli/cmd/food-hygiene-rating@latest` |
 | Go MCP server | `github.com/voxgig-sdk/food-hygiene-rating-sdk/go-mcp` | `go get github.com/voxgig-sdk/food-hygiene-rating-sdk/go-mcp@latest` |
 

@@ -127,18 +127,18 @@ class Config {
 
     entity: {
       
-      authority: {
-      },
-
-      business_type: {
-      },
-
-      establishment: {
-      },
-
-      rating: {
-      },
-
+        authority: {
+        },
+  
+        business_type: {
+        },
+  
+        establishment: {
+        },
+  
+        rating: {
+        },
+  
     }
   }
 

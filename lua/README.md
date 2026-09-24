@@ -43,7 +43,7 @@ local authoritys, err = client:Authority():list()
 if err then error(err) end
 
 for _, item in ipairs(authoritys) do
-  print(item["id"], item["Email"])
+  print(item["id"])
 end
 ```
 

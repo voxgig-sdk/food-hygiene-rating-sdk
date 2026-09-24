@@ -19,7 +19,6 @@ import type {
   RatingListMatch,
 } from '../FoodHygieneRatingTypes'
 
-// TODO: needs Entity superclass
 class RatingEntity extends FoodHygieneRatingEntityBase<Rating> {
 
   constructor(client: FoodHygieneRatingSDK, entopts: any) {

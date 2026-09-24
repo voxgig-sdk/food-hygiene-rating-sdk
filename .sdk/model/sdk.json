@@ -24,100 +24,178 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "authority": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "format": "email",
-              "name": "Email",
-              "req": false,
-              "short": "Email address of the local authority",
-              "type": "`$STRING`"
+          "fields": {
+            "Email": {
+              "a": true,
+              "fo": "email",
+              "h": "Email",
+              "n": "Email",
+              "r": false,
+              "sh": "Email address of the local authority",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "EstablishmentCount",
-              "req": false,
-              "short": "Number of establishments registered with this authority",
-              "type": "`$INTEGER`"
+            "EstablishmentCount": {
+              "a": true,
+              "h": "Establishment Count",
+              "n": "EstablishmentCount",
+              "r": false,
+              "sh": "Number of establishments registered with this authority",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "FileName",
-              "req": false,
-              "short": "XML filename for the authority's data",
-              "type": "`$STRING`"
+            "FileName": {
+              "a": true,
+              "h": "File Name",
+              "n": "FileName",
+              "r": false,
+              "sh": "XML filename for the authority's data",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "FileNameWelsh",
-              "req": false,
-              "short": "Welsh language XML filename (for Welsh authorities)",
-              "type": "`$STRING`"
+            "FileNameWelsh": {
+              "a": true,
+              "h": "File Name Welsh",
+              "n": "FileNameWelsh",
+              "r": false,
+              "sh": "Welsh language XML filename (for Welsh authorities)",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "FriendlyName",
-              "req": false,
-              "short": "Friendly display name of the local authority",
-              "type": "`$STRING`"
+            "FriendlyName": {
+              "a": true,
+              "h": "Friendly Name",
+              "n": "FriendlyName",
+              "r": false,
+              "sh": "Friendly display name of the local authority",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "LocalAuthorityId",
-              "req": false,
-              "short": "Unique identifier for the local authority",
-              "type": "`$INTEGER`"
+            "LocalAuthorityId": {
+              "a": true,
+              "h": "Local Authority Id",
+              "n": "LocalAuthorityId",
+              "r": false,
+              "sh": "Unique identifier for the local authority",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "LocalAuthorityIdCode",
-              "req": false,
-              "short": "Code for the local authority",
-              "type": "`$STRING`"
+            "LocalAuthorityIdCode": {
+              "a": true,
+              "h": "Local Authority Id Code",
+              "n": "LocalAuthorityIdCode",
+              "r": false,
+              "sh": "Code for the local authority",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "Name",
-              "req": false,
-              "short": "Name of the local authority",
-              "type": "`$STRING`"
+            "Name": {
+              "a": true,
+              "h": "Name",
+              "n": "Name",
+              "r": false,
+              "sh": "Name of the local authority",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "RegionName",
-              "req": false,
-              "short": "Region where the authority is located",
-              "type": "`$STRING`"
+            "RegionName": {
+              "a": true,
+              "h": "Region Name",
+              "n": "RegionName",
+              "r": false,
+              "sh": "Region where the authority is located",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "uri",
-              "name": "SchemeUrl",
-              "req": false,
-              "short": "URL to the local authority's food hygiene scheme page",
-              "type": "`$STRING`"
+            "SchemeUrl": {
+              "a": true,
+              "fo": "uri",
+              "h": "Scheme Url",
+              "n": "SchemeUrl",
+              "r": false,
+              "sh": "URL to the local authority's food hygiene scheme page",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "uri",
-              "name": "Url",
-              "req": false,
-              "short": "Website URL of the local authority",
-              "type": "`$STRING`"
+            "Url": {
+              "a": true,
+              "fo": "uri",
+              "h": "Url",
+              "n": "Url",
+              "r": false,
+              "sh": "Website URL of the local authority",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -129,24 +207,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /Authorities",
-                    "json": "{\"operationId\":\"getAuthorities\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"authorities\":{\"items\":{\"properties\":{\"Email\":{\"description\":\"Email address of the local authority\",\"format\":\"email\",\"type\":\"string\"},\"EstablishmentCount\":{\"description\":\"Number of establishments registered with this authority\",\"type\":\"integer\"},\"FileName\":{\"description\":\"XML filename for the authority's data\",\"type\":\"string\"},\"FileNameWelsh\":{\"description\":\"Welsh language XML filename (for Welsh authorities)\",\"type\":\"string\"},\"FriendlyName\":{\"description\":\"Friendly display name of the local authority\",\"type\":\"string\"},\"LocalAuthorityId\":{\"description\":\"Unique identifier for the local authority\",\"type\":\"integer\"},\"LocalAuthorityIdCode\":{\"description\":\"Code for the local authority\",\"type\":\"string\"},\"Name\":{\"description\":\"Name of the local authority\",\"type\":\"string\"},\"RegionName\":{\"description\":\"Region where the authority is located\",\"type\":\"string\"},\"SchemeUrl\":{\"description\":\"URL to the local authority's food hygiene scheme page\",\"format\":\"uri\",\"type\":\"string\"},\"Url\":{\"description\":\"Website URL of the local authority\",\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}},\"application/xml\":{\"schema\":{\"properties\":{\"authorities\":{\"items\":{\"properties\":{\"Email\":{\"description\":\"Email address of the local authority\",\"format\":\"email\",\"type\":\"string\"},\"EstablishmentCount\":{\"description\":\"Number of establishments registered with this authority\",\"type\":\"integer\"},\"FileName\":{\"description\":\"XML filename for the authority's data\",\"type\":\"string\"},\"FileNameWelsh\":{\"description\":\"Welsh language XML filename (for Welsh authorities)\",\"type\":\"string\"},\"FriendlyName\":{\"description\":\"Friendly display name of the local authority\",\"type\":\"string\"},\"LocalAuthorityId\":{\"description\":\"Unique identifier for the local authority\",\"type\":\"integer\"},\"LocalAuthorityIdCode\":{\"description\":\"Code for the local authority\",\"type\":\"string\"},\"Name\":{\"description\":\"Name of the local authority\",\"type\":\"string\"},\"RegionName\":{\"description\":\"Region where the authority is located\",\"type\":\"string\"},\"SchemeUrl\":{\"description\":\"URL to the local authority's food hygiene scheme page\",\"format\":\"uri\",\"type\":\"string\"},\"Url\":{\"description\":\"Website URL of the local authority\",\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with authorities list\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/Authorities",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/Authorities",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "Authorities"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.authorities`"
                   }
@@ -158,29 +236,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /Authorities/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /Authorities/{id}",
-                    "json": "{\"operationId\":\"getAuthorityById\",\"parameters\":[{\"description\":\"Unique identifier for the local authority\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"Email\":{\"description\":\"Email address of the local authority\",\"format\":\"email\",\"type\":\"string\"},\"EstablishmentCount\":{\"description\":\"Number of establishments registered with this authority\",\"type\":\"integer\"},\"FileName\":{\"description\":\"XML filename for the authority's data\",\"type\":\"string\"},\"FileNameWelsh\":{\"description\":\"Welsh language XML filename (for Welsh authorities)\",\"type\":\"string\"},\"FriendlyName\":{\"description\":\"Friendly display name of the local authority\",\"type\":\"string\"},\"LocalAuthorityId\":{\"description\":\"Unique identifier for the local authority\",\"type\":\"integer\"},\"LocalAuthorityIdCode\":{\"description\":\"Code for the local authority\",\"type\":\"string\"},\"Name\":{\"description\":\"Name of the local authority\",\"type\":\"string\"},\"RegionName\":{\"description\":\"Region where the authority is located\",\"type\":\"string\"},\"SchemeUrl\":{\"description\":\"URL to the local authority's food hygiene scheme page\",\"format\":\"uri\",\"type\":\"string\"},\"Url\":{\"description\":\"Website URL of the local authority\",\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"}},\"application/xml\":{\"schema\":{\"properties\":{\"Email\":{\"description\":\"Email address of the local authority\",\"format\":\"email\",\"type\":\"string\"},\"EstablishmentCount\":{\"description\":\"Number of establishments registered with this authority\",\"type\":\"integer\"},\"FileName\":{\"description\":\"XML filename for the authority's data\",\"type\":\"string\"},\"FileNameWelsh\":{\"description\":\"Welsh language XML filename (for Welsh authorities)\",\"type\":\"string\"},\"FriendlyName\":{\"description\":\"Friendly display name of the local authority\",\"type\":\"string\"},\"LocalAuthorityId\":{\"description\":\"Unique identifier for the local authority\",\"type\":\"integer\"},\"LocalAuthorityIdCode\":{\"description\":\"Code for the local authority\",\"type\":\"string\"},\"Name\":{\"description\":\"Name of the local authority\",\"type\":\"string\"},\"RegionName\":{\"description\":\"Region where the authority is located\",\"type\":\"string\"},\"SchemeUrl\":{\"description\":\"URL to the local authority's food hygiene scheme page\",\"format\":\"uri\",\"type\":\"string\"},\"Url\":{\"description\":\"Website URL of the local authority\",\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with authority details\"},\"404\":{\"description\":\"Authority not found\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/Authorities/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/Authorities/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "Authorities"
                     },
@@ -188,12 +271,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -210,22 +288,24 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "BusinessTypeId",
-              "req": false,
-              "short": "Unique identifier for the business type",
-              "type": "`$INTEGER`"
+          "fields": {
+            "BusinessTypeId": {
+              "a": true,
+              "h": "Business Type Id",
+              "n": "BusinessTypeId",
+              "r": false,
+              "sh": "Unique identifier for the business type",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "BusinessTypeName",
-              "req": false,
-              "short": "Name of the business type (e.g., Restaurant/Cafe/Canteen, Pub/bar/nightclub, Takeaway/sandwich shop)",
-              "type": "`$STRING`"
+            "BusinessTypeName": {
+              "a": true,
+              "h": "Business Type Name",
+              "n": "BusinessTypeName",
+              "r": false,
+              "sh": "Name of the business type (e.g., Restaurant/Cafe/Canteen, Pub/bar/nightclub, Takeaway/sandwich shop)",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "business_type",
           "op": {
             "list": {
@@ -233,24 +313,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /BusinessTypes",
-                    "json": "{\"operationId\":\"getBusinessTypes\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"businessTypes\":{\"items\":{\"properties\":{\"BusinessTypeId\":{\"description\":\"Unique identifier for the business type\",\"type\":\"integer\"},\"BusinessTypeName\":{\"description\":\"Name of the business type (e.g., Restaurant/Cafe/Canteen, Pub/bar/nightclub, Takeaway/sandwich shop)\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}},\"application/xml\":{\"schema\":{\"properties\":{\"businessTypes\":{\"items\":{\"properties\":{\"BusinessTypeId\":{\"description\":\"Unique identifier for the business type\",\"type\":\"integer\"},\"BusinessTypeName\":{\"description\":\"Name of the business type (e.g., Restaurant/Cafe/Canteen, Pub/bar/nightclub, Takeaway/sandwich shop)\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with business types list\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/BusinessTypes",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/BusinessTypes",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "BusinessTypes"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.businessTypes`"
                   }
@@ -267,172 +347,195 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "AddressLine1",
-              "req": false,
-              "short": "First line of the address",
-              "type": "`$STRING`"
+          "fields": {
+            "AddressLine1": {
+              "a": true,
+              "h": "Address Line1",
+              "n": "AddressLine1",
+              "r": false,
+              "sh": "First line of the address",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "AddressLine2",
-              "req": false,
-              "short": "Second line of the address",
-              "type": "`$STRING`"
+            "AddressLine2": {
+              "a": true,
+              "h": "Address Line2",
+              "n": "AddressLine2",
+              "r": false,
+              "sh": "Second line of the address",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "AddressLine3",
-              "req": false,
-              "short": "Third line of the address",
-              "type": "`$STRING`"
+            "AddressLine3": {
+              "a": true,
+              "h": "Address Line3",
+              "n": "AddressLine3",
+              "r": false,
+              "sh": "Third line of the address",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "AddressLine4",
-              "req": false,
-              "short": "Fourth line of the address",
-              "type": "`$STRING`"
+            "AddressLine4": {
+              "a": true,
+              "h": "Address Line4",
+              "n": "AddressLine4",
+              "r": false,
+              "sh": "Fourth line of the address",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "BusinessName",
-              "req": false,
-              "short": "Name of the food establishment",
-              "type": "`$STRING`"
+            "BusinessName": {
+              "a": true,
+              "h": "Business Name",
+              "n": "BusinessName",
+              "r": false,
+              "sh": "Name of the food establishment",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "BusinessType",
-              "req": false,
-              "short": "Type of food business (e.g., Restaurant, Pub, Café, Takeaway)",
-              "type": "`$STRING`"
+            "BusinessType": {
+              "a": true,
+              "h": "Business Type",
+              "n": "BusinessType",
+              "r": false,
+              "sh": "Type of food business (e.g., Restaurant, Pub, Café, Takeaway)",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "BusinessTypeID",
-              "req": false,
-              "short": "Unique identifier for the business type",
-              "type": "`$INTEGER`"
+            "BusinessTypeID": {
+              "a": true,
+              "h": "Business Type Id",
+              "n": "BusinessTypeID",
+              "r": false,
+              "sh": "Unique identifier for the business type",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "FHRSID",
-              "req": false,
-              "short": "Unique identifier for the establishment in the FHRS system",
-              "type": "`$INTEGER`"
+            "FHRSID": {
+              "a": true,
+              "h": "Fhrsid",
+              "n": "FHRSID",
+              "r": false,
+              "sh": "Unique identifier for the establishment in the FHRS system",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "Geocode",
-              "req": false,
-              "type": "`$OBJECT`"
+            "Geocode": {
+              "a": true,
+              "h": "Geocode",
+              "n": "Geocode",
+              "r": false,
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "LocalAuthorityBusinessID",
-              "req": false,
-              "short": "Business ID assigned by the local authority",
-              "type": "`$STRING`"
+            "LocalAuthorityBusinessID": {
+              "a": true,
+              "h": "Local Authority Business Id",
+              "n": "LocalAuthorityBusinessID",
+              "r": false,
+              "sh": "Business ID assigned by the local authority",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "LocalAuthorityCode",
-              "req": false,
-              "short": "Code for the local authority",
-              "type": "`$STRING`"
+            "LocalAuthorityCode": {
+              "a": true,
+              "h": "Local Authority Code",
+              "n": "LocalAuthorityCode",
+              "r": false,
+              "sh": "Code for the local authority",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "email",
-              "name": "LocalAuthorityEmailAddress",
-              "req": false,
-              "short": "Email address of the local authority",
-              "type": "`$STRING`"
+            "LocalAuthorityEmailAddress": {
+              "a": true,
+              "fo": "email",
+              "h": "Local Authority Email Address",
+              "n": "LocalAuthorityEmailAddress",
+              "r": false,
+              "sh": "Email address of the local authority",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "LocalAuthorityName",
-              "req": false,
-              "short": "Name of the local authority",
-              "type": "`$STRING`"
+            "LocalAuthorityName": {
+              "a": true,
+              "h": "Local Authority Name",
+              "n": "LocalAuthorityName",
+              "r": false,
+              "sh": "Name of the local authority",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "uri",
-              "name": "LocalAuthorityWebSite",
-              "req": false,
-              "short": "Website of the local authority",
-              "type": "`$STRING`"
+            "LocalAuthorityWebSite": {
+              "a": true,
+              "fo": "uri",
+              "h": "Local Authority Web Site",
+              "n": "LocalAuthorityWebSite",
+              "r": false,
+              "sh": "Website of the local authority",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "NewRatingPending",
-              "req": false,
-              "short": "Indicates if a new rating is pending",
-              "type": "`$BOOLEAN`"
+            "NewRatingPending": {
+              "a": true,
+              "h": "New Rating Pending",
+              "n": "NewRatingPending",
+              "r": false,
+              "sh": "Indicates if a new rating is pending",
+              "t": "`$BOOLEAN`"
             },
-            {
-              "active": true,
-              "name": "PostCode",
-              "req": false,
-              "short": "Postcode of the establishment",
-              "type": "`$STRING`"
+            "PostCode": {
+              "a": true,
+              "h": "Post Code",
+              "n": "PostCode",
+              "r": false,
+              "sh": "Postcode of the establishment",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date",
-              "name": "RatingDate",
-              "req": false,
-              "short": "Date the rating was issued",
-              "type": "`$STRING`"
+            "RatingDate": {
+              "a": true,
+              "fo": "date",
+              "h": "Rating Date",
+              "n": "RatingDate",
+              "r": false,
+              "sh": "Date the rating was issued",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "RatingKey",
-              "req": false,
-              "short": "Key for the rating value",
-              "type": "`$STRING`"
+            "RatingKey": {
+              "a": true,
+              "h": "Rating Key",
+              "n": "RatingKey",
+              "r": false,
+              "sh": "Key for the rating value",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "RatingValue",
-              "req": false,
-              "short": "The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS)",
-              "type": "`$STRING`"
+            "RatingValue": {
+              "a": true,
+              "h": "Rating Value",
+              "n": "RatingValue",
+              "r": false,
+              "sh": "The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS)",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "SchemeType",
-              "req": false,
-              "short": "Type of scheme (FHRS or FHIS)",
-              "type": "`$STRING`"
+            "SchemeType": {
+              "a": true,
+              "h": "Scheme Type",
+              "n": "SchemeType",
+              "r": false,
+              "sh": "Type of scheme (FHRS or FHIS)",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "double",
-              "name": "latitude",
-              "req": false,
-              "short": "Latitude coordinate of the establishment",
-              "type": "`$NUMBER`"
+            "latitude": {
+              "a": true,
+              "fo": "double",
+              "h": "Latitude",
+              "n": "latitude",
+              "r": false,
+              "sh": "Latitude coordinate of the establishment",
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "format": "double",
-              "name": "longitude",
-              "req": false,
-              "short": "Longitude coordinate of the establishment",
-              "type": "`$NUMBER`"
+            "longitude": {
+              "a": true,
+              "fo": "double",
+              "h": "Longitude",
+              "n": "longitude",
+              "r": false,
+              "sh": "Longitude coordinate of the establishment",
+              "t": "`$NUMBER`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -444,116 +547,110 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /Establishments",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "address",
-                        "orig": "address",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "address",
+                        "or": "address",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "business_type_id",
-                        "orig": "business_type_id",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "business_type_id",
+                        "or": "business_type_id",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "latitude",
-                        "orig": "latitude",
-                        "reqd": false,
-                        "type": "`$NUMBER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "latitude",
+                        "or": "latitude",
+                        "r": false,
+                        "t": "`$NUMBER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "local_authority_id",
-                        "orig": "local_authority_id",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "local_authority_id",
+                        "or": "local_authority_id",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "longitude",
-                        "orig": "longitude",
-                        "reqd": false,
-                        "type": "`$NUMBER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "longitude",
+                        "or": "longitude",
+                        "r": false,
+                        "t": "`$NUMBER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "max_distance_limit",
-                        "orig": "max_distance_limit",
-                        "reqd": false,
-                        "type": "`$NUMBER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "max_distance_limit",
+                        "or": "max_distance_limit",
+                        "r": false,
+                        "t": "`$NUMBER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "name",
-                        "orig": "name",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "name",
+                        "or": "name",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": 1,
-                        "kind": "query",
-                        "name": "page_number",
-                        "orig": "page_number",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 1,
+                        "k": "query",
+                        "n": "page_number",
+                        "or": "page_number",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "example": 10,
-                        "kind": "query",
-                        "name": "page_size",
-                        "orig": "page_size",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 10,
+                        "k": "query",
+                        "n": "page_size",
+                        "or": "page_size",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "rating_key",
-                        "orig": "rating_key",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "rating_key",
+                        "or": "rating_key",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "sort_option_key",
-                        "orig": "sort_option_key",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "sort_option_key",
+                        "or": "sort_option_key",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /Establishments",
-                    "json": "{\"operationId\":\"getEstablishments\",\"parameters\":[{\"description\":\"Filter establishments by local authority ID\",\"in\":\"query\",\"name\":\"localAuthorityId\",\"required\":false,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Filter establishments by business type ID\",\"in\":\"query\",\"name\":\"businessTypeId\",\"required\":false,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Filter establishments by rating key (e.g., 0-5, Pass/Exempt)\",\"in\":\"query\",\"name\":\"ratingKey\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter establishments by name (partial match supported)\",\"in\":\"query\",\"name\":\"name\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter establishments by address\",\"in\":\"query\",\"name\":\"address\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Longitude for geolocation search\",\"in\":\"query\",\"name\":\"longitude\",\"required\":false,\"schema\":{\"format\":\"double\",\"type\":\"number\"}},{\"description\":\"Latitude for geolocation search\",\"in\":\"query\",\"name\":\"latitude\",\"required\":false,\"schema\":{\"format\":\"double\",\"type\":\"number\"}},{\"description\":\"Maximum distance in miles for geolocation search\",\"in\":\"query\",\"name\":\"maxDistanceLimit\",\"required\":false,\"schema\":{\"format\":\"double\",\"type\":\"number\"}},{\"description\":\"Page number for pagination\",\"in\":\"query\",\"name\":\"pageNumber\",\"required\":false,\"schema\":{\"default\":1,\"type\":\"integer\"}},{\"description\":\"Number of results per page\",\"in\":\"query\",\"name\":\"pageSize\",\"required\":false,\"schema\":{\"default\":10,\"maximum\":5000,\"type\":\"integer\"}},{\"description\":\"Sort option for results\",\"in\":\"query\",\"name\":\"sortOptionKey\",\"required\":false,\"schema\":{\"enum\":[\"alpha\",\"rating\",\"distance\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"establishments\":{\"items\":{\"properties\":{\"AddressLine1\":{\"description\":\"First line of the address\",\"type\":\"string\"},\"AddressLine2\":{\"description\":\"Second line of the address\",\"type\":\"string\"},\"AddressLine3\":{\"description\":\"Third line of the address\",\"type\":\"string\"},\"AddressLine4\":{\"description\":\"Fourth line of the address\",\"type\":\"string\"},\"BusinessName\":{\"description\":\"Name of the food establishment\",\"type\":\"string\"},\"BusinessType\":{\"description\":\"Type of food business (e.g., Restaurant, Pub, Café, Takeaway)\",\"type\":\"string\"},\"BusinessTypeID\":{\"description\":\"Unique identifier for the business type\",\"type\":\"integer\"},\"FHRSID\":{\"description\":\"Unique identifier for the establishment in the FHRS system\",\"type\":\"integer\"},\"Geocode\":{\"properties\":{\"latitude\":{\"description\":\"Latitude coordinate of the establishment\",\"format\":\"double\",\"type\":\"number\"},\"longitude\":{\"description\":\"Longitude coordinate of the establishment\",\"format\":\"double\",\"type\":\"number\"}},\"type\":\"object\"},\"LocalAuthorityBusinessID\":{\"description\":\"Business ID assigned by the local authority\",\"type\":\"string\"},\"LocalAuthorityCode\":{\"description\":\"Code for the local authority\",\"type\":\"string\"},\"LocalAuthorityEmailAddress\":{\"description\":\"Email address of the local authority\",\"format\":\"email\",\"type\":\"string\"},\"LocalAuthorityName\":{\"description\":\"Name of the local authority\",\"type\":\"string\"},\"LocalAuthorityWebSite\":{\"description\":\"Website of the local authority\",\"format\":\"uri\",\"type\":\"string\"},\"NewRatingPending\":{\"description\":\"Indicates if a new rating is pending\",\"type\":\"boolean\"},\"PostCode\":{\"description\":\"Postcode of the establishment\",\"type\":\"string\"},\"RatingDate\":{\"description\":\"Date the rating was issued\",\"format\":\"date\",\"type\":\"string\"},\"RatingKey\":{\"description\":\"Key for the rating value\",\"type\":\"string\"},\"RatingValue\":{\"description\":\"The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS)\",\"type\":\"string\"},\"SchemeType\":{\"description\":\"Type of scheme (FHRS or FHIS)\",\"enum\":[\"FHRS\",\"FHIS\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"meta\":{\"properties\":{\"dataSource\":{\"description\":\"Source of the data\",\"type\":\"string\"},\"extractDate\":{\"description\":\"Date and time when the data was extracted\",\"format\":\"date-time\",\"type\":\"string\"},\"itemCount\":{\"description\":\"Number of items in the current response\",\"type\":\"integer\"},\"pageNumber\":{\"description\":\"Current page number\",\"type\":\"integer\"},\"pageSize\":{\"description\":\"Number of items per page\",\"type\":\"integer\"},\"returnCode\":{\"description\":\"Return code for the API call\",\"type\":\"string\"},\"totalCount\":{\"description\":\"Total number of items matching the query\",\"type\":\"integer\"},\"totalPages\":{\"description\":\"Total number of pages available\",\"type\":\"integer\"}},\"type\":\"object\"}},\"type\":\"object\"}},\"application/xml\":{\"schema\":{\"properties\":{\"establishments\":{\"items\":{\"properties\":{\"AddressLine1\":{\"description\":\"First line of the address\",\"type\":\"string\"},\"AddressLine2\":{\"description\":\"Second line of the address\",\"type\":\"string\"},\"AddressLine3\":{\"description\":\"Third line of the address\",\"type\":\"string\"},\"AddressLine4\":{\"description\":\"Fourth line of the address\",\"type\":\"string\"},\"BusinessName\":{\"description\":\"Name of the food establishment\",\"type\":\"string\"},\"BusinessType\":{\"description\":\"Type of food business (e.g., Restaurant, Pub, Café, Takeaway)\",\"type\":\"string\"},\"BusinessTypeID\":{\"description\":\"Unique identifier for the business type\",\"type\":\"integer\"},\"FHRSID\":{\"description\":\"Unique identifier for the establishment in the FHRS system\",\"type\":\"integer\"},\"Geocode\":{\"properties\":{\"latitude\":{\"description\":\"Latitude coordinate of the establishment\",\"format\":\"double\",\"type\":\"number\"},\"longitude\":{\"description\":\"Longitude coordinate of the establishment\",\"format\":\"double\",\"type\":\"number\"}},\"type\":\"object\"},\"LocalAuthorityBusinessID\":{\"description\":\"Business ID assigned by the local authority\",\"type\":\"string\"},\"LocalAuthorityCode\":{\"description\":\"Code for the local authority\",\"type\":\"string\"},\"LocalAuthorityEmailAddress\":{\"description\":\"Email address of the local authority\",\"format\":\"email\",\"type\":\"string\"},\"LocalAuthorityName\":{\"description\":\"Name of the local authority\",\"type\":\"string\"},\"LocalAuthorityWebSite\":{\"description\":\"Website of the local authority\",\"format\":\"uri\",\"type\":\"string\"},\"NewRatingPending\":{\"description\":\"Indicates if a new rating is pending\",\"type\":\"boolean\"},\"PostCode\":{\"description\":\"Postcode of the establishment\",\"type\":\"string\"},\"RatingDate\":{\"description\":\"Date the rating was issued\",\"format\":\"date\",\"type\":\"string\"},\"RatingKey\":{\"description\":\"Key for the rating value\",\"type\":\"string\"},\"RatingValue\":{\"description\":\"The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS)\",\"type\":\"string\"},\"SchemeType\":{\"description\":\"Type of scheme (FHRS or FHIS)\",\"enum\":[\"FHRS\",\"FHIS\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"meta\":{\"properties\":{\"dataSource\":{\"description\":\"Source of the data\",\"type\":\"string\"},\"extractDate\":{\"description\":\"Date and time when the data was extracted\",\"format\":\"date-time\",\"type\":\"string\"},\"itemCount\":{\"description\":\"Number of items in the current response\",\"type\":\"integer\"},\"pageNumber\":{\"description\":\"Current page number\",\"type\":\"integer\"},\"pageSize\":{\"description\":\"Number of items per page\",\"type\":\"integer\"},\"returnCode\":{\"description\":\"Return code for the API call\",\"type\":\"string\"},\"totalCount\":{\"description\":\"Total number of items matching the query\",\"type\":\"integer\"},\"totalPages\":{\"description\":\"Total number of pages available\",\"type\":\"integer\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Successful response with establishment data\"},\"400\":{\"description\":\"Bad request - invalid parameters\"},\"404\":{\"description\":\"No establishments found matching criteria\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/Establishments",
-                  "segments": [
-                    {
-                      "lit": "Establishments"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/Establishments",
+                  "q": {
                     "exist": [
                       "address",
                       "business_type_id",
@@ -568,7 +665,13 @@
                       "sort_option_key"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "Establishments"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -580,29 +683,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /Establishments/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /Establishments/{id}",
-                    "json": "{\"operationId\":\"getEstablishmentById\",\"parameters\":[{\"description\":\"Unique identifier for the establishment\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"AddressLine1\":{\"description\":\"First line of the address\",\"type\":\"string\"},\"AddressLine2\":{\"description\":\"Second line of the address\",\"type\":\"string\"},\"AddressLine3\":{\"description\":\"Third line of the address\",\"type\":\"string\"},\"AddressLine4\":{\"description\":\"Fourth line of the address\",\"type\":\"string\"},\"BusinessName\":{\"description\":\"Name of the food establishment\",\"type\":\"string\"},\"BusinessType\":{\"description\":\"Type of food business (e.g., Restaurant, Pub, Café, Takeaway)\",\"type\":\"string\"},\"BusinessTypeID\":{\"description\":\"Unique identifier for the business type\",\"type\":\"integer\"},\"FHRSID\":{\"description\":\"Unique identifier for the establishment in the FHRS system\",\"type\":\"integer\"},\"Geocode\":{\"properties\":{\"latitude\":{\"description\":\"Latitude coordinate of the establishment\",\"format\":\"double\",\"type\":\"number\"},\"longitude\":{\"description\":\"Longitude coordinate of the establishment\",\"format\":\"double\",\"type\":\"number\"}},\"type\":\"object\"},\"LocalAuthorityBusinessID\":{\"description\":\"Business ID assigned by the local authority\",\"type\":\"string\"},\"LocalAuthorityCode\":{\"description\":\"Code for the local authority\",\"type\":\"string\"},\"LocalAuthorityEmailAddress\":{\"description\":\"Email address of the local authority\",\"format\":\"email\",\"type\":\"string\"},\"LocalAuthorityName\":{\"description\":\"Name of the local authority\",\"type\":\"string\"},\"LocalAuthorityWebSite\":{\"description\":\"Website of the local authority\",\"format\":\"uri\",\"type\":\"string\"},\"NewRatingPending\":{\"description\":\"Indicates if a new rating is pending\",\"type\":\"boolean\"},\"PostCode\":{\"description\":\"Postcode of the establishment\",\"type\":\"string\"},\"RatingDate\":{\"description\":\"Date the rating was issued\",\"format\":\"date\",\"type\":\"string\"},\"RatingKey\":{\"description\":\"Key for the rating value\",\"type\":\"string\"},\"RatingValue\":{\"description\":\"The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS)\",\"type\":\"string\"},\"SchemeType\":{\"description\":\"Type of scheme (FHRS or FHIS)\",\"enum\":[\"FHRS\",\"FHIS\"],\"type\":\"string\"}},\"type\":\"object\"}},\"application/xml\":{\"schema\":{\"properties\":{\"AddressLine1\":{\"description\":\"First line of the address\",\"type\":\"string\"},\"AddressLine2\":{\"description\":\"Second line of the address\",\"type\":\"string\"},\"AddressLine3\":{\"description\":\"Third line of the address\",\"type\":\"string\"},\"AddressLine4\":{\"description\":\"Fourth line of the address\",\"type\":\"string\"},\"BusinessName\":{\"description\":\"Name of the food establishment\",\"type\":\"string\"},\"BusinessType\":{\"description\":\"Type of food business (e.g., Restaurant, Pub, Café, Takeaway)\",\"type\":\"string\"},\"BusinessTypeID\":{\"description\":\"Unique identifier for the business type\",\"type\":\"integer\"},\"FHRSID\":{\"description\":\"Unique identifier for the establishment in the FHRS system\",\"type\":\"integer\"},\"Geocode\":{\"properties\":{\"latitude\":{\"description\":\"Latitude coordinate of the establishment\",\"format\":\"double\",\"type\":\"number\"},\"longitude\":{\"description\":\"Longitude coordinate of the establishment\",\"format\":\"double\",\"type\":\"number\"}},\"type\":\"object\"},\"LocalAuthorityBusinessID\":{\"description\":\"Business ID assigned by the local authority\",\"type\":\"string\"},\"LocalAuthorityCode\":{\"description\":\"Code for the local authority\",\"type\":\"string\"},\"LocalAuthorityEmailAddress\":{\"description\":\"Email address of the local authority\",\"format\":\"email\",\"type\":\"string\"},\"LocalAuthorityName\":{\"description\":\"Name of the local authority\",\"type\":\"string\"},\"LocalAuthorityWebSite\":{\"description\":\"Website of the local authority\",\"format\":\"uri\",\"type\":\"string\"},\"NewRatingPending\":{\"description\":\"Indicates if a new rating is pending\",\"type\":\"boolean\"},\"PostCode\":{\"description\":\"Postcode of the establishment\",\"type\":\"string\"},\"RatingDate\":{\"description\":\"Date the rating was issued\",\"format\":\"date\",\"type\":\"string\"},\"RatingKey\":{\"description\":\"Key for the rating value\",\"type\":\"string\"},\"RatingValue\":{\"description\":\"The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS)\",\"type\":\"string\"},\"SchemeType\":{\"description\":\"Type of scheme (FHRS or FHIS)\",\"enum\":[\"FHRS\",\"FHIS\"],\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with establishment details\"},\"404\":{\"description\":\"Establishment not found\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/Establishments/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/Establishments/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "Establishments"
                     },
@@ -610,12 +718,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.Geocode`"
                   }
@@ -632,36 +735,40 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "ratingId",
-              "req": false,
-              "short": "Unique identifier for the rating",
-              "type": "`$INTEGER`"
+          "fields": {
+            "ratingId": {
+              "a": true,
+              "h": "Rating Id",
+              "n": "ratingId",
+              "r": false,
+              "sh": "Unique identifier for the rating",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "ratingKey",
-              "req": false,
-              "short": "Key for the rating value",
-              "type": "`$STRING`"
+            "ratingKey": {
+              "a": true,
+              "h": "Rating Key",
+              "n": "ratingKey",
+              "r": false,
+              "sh": "Key for the rating value",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "ratingName",
-              "req": false,
-              "short": "Name of the rating (e.g., '5', '4', 'Pass', 'Exempt')",
-              "type": "`$STRING`"
+            "ratingName": {
+              "a": true,
+              "h": "Rating Name",
+              "n": "ratingName",
+              "r": false,
+              "sh": "Name of the rating (e.g., '5', '4', 'Pass', 'Exempt')",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "schemeType",
-              "req": false,
-              "short": "Scheme type this rating belongs to",
-              "type": "`$STRING`"
+            "schemeType": {
+              "a": true,
+              "h": "Scheme Type",
+              "n": "schemeType",
+              "r": false,
+              "sh": "Scheme type this rating belongs to",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "rating",
           "op": {
             "list": {
@@ -669,24 +776,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /Ratings",
-                    "json": "{\"operationId\":\"getRatings\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"ratings\":{\"items\":{\"properties\":{\"ratingId\":{\"description\":\"Unique identifier for the rating\",\"type\":\"integer\"},\"ratingKey\":{\"description\":\"Key for the rating value\",\"type\":\"string\"},\"ratingName\":{\"description\":\"Name of the rating (e.g., '5', '4', 'Pass', 'Exempt')\",\"type\":\"string\"},\"schemeType\":{\"description\":\"Scheme type this rating belongs to\",\"enum\":[\"FHRS\",\"FHIS\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}},\"application/xml\":{\"schema\":{\"properties\":{\"ratings\":{\"items\":{\"properties\":{\"ratingId\":{\"description\":\"Unique identifier for the rating\",\"type\":\"integer\"},\"ratingKey\":{\"description\":\"Key for the rating value\",\"type\":\"string\"},\"ratingName\":{\"description\":\"Name of the rating (e.g., '5', '4', 'Pass', 'Exempt')\",\"type\":\"string\"},\"schemeType\":{\"description\":\"Scheme type this rating belongs to\",\"enum\":[\"FHRS\",\"FHIS\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with ratings list\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/Ratings",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/Ratings",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "Ratings"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.ratings`"
                   }
@@ -1115,13 +1222,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1131,19 +1238,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "authority_ref01",
                 "srcdatavar": "authority_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "authority01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1163,13 +1270,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1189,13 +1296,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1205,19 +1312,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "establishment_ref01",
                 "srcdatavar": "establishment_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "establishment01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1237,13 +1344,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {

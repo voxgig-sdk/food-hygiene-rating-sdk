@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RatingEntity = void 0;
 const FoodHygieneRatingEntityBase_1 = require("../FoodHygieneRatingEntityBase");
-// TODO: needs Entity superclass
 class RatingEntity extends FoodHygieneRatingEntityBase_1.FoodHygieneRatingEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

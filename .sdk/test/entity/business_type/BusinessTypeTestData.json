@@ -26,68 +26,8 @@
   "requests": {
     "GET /BusinessTypes": {
       "provenance": "operation-contract",
-      "contract": {
-        "operationId": "getBusinessTypes",
-        "parameters": [],
-        "protocol": "http",
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "businessTypes": {
-                      "items": {
-                        "properties": {
-                          "BusinessTypeId": {
-                            "description": "Unique identifier for the business type",
-                            "type": "integer"
-                          },
-                          "BusinessTypeName": {
-                            "description": "Name of the business type (e.g., Restaurant/Cafe/Canteen, Pub/bar/nightclub, Takeaway/sandwich shop)",
-                            "type": "string"
-                          }
-                        },
-                        "type": "object"
-                      },
-                      "type": "array"
-                    }
-                  },
-                  "type": "object"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "properties": {
-                    "businessTypes": {
-                      "items": {
-                        "properties": {
-                          "BusinessTypeId": {
-                            "description": "Unique identifier for the business type",
-                            "type": "integer"
-                          },
-                          "BusinessTypeName": {
-                            "description": "Name of the business type (e.g., Restaurant/Cafe/Canteen, Pub/bar/nightclub, Takeaway/sandwich shop)",
-                            "type": "string"
-                          }
-                        },
-                        "type": "object"
-                      },
-                      "type": "array"
-                    }
-                  },
-                  "type": "object"
-                }
-              }
-            },
-            "description": "Successful response with business types list"
-          },
-          "500": {
-            "description": "Internal server error"
-          }
-        },
-        "securitySource": "unspecified"
-      }
+      "version": 2,
+      "source": "openapi3"
     }
   }
 }

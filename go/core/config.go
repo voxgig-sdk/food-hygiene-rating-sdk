@@ -93,65 +93,77 @@ func MakeConfig() map[string]any {
 			"authority": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"format": "email",
 						"name": "Email",
-						"short": "Email address of the local authority",
+						"title": "Email",
 						"type": "`$STRING`",
+						"short": "Email address of the local authority",
+						"format": "email",
 					},
 					map[string]any{
 						"name": "EstablishmentCount",
-						"short": "Number of establishments registered with this authority",
+						"title": "Establishment Count",
 						"type": "`$INTEGER`",
+						"short": "Number of establishments registered with this authority",
 					},
 					map[string]any{
 						"name": "FileName",
-						"short": "XML filename for the authority's data",
+						"title": "File Name",
 						"type": "`$STRING`",
+						"short": "XML filename for the authority's data",
 					},
 					map[string]any{
 						"name": "FileNameWelsh",
-						"short": "Welsh language XML filename (for Welsh authorities)",
+						"title": "File Name Welsh",
 						"type": "`$STRING`",
+						"short": "Welsh language XML filename (for Welsh authorities)",
 					},
 					map[string]any{
 						"name": "FriendlyName",
-						"short": "Friendly display name of the local authority",
+						"title": "Friendly Name",
 						"type": "`$STRING`",
+						"short": "Friendly display name of the local authority",
 					},
 					map[string]any{
 						"name": "LocalAuthorityId",
-						"short": "Unique identifier for the local authority",
+						"title": "Local Authority Id",
 						"type": "`$INTEGER`",
+						"short": "Unique identifier for the local authority",
 					},
 					map[string]any{
 						"name": "LocalAuthorityIdCode",
-						"short": "Code for the local authority",
+						"title": "Local Authority Id Code",
 						"type": "`$STRING`",
+						"short": "Code for the local authority",
 					},
 					map[string]any{
 						"name": "Name",
-						"short": "Name of the local authority",
+						"title": "Name",
 						"type": "`$STRING`",
+						"short": "Name of the local authority",
 					},
 					map[string]any{
 						"name": "RegionName",
+						"title": "Region Name",
+						"type": "`$STRING`",
 						"short": "Region where the authority is located",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "SchemeUrl",
-						"short": "URL to the local authority's food hygiene scheme page",
+						"title": "Scheme Url",
 						"type": "`$STRING`",
+						"short": "URL to the local authority's food hygiene scheme page",
+						"format": "uri",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "Url",
-						"short": "Website URL of the local authority",
+						"title": "Url",
 						"type": "`$STRING`",
+						"short": "Website URL of the local authority",
+						"format": "uri",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 				},
@@ -166,7 +178,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/Authorities",
@@ -175,14 +186,16 @@ func MakeConfig() map[string]any {
 										"lit": "Authorities",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"Authorities",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.authorities`",
 								},
-								"parts": []any{
-									"Authorities",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -191,17 +204,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/Authorities/{id}",
@@ -213,18 +215,30 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-									},
+								"parts": []any{
+									"Authorities",
+									"{id}",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"Authorities",
-									"{id}",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},
@@ -238,13 +252,15 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "BusinessTypeId",
-						"short": "Unique identifier for the business type",
+						"title": "Business Type Id",
 						"type": "`$INTEGER`",
+						"short": "Unique identifier for the business type",
 					},
 					map[string]any{
 						"name": "BusinessTypeName",
-						"short": "Name of the business type (e.g., Restaurant/Cafe/Canteen, Pub/bar/nightclub, Takeaway/sandwich shop)",
+						"title": "Business Type Name",
 						"type": "`$STRING`",
+						"short": "Name of the business type (e.g., Restaurant/Cafe/Canteen, Pub/bar/nightclub, Takeaway/sandwich shop)",
 					},
 				},
 				"name": "business_type",
@@ -254,7 +270,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/BusinessTypes",
@@ -263,14 +278,16 @@ func MakeConfig() map[string]any {
 										"lit": "BusinessTypes",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"BusinessTypes",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.businessTypes`",
 								},
-								"parts": []any{
-									"BusinessTypes",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -283,121 +300,144 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "AddressLine1",
-						"short": "First line of the address",
+						"title": "Address Line1",
 						"type": "`$STRING`",
+						"short": "First line of the address",
 					},
 					map[string]any{
 						"name": "AddressLine2",
-						"short": "Second line of the address",
+						"title": "Address Line2",
 						"type": "`$STRING`",
+						"short": "Second line of the address",
 					},
 					map[string]any{
 						"name": "AddressLine3",
-						"short": "Third line of the address",
+						"title": "Address Line3",
 						"type": "`$STRING`",
+						"short": "Third line of the address",
 					},
 					map[string]any{
 						"name": "AddressLine4",
-						"short": "Fourth line of the address",
+						"title": "Address Line4",
 						"type": "`$STRING`",
+						"short": "Fourth line of the address",
 					},
 					map[string]any{
 						"name": "BusinessName",
-						"short": "Name of the food establishment",
+						"title": "Business Name",
 						"type": "`$STRING`",
+						"short": "Name of the food establishment",
 					},
 					map[string]any{
 						"name": "BusinessType",
-						"short": "Type of food business (e.g., Restaurant, Pub, Café, Takeaway)",
+						"title": "Business Type",
 						"type": "`$STRING`",
+						"short": "Type of food business (e.g., Restaurant, Pub, Café, Takeaway)",
 					},
 					map[string]any{
 						"name": "BusinessTypeID",
-						"short": "Unique identifier for the business type",
+						"title": "Business Type Id",
 						"type": "`$INTEGER`",
+						"short": "Unique identifier for the business type",
 					},
 					map[string]any{
 						"name": "FHRSID",
-						"short": "Unique identifier for the establishment in the FHRS system",
+						"title": "Fhrsid",
 						"type": "`$INTEGER`",
+						"short": "Unique identifier for the establishment in the FHRS system",
 					},
 					map[string]any{
 						"name": "Geocode",
+						"title": "Geocode",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "LocalAuthorityBusinessID",
-						"short": "Business ID assigned by the local authority",
+						"title": "Local Authority Business Id",
 						"type": "`$STRING`",
+						"short": "Business ID assigned by the local authority",
 					},
 					map[string]any{
 						"name": "LocalAuthorityCode",
-						"short": "Code for the local authority",
+						"title": "Local Authority Code",
 						"type": "`$STRING`",
+						"short": "Code for the local authority",
 					},
 					map[string]any{
-						"format": "email",
 						"name": "LocalAuthorityEmailAddress",
-						"short": "Email address of the local authority",
+						"title": "Local Authority Email Address",
 						"type": "`$STRING`",
+						"short": "Email address of the local authority",
+						"format": "email",
 					},
 					map[string]any{
 						"name": "LocalAuthorityName",
-						"short": "Name of the local authority",
+						"title": "Local Authority Name",
 						"type": "`$STRING`",
+						"short": "Name of the local authority",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "LocalAuthorityWebSite",
-						"short": "Website of the local authority",
+						"title": "Local Authority Web Site",
 						"type": "`$STRING`",
+						"short": "Website of the local authority",
+						"format": "uri",
 					},
 					map[string]any{
 						"name": "NewRatingPending",
-						"short": "Indicates if a new rating is pending",
+						"title": "New Rating Pending",
 						"type": "`$BOOLEAN`",
+						"short": "Indicates if a new rating is pending",
 					},
 					map[string]any{
 						"name": "PostCode",
-						"short": "Postcode of the establishment",
+						"title": "Post Code",
 						"type": "`$STRING`",
+						"short": "Postcode of the establishment",
 					},
 					map[string]any{
-						"format": "date",
 						"name": "RatingDate",
-						"short": "Date the rating was issued",
+						"title": "Rating Date",
 						"type": "`$STRING`",
+						"short": "Date the rating was issued",
+						"format": "date",
 					},
 					map[string]any{
 						"name": "RatingKey",
-						"short": "Key for the rating value",
+						"title": "Rating Key",
 						"type": "`$STRING`",
+						"short": "Key for the rating value",
 					},
 					map[string]any{
 						"name": "RatingValue",
-						"short": "The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS)",
+						"title": "Rating Value",
 						"type": "`$STRING`",
+						"short": "The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS)",
 					},
 					map[string]any{
 						"name": "SchemeType",
-						"short": "Type of scheme (FHRS or FHIS)",
+						"title": "Scheme Type",
 						"type": "`$STRING`",
+						"short": "Type of scheme (FHRS or FHIS)",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "double",
 						"name": "latitude",
-						"short": "Latitude coordinate of the establishment",
+						"title": "Latitude",
 						"type": "`$NUMBER`",
+						"short": "Latitude coordinate of the establishment",
+						"format": "double",
 					},
 					map[string]any{
-						"format": "double",
 						"name": "longitude",
-						"short": "Longitude coordinate of the establishment",
+						"title": "Longitude",
 						"type": "`$NUMBER`",
+						"short": "Longitude coordinate of the establishment",
+						"format": "double",
 					},
 				},
 				"id": map[string]any{
@@ -411,84 +451,92 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "address",
-											"orig": "address",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "business_type_id",
-											"orig": "business_type_id",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "latitude",
-											"orig": "latitude",
-											"type": "`$NUMBER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "local_authority_id",
-											"orig": "local_authority_id",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "longitude",
-											"orig": "longitude",
-											"type": "`$NUMBER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "max_distance_limit",
-											"orig": "max_distance_limit",
-											"type": "`$NUMBER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "name",
-											"orig": "name",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "page_number",
-											"orig": "page_number",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": 10,
-											"kind": "query",
-											"name": "page_size",
-											"orig": "page_size",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "rating_key",
-											"orig": "rating_key",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "sort_option_key",
-											"orig": "sort_option_key",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/Establishments",
 								"segments": []any{
 									map[string]any{
 										"lit": "Establishments",
+									},
+								},
+								"parts": []any{
+									"Establishments",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "address",
+											"orig": "address",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "business_type_id",
+											"orig": "business_type_id",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "latitude",
+											"orig": "latitude",
+											"type": "`$NUMBER`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "local_authority_id",
+											"orig": "local_authority_id",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "longitude",
+											"orig": "longitude",
+											"type": "`$NUMBER`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "max_distance_limit",
+											"orig": "max_distance_limit",
+											"type": "`$NUMBER`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "name",
+											"orig": "name",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "page_number",
+											"orig": "page_number",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+										map[string]any{
+											"name": "page_size",
+											"orig": "page_size",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 10,
+										},
+										map[string]any{
+											"name": "rating_key",
+											"orig": "rating_key",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "sort_option_key",
+											"orig": "sort_option_key",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
 									},
 								},
 								"select": map[string]any{
@@ -506,13 +554,6 @@ func MakeConfig() map[string]any {
 										"sort_option_key",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"Establishments",
-								},
 							},
 						},
 					},
@@ -521,17 +562,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/Establishments/{id}",
@@ -543,18 +573,30 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-									},
+								"parts": []any{
+									"Establishments",
+									"{id}",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.Geocode`",
 								},
-								"parts": []any{
-									"Establishments",
-									"{id}",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},
@@ -568,23 +610,27 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "ratingId",
-						"short": "Unique identifier for the rating",
+						"title": "Rating Id",
 						"type": "`$INTEGER`",
+						"short": "Unique identifier for the rating",
 					},
 					map[string]any{
 						"name": "ratingKey",
-						"short": "Key for the rating value",
+						"title": "Rating Key",
 						"type": "`$STRING`",
+						"short": "Key for the rating value",
 					},
 					map[string]any{
 						"name": "ratingName",
-						"short": "Name of the rating (e.g., '5', '4', 'Pass', 'Exempt')",
+						"title": "Rating Name",
 						"type": "`$STRING`",
+						"short": "Name of the rating (e.g., '5', '4', 'Pass', 'Exempt')",
 					},
 					map[string]any{
 						"name": "schemeType",
-						"short": "Scheme type this rating belongs to",
+						"title": "Scheme Type",
 						"type": "`$STRING`",
+						"short": "Scheme type this rating belongs to",
 					},
 				},
 				"name": "rating",
@@ -594,7 +640,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/Ratings",
@@ -603,14 +648,16 @@ func MakeConfig() map[string]any {
 										"lit": "Ratings",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"Ratings",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.ratings`",
 								},
-								"parts": []any{
-									"Ratings",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},

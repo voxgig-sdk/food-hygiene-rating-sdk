@@ -11,19 +11,12 @@ const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
     timeout: TimeoutFeature_1.TimeoutFeature,
 };
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS = {};
 exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
         const fi = new fc();
-        // TODO: errors etc
         return fi;
     }
     // False for a feature added at runtime via options.extend (station's
@@ -116,65 +109,77 @@ class Config {
         "authority": {
             "fields": [
                 {
-                    "format": "email",
                     "name": "Email",
+                    "title": "Email",
+                    "type": "`$STRING`",
                     "short": "Email address of the local authority",
-                    "type": "`$STRING`"
+                    "format": "email"
                 },
                 {
                     "name": "EstablishmentCount",
-                    "short": "Number of establishments registered with this authority",
-                    "type": "`$INTEGER`"
+                    "title": "Establishment Count",
+                    "type": "`$INTEGER`",
+                    "short": "Number of establishments registered with this authority"
                 },
                 {
                     "name": "FileName",
-                    "short": "XML filename for the authority's data",
-                    "type": "`$STRING`"
+                    "title": "File Name",
+                    "type": "`$STRING`",
+                    "short": "XML filename for the authority's data"
                 },
                 {
                     "name": "FileNameWelsh",
-                    "short": "Welsh language XML filename (for Welsh authorities)",
-                    "type": "`$STRING`"
+                    "title": "File Name Welsh",
+                    "type": "`$STRING`",
+                    "short": "Welsh language XML filename (for Welsh authorities)"
                 },
                 {
                     "name": "FriendlyName",
-                    "short": "Friendly display name of the local authority",
-                    "type": "`$STRING`"
+                    "title": "Friendly Name",
+                    "type": "`$STRING`",
+                    "short": "Friendly display name of the local authority"
                 },
                 {
                     "name": "LocalAuthorityId",
-                    "short": "Unique identifier for the local authority",
-                    "type": "`$INTEGER`"
+                    "title": "Local Authority Id",
+                    "type": "`$INTEGER`",
+                    "short": "Unique identifier for the local authority"
                 },
                 {
                     "name": "LocalAuthorityIdCode",
-                    "short": "Code for the local authority",
-                    "type": "`$STRING`"
+                    "title": "Local Authority Id Code",
+                    "type": "`$STRING`",
+                    "short": "Code for the local authority"
                 },
                 {
                     "name": "Name",
-                    "short": "Name of the local authority",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "Name of the local authority"
                 },
                 {
                     "name": "RegionName",
-                    "short": "Region where the authority is located",
-                    "type": "`$STRING`"
+                    "title": "Region Name",
+                    "type": "`$STRING`",
+                    "short": "Region where the authority is located"
                 },
                 {
-                    "format": "uri",
                     "name": "SchemeUrl",
+                    "title": "Scheme Url",
+                    "type": "`$STRING`",
                     "short": "URL to the local authority's food hygiene scheme page",
-                    "type": "`$STRING`"
+                    "format": "uri"
                 },
                 {
-                    "format": "uri",
                     "name": "Url",
+                    "title": "Url",
+                    "type": "`$STRING`",
                     "short": "Website URL of the local authority",
-                    "type": "`$STRING`"
+                    "format": "uri"
                 },
                 {
                     "name": "id",
+                    "title": "Id",
                     "type": "`$STRING`"
                 }
             ],
@@ -189,7 +194,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/Authorities",
@@ -198,14 +202,16 @@ class Config {
                                     "lit": "Authorities"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "Authorities"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body.authorities`"
                             },
-                            "parts": [
-                                "Authorities"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 },
@@ -214,17 +220,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/Authorities/{id}",
@@ -236,19 +231,31 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
+                            "parts": [
+                                "Authorities",
+                                "{id}"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "Authorities",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -261,13 +268,15 @@ class Config {
             "fields": [
                 {
                     "name": "BusinessTypeId",
-                    "short": "Unique identifier for the business type",
-                    "type": "`$INTEGER`"
+                    "title": "Business Type Id",
+                    "type": "`$INTEGER`",
+                    "short": "Unique identifier for the business type"
                 },
                 {
                     "name": "BusinessTypeName",
-                    "short": "Name of the business type (e.g., Restaurant/Cafe/Canteen, Pub/bar/nightclub, Takeaway/sandwich shop)",
-                    "type": "`$STRING`"
+                    "title": "Business Type Name",
+                    "type": "`$STRING`",
+                    "short": "Name of the business type (e.g., Restaurant/Cafe/Canteen, Pub/bar/nightclub, Takeaway/sandwich shop)"
                 }
             ],
             "name": "business_type",
@@ -277,7 +286,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/BusinessTypes",
@@ -286,14 +294,16 @@ class Config {
                                     "lit": "BusinessTypes"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "BusinessTypes"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body.businessTypes`"
                             },
-                            "parts": [
-                                "BusinessTypes"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 }
@@ -306,121 +316,144 @@ class Config {
             "fields": [
                 {
                     "name": "AddressLine1",
-                    "short": "First line of the address",
-                    "type": "`$STRING`"
+                    "title": "Address Line1",
+                    "type": "`$STRING`",
+                    "short": "First line of the address"
                 },
                 {
                     "name": "AddressLine2",
-                    "short": "Second line of the address",
-                    "type": "`$STRING`"
+                    "title": "Address Line2",
+                    "type": "`$STRING`",
+                    "short": "Second line of the address"
                 },
                 {
                     "name": "AddressLine3",
-                    "short": "Third line of the address",
-                    "type": "`$STRING`"
+                    "title": "Address Line3",
+                    "type": "`$STRING`",
+                    "short": "Third line of the address"
                 },
                 {
                     "name": "AddressLine4",
-                    "short": "Fourth line of the address",
-                    "type": "`$STRING`"
+                    "title": "Address Line4",
+                    "type": "`$STRING`",
+                    "short": "Fourth line of the address"
                 },
                 {
                     "name": "BusinessName",
-                    "short": "Name of the food establishment",
-                    "type": "`$STRING`"
+                    "title": "Business Name",
+                    "type": "`$STRING`",
+                    "short": "Name of the food establishment"
                 },
                 {
                     "name": "BusinessType",
-                    "short": "Type of food business (e.g., Restaurant, Pub, Café, Takeaway)",
-                    "type": "`$STRING`"
+                    "title": "Business Type",
+                    "type": "`$STRING`",
+                    "short": "Type of food business (e.g., Restaurant, Pub, Café, Takeaway)"
                 },
                 {
                     "name": "BusinessTypeID",
-                    "short": "Unique identifier for the business type",
-                    "type": "`$INTEGER`"
+                    "title": "Business Type Id",
+                    "type": "`$INTEGER`",
+                    "short": "Unique identifier for the business type"
                 },
                 {
                     "name": "FHRSID",
-                    "short": "Unique identifier for the establishment in the FHRS system",
-                    "type": "`$INTEGER`"
+                    "title": "Fhrsid",
+                    "type": "`$INTEGER`",
+                    "short": "Unique identifier for the establishment in the FHRS system"
                 },
                 {
                     "name": "Geocode",
+                    "title": "Geocode",
                     "type": "`$OBJECT`"
                 },
                 {
                     "name": "LocalAuthorityBusinessID",
-                    "short": "Business ID assigned by the local authority",
-                    "type": "`$STRING`"
+                    "title": "Local Authority Business Id",
+                    "type": "`$STRING`",
+                    "short": "Business ID assigned by the local authority"
                 },
                 {
                     "name": "LocalAuthorityCode",
-                    "short": "Code for the local authority",
-                    "type": "`$STRING`"
+                    "title": "Local Authority Code",
+                    "type": "`$STRING`",
+                    "short": "Code for the local authority"
                 },
                 {
-                    "format": "email",
                     "name": "LocalAuthorityEmailAddress",
+                    "title": "Local Authority Email Address",
+                    "type": "`$STRING`",
                     "short": "Email address of the local authority",
-                    "type": "`$STRING`"
+                    "format": "email"
                 },
                 {
                     "name": "LocalAuthorityName",
-                    "short": "Name of the local authority",
-                    "type": "`$STRING`"
+                    "title": "Local Authority Name",
+                    "type": "`$STRING`",
+                    "short": "Name of the local authority"
                 },
                 {
-                    "format": "uri",
                     "name": "LocalAuthorityWebSite",
+                    "title": "Local Authority Web Site",
+                    "type": "`$STRING`",
                     "short": "Website of the local authority",
-                    "type": "`$STRING`"
+                    "format": "uri"
                 },
                 {
                     "name": "NewRatingPending",
-                    "short": "Indicates if a new rating is pending",
-                    "type": "`$BOOLEAN`"
+                    "title": "New Rating Pending",
+                    "type": "`$BOOLEAN`",
+                    "short": "Indicates if a new rating is pending"
                 },
                 {
                     "name": "PostCode",
-                    "short": "Postcode of the establishment",
-                    "type": "`$STRING`"
+                    "title": "Post Code",
+                    "type": "`$STRING`",
+                    "short": "Postcode of the establishment"
                 },
                 {
-                    "format": "date",
                     "name": "RatingDate",
+                    "title": "Rating Date",
+                    "type": "`$STRING`",
                     "short": "Date the rating was issued",
-                    "type": "`$STRING`"
+                    "format": "date"
                 },
                 {
                     "name": "RatingKey",
-                    "short": "Key for the rating value",
-                    "type": "`$STRING`"
+                    "title": "Rating Key",
+                    "type": "`$STRING`",
+                    "short": "Key for the rating value"
                 },
                 {
                     "name": "RatingValue",
-                    "short": "The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS)",
-                    "type": "`$STRING`"
+                    "title": "Rating Value",
+                    "type": "`$STRING`",
+                    "short": "The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS)"
                 },
                 {
                     "name": "SchemeType",
-                    "short": "Type of scheme (FHRS or FHIS)",
-                    "type": "`$STRING`"
+                    "title": "Scheme Type",
+                    "type": "`$STRING`",
+                    "short": "Type of scheme (FHRS or FHIS)"
                 },
                 {
                     "name": "id",
+                    "title": "Id",
                     "type": "`$STRING`"
                 },
                 {
-                    "format": "double",
                     "name": "latitude",
+                    "title": "Latitude",
+                    "type": "`$NUMBER`",
                     "short": "Latitude coordinate of the establishment",
-                    "type": "`$NUMBER`"
+                    "format": "double"
                 },
                 {
-                    "format": "double",
                     "name": "longitude",
+                    "title": "Longitude",
+                    "type": "`$NUMBER`",
                     "short": "Longitude coordinate of the establishment",
-                    "type": "`$NUMBER`"
+                    "format": "double"
                 }
             ],
             "id": {
@@ -434,78 +467,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "address",
-                                        "orig": "address",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "business_type_id",
-                                        "orig": "business_type_id",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "latitude",
-                                        "orig": "latitude",
-                                        "type": "`$NUMBER`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "local_authority_id",
-                                        "orig": "local_authority_id",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "longitude",
-                                        "orig": "longitude",
-                                        "type": "`$NUMBER`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "max_distance_limit",
-                                        "orig": "max_distance_limit",
-                                        "type": "`$NUMBER`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "name",
-                                        "orig": "name",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 1,
-                                        "kind": "query",
-                                        "name": "page_number",
-                                        "orig": "page_number",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "example": 10,
-                                        "kind": "query",
-                                        "name": "page_size",
-                                        "orig": "page_size",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "rating_key",
-                                        "orig": "rating_key",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "sort_option_key",
-                                        "orig": "sort_option_key",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/Establishments",
@@ -514,6 +475,86 @@ class Config {
                                     "lit": "Establishments"
                                 }
                             ],
+                            "parts": [
+                                "Establishments"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "address",
+                                        "orig": "address",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "business_type_id",
+                                        "orig": "business_type_id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "latitude",
+                                        "orig": "latitude",
+                                        "type": "`$NUMBER`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "local_authority_id",
+                                        "orig": "local_authority_id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "longitude",
+                                        "orig": "longitude",
+                                        "type": "`$NUMBER`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "max_distance_limit",
+                                        "orig": "max_distance_limit",
+                                        "type": "`$NUMBER`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "name",
+                                        "orig": "name",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "page_number",
+                                        "orig": "page_number",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 1
+                                    },
+                                    {
+                                        "name": "page_size",
+                                        "orig": "page_size",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 10
+                                    },
+                                    {
+                                        "name": "rating_key",
+                                        "orig": "rating_key",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "sort_option_key",
+                                        "orig": "sort_option_key",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "address",
@@ -528,14 +569,7 @@ class Config {
                                     "rating_key",
                                     "sort_option_key"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "Establishments"
-                            ]
+                            }
                         }
                     ]
                 },
@@ -544,17 +578,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/Establishments/{id}",
@@ -566,19 +589,31 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
+                            "parts": [
+                                "Establishments",
+                                "{id}"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body.Geocode`"
                             },
-                            "parts": [
-                                "Establishments",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -591,23 +626,27 @@ class Config {
             "fields": [
                 {
                     "name": "ratingId",
-                    "short": "Unique identifier for the rating",
-                    "type": "`$INTEGER`"
+                    "title": "Rating Id",
+                    "type": "`$INTEGER`",
+                    "short": "Unique identifier for the rating"
                 },
                 {
                     "name": "ratingKey",
-                    "short": "Key for the rating value",
-                    "type": "`$STRING`"
+                    "title": "Rating Key",
+                    "type": "`$STRING`",
+                    "short": "Key for the rating value"
                 },
                 {
                     "name": "ratingName",
-                    "short": "Name of the rating (e.g., '5', '4', 'Pass', 'Exempt')",
-                    "type": "`$STRING`"
+                    "title": "Rating Name",
+                    "type": "`$STRING`",
+                    "short": "Name of the rating (e.g., '5', '4', 'Pass', 'Exempt')"
                 },
                 {
                     "name": "schemeType",
-                    "short": "Scheme type this rating belongs to",
-                    "type": "`$STRING`"
+                    "title": "Scheme Type",
+                    "type": "`$STRING`",
+                    "short": "Scheme type this rating belongs to"
                 }
             ],
             "name": "rating",
@@ -617,7 +656,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/Ratings",
@@ -626,14 +664,16 @@ class Config {
                                     "lit": "Ratings"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "Ratings"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body.ratings`"
                             },
-                            "parts": [
-                                "Ratings"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 }

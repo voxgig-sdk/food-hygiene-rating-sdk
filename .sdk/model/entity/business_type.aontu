@@ -1,0 +1,53 @@
+# Entity: business_type
+
+main: kit: entity: business_type: {
+
+  alias: field: {}
+
+  fields: {
+    BusinessTypeId: {
+      h: "Business Type Id"
+      n: "BusinessTypeId"
+      r: false
+      sh: "Unique identifier for the business type"
+      t: "`$INTEGER`"
+    }
+    BusinessTypeName: {
+      h: "Business Type Name"
+      n: "BusinessTypeName"
+      r: false
+      sh: "Name of the business type (e.g., Restaurant/Cafe/Canteen, Pub/bar/nightclub, Takeaway/sandwich shop)"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "business_type"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /BusinessTypes"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/BusinessTypes"
+          s: [
+            {
+              lit: "BusinessTypes"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.businessTypes`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

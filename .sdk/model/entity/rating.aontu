@@ -1,0 +1,67 @@
+# Entity: rating
+
+main: kit: entity: rating: {
+
+  alias: field: {}
+
+  fields: {
+    ratingId: {
+      h: "Rating Id"
+      n: "ratingId"
+      r: false
+      sh: "Unique identifier for the rating"
+      t: "`$INTEGER`"
+    }
+    ratingKey: {
+      h: "Rating Key"
+      n: "ratingKey"
+      r: false
+      sh: "Key for the rating value"
+      t: "`$STRING`"
+    }
+    ratingName: {
+      h: "Rating Name"
+      n: "ratingName"
+      r: false
+      sh: "Name of the rating (e.g., '5', '4', 'Pass', 'Exempt')"
+      t: "`$STRING`"
+    }
+    schemeType: {
+      h: "Scheme Type"
+      n: "schemeType"
+      r: false
+      sh: "Scheme type this rating belongs to"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "rating"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /Ratings"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/Ratings"
+          s: [
+            {
+              lit: "Ratings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.ratings`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -19,7 +19,6 @@ import type {
   BusinessTypeListMatch,
 } from '../FoodHygieneRatingTypes'
 
-// TODO: needs Entity superclass
 class BusinessTypeEntity extends FoodHygieneRatingEntityBase<BusinessType> {
 
   constructor(client: FoodHygieneRatingSDK, entopts: any) {

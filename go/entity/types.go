@@ -1,7 +1,7 @@
 // Typed models for the FoodHygieneRating SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,18 +14,6 @@ import (
 
 // Authority is the typed data model for the authority entity.
 type Authority struct {
-	Email *string `json:"Email,omitempty"`
-	EstablishmentCount *int `json:"EstablishmentCount,omitempty"`
-	FileName *string `json:"FileName,omitempty"`
-	FileNameWelsh *string `json:"FileNameWelsh,omitempty"`
-	FriendlyName *string `json:"FriendlyName,omitempty"`
-	LocalAuthorityId *int `json:"LocalAuthorityId,omitempty"`
-	LocalAuthorityIdCode *string `json:"LocalAuthorityIdCode,omitempty"`
-	Name *string `json:"Name,omitempty"`
-	RegionName *string `json:"RegionName,omitempty"`
-	SchemeUrl *string `json:"SchemeUrl,omitempty"`
-	Url *string `json:"Url,omitempty"`
-	Id *string `json:"id,omitempty"`
 }
 
 // AuthorityLoadMatch is the typed request payload for Authority.LoadTyped.
@@ -51,8 +39,6 @@ type AuthorityListMatch struct {
 
 // BusinessType is the typed data model for the business_type entity.
 type BusinessType struct {
-	BusinessTypeId *int `json:"BusinessTypeId,omitempty"`
-	BusinessTypeName *string `json:"BusinessTypeName,omitempty"`
 }
 
 // BusinessTypeListMatch is the typed request payload for BusinessType.ListTyped.
@@ -63,29 +49,6 @@ type BusinessTypeListMatch struct {
 
 // Establishment is the typed data model for the establishment entity.
 type Establishment struct {
-	AddressLine1 *string `json:"AddressLine1,omitempty"`
-	AddressLine2 *string `json:"AddressLine2,omitempty"`
-	AddressLine3 *string `json:"AddressLine3,omitempty"`
-	AddressLine4 *string `json:"AddressLine4,omitempty"`
-	BusinessName *string `json:"BusinessName,omitempty"`
-	BusinessType *string `json:"BusinessType,omitempty"`
-	BusinessTypeID *int `json:"BusinessTypeID,omitempty"`
-	FHRSID *int `json:"FHRSID,omitempty"`
-	Geocode *map[string]any `json:"Geocode,omitempty"`
-	LocalAuthorityBusinessID *string `json:"LocalAuthorityBusinessID,omitempty"`
-	LocalAuthorityCode *string `json:"LocalAuthorityCode,omitempty"`
-	LocalAuthorityEmailAddress *string `json:"LocalAuthorityEmailAddress,omitempty"`
-	LocalAuthorityName *string `json:"LocalAuthorityName,omitempty"`
-	LocalAuthorityWebSite *string `json:"LocalAuthorityWebSite,omitempty"`
-	NewRatingPending *bool `json:"NewRatingPending,omitempty"`
-	PostCode *string `json:"PostCode,omitempty"`
-	RatingDate *string `json:"RatingDate,omitempty"`
-	RatingKey *string `json:"RatingKey,omitempty"`
-	RatingValue *string `json:"RatingValue,omitempty"`
-	SchemeType *string `json:"SchemeType,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Latitude *float64 `json:"latitude,omitempty"`
-	Longitude *float64 `json:"longitude,omitempty"`
 }
 
 // EstablishmentLoadMatch is the typed request payload for Establishment.LoadTyped.
@@ -110,10 +73,6 @@ type EstablishmentListMatch struct {
 
 // Rating is the typed data model for the rating entity.
 type Rating struct {
-	RatingId *int `json:"ratingId,omitempty"`
-	RatingKey *string `json:"ratingKey,omitempty"`
-	RatingName *string `json:"ratingName,omitempty"`
-	SchemeType *string `json:"schemeType,omitempty"`
 }
 
 // RatingListMatch is the typed request payload for Rating.ListTyped.

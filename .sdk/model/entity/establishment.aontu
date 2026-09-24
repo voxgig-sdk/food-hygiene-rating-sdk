@@ -1,0 +1,348 @@
+# Entity: establishment
+
+main: kit: entity: establishment: {
+
+  alias: field: {}
+
+  fields: {
+    AddressLine1: {
+      h: "Address Line1"
+      n: "AddressLine1"
+      r: false
+      sh: "First line of the address"
+      t: "`$STRING`"
+    }
+    AddressLine2: {
+      h: "Address Line2"
+      n: "AddressLine2"
+      r: false
+      sh: "Second line of the address"
+      t: "`$STRING`"
+    }
+    AddressLine3: {
+      h: "Address Line3"
+      n: "AddressLine3"
+      r: false
+      sh: "Third line of the address"
+      t: "`$STRING`"
+    }
+    AddressLine4: {
+      h: "Address Line4"
+      n: "AddressLine4"
+      r: false
+      sh: "Fourth line of the address"
+      t: "`$STRING`"
+    }
+    BusinessName: {
+      h: "Business Name"
+      n: "BusinessName"
+      r: false
+      sh: "Name of the food establishment"
+      t: "`$STRING`"
+    }
+    BusinessType: {
+      h: "Business Type"
+      n: "BusinessType"
+      r: false
+      sh: "Type of food business (e.g., Restaurant, Pub, Café, Takeaway)"
+      t: "`$STRING`"
+    }
+    BusinessTypeID: {
+      h: "Business Type Id"
+      n: "BusinessTypeID"
+      r: false
+      sh: "Unique identifier for the business type"
+      t: "`$INTEGER`"
+    }
+    FHRSID: {
+      h: "Fhrsid"
+      n: "FHRSID"
+      r: false
+      sh: "Unique identifier for the establishment in the FHRS system"
+      t: "`$INTEGER`"
+    }
+    Geocode: {
+      h: "Geocode"
+      n: "Geocode"
+      r: false
+      t: "`$OBJECT`"
+    }
+    LocalAuthorityBusinessID: {
+      h: "Local Authority Business Id"
+      n: "LocalAuthorityBusinessID"
+      r: false
+      sh: "Business ID assigned by the local authority"
+      t: "`$STRING`"
+    }
+    LocalAuthorityCode: {
+      h: "Local Authority Code"
+      n: "LocalAuthorityCode"
+      r: false
+      sh: "Code for the local authority"
+      t: "`$STRING`"
+    }
+    LocalAuthorityEmailAddress: {
+      fo: "email"
+      h: "Local Authority Email Address"
+      n: "LocalAuthorityEmailAddress"
+      r: false
+      sh: "Email address of the local authority"
+      t: "`$STRING`"
+    }
+    LocalAuthorityName: {
+      h: "Local Authority Name"
+      n: "LocalAuthorityName"
+      r: false
+      sh: "Name of the local authority"
+      t: "`$STRING`"
+    }
+    LocalAuthorityWebSite: {
+      fo: "uri"
+      h: "Local Authority Web Site"
+      n: "LocalAuthorityWebSite"
+      r: false
+      sh: "Website of the local authority"
+      t: "`$STRING`"
+    }
+    NewRatingPending: {
+      h: "New Rating Pending"
+      n: "NewRatingPending"
+      r: false
+      sh: "Indicates if a new rating is pending"
+      t: "`$BOOLEAN`"
+    }
+    PostCode: {
+      h: "Post Code"
+      n: "PostCode"
+      r: false
+      sh: "Postcode of the establishment"
+      t: "`$STRING`"
+    }
+    RatingDate: {
+      fo: "date"
+      h: "Rating Date"
+      n: "RatingDate"
+      r: false
+      sh: "Date the rating was issued"
+      t: "`$STRING`"
+    }
+    RatingKey: {
+      h: "Rating Key"
+      n: "RatingKey"
+      r: false
+      sh: "Key for the rating value"
+      t: "`$STRING`"
+    }
+    RatingValue: {
+      h: "Rating Value"
+      n: "RatingValue"
+      r: false
+      sh: "The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS)"
+      t: "`$STRING`"
+    }
+    SchemeType: {
+      h: "Scheme Type"
+      n: "SchemeType"
+      r: false
+      sh: "Type of scheme (FHRS or FHIS)"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    latitude: {
+      fo: "double"
+      h: "Latitude"
+      n: "latitude"
+      r: false
+      sh: "Latitude coordinate of the establishment"
+      t: "`$NUMBER`"
+    }
+    longitude: {
+      fo: "double"
+      h: "Longitude"
+      n: "longitude"
+      r: false
+      sh: "Longitude coordinate of the establishment"
+      t: "`$NUMBER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "establishment"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /Establishments"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "address"
+                or: "address"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "business_type_id"
+                or: "business_type_id"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "latitude"
+                or: "latitude"
+                r: false
+                t: "`$NUMBER`"
+              }
+              {
+                k: "query"
+                n: "local_authority_id"
+                or: "local_authority_id"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "longitude"
+                or: "longitude"
+                r: false
+                t: "`$NUMBER`"
+              }
+              {
+                k: "query"
+                n: "max_distance_limit"
+                or: "max_distance_limit"
+                r: false
+                t: "`$NUMBER`"
+              }
+              {
+                k: "query"
+                n: "name"
+                or: "name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page_number"
+                or: "page_number"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 10
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "rating_key"
+                or: "rating_key"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "sort_option_key"
+                or: "sort_option_key"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/Establishments"
+          q: {
+            exist: [
+              "address"
+              "business_type_id"
+              "latitude"
+              "local_authority_id"
+              "longitude"
+              "max_distance_limit"
+              "name"
+              "page_number"
+              "page_size"
+              "rating_key"
+              "sort_option_key"
+            ]
+          }
+          s: [
+            {
+              lit: "Establishments"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /Establishments/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/Establishments/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "Establishments"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.Geocode`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

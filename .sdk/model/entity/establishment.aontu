@@ -153,22 +153,6 @@ main: kit: entity: establishment: {
       r: false
       t: "`$STRING`"
     }
-    latitude: {
-      fo: "double"
-      h: "Latitude"
-      n: "latitude"
-      r: false
-      sh: "Latitude coordinate of the establishment"
-      t: "`$NUMBER`"
-    }
-    longitude: {
-      fo: "double"
-      h: "Longitude"
-      n: "longitude"
-      r: false
-      sh: "Longitude coordinate of the establishment"
-      t: "`$NUMBER`"
-    }
   }
 
   id: {
@@ -199,7 +183,7 @@ main: kit: entity: establishment: {
               {
                 k: "query"
                 n: "business_type_id"
-                or: "business_type_id"
+                or: "businessTypeId"
                 r: false
                 t: "`$INTEGER`"
               }
@@ -213,7 +197,7 @@ main: kit: entity: establishment: {
               {
                 k: "query"
                 n: "local_authority_id"
-                or: "local_authority_id"
+                or: "localAuthorityId"
                 r: false
                 t: "`$INTEGER`"
               }
@@ -227,7 +211,7 @@ main: kit: entity: establishment: {
               {
                 k: "query"
                 n: "max_distance_limit"
-                or: "max_distance_limit"
+                or: "maxDistanceLimit"
                 r: false
                 t: "`$NUMBER`"
               }
@@ -242,7 +226,7 @@ main: kit: entity: establishment: {
                 ex: 1
                 k: "query"
                 n: "page_number"
-                or: "page_number"
+                or: "pageNumber"
                 r: false
                 t: "`$INTEGER`"
               }
@@ -250,21 +234,21 @@ main: kit: entity: establishment: {
                 ex: 10
                 k: "query"
                 n: "page_size"
-                or: "page_size"
+                or: "pageSize"
                 r: false
                 t: "`$INTEGER`"
               }
               {
                 k: "query"
                 n: "rating_key"
-                or: "rating_key"
+                or: "ratingKey"
                 r: false
                 t: "`$STRING`"
               }
               {
                 k: "query"
                 n: "sort_option_key"
-                or: "sort_option_key"
+                or: "sortOptionKey"
                 r: false
                 t: "`$STRING`"
               }
@@ -294,7 +278,7 @@ main: kit: entity: establishment: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.establishments`"
           }
         }
       ]
@@ -336,7 +320,7 @@ main: kit: entity: establishment: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.Geocode`"
+            res: "`body`"
           }
         }
       ]

@@ -250,8 +250,6 @@ establishment = client.Establishment
 | `RatingValue` | `String` | No | The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS) |
 | `SchemeType` | `String` | No | Type of scheme (FHRS or FHIS) |
 | `id` | `String` | No |  |
-| `latitude` | `Float` | No | Latitude coordinate of the establishment |
-| `longitude` | `Float` | No | Longitude coordinate of the establishment |
 
 ### Operations
 

@@ -312,8 +312,6 @@ API path: `/BusinessTypes`
 | `RatingValue` | The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS) |
 | `SchemeType` | Type of scheme (FHRS or FHIS) |
 | `id` |  |
-| `latitude` | Latitude coordinate of the establishment |
-| `longitude` | Longitude coordinate of the establishment |
 
 Operations: List, Load.
 
@@ -438,8 +436,6 @@ Create an instance: `establishment = client.Establishment()`
 | `RatingValue` | `str` | The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS) |
 | `SchemeType` | `str` | Type of scheme (FHRS or FHIS) |
 | `id` | `str` |  |
-| `latitude` | `float` | Latitude coordinate of the establishment |
-| `longitude` | `float` | Longitude coordinate of the establishment |
 
 #### Example: Load
 

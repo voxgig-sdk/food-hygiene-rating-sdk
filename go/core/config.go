@@ -425,20 +425,6 @@ func MakeConfig() map[string]any {
 						"title": "Id",
 						"type": "`$STRING`",
 					},
-					map[string]any{
-						"name": "latitude",
-						"title": "Latitude",
-						"type": "`$NUMBER`",
-						"short": "Latitude coordinate of the establishment",
-						"format": "double",
-					},
-					map[string]any{
-						"name": "longitude",
-						"title": "Longitude",
-						"type": "`$NUMBER`",
-						"short": "Longitude coordinate of the establishment",
-						"format": "double",
-					},
 				},
 				"id": map[string]any{
 					"field": "id",
@@ -465,7 +451,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.establishments`",
 								},
 								"args": map[string]any{
 									"query": []any{
@@ -477,7 +463,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "business_type_id",
-											"orig": "business_type_id",
+											"orig": "businessTypeId",
 											"type": "`$INTEGER`",
 											"kind": "query",
 										},
@@ -489,7 +475,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "local_authority_id",
-											"orig": "local_authority_id",
+											"orig": "localAuthorityId",
 											"type": "`$INTEGER`",
 											"kind": "query",
 										},
@@ -501,7 +487,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "max_distance_limit",
-											"orig": "max_distance_limit",
+											"orig": "maxDistanceLimit",
 											"type": "`$NUMBER`",
 											"kind": "query",
 										},
@@ -513,27 +499,27 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "page_number",
-											"orig": "page_number",
+											"orig": "pageNumber",
 											"type": "`$INTEGER`",
 											"kind": "query",
 											"example": 1,
 										},
 										map[string]any{
 											"name": "page_size",
-											"orig": "page_size",
+											"orig": "pageSize",
 											"type": "`$INTEGER`",
 											"kind": "query",
 											"example": 10,
 										},
 										map[string]any{
 											"name": "rating_key",
-											"orig": "rating_key",
+											"orig": "ratingKey",
 											"type": "`$STRING`",
 											"kind": "query",
 										},
 										map[string]any{
 											"name": "sort_option_key",
-											"orig": "sort_option_key",
+											"orig": "sortOptionKey",
 											"type": "`$STRING`",
 											"kind": "query",
 										},
@@ -580,7 +566,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body.Geocode`",
+									"res": "`body`",
 								},
 								"args": map[string]any{
 									"params": []any{

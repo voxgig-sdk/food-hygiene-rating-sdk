@@ -82,8 +82,6 @@ class Establishment(TypedDict, total=False):
     RatingValue: str
     SchemeType: str
     id: str
-    latitude: float
-    longitude: float
 
 
 class EstablishmentLoadMatch(TypedDict):

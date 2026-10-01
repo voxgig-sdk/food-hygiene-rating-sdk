@@ -12,9 +12,14 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `$
 
 ## Install
 This package is not yet published to Packagist. Install it from the
-GitHub release tag (`php/vX.Y.Z`):
+GitHub release tag (`php/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/food-hygiene-rating-sdk/releases)), or
+from a clone as a Composer path repository:
 
-- Releases: [https://github.com/voxgig-sdk/food-hygiene-rating-sdk/releases](https://github.com/voxgig-sdk/food-hygiene-rating-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/food-hygiene-rating-sdk
+composer config repositories.food-hygiene-rating-sdk path ./food-hygiene-rating-sdk/php
+composer require voxgig-sdk/food-hygiene-rating-sdk:@dev
+```
 
 
 ## Tutorial: your first API call
@@ -320,8 +325,6 @@ API path: `/BusinessTypes`
 | `RatingValue` | The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS) |
 | `SchemeType` | Type of scheme (FHRS or FHIS) |
 | `id` |  |
-| `latitude` | Latitude coordinate of the establishment |
-| `longitude` | Longitude coordinate of the establishment |
 
 Operations: List, Load.
 
@@ -449,8 +452,6 @@ Create an instance: `$establishment = $client->Establishment();`
 | `RatingValue` | `string` | The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS) |
 | `SchemeType` | `string` | Type of scheme (FHRS or FHIS) |
 | `id` | `string` |  |
-| `latitude` | `float` | Latitude coordinate of the establishment |
-| `longitude` | `float` | Longitude coordinate of the establishment |
 
 #### Example: Load
 

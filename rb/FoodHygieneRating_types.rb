@@ -213,12 +213,6 @@ BusinessTypeListMatch = Struct.new(
 #
 # @!attribute [rw] id
 #   @return [String, nil]
-#
-# @!attribute [rw] latitude
-#   @return [Float, nil]
-#
-# @!attribute [rw] longitude
-#   @return [Float, nil]
 Establishment = Struct.new(
   :AddressLine1,
   :AddressLine2,
@@ -241,8 +235,6 @@ Establishment = Struct.new(
   :RatingValue,
   :SchemeType,
   :id,
-  :latitude,
-  :longitude,
   keyword_init: true
 )
 

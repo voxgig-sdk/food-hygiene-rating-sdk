@@ -67,8 +67,6 @@
 ---@field RatingValue? string
 ---@field SchemeType? string
 ---@field id? string
----@field latitude? number
----@field longitude? number
 
 ---@class EstablishmentLoadMatch
 ---@field id number

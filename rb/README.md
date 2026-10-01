@@ -12,9 +12,18 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `c
 
 ## Install
 This package is not yet published to RubyGems. Install it from the
-GitHub release tag (`rb/vX.Y.Z`):
+GitHub release tag (`rb/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/food-hygiene-rating-sdk/releases)), or
+from a clone:
 
-- Releases: [https://github.com/voxgig-sdk/food-hygiene-rating-sdk/releases](https://github.com/voxgig-sdk/food-hygiene-rating-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/food-hygiene-rating-sdk
+```
+
+Then add it to your `Gemfile` by path, and run `bundle install`:
+
+```ruby
+gem "voxgig-sdk-food-hygiene-rating-sdk", path: "./food-hygiene-rating-sdk/rb"
+```
 
 
 ## Tutorial: your first API call
@@ -309,8 +318,6 @@ API path: `/BusinessTypes`
 | `RatingValue` | The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS) |
 | `SchemeType` | Type of scheme (FHRS or FHIS) |
 | `id` |  |
-| `latitude` | Latitude coordinate of the establishment |
-| `longitude` | Longitude coordinate of the establishment |
 
 Operations: List, Load.
 
@@ -438,8 +445,6 @@ Create an instance: `establishment = client.Establishment`
 | `RatingValue` | `String` | The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS) |
 | `SchemeType` | `String` | Type of scheme (FHRS or FHIS) |
 | `id` | `String` |  |
-| `latitude` | `Float` | Latitude coordinate of the establishment |
-| `longitude` | `Float` | Longitude coordinate of the establishment |
 
 #### Example: Load
 

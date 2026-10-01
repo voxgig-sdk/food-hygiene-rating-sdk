@@ -516,24 +516,6 @@
               "n": "id",
               "r": false,
               "t": "`$STRING`"
-            },
-            "latitude": {
-              "a": true,
-              "fo": "double",
-              "h": "Latitude",
-              "n": "latitude",
-              "r": false,
-              "sh": "Latitude coordinate of the establishment",
-              "t": "`$NUMBER`"
-            },
-            "longitude": {
-              "a": true,
-              "fo": "double",
-              "h": "Longitude",
-              "n": "longitude",
-              "r": false,
-              "sh": "Longitude coordinate of the establishment",
-              "t": "`$NUMBER`"
             }
           },
           "id": {
@@ -567,7 +549,7 @@
                         "a": true,
                         "k": "query",
                         "n": "business_type_id",
-                        "or": "business_type_id",
+                        "or": "businessTypeId",
                         "r": false,
                         "t": "`$INTEGER`"
                       },
@@ -583,7 +565,7 @@
                         "a": true,
                         "k": "query",
                         "n": "local_authority_id",
-                        "or": "local_authority_id",
+                        "or": "localAuthorityId",
                         "r": false,
                         "t": "`$INTEGER`"
                       },
@@ -599,7 +581,7 @@
                         "a": true,
                         "k": "query",
                         "n": "max_distance_limit",
-                        "or": "max_distance_limit",
+                        "or": "maxDistanceLimit",
                         "r": false,
                         "t": "`$NUMBER`"
                       },
@@ -616,7 +598,7 @@
                         "ex": 1,
                         "k": "query",
                         "n": "page_number",
-                        "or": "page_number",
+                        "or": "pageNumber",
                         "r": false,
                         "t": "`$INTEGER`"
                       },
@@ -625,7 +607,7 @@
                         "ex": 10,
                         "k": "query",
                         "n": "page_size",
-                        "or": "page_size",
+                        "or": "pageSize",
                         "r": false,
                         "t": "`$INTEGER`"
                       },
@@ -633,7 +615,7 @@
                         "a": true,
                         "k": "query",
                         "n": "rating_key",
-                        "or": "rating_key",
+                        "or": "ratingKey",
                         "r": false,
                         "t": "`$STRING`"
                       },
@@ -641,7 +623,7 @@
                         "a": true,
                         "k": "query",
                         "n": "sort_option_key",
-                        "or": "sort_option_key",
+                        "or": "sortOptionKey",
                         "r": false,
                         "t": "`$STRING`"
                       }
@@ -673,7 +655,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.establishments`"
                   }
                 }
               ]
@@ -720,7 +702,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body.Geocode`"
+                    "res": "`body`"
                   }
                 }
               ]
@@ -1401,7 +1383,12 @@
         },
         "base": "http://localhost:8000",
         "clean": {
-          "keys": "key,token,id"
+          "active": true,
+          "hint": "0",
+          "keys": "key,secret,token,password,passwd,authorization,cookie,credential,signature",
+          "mask": "[redacted]",
+          "min": "4",
+          "values": ""
         },
         "entity": {
           "`$CHILD`": {

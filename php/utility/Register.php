@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 FoodHygieneRatingUtility::setRegistrar(function (FoodHygieneRatingUtility $u): void {
     $u->clean = [FoodHygieneRatingClean::class, 'call'];
+    $u->clean_add = [FoodHygieneRatingClean::class, 'add'];
+    $u->clean_explain = [FoodHygieneRatingDone::class, 'clean_explain'];
     $u->done = [FoodHygieneRatingDone::class, 'call'];
     $u->make_error = [FoodHygieneRatingMakeError::class, 'call'];
     $u->feature_add = [FoodHygieneRatingFeatureAdd::class, 'call'];

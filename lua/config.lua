@@ -421,20 +421,6 @@ local function make_config()
             ["title"] = "Id",
             ["type"] = "`$STRING`",
           },
-          {
-            ["name"] = "latitude",
-            ["title"] = "Latitude",
-            ["type"] = "`$NUMBER`",
-            ["short"] = "Latitude coordinate of the establishment",
-            ["format"] = "double",
-          },
-          {
-            ["name"] = "longitude",
-            ["title"] = "Longitude",
-            ["type"] = "`$NUMBER`",
-            ["short"] = "Longitude coordinate of the establishment",
-            ["format"] = "double",
-          },
         },
         ["id"] = {
           ["field"] = "id",
@@ -461,7 +447,7 @@ local function make_config()
                 ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.establishments`",
                 },
                 ["args"] = {
                   ["query"] = {
@@ -473,7 +459,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "business_type_id",
-                      ["orig"] = "business_type_id",
+                      ["orig"] = "businessTypeId",
                       ["type"] = "`$INTEGER`",
                       ["kind"] = "query",
                     },
@@ -485,7 +471,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "local_authority_id",
-                      ["orig"] = "local_authority_id",
+                      ["orig"] = "localAuthorityId",
                       ["type"] = "`$INTEGER`",
                       ["kind"] = "query",
                     },
@@ -497,7 +483,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "max_distance_limit",
-                      ["orig"] = "max_distance_limit",
+                      ["orig"] = "maxDistanceLimit",
                       ["type"] = "`$NUMBER`",
                       ["kind"] = "query",
                     },
@@ -509,27 +495,27 @@ local function make_config()
                     },
                     {
                       ["name"] = "page_number",
-                      ["orig"] = "page_number",
+                      ["orig"] = "pageNumber",
                       ["type"] = "`$INTEGER`",
                       ["kind"] = "query",
                       ["example"] = 1,
                     },
                     {
                       ["name"] = "page_size",
-                      ["orig"] = "page_size",
+                      ["orig"] = "pageSize",
                       ["type"] = "`$INTEGER`",
                       ["kind"] = "query",
                       ["example"] = 10,
                     },
                     {
                       ["name"] = "rating_key",
-                      ["orig"] = "rating_key",
+                      ["orig"] = "ratingKey",
                       ["type"] = "`$STRING`",
                       ["kind"] = "query",
                     },
                     {
                       ["name"] = "sort_option_key",
-                      ["orig"] = "sort_option_key",
+                      ["orig"] = "sortOptionKey",
                       ["type"] = "`$STRING`",
                       ["kind"] = "query",
                     },
@@ -576,7 +562,7 @@ local function make_config()
                 ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body.Geocode`",
+                  ["res"] = "`body`",
                 },
                 ["args"] = {
                   ["params"] = {

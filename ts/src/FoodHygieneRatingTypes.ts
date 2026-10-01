@@ -71,8 +71,6 @@ export interface Establishment {
   RatingValue?: string
   SchemeType?: string
   id?: string
-  latitude?: number
-  longitude?: number
 }
 
 export interface EstablishmentLoadMatch {

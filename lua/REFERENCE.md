@@ -247,8 +247,6 @@ local establishment = client:Establishment(nil)
 | `RatingValue` | `string` | No | The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS) |
 | `SchemeType` | `string` | No | Type of scheme (FHRS or FHIS) |
 | `id` | `string` | No |  |
-| `latitude` | `number` | No | Latitude coordinate of the establishment |
-| `longitude` | `number` | No | Longitude coordinate of the establishment |
 
 ### Operations
 

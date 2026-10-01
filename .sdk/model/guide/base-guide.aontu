@@ -28,10 +28,10 @@ guide: {
   entity: establishment: {
     path: "/Establishments": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.establishments`")|top
     }
     path: "/Establishments/{id}": {
       op: load: method: *GET
-      op: load: transform: res: *("`body.Geocode`")|top
     }
   }
 

@@ -15,9 +15,13 @@ predictable and low-friction for both humans and AI agents.
 
 ## Install
 This package is not yet published to npm. Install it from the GitHub
-release tag (`ts/vX.Y.Z`):
+release tag (`ts/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/food-hygiene-rating-sdk/releases)), or from a
+clone, which carries the compiled `dist/`:
 
-- Releases: [https://github.com/voxgig-sdk/food-hygiene-rating-sdk/releases](https://github.com/voxgig-sdk/food-hygiene-rating-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/food-hygiene-rating-sdk
+npm install ./food-hygiene-rating-sdk/ts
+```
 
 
 ## Tutorial: your first API call
@@ -363,8 +367,6 @@ API path: `/BusinessTypes`
 | `RatingValue` | The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS) |
 | `SchemeType` | Type of scheme (FHRS or FHIS) |
 | `id` |  |
-| `latitude` | Latitude coordinate of the establishment |
-| `longitude` | Longitude coordinate of the establishment |
 
 Operations: list, load.
 
@@ -489,8 +491,6 @@ Create an instance: `const establishment = client.Establishment()`
 | `RatingValue` | `string` | The food hygiene rating (0-5 for FHRS, Pass/Improvement Required/Exempt for FHIS) |
 | `SchemeType` | `string` | Type of scheme (FHRS or FHIS) |
 | `id` | `string` |  |
-| `latitude` | `number` | Latitude coordinate of the establishment |
-| `longitude` | `number` | Longitude coordinate of the establishment |
 
 #### Example: Load
 

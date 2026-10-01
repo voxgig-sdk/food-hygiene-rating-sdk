@@ -90,8 +90,6 @@ class Establishment
     public ?string $RatingValue = null;
     public ?string $SchemeType = null;
     public ?string $id = null;
-    public ?float $latitude = null;
-    public ?float $longitude = null;
 }
 
 /** Request payload for Establishment#load. */

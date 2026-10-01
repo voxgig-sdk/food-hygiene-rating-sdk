@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 FoodHygieneRatingUtility.registrar = ->(u) {
   u.clean = FoodHygieneRatingUtilities::Clean
+  u.clean_add = FoodHygieneRatingUtilities::CleanAdd
+  u.clean_explain = FoodHygieneRatingUtilities::CleanExplain
   u.done = FoodHygieneRatingUtilities::Done
   u.make_error = FoodHygieneRatingUtilities::MakeError
   u.feature_add = FoodHygieneRatingUtilities::FeatureAdd

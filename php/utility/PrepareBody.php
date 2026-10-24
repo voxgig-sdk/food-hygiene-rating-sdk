@@ -3,11 +3,16 @@ declare(strict_types=1);
 
 // FoodHygieneRating SDK utility: prepare_body
 
+require_once __DIR__ . '/Media.php';
+
 class FoodHygieneRatingPrepareBody
 {
     public static function call(FoodHygieneRatingContext $ctx): mixed
     {
         if ($ctx->op->input === 'data') {
+            if (FoodHygieneRatingMedia::isRawRequest($ctx->point)) {
+                return FoodHygieneRatingMedia::rawBody($ctx->reqdata);
+            }
             $body = ($ctx->utility->transform_request)($ctx);
             // PHP cannot tell an empty map from an empty list, and this
             // vendored struct answers [] where the canonical transform

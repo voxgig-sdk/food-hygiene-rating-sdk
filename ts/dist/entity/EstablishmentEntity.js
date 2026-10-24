@@ -84,9 +84,12 @@ class EstablishmentEntity extends FoodHygieneRatingEntityBase_1.FoodHygieneRatin
         catch (err) {
             // What a hook throws here must not escape the cleaning below.
             try {
-                fres = featureHook(ctx, 'PreUnexpected');
-                if (fres instanceof Promise) {
-                    await fres;
+                // Once per operation: makeError fires it for its own error.
+                if (!ctx.unexpectedFired) {
+                    fres = featureHook(ctx, 'PreUnexpected');
+                    if (fres instanceof Promise) {
+                        await fres;
+                    }
                 }
             }
             catch (hookerr) {
@@ -98,7 +101,7 @@ class EstablishmentEntity extends FoodHygieneRatingEntityBase_1.FoodHygieneRatin
             }
             else {
                 // Off-happy-path (throw disabled): typed as any so the method's
-                // Promise<Establishment> return stays clean under strict null checks.
+                // Promise<EstablishmentEntity> return stays clean under strict null checks.
                 return undefined;
             }
         }
@@ -171,9 +174,12 @@ class EstablishmentEntity extends FoodHygieneRatingEntityBase_1.FoodHygieneRatin
         catch (err) {
             // What a hook throws here must not escape the cleaning below.
             try {
-                fres = featureHook(ctx, 'PreUnexpected');
-                if (fres instanceof Promise) {
-                    await fres;
+                // Once per operation: makeError fires it for its own error.
+                if (!ctx.unexpectedFired) {
+                    fres = featureHook(ctx, 'PreUnexpected');
+                    if (fres instanceof Promise) {
+                        await fres;
+                    }
                 }
             }
             catch (hookerr) {
@@ -185,7 +191,7 @@ class EstablishmentEntity extends FoodHygieneRatingEntityBase_1.FoodHygieneRatin
             }
             else {
                 // Off-happy-path (throw disabled): typed as any so the method's
-                // Promise<Establishment[]> return stays clean under strict null checks.
+                // Promise<EstablishmentEntity[]> return stays clean under strict null checks.
                 return undefined;
             }
         }

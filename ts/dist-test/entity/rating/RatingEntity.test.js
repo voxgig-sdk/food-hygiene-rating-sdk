@@ -54,6 +54,53 @@ const utility_1 = require("../../utility");
         const ent = testsdk.Rating();
         (0, node_assert_1.default)(null != ent);
     });
+    class FailHook extends __1.BaseFeature {
+        name = 'failhook';
+        version = '0.0.1';
+        active = true;
+        unexpected = 0;
+        init() { }
+        PreSpec() { throw new Error('rating hook failed'); }
+        PreUnexpected() { this.unexpected++; }
+    }
+    (0, node_test_1.test)('stream-error', async () => {
+        const offline = { net: { offline: true } };
+        await node_assert_1.default.rejects(async () => {
+            for await (const _item of __1.FoodHygieneRatingSDK.test(offline).Rating().stream('list')) { }
+        }, /offline/);
+        for await (const _item of __1.FoodHygieneRatingSDK.test(offline).Rating()
+            .stream('list', undefined, { ctrl: { throw: false } })) { }
+        if (null != __1.config.feature?.rbac) {
+            const denied = __1.FoodHygieneRatingSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } });
+            await node_assert_1.default.rejects(async () => {
+                for await (const _item of denied.Rating().stream('list')) { }
+            }, (err) => 'rbac_denied' === err.code);
+        }
+    });
+    (0, node_test_1.test)('stream-ctrl', async () => {
+        const explain = {};
+        const ctrl = { explain };
+        for await (const _item of __1.FoodHygieneRatingSDK.test().Rating().stream('list', undefined, { ctrl })) { }
+        node_assert_1.default.deepStrictEqual(Object.keys(ctrl), ['explain']);
+        (0, node_assert_1.default)(explain === ctrl.explain && 0 < Object.keys(explain).length);
+    });
+    (0, node_test_1.test)('unexpected', async () => {
+        const hook = new FailHook();
+        const client = new __1.FoodHygieneRatingSDK({ feature: { test: { active: true } }, extend: [hook] });
+        await node_assert_1.default.rejects(client.Rating().list(), /hook failed/);
+        (0, node_assert_1.default)(0 < hook.unexpected);
+        const fired = hook.unexpected;
+        node_assert_1.default.strictEqual(await client.Rating().list(undefined, { throw: false }), undefined);
+        (0, node_assert_1.default)(fired < hook.unexpected);
+    });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.FoodHygieneRatingSDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.Rating().list({ "ratingId": "x" }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.FOOD_HYGIENE_RATING_TEST_LIVE;
         for (const op of ['list']) {
@@ -62,7 +109,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "ratingId": { "a": true, "h": "Rating Id", "n": "ratingId", "r": false, "sh": "Unique identifier for the rating", "t": "`$INTEGER`", "key$": "ratingId", "index$": 0 }, "ratingKey": { "a": true, "h": "Rating Key", "n": "ratingKey", "r": false, "sh": "Key for the rating value", "t": "`$STRING`", "key$": "ratingKey", "index$": 1 }, "ratingName": { "a": true, "h": "Rating Name", "n": "ratingName", "r": false, "sh": "Name of the rating (e.g., '5', '4', 'Pass', 'Exempt')", "t": "`$STRING`", "key$": "ratingName", "index$": 2 }, "schemeType": { "a": true, "h": "Scheme Type", "n": "schemeType", "r": false, "sh": "Scheme type this rating belongs to", "t": "`$STRING`", "key$": "schemeType", "index$": 3 } }, "name": "rating", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /Ratings", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/Ratings", "q": {}, "r": {}, "s": [{ "lit": "Ratings" }], "t": { "req": "`reqdata`", "res": "`body.ratings`" }, "index$": 0 }], "key$": "list" } }, "relations": { "ancestors": [] }, "key$": "rating", "name__orig": "rating", "Name": "Rating", "name_": "rating", "name-": "rating", "NAME": "RATING", "index$": 3 }, { "active": true, "entity": "rating", "key$": "BasicRatingFlow", "kind": "basic", "name": "BasicRatingFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "rating_ref01" } }], "index$": 0 }] }, 'Rating', { "GET /Ratings": { "protocol": "http", "parameters": [] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "ratingId": { "a": true, "h": "Rating Id", "n": "ratingId", "r": false, "sh": "Unique identifier for the rating", "t": "`$INTEGER`", "key$": "ratingId", "index$": 0 }, "ratingKey": { "a": true, "h": "Rating Key", "n": "ratingKey", "r": false, "sh": "Key for the rating value", "t": "`$STRING`", "key$": "ratingKey", "index$": 1 }, "ratingName": { "a": true, "h": "Rating Name", "n": "ratingName", "r": false, "sh": "Name of the rating (e.g., '5', '4', 'Pass', 'Exempt')", "t": "`$STRING`", "key$": "ratingName", "index$": 2 }, "schemeType": { "a": true, "h": "Scheme Type", "n": "schemeType", "r": false, "sh": "Scheme type this rating belongs to", "t": "`$STRING`", "key$": "schemeType", "index$": 3 } }, "name": "rating", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /Ratings", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/Ratings", "q": {}, "r": {}, "rs": { "alternatives": [{ "kind": "raw", "media": "application/xml" }], "kind": "json", "media": "application/json" }, "s": [{ "lit": "Ratings" }], "t": { "req": "`reqdata`", "res": "`body.ratings`" }, "index$": 0 }], "key$": "list" } }, "relations": { "ancestors": [] }, "key$": "rating", "name__orig": "rating", "Name": "Rating", "name_": "rating", "name-": "rating", "NAME": "RATING", "index$": 3 }, { "active": true, "entity": "rating", "key$": "BasicRatingFlow", "kind": "basic", "name": "BasicRatingFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "rating_ref01" } }], "index$": 0 }] }, 'Rating', { "GET /Ratings": { "protocol": "http", "parameters": [] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -75,6 +122,11 @@ const utility_1 = require("../../utility");
         const rating_ref01_list = (await rating_ref01_ent.list(rating_ref01_match)).map((e) => e.data());
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null

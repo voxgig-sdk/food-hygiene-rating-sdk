@@ -256,20 +256,15 @@ main: kit: entity: establishment: {
           }
           m: "GET"
           o: "/Establishments"
-          q: {
-            exist: [
-              "address"
-              "business_type_id"
-              "latitude"
-              "local_authority_id"
-              "longitude"
-              "max_distance_limit"
-              "name"
-              "page_number"
-              "page_size"
-              "rating_key"
-              "sort_option_key"
+          rs: {
+            alternatives: [
+              {
+                kind: "raw"
+                media: "application/xml"
+              }
             ]
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -309,6 +304,16 @@ main: kit: entity: establishment: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            alternatives: [
+              {
+                kind: "raw"
+                media: "application/xml"
+              }
+            ]
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

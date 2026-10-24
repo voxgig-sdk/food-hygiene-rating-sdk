@@ -79,6 +79,7 @@ module FoodHygieneRatingConfig
           },
           "optspec" => {
             "clearTimer" => "`$FUNCTION`",
+            "now" => "`$FUNCTION`",
             "setTimer" => "`$FUNCTION`",
           },
           "strict" => false,
@@ -204,6 +205,16 @@ module FoodHygieneRatingConfig
                   },
                   "args" => {},
                   "select" => {},
+                  "response" => {
+                    "alternatives" => [
+                      {
+                        "kind" => "raw",
+                        "media" => "application/xml",
+                      },
+                    ],
+                    "kind" => "json",
+                    "media" => "application/json",
+                  },
                 },
               ],
             },
@@ -247,6 +258,16 @@ module FoodHygieneRatingConfig
                     "exist" => [
                       "id",
                     ],
+                  },
+                  "response" => {
+                    "alternatives" => [
+                      {
+                        "kind" => "raw",
+                        "media" => "application/xml",
+                      },
+                    ],
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -296,6 +317,16 @@ module FoodHygieneRatingConfig
                   },
                   "args" => {},
                   "select" => {},
+                  "response" => {
+                    "alternatives" => [
+                      {
+                        "kind" => "raw",
+                        "media" => "application/xml",
+                      },
+                    ],
+                    "kind" => "json",
+                    "media" => "application/json",
+                  },
                 },
               ],
             },
@@ -533,20 +564,16 @@ module FoodHygieneRatingConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "address",
-                      "business_type_id",
-                      "latitude",
-                      "local_authority_id",
-                      "longitude",
-                      "max_distance_limit",
-                      "name",
-                      "page_number",
-                      "page_size",
-                      "rating_key",
-                      "sort_option_key",
+                  "select" => {},
+                  "response" => {
+                    "alternatives" => [
+                      {
+                        "kind" => "raw",
+                        "media" => "application/xml",
+                      },
                     ],
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -591,6 +618,16 @@ module FoodHygieneRatingConfig
                     "exist" => [
                       "id",
                     ],
+                  },
+                  "response" => {
+                    "alternatives" => [
+                      {
+                        "kind" => "raw",
+                        "media" => "application/xml",
+                      },
+                    ],
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -652,6 +689,16 @@ module FoodHygieneRatingConfig
                   },
                   "args" => {},
                   "select" => {},
+                  "response" => {
+                    "alternatives" => [
+                      {
+                        "kind" => "raw",
+                        "media" => "application/xml",
+                      },
+                    ],
+                    "kind" => "json",
+                    "media" => "application/json",
+                  },
                 },
               ],
             },

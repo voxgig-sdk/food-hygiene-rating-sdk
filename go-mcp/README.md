@@ -1,10 +1,14 @@
 # food-hygiene-rating-mcp
 
 [MCP](https://modelcontextprotocol.io) server exposing the FoodHygieneRating SDK as
-two agent tools — `food-hygiene-rating_list` and `food-hygiene-rating_load` — built on the
+2 agent tools, `food-hygiene-rating_list` and `food-hygiene-rating_load`, built on the
 [official Go MCP SDK](https://github.com/modelcontextprotocol/go-sdk) and the
 sibling Go SDK at `../go`. Runs over **stdio** (default, for spawnable installs)
 or **streamable HTTP** (one shared server for several agents).
+
+The server only reads. Create, update, patch and remove become tools too when the
+SDK's own model sets `main: kit: target: 'go-mcp': tool: write: true`; they are off by default, as an agent calling
+them changes the API's data.
 
 ## Examples
 
@@ -28,9 +32,8 @@ Tool-call arguments (what an agent sends):
 ```jsonc
 // food-hygiene-rating_list: first page of records
 { "entity": "authority" }
-{ "entity": "authority", "query": { } }
 
-// food-hygiene-rating_load: one record by id
+// food-hygiene-rating_load: one record
 { "entity": "authority", "query": { "id": 1 } }
 ```
 
@@ -59,8 +62,8 @@ Tool-call arguments (what an agent sends):
      -- "$PWD"/dist/*/food-hygiene-rating-mcp -transport stdio
    ```
 
-4. **Restart Claude Code.** The `food-hygiene-rating_list` and `food-hygiene-rating_load` tools now appear
-   in new sessions. Ask the agent to *"list authority using food-hygiene-rating"*
+4. **Restart Claude Code.** The `food-hygiene-rating_list` and `food-hygiene-rating_load` tools now appear in new
+   sessions. Ask the agent to *"list authority using food-hygiene-rating"*
    and it calls `food-hygiene-rating_list` with `{"entity":"authority"}`.
 
 ## How-to guides
@@ -88,8 +91,8 @@ default) spawns a fresh process per client.
 
 ### Call the `food-hygiene-rating_list` tool
 
-Args: `entity` (required), `query` (optional filter map). Returns the first
-page of records as JSON:
+Args: `entity` (required), `query` (optional: optional filter map; omit it for the first page).
+Returns the first page of records as JSON:
 
 ```jsonc
 { "entity": "authority" }
@@ -97,11 +100,19 @@ page of records as JSON:
 
 ### Call the `food-hygiene-rating_load` tool
 
-Args: `entity` (required), `query` = `{"id":N}` (required). Returns the single
-record as JSON:
+Args: `entity` (required), `query` (required: match map naming the record, such as {"id":1}).
+Returns the record as JSON:
 
 ```jsonc
 { "entity": "authority", "query": { "id": 1 } }
+```
+
+### Turn on the write tools
+
+In the SDK's own model (`.sdk/model/sdk.aontu`), then regenerate:
+
+```
+main: kit: target: 'go-mcp': tool: write: true
 ```
 
 ### Cross-compile release binaries
@@ -115,25 +126,28 @@ make build-all   # linux/darwin/windows x amd64/arm64, under dist/<os>-<arch>/
 
 ### Tools
 
-| Tool | Args | Returns |
-|------|------|---------|
-| `food-hygiene-rating_list` | `entity` (required), `query` (optional map) | First page of records as JSON |
-| `food-hygiene-rating_load` | `entity` (required), `query` = `{id:N}` | Single record as JSON |
+| Tool | Args | Returns | MCP hints |
+|------|------|---------|-----------|
+| `food-hygiene-rating_list` | `entity`, `query` (optional map) | The first page of records as JSON | read-only |
+| `food-hygiene-rating_load` | `entity`, `query` (required map) | The record as JSON | read-only |
 
 On error, a tool returns an MCP error result (`isError: true`) whose text is the
 failure message (e.g. unknown entity, or an API error).
 
-### `Args` schema
+### Entities
 
-Both tools take the same argument object:
+Each tool takes as its `entity` argument one of the entities that has its
+operation, of the 4 the SDK has:
 
-| Field | Type | Notes |
-|-------|------|-------|
-| `entity` | string | One of the 4 supported entities (see below). |
-| `query` | object | Optional match map. `{"id":N}` for load; omit or `{}` for list. |
+| Tool | Entities |
+|------|----------|
+| `food-hygiene-rating_list` | authority, business_type, establishment, rating |
+| `food-hygiene-rating_load` | authority, establishment |
 
-JSON schemas are emitted by the SDK from the `Args` struct's `json` /
-`jsonschema` tags — no schema is hand-written.
+JSON schemas are emitted by the SDK from each tool's argument struct's
+`json` / `jsonschema` tags — no schema is hand-written. Each tool's
+`entity` is an `enum` of the entities in its row, so the server refuses
+any other before it runs a call.
 
 ### Transports & flags
 
@@ -148,12 +162,6 @@ JSON schemas are emitted by the SDK from the `Args` struct's `json` /
 |----------|---------|
 | `FOOD_HYGIENE_RATING_APIKEY` | API key sent with every request. |
 | `FOOD_HYGIENE_RATING_BASE` | Optional override of the API base URL. |
-
-### Entities
-
-The 4 entities valid as the `entity` argument:
-
-authority | business_type | establishment | rating
 
 ### Smoke test via HTTP (raw JSON-RPC)
 
@@ -173,7 +181,7 @@ curl -sN -X POST http://localhost:18080 \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json, text/event-stream' \
   -H "Mcp-Session-Id: $SESSION" \
-  -d '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"food-hygiene-rating_load","arguments":{"entity":"authority","query":{"id":1}}}}'
+  -d '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"food-hygiene-rating_list","arguments":{"entity":"authority"}}}'
 ```
 
 ## Explanation
@@ -181,9 +189,10 @@ curl -sN -X POST http://localhost:18080 \
 ### How tools map to the SDK
 
 `main.go` builds the SDK client (configured from the environment) and registers
-two tools. Each dispatches on the `entity` argument to the matching entity in
-the sibling Go SDK at `../go`, calls `List` or `Load`, unwraps the `Entity`
-wrappers to plain data, and returns it as pretty-printed JSON.
+one tool per operation the SDK's entities have. Each dispatches on the
+`entity` argument to the matching entity in the sibling Go SDK at `../go`,
+calls its operation, unwraps the `Entity` wrappers to plain data, and returns
+it as pretty-printed JSON.
 
 ### Why two transports
 
@@ -193,9 +202,10 @@ that many agents can share — handy for a long-lived deployment.
 
 ### Schema generation
 
-The input schema is derived from the `Args` Go struct's `json` / `jsonschema`
-tags at registration time, so the advertised tool schema can never drift from
-the code that consumes it.
+The input schema is derived from each tool's argument struct's `json` /
+`jsonschema` tags at registration time, so the advertised tool schema can
+never drift from the code that consumes it. The `entity` enum comes from the
+same list the tool is registered for.
 
 ## Generated by
 

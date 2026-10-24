@@ -17,23 +17,29 @@ const PLAN: any[] = [
     "args": [],
     "select": {},
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json",
+      "application/xml"
+    ],
     "query": [],
+    "queryArgs": [],
     "auth": null,
     "status": 200,
     "sample": {
       "authorities": [
         {
-          "Email": "x",
-          "EstablishmentCount": 1,
-          "FileName": "x",
-          "FileNameWelsh": "x",
-          "FriendlyName": "x",
           "LocalAuthorityId": 1,
           "LocalAuthorityIdCode": "x",
           "Name": "x",
-          "RegionName": "x",
+          "FriendlyName": "x",
+          "Url": "x",
           "SchemeUrl": "x",
-          "Url": "x"
+          "Email": "x",
+          "RegionName": "x",
+          "FileName": "x",
+          "FileNameWelsh": "x",
+          "EstablishmentCount": 1
         }
       ]
     },
@@ -54,7 +60,13 @@ const PLAN: any[] = [
     ],
     "select": {},
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json",
+      "application/xml"
+    ],
     "query": [],
+    "queryArgs": [],
     "auth": null,
     "status": 200,
     "sample": {
@@ -81,7 +93,13 @@ const PLAN: any[] = [
     "args": [],
     "select": {},
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json",
+      "application/xml"
+    ],
     "query": [],
+    "queryArgs": [],
     "auth": null,
     "status": 200,
     "sample": {
@@ -109,12 +127,17 @@ const PLAN: any[] = [
       "longitude": "v1",
       "max_distance_limit": "v1",
       "name": "v1",
-      "page_number": "v1",
-      "page_size": "v1",
+      "page_number": 1,
+      "page_size": 10,
       "rating_key": "v1",
       "sort_option_key": "v1"
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json",
+      "application/xml"
+    ],
     "query": [
       "localAuthorityId",
       "businessTypeId",
@@ -128,45 +151,91 @@ const PLAN: any[] = [
       "pageSize",
       "sortOptionKey"
     ],
+    "queryArgs": [
+      {
+        "name": "address",
+        "wire": "address"
+      },
+      {
+        "name": "business_type_id",
+        "wire": "businessTypeId"
+      },
+      {
+        "name": "latitude",
+        "wire": "latitude"
+      },
+      {
+        "name": "local_authority_id",
+        "wire": "localAuthorityId"
+      },
+      {
+        "name": "longitude",
+        "wire": "longitude"
+      },
+      {
+        "name": "max_distance_limit",
+        "wire": "maxDistanceLimit"
+      },
+      {
+        "name": "name",
+        "wire": "name"
+      },
+      {
+        "name": "page_number",
+        "wire": "pageNumber"
+      },
+      {
+        "name": "page_size",
+        "wire": "pageSize"
+      },
+      {
+        "name": "rating_key",
+        "wire": "ratingKey"
+      },
+      {
+        "name": "sort_option_key",
+        "wire": "sortOptionKey"
+      }
+    ],
     "auth": null,
     "status": 200,
     "sample": {
       "establishments": [
         {
+          "FHRSID": 1,
+          "LocalAuthorityBusinessID": "x",
+          "BusinessName": "x",
+          "BusinessType": "x",
+          "BusinessTypeID": 1,
           "AddressLine1": "x",
           "AddressLine2": "x",
           "AddressLine3": "x",
           "AddressLine4": "x",
-          "BusinessName": "x",
-          "BusinessType": "x",
-          "BusinessTypeID": 1,
-          "FHRSID": 1,
-          "Geocode": {
-            "latitude": 1,
-            "longitude": 1
-          },
-          "LocalAuthorityBusinessID": "x",
+          "PostCode": "x",
+          "RatingValue": "x",
+          "RatingKey": "x",
+          "RatingDate": "2026-01-01",
           "LocalAuthorityCode": "x",
-          "LocalAuthorityEmailAddress": "x",
           "LocalAuthorityName": "x",
           "LocalAuthorityWebSite": "x",
-          "NewRatingPending": true,
-          "PostCode": "x",
-          "RatingDate": "2026-01-01",
-          "RatingKey": "x",
-          "RatingValue": "x",
-          "SchemeType": "FHRS"
+          "LocalAuthorityEmailAddress": "x",
+          "SchemeType": "FHRS",
+          "Geocode": {
+            "longitude": 1,
+            "latitude": 1
+          },
+          "NewRatingPending": true
         }
       ],
       "meta": {
         "dataSource": "x",
         "extractDate": "2026-01-01T00:00:00Z",
         "itemCount": 1,
-        "pageNumber": 1,
-        "pageSize": 1,
         "returnCode": "x",
         "totalCount": 1,
-        "totalPages": 1
+        "totalPages": 1,
+        "pageSize": 1,
+        "pageNumber": 1
       }
     },
     "idField": "id"
@@ -186,7 +255,13 @@ const PLAN: any[] = [
     ],
     "select": {},
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json",
+      "application/xml"
+    ],
     "query": [],
+    "queryArgs": [],
     "auth": null,
     "status": 200,
     "sample": {
@@ -209,8 +284,8 @@ const PLAN: any[] = [
       "LocalAuthorityEmailAddress": "x",
       "SchemeType": "FHRS",
       "Geocode": {
-        "latitude": 1,
-        "longitude": 1
+        "longitude": 1,
+        "latitude": 1
       },
       "NewRatingPending": true
     },
@@ -225,15 +300,21 @@ const PLAN: any[] = [
     "args": [],
     "select": {},
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json",
+      "application/xml"
+    ],
     "query": [],
+    "queryArgs": [],
     "auth": null,
     "status": 200,
     "sample": {
       "ratings": [
         {
           "ratingId": 1,
-          "ratingKey": "x",
           "ratingName": "x",
+          "ratingKey": "x",
           "schemeType": "FHRS"
         }
       ]

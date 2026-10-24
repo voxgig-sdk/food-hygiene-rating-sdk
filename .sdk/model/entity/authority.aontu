@@ -111,6 +111,16 @@ main: kit: entity: authority: {
           }
           m: "GET"
           o: "/Authorities"
+          rs: {
+            alternatives: [
+              {
+                kind: "raw"
+                media: "application/xml"
+              }
+            ]
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "Authorities"
@@ -149,6 +159,16 @@ main: kit: entity: authority: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            alternatives: [
+              {
+                kind: "raw"
+                media: "application/xml"
+              }
+            ]
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

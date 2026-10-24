@@ -93,6 +93,7 @@ class FoodHygieneRatingConfig
           ],
           'optspec' => [
             'clearTimer' => '`$FUNCTION`',
+            'now' => '`$FUNCTION`',
             'setTimer' => '`$FUNCTION`',
           ],
           'strict' => false,
@@ -218,6 +219,16 @@ class FoodHygieneRatingConfig
                   ],
                   'args' => [],
                   'select' => [],
+                  'response' => [
+                    'alternatives' => [
+                      [
+                        'kind' => 'raw',
+                        'media' => 'application/xml',
+                      ],
+                    ],
+                    'kind' => 'json',
+                    'media' => 'application/json',
+                  ],
                 ],
               ],
             ],
@@ -261,6 +272,16 @@ class FoodHygieneRatingConfig
                     'exist' => [
                       'id',
                     ],
+                  ],
+                  'response' => [
+                    'alternatives' => [
+                      [
+                        'kind' => 'raw',
+                        'media' => 'application/xml',
+                      ],
+                    ],
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -310,6 +331,16 @@ class FoodHygieneRatingConfig
                   ],
                   'args' => [],
                   'select' => [],
+                  'response' => [
+                    'alternatives' => [
+                      [
+                        'kind' => 'raw',
+                        'media' => 'application/xml',
+                      ],
+                    ],
+                    'kind' => 'json',
+                    'media' => 'application/json',
+                  ],
                 ],
               ],
             ],
@@ -547,20 +578,16 @@ class FoodHygieneRatingConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'address',
-                      'business_type_id',
-                      'latitude',
-                      'local_authority_id',
-                      'longitude',
-                      'max_distance_limit',
-                      'name',
-                      'page_number',
-                      'page_size',
-                      'rating_key',
-                      'sort_option_key',
+                  'select' => [],
+                  'response' => [
+                    'alternatives' => [
+                      [
+                        'kind' => 'raw',
+                        'media' => 'application/xml',
+                      ],
                     ],
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -605,6 +632,16 @@ class FoodHygieneRatingConfig
                     'exist' => [
                       'id',
                     ],
+                  ],
+                  'response' => [
+                    'alternatives' => [
+                      [
+                        'kind' => 'raw',
+                        'media' => 'application/xml',
+                      ],
+                    ],
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -666,6 +703,16 @@ class FoodHygieneRatingConfig
                   ],
                   'args' => [],
                   'select' => [],
+                  'response' => [
+                    'alternatives' => [
+                      [
+                        'kind' => 'raw',
+                        'media' => 'application/xml',
+                      ],
+                    ],
+                    'kind' => 'json',
+                    'media' => 'application/json',
+                  ],
                 ],
               ],
             ],

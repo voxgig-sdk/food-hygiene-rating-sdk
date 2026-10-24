@@ -87,6 +87,7 @@ class Config {
             },
             "optspec": {
                 "clearTimer": "`$FUNCTION`",
+                "now": "`$FUNCTION`",
                 "setTimer": "`$FUNCTION`"
             },
             "strict": false,
@@ -211,7 +212,17 @@ class Config {
                                 "res": "`body.authorities`"
                             },
                             "args": {},
-                            "select": {}
+                            "select": {},
+                            "response": {
+                                "alternatives": [
+                                    {
+                                        "kind": "raw",
+                                        "media": "application/xml"
+                                    }
+                                ],
+                                "kind": "json",
+                                "media": "application/json"
+                            }
                         }
                     ]
                 },
@@ -255,6 +266,16 @@ class Config {
                                 "exist": [
                                     "id"
                                 ]
+                            },
+                            "response": {
+                                "alternatives": [
+                                    {
+                                        "kind": "raw",
+                                        "media": "application/xml"
+                                    }
+                                ],
+                                "kind": "json",
+                                "media": "application/json"
                             }
                         }
                     ]
@@ -303,7 +324,17 @@ class Config {
                                 "res": "`body.businessTypes`"
                             },
                             "args": {},
-                            "select": {}
+                            "select": {},
+                            "response": {
+                                "alternatives": [
+                                    {
+                                        "kind": "raw",
+                                        "media": "application/xml"
+                                    }
+                                ],
+                                "kind": "json",
+                                "media": "application/json"
+                            }
                         }
                     ]
                 }
@@ -541,20 +572,16 @@ class Config {
                                     }
                                 ]
                             },
-                            "select": {
-                                "exist": [
-                                    "address",
-                                    "business_type_id",
-                                    "latitude",
-                                    "local_authority_id",
-                                    "longitude",
-                                    "max_distance_limit",
-                                    "name",
-                                    "page_number",
-                                    "page_size",
-                                    "rating_key",
-                                    "sort_option_key"
-                                ]
+                            "select": {},
+                            "response": {
+                                "alternatives": [
+                                    {
+                                        "kind": "raw",
+                                        "media": "application/xml"
+                                    }
+                                ],
+                                "kind": "json",
+                                "media": "application/json"
                             }
                         }
                     ]
@@ -599,6 +626,16 @@ class Config {
                                 "exist": [
                                     "id"
                                 ]
+                            },
+                            "response": {
+                                "alternatives": [
+                                    {
+                                        "kind": "raw",
+                                        "media": "application/xml"
+                                    }
+                                ],
+                                "kind": "json",
+                                "media": "application/json"
                             }
                         }
                     ]
@@ -659,7 +696,17 @@ class Config {
                                 "res": "`body.ratings`"
                             },
                             "args": {},
-                            "select": {}
+                            "select": {},
+                            "response": {
+                                "alternatives": [
+                                    {
+                                        "kind": "raw",
+                                        "media": "application/xml"
+                                    }
+                                ],
+                                "kind": "json",
+                                "media": "application/json"
+                            }
                         }
                     ]
                 }

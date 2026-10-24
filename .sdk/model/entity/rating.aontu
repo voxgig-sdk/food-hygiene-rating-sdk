@@ -48,6 +48,16 @@ main: kit: entity: rating: {
           }
           m: "GET"
           o: "/Ratings"
+          rs: {
+            alternatives: [
+              {
+                kind: "raw"
+                media: "application/xml"
+              }
+            ]
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "Ratings"

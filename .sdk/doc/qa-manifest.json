@@ -3,5 +3,33 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "Email address of the local authority",
+      "First line of the address",
+      "Fourth line of the address",
+      "Friendly display name of the local authority",
+      "Key for the rating value",
+      "Name of the business type (for example, Restaurant/Cafe/Canteen, Pub/bar/nightclub, Takeaway/sandwich shop)",
+      "Name of the food establishment",
+      "Name of the rating (for example, &#39;5&#39;, &#39;4&#39;, &#39;Pass&#39;, &#39;Exempt&#39;)",
+      "Number of establishments registered with this authority",
+      "Production API server",
+      "Scheme type this rating belongs to",
+      "Second line of the address",
+      "Successful response with authorities list",
+      "Successful response with authority details",
+      "Successful response with business types list",
+      "Successful response with establishment data",
+      "Successful response with establishment details",
+      "Successful response with ratings list",
+      "The UK Food Hygiene Rating Data API provides access to food hygiene ratings issued to various food establishments across the UK. It allows users to obtain data in XML and JSON formats, featuring geolocation details for businesses inspected by local authorities. The data provides the food hygiene rating or inspection result given to a business and reflects the standards of food hygiene found on the date of inspection or visit by the local authority. Businesses include restaurants, pubs, cafés, takeaways, hotels and other places consumers eat, as well as supermarkets and other food shops.",
+      "Third line of the address",
+      "Unique identifier for the business type",
+      "Unique identifier for the rating",
+      "Welsh language XML filename (for Welsh authorities)",
+      "XML filename for the authority&#39;s data"
+    ]
+  }
 }

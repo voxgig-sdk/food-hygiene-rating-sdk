@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { FoodHygieneRatingSDK, BaseFeature, stdutil } from '../../..'
+import { FoodHygieneRatingSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,64 @@ describe('BusinessTypeEntity', async () => {
   })
 
 
+  class FailHook extends BaseFeature {
+    name = 'failhook'
+    version = '0.0.1'
+    active = true
+    unexpected = 0
+    init() { }
+    PreSpec() { throw new Error('business_type hook failed') }
+    PreUnexpected() { this.unexpected++ }
+  }
+
+  test('stream-error', async () => {
+    const offline = { net: { offline: true } }
+    await assert.rejects(async () => {
+      for await (const _item of FoodHygieneRatingSDK.test(offline).BusinessType().stream('list')) { }
+    }, /offline/)
+
+    for await (const _item of FoodHygieneRatingSDK.test(offline).BusinessType()
+      .stream('list', undefined, { ctrl: { throw: false } })) { }
+
+    if (null != (config as any).feature?.rbac) {
+      const denied = FoodHygieneRatingSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
+      await assert.rejects(async () => {
+        for await (const _item of denied.BusinessType().stream('list')) { }
+      }, (err: any) => 'rbac_denied' === err.code)
+    }
+  })
+
+  test('stream-ctrl', async () => {
+    const explain: any = {}
+    const ctrl: any = { explain }
+    for await (const _item of FoodHygieneRatingSDK.test().BusinessType().stream('list', undefined, { ctrl })) { }
+    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
+    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
+  })
+
+  test('unexpected', async () => {
+    const hook = new FailHook()
+    const client = new FoodHygieneRatingSDK({ feature: { test: { active: true } }, extend: [hook] })
+    await assert.rejects(client.BusinessType().list(), /hook failed/)
+    assert(0 < hook.unexpected)
+
+    const fired = hook.unexpected
+    assert.strictEqual(await client.BusinessType().list(undefined, { throw: false }), undefined)
+    assert(fired < hook.unexpected)
+  })
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = FoodHygieneRatingSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.BusinessType().list({"BusinessTypeId":"x"} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.FOOD_HYGIENE_RATING_TEST_LIVE
@@ -51,7 +109,7 @@ describe('BusinessTypeEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"BusinessTypeId":{"a":true,"h":"Business Type Id","n":"BusinessTypeId","r":false,"sh":"Unique identifier for the business type","t":"`$INTEGER`","key$":"BusinessTypeId","index$":0},"BusinessTypeName":{"a":true,"h":"Business Type Name","n":"BusinessTypeName","r":false,"sh":"Name of the business type (e.g., Restaurant/Cafe/Canteen, Pub/bar/nightclub, Takeaway/sandwich shop)","t":"`$STRING`","key$":"BusinessTypeName","index$":1}},"name":"business_type","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /BusinessTypes","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/BusinessTypes","q":{},"r":{},"s":[{"lit":"BusinessTypes"}],"t":{"req":"`reqdata`","res":"`body.businessTypes`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"business_type","name__orig":"business_type","Name":"BusinessType","name_":"business_type","name-":"business-type","NAME":"BUSINESS_TYPE","index$":1}, {"active":true,"entity":"business_type","key$":"BasicBusinessTypeFlow","kind":"basic","name":"BasicBusinessTypeFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"business_type_ref01"}}],"index$":0}]}, 'BusinessType', {"GET /BusinessTypes":{"protocol":"http","parameters":[]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"BusinessTypeId":{"a":true,"h":"Business Type Id","n":"BusinessTypeId","r":false,"sh":"Unique identifier for the business type","t":"`$INTEGER`","key$":"BusinessTypeId","index$":0},"BusinessTypeName":{"a":true,"h":"Business Type Name","n":"BusinessTypeName","r":false,"sh":"Name of the business type (e.g., Restaurant/Cafe/Canteen, Pub/bar/nightclub, Takeaway/sandwich shop)","t":"`$STRING`","key$":"BusinessTypeName","index$":1}},"name":"business_type","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /BusinessTypes","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/BusinessTypes","q":{},"r":{},"rs":{"alternatives":[{"kind":"raw","media":"application/xml"}],"kind":"json","media":"application/json"},"s":[{"lit":"BusinessTypes"}],"t":{"req":"`reqdata`","res":"`body.businessTypes`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"business_type","name__orig":"business_type","Name":"BusinessType","name_":"business_type","name-":"business-type","NAME":"BUSINESS_TYPE","index$":1}, {"active":true,"entity":"business_type","key$":"BasicBusinessTypeFlow","kind":"basic","name":"BasicBusinessTypeFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"business_type_ref01"}}],"index$":0}]}, 'BusinessType', {"GET /BusinessTypes":{"protocol":"http","parameters":[]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,6 +130,12 @@ describe('BusinessTypeEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

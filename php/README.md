@@ -12,7 +12,7 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `$
 
 ## Install
 This package is not yet published to Packagist. Install it from the
-GitHub release tag (`php/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/food-hygiene-rating-sdk/releases)), or
+GitHub release tag (`php/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/food-hygiene-rating-sdk/tags)), or
 from a clone as a Composer path repository:
 
 ```bash
@@ -239,8 +239,8 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `($reqmatch, $ctrl): array` | Load a single entity by match criteria. |
-| `list` | `(?array $reqmatch = null, $ctrl): array` | List entities matching the criteria (call with no argument to list all). |
+| `load` | `($reqmatch, $ctrl): mixed` | Load a single entity by match criteria, and return it. |
+| `list` | `(?array $reqmatch = null, $ctrl): mixed` | List entities matching the criteria (call with no argument to list all), one per record. |
 | `data_get` | `(): array` | Get entity data. |
 | `data_set` | `($data): void` | Set entity data. |
 | `match_get` | `(): array` | Get entity match criteria. |
@@ -250,9 +250,9 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
-ops, a `list` for `list`) and throw on error. Wrap calls in
-`try`/`catch` to handle failures.
+Entity operations return the entity, and `list` an `array` of entities, one
+per record; an entity's `data_get()` reads its record (an `array`). They
+throw on error, so wrap calls in `try`/`catch` to handle failures.
 
 The `direct()` escape hatch never throws — it returns a result `array`
 you branch on via `$result["ok"]`:
@@ -386,7 +386,7 @@ $authority = $client->Authority()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Authority records (throws on error).
+// list() returns an array of Authority entities, one per record (throws on error).
 $authoritys = $client->Authority()->list();
 ```
 
@@ -411,7 +411,7 @@ Create an instance: `$business_type = $client->BusinessType();`
 #### Example: List
 
 ```php
-// list() returns an array of BusinessType records (throws on error).
+// list() returns an array of BusinessType entities, one per record (throws on error).
 $business_types = $client->BusinessType()->list();
 ```
 
@@ -463,7 +463,7 @@ $establishment = $client->Establishment()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Establishment records (throws on error).
+// list() returns an array of Establishment entities, one per record (throws on error).
 $establishments = $client->Establishment()->list();
 ```
 
@@ -490,7 +490,7 @@ Create an instance: `$rating = $client->Rating();`
 #### Example: List
 
 ```php
-// list() returns an array of Rating records (throws on error).
+// list() returns an array of Rating entities, one per record (throws on error).
 $ratings = $client->Rating()->list();
 ```
 
